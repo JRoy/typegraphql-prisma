@@ -22,15 +22,12 @@ import {
 export async function generate(options: GeneratorOptions) {
   const totalStart = performance.now();
   console.log("🚀 TypeGraphQL Generator Started");
-  // console.log(options, 'options!')
 
   const outputDir = parseEnvValue(options.generator.output!);
 
   // Parse verboseLogging option early to control all logging
   const verboseLogging =
     parseStringBoolean(options.generator.config.verboseLogging) ?? false;
-
-  console.log(verboseLogging, "verboseLogging!");
 
   // Create logging function based on verboseLogging option
   const log = (message: string) => {
