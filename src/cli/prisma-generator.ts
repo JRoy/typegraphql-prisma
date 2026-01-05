@@ -19,6 +19,43 @@ import {
   parseString,
 } from "./helpers";
 
+/**
+ * Recursively find all .prisma files in a directory
+ */
+async function findPrismaFiles(dir: string): Promise<string[]> {
+  const files: string[] = [];
+  const entries = await asyncFs.readdir(dir, { withFileTypes: true });
+
+  for (const entry of entries) {
+    const fullPath = path.join(dir, entry.name);
+    if (entry.isDirectory()) {
+      files.push(...(await findPrismaFiles(fullPath)));
+    } else if (entry.name.endsWith(".prisma")) {
+      files.push(fullPath);
+    }
+  }
+
+  return files;
+}
+
+/**
+ * Read and merge all .prisma files from a schema directory for multi-file schema support
+ */
+async function readMultiFileSchema(schemaPath: string): Promise<string> {
+  const schemaDir = path.dirname(schemaPath);
+  const prismaFiles = await findPrismaFiles(schemaDir);
+
+  // Read all files and concatenate them
+  const contents = await Promise.all(
+    prismaFiles.map(async file => {
+      const content = await asyncFs.readFile(file, "utf-8");
+      return `// From: ${path.relative(schemaDir, file)}\n${content}`;
+    }),
+  );
+
+  return contents.join("\n\n");
+}
+
 export async function generate(options: GeneratorOptions) {
   const totalStart = performance.now();
   console.log("🚀 TypeGraphQL Generator Started");
@@ -55,17 +92,45 @@ export async function generate(options: GeneratorOptions) {
       'Could not find Prisma Client generator. Make sure you have a generator with provider "prisma-client" or "prisma-client-js" in your schema.',
     );
   }
-  const prismaClientPath = parseEnvValue(prismaClientProvider.output!);
+  // Resolve prisma client path relative to schema directory
+  const prismaClientOutputValue = parseEnvValue(prismaClientProvider.output!);
+  const schemaDir = path.dirname(options.schemaPath);
+  const prismaClientPath = path.isAbsolute(prismaClientOutputValue)
+    ? prismaClientOutputValue
+    : path.resolve(schemaDir, prismaClientOutputValue);
+  log(`📝 Prisma client path: ${prismaClientPath}`);
   log(
     `🔍 Prisma client provider lookup: ${(performance.now() - prismaSetupStart).toFixed(2)}ms`,
   );
 
   const dmmfStart = performance.now();
-  const prismaClientDmmf = await getDMMF({
-    datamodel: options.datamodel,
-    previewFeatures: prismaClientProvider.previewFeatures,
-  });
-  log(`📊 DMMF generation: ${(performance.now() - dmmfStart).toFixed(2)}ms`);
+  log(`📝 Schema path: ${options.schemaPath}`);
+
+  // Check if options.dmmf has models - if not, we need to read multi-file schema
+  let prismaClientDmmf = options.dmmf;
+
+  if (prismaClientDmmf.datamodel.models.length === 0) {
+    log(`📝 No models in options.dmmf, reading multi-file schema...`);
+
+    // Read all .prisma files from the schema directory
+    const mergedSchema = await readMultiFileSchema(options.schemaPath);
+    log(`📝 Merged schema length: ${mergedSchema.length} chars`);
+
+    // Get DMMF from the merged schema
+    prismaClientDmmf = await getDMMF({
+      datamodel: mergedSchema,
+      previewFeatures: prismaClientProvider.previewFeatures,
+    });
+    log(
+      `📝 DMMF from merged schema - models: ${prismaClientDmmf.datamodel.models.length}`,
+    );
+  } else {
+    log(
+      `📝 Using options.dmmf - models: ${prismaClientDmmf.datamodel.models.length}`,
+    );
+  }
+
+  log(`📊 DMMF setup: ${(performance.now() - dmmfStart).toFixed(2)}ms`);
 
   const configStart = performance.now();
   const generatorConfig = options.generator.config;
@@ -152,10 +217,10 @@ export async function generate(options: GeneratorOptions) {
     `  Input Types (model): ${prismaClientDmmf.schema.inputObjectTypes.model?.length || 0}`,
   );
   log(
-    `  Output Types (prisma): ${prismaClientDmmf.schema.outputObjectTypes.prisma.length}`,
+    `  Output Types (prisma): ${prismaClientDmmf.schema.outputObjectTypes.prisma?.length || 0}`,
   );
   log(
-    `  Output Types (model): ${prismaClientDmmf.schema.outputObjectTypes.model.length}`,
+    `  Output Types (model): ${prismaClientDmmf.schema.outputObjectTypes.model?.length || 0}`,
   );
 
   log(`⚙️  Config Comparison:`);
