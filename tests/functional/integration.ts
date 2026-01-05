@@ -6,6 +6,7 @@ import childProcess from "child_process";
 import { buildSchema } from "type-graphql";
 import { graphql } from "graphql";
 import pg from "pg";
+import { PrismaPg } from "@prisma/adapter-pg";
 
 import generateArtifactsDirPath from "../helpers/artifacts-dir";
 import { getDirectoryStructureString } from "../helpers/structure";
@@ -184,7 +185,11 @@ export default defineConfig({
     expect(filterPrismaInfoMessages(prismaPushResult.stderr)).toHaveLength(0);
 
     const { PrismaClient } = require(cwdDirPath + "/generated/client");
-    const prisma = new PrismaClient();
+    const pool = new pg.Pool({
+      connectionString: process.env.TEST_DATABASE_URL,
+    });
+    const adapter = new PrismaPg(pool);
+    const prisma = new PrismaClient({ adapter });
 
     await prisma.user.create({ data: { name: "test1" } });
     await prisma.user.create({
@@ -243,6 +248,7 @@ export default defineConfig({
       contextValue: { prisma },
     });
     await prisma.$disconnect();
+    await pool.end();
 
     expect(errors).toBeUndefined();
     expect(data).toMatchSnapshot("graphql data");
