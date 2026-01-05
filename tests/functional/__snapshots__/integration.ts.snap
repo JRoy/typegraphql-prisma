@@ -985,3 +985,28 @@ exports[`generator integration should generates TypeGraphQL classes files to out
   scalars.ts
 "
 `;
+
+exports[`generator integration should properly fetch the data from DB using PrismaClient while queried by GraphQL schema: graphql data 1`] = `
+Object {
+  "users": Array [
+    Object {
+      "id": 1,
+      "name": "test1",
+      "posts": Array [],
+    },
+    Object {
+      "id": 2,
+      "name": "test2",
+      "posts": Array [
+        Object {
+          "author": Object {
+            "name": "test2",
+          },
+          "color": "RED",
+          "content": "post content",
+        },
+      ],
+    },
+  ],
+}
+`;
