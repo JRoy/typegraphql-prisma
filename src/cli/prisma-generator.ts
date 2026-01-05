@@ -44,9 +44,17 @@ export async function generate(options: GeneratorOptions) {
   );
 
   const prismaSetupStart = performance.now();
+  // Prisma 7 uses "prisma-client", earlier versions use "prisma-client-js"
   const prismaClientProvider = options.otherGenerators.find(
-    it => parseEnvValue(it.provider) === "prisma-client-js",
-  )!;
+    it =>
+      parseEnvValue(it.provider) === "prisma-client-js" ||
+      parseEnvValue(it.provider) === "prisma-client",
+  );
+  if (!prismaClientProvider) {
+    throw new Error(
+      'Could not find Prisma Client generator. Make sure you have a generator with provider "prisma-client" or "prisma-client-js" in your schema.',
+    );
+  }
   const prismaClientPath = parseEnvValue(prismaClientProvider.output!);
   log(
     `🔍 Prisma client provider lookup: ${(performance.now() - prismaSetupStart).toFixed(2)}ms`,
