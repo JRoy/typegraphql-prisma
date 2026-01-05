@@ -12,9 +12,13 @@ import { getDirectoryStructureString } from "../helpers/structure";
 
 const exec = util.promisify(childProcess.exec);
 
-// Helper function to filter out Prisma update notifications from stderr
-function filterPrismaUpdateNotifications(stderr: string): string {
-  return stderr.replace(/┌─.*?└─.*?┘\s*/gs, "").trim();
+// Helper function to filter out Prisma informational messages from stderr
+function filterPrismaInfoMessages(stderr: string): string {
+  return stderr
+    .replace(/┌─.*?└─.*?┘\s*/gs, "") // Update notifications
+    .replace(/Loaded Prisma config from.*\n?/g, "") // Config loading message
+    .replace(/Prisma schema loaded from.*\n?/g, "") // Schema loading message
+    .trim();
 }
 
 describe("generator integration", () => {
@@ -28,7 +32,6 @@ describe("generator integration", () => {
     schema = /* prisma */ `
       datasource db {
         provider = "postgresql"
-        url      = env("DATABASE_URL")
       }
 
       generator client {
@@ -62,10 +65,19 @@ describe("generator integration", () => {
       }
     `;
     await fs.writeFile(path.join(cwdDirPath, "schema.prisma"), schema);
-    await fs.writeFile(
-      path.join(cwdDirPath, ".env"),
-      `DATABASE_URL=${process.env.TEST_DATABASE_URL}`,
-    );
+
+    // Prisma 7 requires connection URL in prisma.config.ts for CLI commands
+    const dbUrl = process.env.TEST_DATABASE_URL || "";
+    const prismaConfig = `import { defineConfig } from "prisma/config";
+
+export default defineConfig({
+  schema: "./schema.prisma",
+  datasource: {
+    url: "${dbUrl}",
+  },
+});
+`;
+    await fs.writeFile(path.join(cwdDirPath, "prisma.config.ts"), prismaConfig);
   });
 
   it("should generates TypeGraphQL classes files to output folder by running `prisma generate`", async () => {
@@ -78,9 +90,9 @@ describe("generator integration", () => {
       cwdDirPath + "/generated/type-graphql",
     );
 
-    expect(
-      filterPrismaUpdateNotifications(prismaGenerateResult.stderr),
-    ).toHaveLength(0);
+    expect(filterPrismaInfoMessages(prismaGenerateResult.stderr)).toHaveLength(
+      0,
+    );
     expect(directoryStructureString).toMatchSnapshot("files structure");
   }, 60000);
 
@@ -109,9 +121,9 @@ describe("generator integration", () => {
       encoding: "utf8",
     });
 
-    expect(
-      filterPrismaUpdateNotifications(prismaGenerateResult.stderr),
-    ).toHaveLength(0);
+    expect(filterPrismaInfoMessages(prismaGenerateResult.stderr)).toHaveLength(
+      0,
+    );
     expect(graphQLSchemaSDL).toMatchSnapshot("graphQLSchemaSDL");
   }, 60000);
 
@@ -147,9 +159,9 @@ describe("generator integration", () => {
       cwd: typegraphqlfolderPath,
     });
 
-    expect(
-      filterPrismaUpdateNotifications(prismaGenerateResult.stderr),
-    ).toHaveLength(0);
+    expect(filterPrismaInfoMessages(prismaGenerateResult.stderr)).toHaveLength(
+      0,
+    );
     expect(tscResult.stdout).toHaveLength(0);
     expect(tscResult.stderr).toHaveLength(0);
   }, 60000);
@@ -159,9 +171,9 @@ describe("generator integration", () => {
       cwd: cwdDirPath,
     });
     // console.log(prismaGenerateResult);
-    expect(
-      filterPrismaUpdateNotifications(prismaGenerateResult.stderr),
-    ).toHaveLength(0);
+    expect(filterPrismaInfoMessages(prismaGenerateResult.stderr)).toHaveLength(
+      0,
+    );
 
     // Push schema to database (will create/update schema)
     const prismaPushResult = await exec(
@@ -169,9 +181,7 @@ describe("generator integration", () => {
       { cwd: cwdDirPath },
     );
     // console.log(prismaPushResult);
-    expect(
-      filterPrismaUpdateNotifications(prismaPushResult.stderr),
-    ).toHaveLength(0);
+    expect(filterPrismaInfoMessages(prismaPushResult.stderr)).toHaveLength(0);
 
     const { PrismaClient } = require(cwdDirPath + "/generated/client");
     const prisma = new PrismaClient();

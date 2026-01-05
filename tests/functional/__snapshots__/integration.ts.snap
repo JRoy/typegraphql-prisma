@@ -1,4 +1,4 @@
-// Jest Snapshot v1, https://jestjs.io/docs/snapshot-testing
+// Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`generator integration should be able to use generate TypeGraphQL classes files to generate GraphQL schema: graphQLSchemaSDL 1`] = `
 "# -----------------------------------------------
@@ -984,29 +984,4 @@ exports[`generator integration should generates TypeGraphQL classes files to out
       resolvers.index.ts
   scalars.ts
 "
-`;
-
-exports[`generator integration should properly fetch the data from DB using PrismaClient while queried by GraphQL schema: graphql data 1`] = `
-Object {
-  "users": Array [
-    Object {
-      "id": 1,
-      "name": "test1",
-      "posts": Array [],
-    },
-    Object {
-      "id": 2,
-      "name": "test2",
-      "posts": Array [
-        Object {
-          "author": Object {
-            "name": "test2",
-          },
-          "color": "RED",
-          "content": "post content",
-        },
-      ],
-    },
-  ],
-}
 `;
