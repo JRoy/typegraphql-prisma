@@ -1,6 +1,5 @@
 import { DmmfDocument } from "./dmmf/dmmf-document";
 import { modelAttributeRegex, fieldAttributeRegex } from "./dmmf/helpers";
-import { getMappedOutputTypeName } from "./dmmf/transform";
 import { DMMF } from "./dmmf/types";
 
 enum PrismaScalars {
@@ -89,7 +88,7 @@ export function mapScalarToTSType(scalar: string, isInputType: boolean) {
       return "Prisma.Decimal";
     }
     case PrismaScalars.Bytes: {
-      return "Buffer";
+      return "Uint8Array";
     }
     default:
       throw new Error(`Unrecognized scalar type: ${scalar}`);
@@ -154,7 +153,7 @@ export function mapScalarToTypeGraphQLType(
       return "DecimalJSScalar";
     }
     case PrismaScalars.Bytes: {
-      return "GraphQLScalars.ByteResolver";
+      return "BytesScalar";
     }
     default: {
       throw new Error(`Unrecognized scalar type: ${scalar}`);
@@ -185,6 +184,7 @@ function getInputKeywordPhrasePosition(inputTypeName: string) {
     "ScalarWhere",
     "Where",
     "ListRelationFilter",
+    "ScalarRelationFilter",
     "RelationFilter",
     "Filter",
   ]

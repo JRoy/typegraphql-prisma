@@ -6,7 +6,7 @@ import type {
 } from "../../src/generator/options";
 import getPrismaClientDmmfFromPrismaSchema from "./dmmf";
 
-type SupportedPreviewFeatures = "fullTextSearch";
+type SupportedPreviewFeatures = "fullTextSearchPostgres";
 
 interface GenerateCodeFromSchemaOptions
   extends Omit<

@@ -468,6 +468,11 @@ export class DeleteManyUserArgs {
             nullable: true
         })
     where?: UserWhereInput | undefined;
+
+    @TypeGraphQL.Field(_type => TypeGraphQL.Int, {
+            nullable: true
+        })
+    limit?: number | undefined;
 }
 "
 `;
@@ -725,6 +730,11 @@ export class UpdateManyUserArgs {
             nullable: true
         })
     where?: UserWhereInput | undefined;
+
+    @TypeGraphQL.Field(_type => TypeGraphQL.Int, {
+            nullable: true
+        })
+    limit?: number | undefined;
 }
 "
 `;
@@ -3309,6 +3319,11 @@ export class DeleteManyClientArgs {
             nullable: true
         })
     where?: ClientWhereInput | undefined;
+
+    @TypeGraphQL.Field(_type => TypeGraphQL.Int, {
+            nullable: true
+        })
+    limit?: number | undefined;
 }
 "
 `;
@@ -3514,6 +3529,11 @@ export class UpdateManyClientArgs {
             nullable: true
         })
     where?: ClientWhereInput | undefined;
+
+    @TypeGraphQL.Field(_type => TypeGraphQL.Int, {
+            nullable: true
+        })
+    limit?: number | undefined;
 }
 "
 `;
@@ -4018,6 +4038,11 @@ export class UpdateManyUserArgs {
             nullable: true
         })
     where?: UserWhereInput | undefined;
+
+    @TypeGraphQL.Field(_type => TypeGraphQL.Int, {
+            nullable: true
+        })
+    limit?: number | undefined;
 }
 "
 `;

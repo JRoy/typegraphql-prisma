@@ -155,7 +155,7 @@ class CodeGenerator {
       undefined,
       { overwrite: true },
     );
-    generateCustomScalars(scalarsSourceFile, dmmfDocument.options);
+    generateCustomScalars(scalarsSourceFile, dmmfDocument);
 
     const helpersSourceFile = project.createSourceFile(
       `${baseDirPath}/helpers.ts`,
