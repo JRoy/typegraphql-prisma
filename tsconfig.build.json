@@ -1,11 +1,15 @@
 {
   "extends": "./tsconfig.json",
+  "compilerOptions": {
+    "skipLibCheck": true
+  },
   "exclude": [
     "src/**/*benchmarked*",
     "src/**/*backup*",
     "src/**/benchmark.*",
     "src/**/test-parallel.*",
     "src/test-schemas/**/*",
-    "test-schemas/**/*"
+    "test-schemas/**/*",
+    "node_modules/@prisma/internals/**/*"
   ]
 }
