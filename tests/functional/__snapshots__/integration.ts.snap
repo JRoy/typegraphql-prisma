@@ -990,12 +990,12 @@ exports[`generator integration should properly fetch the data from DB using Pris
 Object {
   "users": Array [
     Object {
-      "id": 28,
+      "id": 1,
       "name": "test1",
       "posts": Array [],
     },
     Object {
-      "id": 29,
+      "id": 2,
       "name": "test2",
       "posts": Array [
         Object {
