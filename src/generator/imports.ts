@@ -90,16 +90,13 @@ export function generatePrismaNamespaceImport(
   options: GeneratorOptions,
   level = 0,
 ) {
-  // For Prisma 7+, we need to import from the 'client' file, not the root directory
-  // The generated Prisma client no longer has an index.ts, instead it has client.ts as entry point
-  const prismaImportPath =
-    options.customPrismaImportPath ??
-    path.posix.join(options.relativePrismaOutputPath, "client");
-
   const moduleSpecifier =
     options.absolutePrismaOutputPath ??
     (level === 0 ? "./" : "") +
-      path.posix.join(...Array(level).fill(".."), prismaImportPath);
+      path.posix.join(
+        ...Array(level).fill(".."),
+        options.customPrismaImportPath ?? options.relativePrismaOutputPath,
+      );
 
   sourceFile.addImportDeclaration({
     moduleSpecifier,

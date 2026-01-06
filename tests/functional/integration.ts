@@ -191,6 +191,10 @@ export default defineConfig({
     const adapter = new PrismaPg(pool);
     const prisma = new PrismaClient({ adapter });
 
+    // Clean up any existing test data
+    await prisma.post.deleteMany({});
+    await prisma.user.deleteMany({});
+
     await prisma.user.create({ data: { name: "test1" } });
     await prisma.user.create({
       data: {

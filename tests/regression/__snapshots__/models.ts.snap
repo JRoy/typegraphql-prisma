@@ -1,4 +1,4 @@
-// Jest Snapshot v1, https://jestjs.io/docs/snapshot-testing
+// Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`models should properly generate object type class for mongo prisma model with nested types: User 1`] = `
 "import * as TypeGraphQL from \\"type-graphql\\";
