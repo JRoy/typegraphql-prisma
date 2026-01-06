@@ -3,7 +3,7 @@
 exports[`omit-fields when \`omitInputFieldsByDefault\` generator option is provided should properly generate input type class for prisma model without the omitted field: UserCreateInput 1`] = `
 "import * as TypeGraphQL from \\"type-graphql\\";
 import * as GraphQLScalars from \\"graphql-scalars\\";
-import { Prisma } from \\"../../../../helpers/prisma-client-mock\\";
+import { Prisma } from \\"../../../../helpers/prisma-client-mock/client\\";
 import { DecimalJSScalar } from \\"../../scalars\\";
 
 @TypeGraphQL.InputType(\\"UserCreateInput\\", {})
@@ -23,7 +23,7 @@ export class UserCreateInput {
 exports[`omit-fields when \`omitInputFieldsByDefault\` generator option is provided should properly generate input type class for prisma model without the omitted field: UserCreateManyInput 1`] = `
 "import * as TypeGraphQL from \\"type-graphql\\";
 import * as GraphQLScalars from \\"graphql-scalars\\";
-import { Prisma } from \\"../../../../helpers/prisma-client-mock\\";
+import { Prisma } from \\"../../../../helpers/prisma-client-mock/client\\";
 import { DecimalJSScalar } from \\"../../scalars\\";
 
 @TypeGraphQL.InputType(\\"UserCreateManyInput\\", {})
@@ -43,7 +43,7 @@ export class UserCreateManyInput {
 exports[`omit-fields when \`omitInputFieldsByDefault\` generator option is provided should properly generate input type class for prisma model without the omitted field: UserOrderByWithRelationInput 1`] = `
 "import * as TypeGraphQL from \\"type-graphql\\";
 import * as GraphQLScalars from \\"graphql-scalars\\";
-import { Prisma } from \\"../../../../helpers/prisma-client-mock\\";
+import { Prisma } from \\"../../../../helpers/prisma-client-mock/client\\";
 import { DecimalJSScalar } from \\"../../scalars\\";
 import { SortOrderInput } from \\"../inputs/SortOrderInput\\";
 import { SortOrder } from \\"../../enums/SortOrder\\";
@@ -65,7 +65,7 @@ export class UserOrderByWithRelationInput {
 exports[`omit-fields when \`omitInputFieldsByDefault\` generator option is provided should properly generate input type class for prisma model without the omitted field: UserScalarWhereWithAggregatesInput 1`] = `
 "import * as TypeGraphQL from \\"type-graphql\\";
 import * as GraphQLScalars from \\"graphql-scalars\\";
-import { Prisma } from \\"../../../../helpers/prisma-client-mock\\";
+import { Prisma } from \\"../../../../helpers/prisma-client-mock/client\\";
 import { DecimalJSScalar } from \\"../../scalars\\";
 import { DateTimeWithAggregatesFilter } from \\"../inputs/DateTimeWithAggregatesFilter\\";
 import { FloatNullableWithAggregatesFilter } from \\"../inputs/FloatNullableWithAggregatesFilter\\";
@@ -98,7 +98,7 @@ export class UserScalarWhereWithAggregatesInput {
 exports[`omit-fields when \`omitInputFieldsByDefault\` generator option is provided should properly generate input type class for prisma model without the omitted field: UserUpdateInput 1`] = `
 "import * as TypeGraphQL from \\"type-graphql\\";
 import * as GraphQLScalars from \\"graphql-scalars\\";
-import { Prisma } from \\"../../../../helpers/prisma-client-mock\\";
+import { Prisma } from \\"../../../../helpers/prisma-client-mock/client\\";
 import { DecimalJSScalar } from \\"../../scalars\\";
 import { DateTimeFieldUpdateOperationsInput } from \\"../inputs/DateTimeFieldUpdateOperationsInput\\";
 import { NullableFloatFieldUpdateOperationsInput } from \\"../inputs/NullableFloatFieldUpdateOperationsInput\\";
@@ -121,7 +121,7 @@ export class UserUpdateInput {
 exports[`omit-fields when \`omitInputFieldsByDefault\` generator option is provided should properly generate input type class for prisma model without the omitted field: UserUpdateManyMutationInput 1`] = `
 "import * as TypeGraphQL from \\"type-graphql\\";
 import * as GraphQLScalars from \\"graphql-scalars\\";
-import { Prisma } from \\"../../../../helpers/prisma-client-mock\\";
+import { Prisma } from \\"../../../../helpers/prisma-client-mock/client\\";
 import { DecimalJSScalar } from \\"../../scalars\\";
 import { DateTimeFieldUpdateOperationsInput } from \\"../inputs/DateTimeFieldUpdateOperationsInput\\";
 import { NullableFloatFieldUpdateOperationsInput } from \\"../inputs/NullableFloatFieldUpdateOperationsInput\\";
@@ -144,7 +144,7 @@ export class UserUpdateManyMutationInput {
 exports[`omit-fields when \`omitInputFieldsByDefault\` generator option is provided should properly generate input type class for prisma model without the omitted field: UserWhereInput 1`] = `
 "import * as TypeGraphQL from \\"type-graphql\\";
 import * as GraphQLScalars from \\"graphql-scalars\\";
-import { Prisma } from \\"../../../../helpers/prisma-client-mock\\";
+import { Prisma } from \\"../../../../helpers/prisma-client-mock/client\\";
 import { DecimalJSScalar } from \\"../../scalars\\";
 import { DateTimeFilter } from \\"../inputs/DateTimeFilter\\";
 import { FloatNullableFilter } from \\"../inputs/FloatNullableFilter\\";
@@ -177,7 +177,7 @@ export class UserWhereInput {
 exports[`omit-fields when \`omitInputFieldsByDefault\` generator option is provided should properly generate input type class for prisma model without the omitted field: UserWhereUniqueInput 1`] = `
 "import * as TypeGraphQL from \\"type-graphql\\";
 import * as GraphQLScalars from \\"graphql-scalars\\";
-import { Prisma } from \\"../../../../helpers/prisma-client-mock\\";
+import { Prisma } from \\"../../../../helpers/prisma-client-mock/client\\";
 import { DecimalJSScalar } from \\"../../scalars\\";
 import { DateTimeFilter } from \\"../inputs/DateTimeFilter\\";
 import { FloatNullableFilter } from \\"../inputs/FloatNullableFilter\\";
@@ -210,7 +210,7 @@ export class UserWhereUniqueInput {
 exports[`omit-fields when \`omitInputFieldsByDefault\` generator option is provided should properly generate model type class for prisma model without the omitted field: User 1`] = `
 "import * as TypeGraphQL from \\"type-graphql\\";
 import * as GraphQLScalars from \\"graphql-scalars\\";
-import { Prisma } from \\"../../../helpers/prisma-client-mock\\";
+import { Prisma } from \\"../../../helpers/prisma-client-mock/client\\";
 import { DecimalJSScalar } from \\"../scalars\\";
 
 @TypeGraphQL.ObjectType(\\"User\\", {})
@@ -232,7 +232,7 @@ export class User {
 exports[`omit-fields when \`omitInputFieldsByDefault\` generator option is provided when model field has \`omit(input: false)\` set should properly generate input type class for prisma model with the field defined: UserCreateInput 1`] = `
 "import * as TypeGraphQL from \\"type-graphql\\";
 import * as GraphQLScalars from \\"graphql-scalars\\";
-import { Prisma } from \\"../../../../helpers/prisma-client-mock\\";
+import { Prisma } from \\"../../../../helpers/prisma-client-mock/client\\";
 import { DecimalJSScalar } from \\"../../scalars\\";
 
 @TypeGraphQL.InputType(\\"UserCreateInput\\", {})
@@ -252,7 +252,7 @@ export class UserCreateInput {
 exports[`omit-fields when \`omitInputFieldsByDefault\` generator option is provided when model field has \`omit(input: false)\` set should properly generate input type class for prisma model with the field defined: UserCreateManyInput 1`] = `
 "import * as TypeGraphQL from \\"type-graphql\\";
 import * as GraphQLScalars from \\"graphql-scalars\\";
-import { Prisma } from \\"../../../../helpers/prisma-client-mock\\";
+import { Prisma } from \\"../../../../helpers/prisma-client-mock/client\\";
 import { DecimalJSScalar } from \\"../../scalars\\";
 
 @TypeGraphQL.InputType(\\"UserCreateManyInput\\", {})
@@ -275,7 +275,7 @@ export class UserCreateManyInput {
 exports[`omit-fields when \`omitInputFieldsByDefault\` generator option is provided when model field has \`omit(input: false)\` set should properly generate input type class for prisma model with the field defined: UserOrderByWithRelationInput 1`] = `
 "import * as TypeGraphQL from \\"type-graphql\\";
 import * as GraphQLScalars from \\"graphql-scalars\\";
-import { Prisma } from \\"../../../../helpers/prisma-client-mock\\";
+import { Prisma } from \\"../../../../helpers/prisma-client-mock/client\\";
 import { DecimalJSScalar } from \\"../../scalars\\";
 import { SortOrderInput } from \\"../inputs/SortOrderInput\\";
 import { SortOrder } from \\"../../enums/SortOrder\\";
@@ -300,7 +300,7 @@ export class UserOrderByWithRelationInput {
 exports[`omit-fields when \`omitInputFieldsByDefault\` generator option is provided when model field has \`omit(input: false)\` set should properly generate input type class for prisma model with the field defined: UserScalarWhereWithAggregatesInput 1`] = `
 "import * as TypeGraphQL from \\"type-graphql\\";
 import * as GraphQLScalars from \\"graphql-scalars\\";
-import { Prisma } from \\"../../../../helpers/prisma-client-mock\\";
+import { Prisma } from \\"../../../../helpers/prisma-client-mock/client\\";
 import { DecimalJSScalar } from \\"../../scalars\\";
 import { DateTimeWithAggregatesFilter } from \\"../inputs/DateTimeWithAggregatesFilter\\";
 import { FloatNullableWithAggregatesFilter } from \\"../inputs/FloatNullableWithAggregatesFilter\\";
@@ -336,7 +336,7 @@ export class UserScalarWhereWithAggregatesInput {
 exports[`omit-fields when \`omitInputFieldsByDefault\` generator option is provided when model field has \`omit(input: false)\` set should properly generate input type class for prisma model with the field defined: UserUpdateInput 1`] = `
 "import * as TypeGraphQL from \\"type-graphql\\";
 import * as GraphQLScalars from \\"graphql-scalars\\";
-import { Prisma } from \\"../../../../helpers/prisma-client-mock\\";
+import { Prisma } from \\"../../../../helpers/prisma-client-mock/client\\";
 import { DecimalJSScalar } from \\"../../scalars\\";
 import { DateTimeFieldUpdateOperationsInput } from \\"../inputs/DateTimeFieldUpdateOperationsInput\\";
 import { NullableFloatFieldUpdateOperationsInput } from \\"../inputs/NullableFloatFieldUpdateOperationsInput\\";
@@ -359,7 +359,7 @@ export class UserUpdateInput {
 exports[`omit-fields when \`omitInputFieldsByDefault\` generator option is provided when model field has \`omit(input: false)\` set should properly generate input type class for prisma model with the field defined: UserUpdateManyMutationInput 1`] = `
 "import * as TypeGraphQL from \\"type-graphql\\";
 import * as GraphQLScalars from \\"graphql-scalars\\";
-import { Prisma } from \\"../../../../helpers/prisma-client-mock\\";
+import { Prisma } from \\"../../../../helpers/prisma-client-mock/client\\";
 import { DecimalJSScalar } from \\"../../scalars\\";
 import { DateTimeFieldUpdateOperationsInput } from \\"../inputs/DateTimeFieldUpdateOperationsInput\\";
 import { NullableFloatFieldUpdateOperationsInput } from \\"../inputs/NullableFloatFieldUpdateOperationsInput\\";
@@ -382,7 +382,7 @@ export class UserUpdateManyMutationInput {
 exports[`omit-fields when \`omitInputFieldsByDefault\` generator option is provided when model field has \`omit(input: false)\` set should properly generate input type class for prisma model with the field defined: UserWhereInput 1`] = `
 "import * as TypeGraphQL from \\"type-graphql\\";
 import * as GraphQLScalars from \\"graphql-scalars\\";
-import { Prisma } from \\"../../../../helpers/prisma-client-mock\\";
+import { Prisma } from \\"../../../../helpers/prisma-client-mock/client\\";
 import { DecimalJSScalar } from \\"../../scalars\\";
 import { DateTimeFilter } from \\"../inputs/DateTimeFilter\\";
 import { FloatNullableFilter } from \\"../inputs/FloatNullableFilter\\";
@@ -418,7 +418,7 @@ export class UserWhereInput {
 exports[`omit-fields when \`omitInputFieldsByDefault\` generator option is provided when model field has \`omit(input: false)\` set should properly generate input type class for prisma model with the field defined: UserWhereUniqueInput 1`] = `
 "import * as TypeGraphQL from \\"type-graphql\\";
 import * as GraphQLScalars from \\"graphql-scalars\\";
-import { Prisma } from \\"../../../../helpers/prisma-client-mock\\";
+import { Prisma } from \\"../../../../helpers/prisma-client-mock/client\\";
 import { DecimalJSScalar } from \\"../../scalars\\";
 import { DateTimeFilter } from \\"../inputs/DateTimeFilter\\";
 import { FloatNullableFilter } from \\"../inputs/FloatNullableFilter\\";
@@ -454,7 +454,7 @@ export class UserWhereUniqueInput {
 exports[`omit-fields when \`omitInputFieldsByDefault\` generator option is provided when model field has \`omit(output: false)\` set should properly generate model type class for prisma model with the field defined: User 1`] = `
 "import * as TypeGraphQL from \\"type-graphql\\";
 import * as GraphQLScalars from \\"graphql-scalars\\";
-import { Prisma } from \\"../../../helpers/prisma-client-mock\\";
+import { Prisma } from \\"../../../helpers/prisma-client-mock/client\\";
 import { DecimalJSScalar } from \\"../scalars\\";
 
 @TypeGraphQL.ObjectType(\\"User\\", {})
@@ -477,7 +477,7 @@ export class User {
 exports[`omit-fields when model field has \`omit(input: true)\` set should properly generate input type class for prisma model without the omitted field: UserCreateInput 1`] = `
 "import * as TypeGraphQL from \\"type-graphql\\";
 import * as GraphQLScalars from \\"graphql-scalars\\";
-import { Prisma } from \\"../../../../helpers/prisma-client-mock\\";
+import { Prisma } from \\"../../../../helpers/prisma-client-mock/client\\";
 import { DecimalJSScalar } from \\"../../scalars\\";
 
 @TypeGraphQL.InputType(\\"UserCreateInput\\", {})
@@ -494,7 +494,7 @@ export class UserCreateInput {
 exports[`omit-fields when model field has \`omit(input: true)\` set should properly generate input type class for prisma model without the omitted field: UserCreateManyInput 1`] = `
 "import * as TypeGraphQL from \\"type-graphql\\";
 import * as GraphQLScalars from \\"graphql-scalars\\";
-import { Prisma } from \\"../../../../helpers/prisma-client-mock\\";
+import { Prisma } from \\"../../../../helpers/prisma-client-mock/client\\";
 import { DecimalJSScalar } from \\"../../scalars\\";
 
 @TypeGraphQL.InputType(\\"UserCreateManyInput\\", {})
@@ -514,7 +514,7 @@ export class UserCreateManyInput {
 exports[`omit-fields when model field has \`omit(input: true)\` set should properly generate input type class for prisma model without the omitted field: UserOrderByWithRelationInput 1`] = `
 "import * as TypeGraphQL from \\"type-graphql\\";
 import * as GraphQLScalars from \\"graphql-scalars\\";
-import { Prisma } from \\"../../../../helpers/prisma-client-mock\\";
+import { Prisma } from \\"../../../../helpers/prisma-client-mock/client\\";
 import { DecimalJSScalar } from \\"../../scalars\\";
 import { SortOrderInput } from \\"../inputs/SortOrderInput\\";
 import { SortOrder } from \\"../../enums/SortOrder\\";
@@ -536,7 +536,7 @@ export class UserOrderByWithRelationInput {
 exports[`omit-fields when model field has \`omit(input: true)\` set should properly generate input type class for prisma model without the omitted field: UserScalarWhereWithAggregatesInput 1`] = `
 "import * as TypeGraphQL from \\"type-graphql\\";
 import * as GraphQLScalars from \\"graphql-scalars\\";
-import { Prisma } from \\"../../../../helpers/prisma-client-mock\\";
+import { Prisma } from \\"../../../../helpers/prisma-client-mock/client\\";
 import { DecimalJSScalar } from \\"../../scalars\\";
 import { DateTimeWithAggregatesFilter } from \\"../inputs/DateTimeWithAggregatesFilter\\";
 import { FloatNullableWithAggregatesFilter } from \\"../inputs/FloatNullableWithAggregatesFilter\\";
@@ -569,7 +569,7 @@ export class UserScalarWhereWithAggregatesInput {
 exports[`omit-fields when model field has \`omit(input: true)\` set should properly generate input type class for prisma model without the omitted field: UserUpdateInput 1`] = `
 "import * as TypeGraphQL from \\"type-graphql\\";
 import * as GraphQLScalars from \\"graphql-scalars\\";
-import { Prisma } from \\"../../../../helpers/prisma-client-mock\\";
+import { Prisma } from \\"../../../../helpers/prisma-client-mock/client\\";
 import { DecimalJSScalar } from \\"../../scalars\\";
 import { DateTimeFieldUpdateOperationsInput } from \\"../inputs/DateTimeFieldUpdateOperationsInput\\";
 import { NullableFloatFieldUpdateOperationsInput } from \\"../inputs/NullableFloatFieldUpdateOperationsInput\\";
@@ -589,7 +589,7 @@ export class UserUpdateInput {
 exports[`omit-fields when model field has \`omit(input: true)\` set should properly generate input type class for prisma model without the omitted field: UserUpdateManyMutationInput 1`] = `
 "import * as TypeGraphQL from \\"type-graphql\\";
 import * as GraphQLScalars from \\"graphql-scalars\\";
-import { Prisma } from \\"../../../../helpers/prisma-client-mock\\";
+import { Prisma } from \\"../../../../helpers/prisma-client-mock/client\\";
 import { DecimalJSScalar } from \\"../../scalars\\";
 import { DateTimeFieldUpdateOperationsInput } from \\"../inputs/DateTimeFieldUpdateOperationsInput\\";
 import { NullableFloatFieldUpdateOperationsInput } from \\"../inputs/NullableFloatFieldUpdateOperationsInput\\";
@@ -609,7 +609,7 @@ export class UserUpdateManyMutationInput {
 exports[`omit-fields when model field has \`omit(input: true)\` set should properly generate input type class for prisma model without the omitted field: UserWhereInput 1`] = `
 "import * as TypeGraphQL from \\"type-graphql\\";
 import * as GraphQLScalars from \\"graphql-scalars\\";
-import { Prisma } from \\"../../../../helpers/prisma-client-mock\\";
+import { Prisma } from \\"../../../../helpers/prisma-client-mock/client\\";
 import { DecimalJSScalar } from \\"../../scalars\\";
 import { DateTimeFilter } from \\"../inputs/DateTimeFilter\\";
 import { FloatNullableFilter } from \\"../inputs/FloatNullableFilter\\";
@@ -642,7 +642,7 @@ export class UserWhereInput {
 exports[`omit-fields when model field has \`omit(input: true)\` set should properly generate input type class for prisma model without the omitted field: UserWhereUniqueInput 1`] = `
 "import * as TypeGraphQL from \\"type-graphql\\";
 import * as GraphQLScalars from \\"graphql-scalars\\";
-import { Prisma } from \\"../../../../helpers/prisma-client-mock\\";
+import { Prisma } from \\"../../../../helpers/prisma-client-mock/client\\";
 import { DecimalJSScalar } from \\"../../scalars\\";
 import { DateTimeFilter } from \\"../inputs/DateTimeFilter\\";
 import { FloatNullableFilter } from \\"../inputs/FloatNullableFilter\\";
@@ -675,7 +675,7 @@ export class UserWhereUniqueInput {
 exports[`omit-fields when model field has \`omit(output: true)\` set should properly generate input type class for prisma model with the omitted field: UserCreateInput 1`] = `
 "import * as TypeGraphQL from \\"type-graphql\\";
 import * as GraphQLScalars from \\"graphql-scalars\\";
-import { Prisma } from \\"../../../../helpers/prisma-client-mock\\";
+import { Prisma } from \\"../../../../helpers/prisma-client-mock/client\\";
 import { DecimalJSScalar } from \\"../../scalars\\";
 
 @TypeGraphQL.InputType(\\"UserCreateInput\\", {})
@@ -695,7 +695,7 @@ export class UserCreateInput {
 exports[`omit-fields when model field has \`omit(output: true)\` set should properly generate input type class for prisma model with the omitted field: UserCreateManyInput 1`] = `
 "import * as TypeGraphQL from \\"type-graphql\\";
 import * as GraphQLScalars from \\"graphql-scalars\\";
-import { Prisma } from \\"../../../../helpers/prisma-client-mock\\";
+import { Prisma } from \\"../../../../helpers/prisma-client-mock/client\\";
 import { DecimalJSScalar } from \\"../../scalars\\";
 
 @TypeGraphQL.InputType(\\"UserCreateManyInput\\", {})
@@ -718,7 +718,7 @@ export class UserCreateManyInput {
 exports[`omit-fields when model field has \`omit(output: true)\` set should properly generate input type class for prisma model with the omitted field: UserOrderByWithRelationInput 1`] = `
 "import * as TypeGraphQL from \\"type-graphql\\";
 import * as GraphQLScalars from \\"graphql-scalars\\";
-import { Prisma } from \\"../../../../helpers/prisma-client-mock\\";
+import { Prisma } from \\"../../../../helpers/prisma-client-mock/client\\";
 import { DecimalJSScalar } from \\"../../scalars\\";
 import { SortOrderInput } from \\"../inputs/SortOrderInput\\";
 import { SortOrder } from \\"../../enums/SortOrder\\";
@@ -743,7 +743,7 @@ export class UserOrderByWithRelationInput {
 exports[`omit-fields when model field has \`omit(output: true)\` set should properly generate input type class for prisma model with the omitted field: UserScalarWhereWithAggregatesInput 1`] = `
 "import * as TypeGraphQL from \\"type-graphql\\";
 import * as GraphQLScalars from \\"graphql-scalars\\";
-import { Prisma } from \\"../../../../helpers/prisma-client-mock\\";
+import { Prisma } from \\"../../../../helpers/prisma-client-mock/client\\";
 import { DecimalJSScalar } from \\"../../scalars\\";
 import { DateTimeWithAggregatesFilter } from \\"../inputs/DateTimeWithAggregatesFilter\\";
 import { FloatNullableWithAggregatesFilter } from \\"../inputs/FloatNullableWithAggregatesFilter\\";
@@ -779,7 +779,7 @@ export class UserScalarWhereWithAggregatesInput {
 exports[`omit-fields when model field has \`omit(output: true)\` set should properly generate input type class for prisma model with the omitted field: UserUpdateInput 1`] = `
 "import * as TypeGraphQL from \\"type-graphql\\";
 import * as GraphQLScalars from \\"graphql-scalars\\";
-import { Prisma } from \\"../../../../helpers/prisma-client-mock\\";
+import { Prisma } from \\"../../../../helpers/prisma-client-mock/client\\";
 import { DecimalJSScalar } from \\"../../scalars\\";
 import { DateTimeFieldUpdateOperationsInput } from \\"../inputs/DateTimeFieldUpdateOperationsInput\\";
 import { NullableFloatFieldUpdateOperationsInput } from \\"../inputs/NullableFloatFieldUpdateOperationsInput\\";
@@ -802,7 +802,7 @@ export class UserUpdateInput {
 exports[`omit-fields when model field has \`omit(output: true)\` set should properly generate input type class for prisma model with the omitted field: UserUpdateManyMutationInput 1`] = `
 "import * as TypeGraphQL from \\"type-graphql\\";
 import * as GraphQLScalars from \\"graphql-scalars\\";
-import { Prisma } from \\"../../../../helpers/prisma-client-mock\\";
+import { Prisma } from \\"../../../../helpers/prisma-client-mock/client\\";
 import { DecimalJSScalar } from \\"../../scalars\\";
 import { DateTimeFieldUpdateOperationsInput } from \\"../inputs/DateTimeFieldUpdateOperationsInput\\";
 import { NullableFloatFieldUpdateOperationsInput } from \\"../inputs/NullableFloatFieldUpdateOperationsInput\\";
@@ -825,7 +825,7 @@ export class UserUpdateManyMutationInput {
 exports[`omit-fields when model field has \`omit(output: true)\` set should properly generate input type class for prisma model with the omitted field: UserWhereInput 1`] = `
 "import * as TypeGraphQL from \\"type-graphql\\";
 import * as GraphQLScalars from \\"graphql-scalars\\";
-import { Prisma } from \\"../../../../helpers/prisma-client-mock\\";
+import { Prisma } from \\"../../../../helpers/prisma-client-mock/client\\";
 import { DecimalJSScalar } from \\"../../scalars\\";
 import { DateTimeFilter } from \\"../inputs/DateTimeFilter\\";
 import { FloatNullableFilter } from \\"../inputs/FloatNullableFilter\\";
@@ -861,7 +861,7 @@ export class UserWhereInput {
 exports[`omit-fields when model field has \`omit(output: true)\` set should properly generate input type class for prisma model with the omitted field: UserWhereUniqueInput 1`] = `
 "import * as TypeGraphQL from \\"type-graphql\\";
 import * as GraphQLScalars from \\"graphql-scalars\\";
-import { Prisma } from \\"../../../../helpers/prisma-client-mock\\";
+import { Prisma } from \\"../../../../helpers/prisma-client-mock/client\\";
 import { DecimalJSScalar } from \\"../../scalars\\";
 import { DateTimeFilter } from \\"../inputs/DateTimeFilter\\";
 import { FloatNullableFilter } from \\"../inputs/FloatNullableFilter\\";
@@ -897,7 +897,7 @@ export class UserWhereUniqueInput {
 exports[`omit-fields when model field has both create and update omit input set should properly generate create and update input type classes without that field: SampleModelCreateInput 1`] = `
 "import * as TypeGraphQL from \\"type-graphql\\";
 import * as GraphQLScalars from \\"graphql-scalars\\";
-import { Prisma } from \\"../../../../helpers/prisma-client-mock\\";
+import { Prisma } from \\"../../../../helpers/prisma-client-mock/client\\";
 import { DecimalJSScalar } from \\"../../scalars\\";
 
 @TypeGraphQL.InputType(\\"SampleModelCreateInput\\", {})
@@ -911,7 +911,7 @@ export class SampleModelCreateInput {
 exports[`omit-fields when model field has both create and update omit input set should properly generate create and update input type classes without that field: SampleModelCreateManyInput 1`] = `
 "import * as TypeGraphQL from \\"type-graphql\\";
 import * as GraphQLScalars from \\"graphql-scalars\\";
-import { Prisma } from \\"../../../../helpers/prisma-client-mock\\";
+import { Prisma } from \\"../../../../helpers/prisma-client-mock/client\\";
 import { DecimalJSScalar } from \\"../../scalars\\";
 
 @TypeGraphQL.InputType(\\"SampleModelCreateManyInput\\", {})
@@ -928,7 +928,7 @@ export class SampleModelCreateManyInput {
 exports[`omit-fields when model field has both create and update omit input set should properly generate create and update input type classes without that field: SampleModelUpdateInput 1`] = `
 "import * as TypeGraphQL from \\"type-graphql\\";
 import * as GraphQLScalars from \\"graphql-scalars\\";
-import { Prisma } from \\"../../../../helpers/prisma-client-mock\\";
+import { Prisma } from \\"../../../../helpers/prisma-client-mock/client\\";
 import { DecimalJSScalar } from \\"../../scalars\\";
 import { StringFieldUpdateOperationsInput } from \\"../inputs/StringFieldUpdateOperationsInput\\";
 
@@ -943,7 +943,7 @@ export class SampleModelUpdateInput {
 exports[`omit-fields when model field has both create and update omit input set should properly generate other input type classes with that field: SampleModelOrderByWithAggregationInput 1`] = `
 "import * as TypeGraphQL from \\"type-graphql\\";
 import * as GraphQLScalars from \\"graphql-scalars\\";
-import { Prisma } from \\"../../../../helpers/prisma-client-mock\\";
+import { Prisma } from \\"../../../../helpers/prisma-client-mock/client\\";
 import { DecimalJSScalar } from \\"../../scalars\\";
 import { SampleModelAvgOrderByAggregateInput } from \\"../inputs/SampleModelAvgOrderByAggregateInput\\";
 import { SampleModelCountOrderByAggregateInput } from \\"../inputs/SampleModelCountOrderByAggregateInput\\";
@@ -984,7 +984,7 @@ export class SampleModelOrderByWithAggregationInput {
 exports[`omit-fields when model field has both create and update omit input set should properly generate other input type classes with that field: SampleModelWhereInput 1`] = `
 "import * as TypeGraphQL from \\"type-graphql\\";
 import * as GraphQLScalars from \\"graphql-scalars\\";
-import { Prisma } from \\"../../../../helpers/prisma-client-mock\\";
+import { Prisma } from \\"../../../../helpers/prisma-client-mock/client\\";
 import { DecimalJSScalar } from \\"../../scalars\\";
 import { IntFilter } from \\"../inputs/IntFilter\\";
 import { StringFilter } from \\"../inputs/StringFilter\\";
@@ -1015,7 +1015,7 @@ export class SampleModelWhereInput {
 exports[`omit-fields when model field has omit input create set should properly generate create input type classes without that field: SampleModelCreateInput 1`] = `
 "import * as TypeGraphQL from \\"type-graphql\\";
 import * as GraphQLScalars from \\"graphql-scalars\\";
-import { Prisma } from \\"../../../../helpers/prisma-client-mock\\";
+import { Prisma } from \\"../../../../helpers/prisma-client-mock/client\\";
 import { DecimalJSScalar } from \\"../../scalars\\";
 
 @TypeGraphQL.InputType(\\"SampleModelCreateInput\\", {})
@@ -1029,7 +1029,7 @@ export class SampleModelCreateInput {
 exports[`omit-fields when model field has omit input create set should properly generate create input type classes without that field: SampleModelCreateManyInput 1`] = `
 "import * as TypeGraphQL from \\"type-graphql\\";
 import * as GraphQLScalars from \\"graphql-scalars\\";
-import { Prisma } from \\"../../../../helpers/prisma-client-mock\\";
+import { Prisma } from \\"../../../../helpers/prisma-client-mock/client\\";
 import { DecimalJSScalar } from \\"../../scalars\\";
 
 @TypeGraphQL.InputType(\\"SampleModelCreateManyInput\\", {})
@@ -1046,7 +1046,7 @@ export class SampleModelCreateManyInput {
 exports[`omit-fields when model field has omit input create set should properly generate other input type classes with that field: SampleModelOrderByWithAggregationInput 1`] = `
 "import * as TypeGraphQL from \\"type-graphql\\";
 import * as GraphQLScalars from \\"graphql-scalars\\";
-import { Prisma } from \\"../../../../helpers/prisma-client-mock\\";
+import { Prisma } from \\"../../../../helpers/prisma-client-mock/client\\";
 import { DecimalJSScalar } from \\"../../scalars\\";
 import { SampleModelAvgOrderByAggregateInput } from \\"../inputs/SampleModelAvgOrderByAggregateInput\\";
 import { SampleModelCountOrderByAggregateInput } from \\"../inputs/SampleModelCountOrderByAggregateInput\\";
@@ -1087,7 +1087,7 @@ export class SampleModelOrderByWithAggregationInput {
 exports[`omit-fields when model field has omit input create set should properly generate other input type classes with that field: SampleModelUpdateInput 1`] = `
 "import * as TypeGraphQL from \\"type-graphql\\";
 import * as GraphQLScalars from \\"graphql-scalars\\";
-import { Prisma } from \\"../../../../helpers/prisma-client-mock\\";
+import { Prisma } from \\"../../../../helpers/prisma-client-mock/client\\";
 import { DecimalJSScalar } from \\"../../scalars\\";
 import { StringFieldUpdateOperationsInput } from \\"../inputs/StringFieldUpdateOperationsInput\\";
 
@@ -1105,7 +1105,7 @@ export class SampleModelUpdateInput {
 exports[`omit-fields when model field has omit input create set should properly generate other input type classes with that field: SampleModelWhereInput 1`] = `
 "import * as TypeGraphQL from \\"type-graphql\\";
 import * as GraphQLScalars from \\"graphql-scalars\\";
-import { Prisma } from \\"../../../../helpers/prisma-client-mock\\";
+import { Prisma } from \\"../../../../helpers/prisma-client-mock/client\\";
 import { DecimalJSScalar } from \\"../../scalars\\";
 import { IntFilter } from \\"../inputs/IntFilter\\";
 import { StringFilter } from \\"../inputs/StringFilter\\";
@@ -1136,7 +1136,7 @@ export class SampleModelWhereInput {
 exports[`omit-fields when model field has omit input orderBy set should properly generate orderBy input type classes without that field: SampleModelOrderByWithAggregationInput 1`] = `
 "import * as TypeGraphQL from \\"type-graphql\\";
 import * as GraphQLScalars from \\"graphql-scalars\\";
-import { Prisma } from \\"../../../../helpers/prisma-client-mock\\";
+import { Prisma } from \\"../../../../helpers/prisma-client-mock/client\\";
 import { DecimalJSScalar } from \\"../../scalars\\";
 import { SampleModelAvgOrderByAggregateInput } from \\"../inputs/SampleModelAvgOrderByAggregateInput\\";
 import { SampleModelCountOrderByAggregateInput } from \\"../inputs/SampleModelCountOrderByAggregateInput\\";
@@ -1174,7 +1174,7 @@ export class SampleModelOrderByWithAggregationInput {
 exports[`omit-fields when model field has omit input orderBy set should properly generate other input type classes with that field: SampleModelCreateInput 1`] = `
 "import * as TypeGraphQL from \\"type-graphql\\";
 import * as GraphQLScalars from \\"graphql-scalars\\";
-import { Prisma } from \\"../../../../helpers/prisma-client-mock\\";
+import { Prisma } from \\"../../../../helpers/prisma-client-mock/client\\";
 import { DecimalJSScalar } from \\"../../scalars\\";
 
 @TypeGraphQL.InputType(\\"SampleModelCreateInput\\", {})
@@ -1191,7 +1191,7 @@ export class SampleModelCreateInput {
 exports[`omit-fields when model field has omit input orderBy set should properly generate other input type classes with that field: SampleModelCreateManyInput 1`] = `
 "import * as TypeGraphQL from \\"type-graphql\\";
 import * as GraphQLScalars from \\"graphql-scalars\\";
-import { Prisma } from \\"../../../../helpers/prisma-client-mock\\";
+import { Prisma } from \\"../../../../helpers/prisma-client-mock/client\\";
 import { DecimalJSScalar } from \\"../../scalars\\";
 
 @TypeGraphQL.InputType(\\"SampleModelCreateManyInput\\", {})
@@ -1211,7 +1211,7 @@ export class SampleModelCreateManyInput {
 exports[`omit-fields when model field has omit input orderBy set should properly generate other input type classes with that field: SampleModelUpdateInput 1`] = `
 "import * as TypeGraphQL from \\"type-graphql\\";
 import * as GraphQLScalars from \\"graphql-scalars\\";
-import { Prisma } from \\"../../../../helpers/prisma-client-mock\\";
+import { Prisma } from \\"../../../../helpers/prisma-client-mock/client\\";
 import { DecimalJSScalar } from \\"../../scalars\\";
 import { StringFieldUpdateOperationsInput } from \\"../inputs/StringFieldUpdateOperationsInput\\";
 
@@ -1229,7 +1229,7 @@ export class SampleModelUpdateInput {
 exports[`omit-fields when model field has omit input orderBy set should properly generate other input type classes with that field: SampleModelWhereInput 1`] = `
 "import * as TypeGraphQL from \\"type-graphql\\";
 import * as GraphQLScalars from \\"graphql-scalars\\";
-import { Prisma } from \\"../../../../helpers/prisma-client-mock\\";
+import { Prisma } from \\"../../../../helpers/prisma-client-mock/client\\";
 import { DecimalJSScalar } from \\"../../scalars\\";
 import { IntFilter } from \\"../inputs/IntFilter\\";
 import { StringFilter } from \\"../inputs/StringFilter\\";
@@ -1260,7 +1260,7 @@ export class SampleModelWhereInput {
 exports[`omit-fields when model field has omit input update set should properly generate other input type classes with that field: SampleModelCreateInput 1`] = `
 "import * as TypeGraphQL from \\"type-graphql\\";
 import * as GraphQLScalars from \\"graphql-scalars\\";
-import { Prisma } from \\"../../../../helpers/prisma-client-mock\\";
+import { Prisma } from \\"../../../../helpers/prisma-client-mock/client\\";
 import { DecimalJSScalar } from \\"../../scalars\\";
 
 @TypeGraphQL.InputType(\\"SampleModelCreateInput\\", {})
@@ -1277,7 +1277,7 @@ export class SampleModelCreateInput {
 exports[`omit-fields when model field has omit input update set should properly generate other input type classes with that field: SampleModelCreateManyInput 1`] = `
 "import * as TypeGraphQL from \\"type-graphql\\";
 import * as GraphQLScalars from \\"graphql-scalars\\";
-import { Prisma } from \\"../../../../helpers/prisma-client-mock\\";
+import { Prisma } from \\"../../../../helpers/prisma-client-mock/client\\";
 import { DecimalJSScalar } from \\"../../scalars\\";
 
 @TypeGraphQL.InputType(\\"SampleModelCreateManyInput\\", {})
@@ -1297,7 +1297,7 @@ export class SampleModelCreateManyInput {
 exports[`omit-fields when model field has omit input update set should properly generate other input type classes with that field: SampleModelOrderByWithAggregationInput 1`] = `
 "import * as TypeGraphQL from \\"type-graphql\\";
 import * as GraphQLScalars from \\"graphql-scalars\\";
-import { Prisma } from \\"../../../../helpers/prisma-client-mock\\";
+import { Prisma } from \\"../../../../helpers/prisma-client-mock/client\\";
 import { DecimalJSScalar } from \\"../../scalars\\";
 import { SampleModelAvgOrderByAggregateInput } from \\"../inputs/SampleModelAvgOrderByAggregateInput\\";
 import { SampleModelCountOrderByAggregateInput } from \\"../inputs/SampleModelCountOrderByAggregateInput\\";
@@ -1338,7 +1338,7 @@ export class SampleModelOrderByWithAggregationInput {
 exports[`omit-fields when model field has omit input update set should properly generate other input type classes with that field: SampleModelWhereInput 1`] = `
 "import * as TypeGraphQL from \\"type-graphql\\";
 import * as GraphQLScalars from \\"graphql-scalars\\";
-import { Prisma } from \\"../../../../helpers/prisma-client-mock\\";
+import { Prisma } from \\"../../../../helpers/prisma-client-mock/client\\";
 import { DecimalJSScalar } from \\"../../scalars\\";
 import { IntFilter } from \\"../inputs/IntFilter\\";
 import { StringFilter } from \\"../inputs/StringFilter\\";
@@ -1369,7 +1369,7 @@ export class SampleModelWhereInput {
 exports[`omit-fields when model field has omit input update set should properly generate update input type classes without that field: SampleModelUpdateInput 1`] = `
 "import * as TypeGraphQL from \\"type-graphql\\";
 import * as GraphQLScalars from \\"graphql-scalars\\";
-import { Prisma } from \\"../../../../helpers/prisma-client-mock\\";
+import { Prisma } from \\"../../../../helpers/prisma-client-mock/client\\";
 import { DecimalJSScalar } from \\"../../scalars\\";
 import { StringFieldUpdateOperationsInput } from \\"../inputs/StringFieldUpdateOperationsInput\\";
 
@@ -1384,7 +1384,7 @@ export class SampleModelUpdateInput {
 exports[`omit-fields when model field has omit input update set should properly generate update input type classes without that field: SampleModelUpdateManyMutationInput 1`] = `
 "import * as TypeGraphQL from \\"type-graphql\\";
 import * as GraphQLScalars from \\"graphql-scalars\\";
-import { Prisma } from \\"../../../../helpers/prisma-client-mock\\";
+import { Prisma } from \\"../../../../helpers/prisma-client-mock/client\\";
 import { DecimalJSScalar } from \\"../../scalars\\";
 import { StringFieldUpdateOperationsInput } from \\"../inputs/StringFieldUpdateOperationsInput\\";
 
@@ -1399,7 +1399,7 @@ export class SampleModelUpdateManyMutationInput {
 exports[`omit-fields when model field has omit input where set should properly generate other input type classes with that field: SampleModelCreateInput 1`] = `
 "import * as TypeGraphQL from \\"type-graphql\\";
 import * as GraphQLScalars from \\"graphql-scalars\\";
-import { Prisma } from \\"../../../../helpers/prisma-client-mock\\";
+import { Prisma } from \\"../../../../helpers/prisma-client-mock/client\\";
 import { DecimalJSScalar } from \\"../../scalars\\";
 
 @TypeGraphQL.InputType(\\"SampleModelCreateInput\\", {})
@@ -1416,7 +1416,7 @@ export class SampleModelCreateInput {
 exports[`omit-fields when model field has omit input where set should properly generate other input type classes with that field: SampleModelCreateManyInput 1`] = `
 "import * as TypeGraphQL from \\"type-graphql\\";
 import * as GraphQLScalars from \\"graphql-scalars\\";
-import { Prisma } from \\"../../../../helpers/prisma-client-mock\\";
+import { Prisma } from \\"../../../../helpers/prisma-client-mock/client\\";
 import { DecimalJSScalar } from \\"../../scalars\\";
 
 @TypeGraphQL.InputType(\\"SampleModelCreateManyInput\\", {})
@@ -1436,7 +1436,7 @@ export class SampleModelCreateManyInput {
 exports[`omit-fields when model field has omit input where set should properly generate other input type classes with that field: SampleModelOrderByWithAggregationInput 1`] = `
 "import * as TypeGraphQL from \\"type-graphql\\";
 import * as GraphQLScalars from \\"graphql-scalars\\";
-import { Prisma } from \\"../../../../helpers/prisma-client-mock\\";
+import { Prisma } from \\"../../../../helpers/prisma-client-mock/client\\";
 import { DecimalJSScalar } from \\"../../scalars\\";
 import { SampleModelAvgOrderByAggregateInput } from \\"../inputs/SampleModelAvgOrderByAggregateInput\\";
 import { SampleModelCountOrderByAggregateInput } from \\"../inputs/SampleModelCountOrderByAggregateInput\\";
@@ -1477,7 +1477,7 @@ export class SampleModelOrderByWithAggregationInput {
 exports[`omit-fields when model field has omit input where set should properly generate other input type classes with that field: SampleModelUpdateInput 1`] = `
 "import * as TypeGraphQL from \\"type-graphql\\";
 import * as GraphQLScalars from \\"graphql-scalars\\";
-import { Prisma } from \\"../../../../helpers/prisma-client-mock\\";
+import { Prisma } from \\"../../../../helpers/prisma-client-mock/client\\";
 import { DecimalJSScalar } from \\"../../scalars\\";
 import { StringFieldUpdateOperationsInput } from \\"../inputs/StringFieldUpdateOperationsInput\\";
 
@@ -1495,7 +1495,7 @@ export class SampleModelUpdateInput {
 exports[`omit-fields when model field has omit input where set should properly generate where input type classes without that field: SampleModelWhereInput 1`] = `
 "import * as TypeGraphQL from \\"type-graphql\\";
 import * as GraphQLScalars from \\"graphql-scalars\\";
-import { Prisma } from \\"../../../../helpers/prisma-client-mock\\";
+import { Prisma } from \\"../../../../helpers/prisma-client-mock/client\\";
 import { DecimalJSScalar } from \\"../../scalars\\";
 import { IntFilter } from \\"../inputs/IntFilter\\";
 import { StringFilter } from \\"../inputs/StringFilter\\";

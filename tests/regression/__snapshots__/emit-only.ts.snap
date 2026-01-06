@@ -1665,7 +1665,7 @@ exports[`emitOnly generator option when only 'inputs' is set should generate pro
 exports[`emitOnly generator option when only 'models' is set should generate model without _count, proper files, enhance and index: User 1`] = `
 "import * as TypeGraphQL from \\"type-graphql\\";
 import * as GraphQLScalars from \\"graphql-scalars\\";
-import { Prisma } from \\"../../../helpers/prisma-client-mock\\";
+import { Prisma } from \\"../../../helpers/prisma-client-mock/client\\";
 import { DecimalJSScalar } from \\"../scalars\\";
 import { Post } from \\"../models/Post\\";
 

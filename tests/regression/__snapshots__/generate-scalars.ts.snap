@@ -23,7 +23,7 @@ export const resolvers = [
 `;
 
 exports[`custom scalars should properly emit custom scalars file: scalars 1`] = `
-"import { Prisma } from \\"./../../helpers/prisma-client-mock\\";
+"import { Prisma } from \\"./../../helpers/prisma-client-mock/client\\";
 import { GraphQLScalarType, Kind } from \\"graphql\\";
 
     export const DecimalJSScalar = new GraphQLScalarType({
