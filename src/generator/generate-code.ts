@@ -290,10 +290,10 @@ class CodeGenerator {
    *
    * Instead:
    *  1. Save .ts files to disk via project.save()
-   *  2. Transpile each .ts → .js independently via ts.transpileModule()
-   *     (no type-checking, supports emitDecoratorMetadata)
-   *  3. Generate .d.ts via ts.createProgram() with noCheck (TS 5.6+)
-   *     which skips the expensive type-checker pass
+   *  2. Single-pass ts.createProgram() with noCheck (TS 5.6+) emits both
+   *     .js and .d.ts without running the expensive type-checker.
+   *     Unlike per-file ts.transpileModule(), this resolves cross-file
+   *     imports for correct emitDecoratorMetadata output.
    */
   private async fastEmitTranspiledCode(
     projects: Project[],
@@ -307,52 +307,14 @@ class CodeGenerator {
     await Promise.all(projects.map(p => p.save()));
     this.metrics?.emitMetric("save-ts-files", performance.now() - saveStart);
 
-    // Phase 2: Per-file JS transpilation — no type-checker, supports decorators
-    log("  Transpiling .ts → .js (per-file, no type-checking)");
-    const transpileStart = performance.now();
-
-    const jsCompilerOptions: ts.CompilerOptions = {
-      target: ts.ScriptTarget.ES2021,
-      module: ts.ModuleKind.CommonJS,
-      experimentalDecorators: true,
-      emitDecoratorMetadata: true,
-      esModuleInterop: true,
-      importHelpers: true,
-      declaration: false,
-      sourceMap: false,
-    };
-
-    const JS_BATCH_SIZE = 200;
-    for (let i = 0; i < sourceFiles.length; i += JS_BATCH_SIZE) {
-      const batch = sourceFiles.slice(i, i + JS_BATCH_SIZE);
-      const transpiled = batch.map((sf: SourceFile) => {
-        const filePath = sf.getFilePath() as string;
-        const result = ts.transpileModule(sf.getFullText(), {
-          compilerOptions: jsCompilerOptions,
-          fileName: path.basename(filePath),
-        });
-        return {
-          jsPath: filePath.replace(/\.ts$/, ".js"),
-          content: result.outputText,
-        };
-      });
-      await Promise.all(
-        transpiled.map(f => fs.promises.writeFile(f.jsPath, f.content)),
-      );
-    }
-
-    this.metrics?.emitMetric(
-      "transpile-js",
-      performance.now() - transpileStart,
-      sourceFiles.length,
-    );
-
-    // Phase 3: Generate .d.ts declarations
-    log("  Generating .d.ts declarations");
-    const dtsStart = performance.now();
+    // Phase 2: Single-pass emit of .js + .d.ts
+    // ts.createProgram with noCheck skips the type-checker but still resolves
+    // cross-file imports, giving correct emitDecoratorMetadata output.
+    log("  Emitting .js + .d.ts (single-pass, no type-checking)");
+    const emitPassStart = performance.now();
 
     const filePaths = sourceFiles.map(sf => sf.getFilePath() as string);
-    const dtsCompilerOptions: ts.CompilerOptions = {
+    const compilerOptions: ts.CompilerOptions = {
       target: ts.ScriptTarget.ES2021,
       module: ts.ModuleKind.CommonJS,
       experimentalDecorators: true,
@@ -361,19 +323,19 @@ class CodeGenerator {
       importHelpers: true,
       skipLibCheck: true,
       declaration: true,
-      emitDeclarationOnly: true,
-      // TS 5.6+: skip type-checker for declaration emit.
+      sourceMap: false,
+      // TS 5.6+: skip type-checker for both JS and declaration emit.
       // On older TS versions this flag is silently ignored (checker runs normally).
       noCheck: true,
     };
 
-    const host = ts.createCompilerHost(dtsCompilerOptions);
-    const dtsProgram = ts.createProgram(filePaths, dtsCompilerOptions, host);
-    dtsProgram.emit();
+    const host = ts.createCompilerHost(compilerOptions);
+    const program = ts.createProgram(filePaths, compilerOptions, host);
+    program.emit();
 
     this.metrics?.emitMetric(
-      "generate-dts",
-      performance.now() - dtsStart,
+      "emit-js-dts",
+      performance.now() - emitPassStart,
       sourceFiles.length,
     );
   }
