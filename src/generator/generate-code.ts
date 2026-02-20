@@ -1,8 +1,10 @@
 import path from "node:path";
 import fs from "node:fs";
+import os from "node:os";
 import { promisify } from "node:util";
 import { performance } from "node:perf_hooks";
 import { exec } from "node:child_process";
+import { Worker } from "node:worker_threads";
 
 import type { DMMF as PrismaDMMF } from "@prisma/generator-helper";
 import {
@@ -42,6 +44,29 @@ const baseCompilerOptions: CompilerOptions = {
   esModuleInterop: true,
   skipLibCheck: true,
 };
+
+const JS_WORKER_CODE = `
+  const { workerData } = require('worker_threads');
+  const ts = require(workerData.typescriptPath);
+  const fs = require('fs');
+  for (const filePath of workerData.filePaths) {
+    const content = fs.readFileSync(filePath, 'utf8');
+    const result = ts.transpileModule(content, {
+      compilerOptions: workerData.compilerOptions,
+      fileName: filePath,
+    });
+    fs.writeFileSync(filePath.replace(/\\.ts$/, '.js'), result.outputText);
+  }
+`;
+
+const DTS_WORKER_CODE = `
+  const { workerData } = require('worker_threads');
+  const ts = require(workerData.typescriptPath);
+  const options = Object.assign({}, workerData.compilerOptions, { emitDeclarationOnly: true });
+  const host = ts.createCompilerHost(options);
+  const program = ts.createProgram(workerData.filePaths, options, host);
+  program.emit();
+`;
 
 class CodeGenerator {
   constructor(private metrics?: MetricsListener) {}
@@ -293,17 +318,6 @@ class CodeGenerator {
     this.metrics?.onComplete?.();
   }
 
-  /**
-   * Replaces the slow `project.emit()` path which runs the full TypeScript
-   * type-checker on every source file (O(n²) for cross-file resolution).
-   *
-   * Instead:
-   *  1. Save .ts files to disk via project.save()
-   *  2. Single-pass ts.createProgram() with noCheck (TS 5.6+) emits both
-   *     .js and .d.ts without running the expensive type-checker.
-   *     Unlike per-file ts.transpileModule(), this resolves cross-file
-   *     imports for correct emitDecoratorMetadata output.
-   */
   private async fastEmitTranspiledCode(
     projects: Project[],
     additionalFilePaths: string[],
@@ -316,13 +330,11 @@ class CodeGenerator {
     await Promise.all(projects.map(p => p.save()));
     this.metrics?.emitMetric("save-ts-files", performance.now() - saveStart);
 
-    log("  Emitting .js + .d.ts (single-pass, no type-checking)");
-    const emitPassStart = performance.now();
-
-    const filePaths = [
+    const allFilePaths = [
       ...sourceFiles.map(sf => sf.getFilePath() as string),
       ...additionalFilePaths,
     ];
+
     const compilerOptions: ts.CompilerOptions = {
       target: ts.ScriptTarget.ES2021,
       module: ts.ModuleKind.CommonJS,
@@ -333,20 +345,84 @@ class CodeGenerator {
       skipLibCheck: true,
       declaration: true,
       sourceMap: false,
-      // TS 5.6+: skip type-checker for both JS and declaration emit.
-      // On older TS versions this flag is silently ignored (checker runs normally).
       noCheck: true,
     };
 
-    const host = ts.createCompilerHost(compilerOptions);
-    const program = ts.createProgram(filePaths, compilerOptions, host);
-    program.emit();
+    const typescriptPath = require.resolve("typescript");
+    const jsWorkerCount = Math.min(Math.max(1, os.cpus().length - 2), 8);
+
+    log(
+      `  Emitting .js (${jsWorkerCount} workers) + .d.ts (1 worker) in parallel`,
+    );
+    const emitStart = performance.now();
+
+    const jsCompilerOptions: ts.CompilerOptions = {
+      ...compilerOptions,
+      declaration: false,
+    };
+
+    const batchSize = Math.ceil(allFilePaths.length / jsWorkerCount);
+    const jsBatches: string[][] = [];
+    for (let i = 0; i < allFilePaths.length; i += batchSize) {
+      jsBatches.push(allFilePaths.slice(i, i + batchSize));
+    }
+
+    const jsPromise = Promise.all(
+      jsBatches.map(
+        batch =>
+          new Promise<void>((resolve, reject) => {
+            const worker = new Worker(JS_WORKER_CODE, {
+              eval: true,
+              workerData: {
+                filePaths: batch,
+                compilerOptions: jsCompilerOptions,
+                typescriptPath,
+              },
+            });
+            worker.on("exit", code =>
+              code === 0
+                ? resolve()
+                : reject(new Error(`JS worker exited with code ${code}`)),
+            );
+            worker.on("error", reject);
+          }),
+      ),
+    );
+
+    const dtsPromise = new Promise<void>((resolve, reject) => {
+      const worker = new Worker(DTS_WORKER_CODE, {
+        eval: true,
+        workerData: {
+          filePaths: allFilePaths,
+          compilerOptions,
+          typescriptPath,
+        },
+      });
+      worker.on("exit", code =>
+        code === 0
+          ? resolve()
+          : reject(new Error(`DTS worker exited with code ${code}`)),
+      );
+      worker.on("error", reject);
+    });
+
+    const [jsResult, dtsResult] = await Promise.allSettled([
+      jsPromise,
+      dtsPromise,
+    ]);
 
     this.metrics?.emitMetric(
       "emit-js-dts",
-      performance.now() - emitPassStart,
-      sourceFiles.length,
+      performance.now() - emitStart,
+      allFilePaths.length,
     );
+
+    if (jsResult.status === "rejected") {
+      throw new Error(`JS emission failed: ${jsResult.reason}`);
+    }
+    if (dtsResult.status === "rejected") {
+      throw new Error(`DTS emission failed: ${dtsResult.reason}`);
+    }
   }
 }
 
