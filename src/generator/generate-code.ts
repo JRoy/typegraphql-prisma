@@ -10,6 +10,8 @@ import {
   ScriptTarget,
   ModuleKind,
   type CompilerOptions,
+  type SourceFile,
+  ts,
 } from "ts-morph";
 
 import { noop, toUnixPath } from "./helpers";
@@ -47,14 +49,14 @@ class CodeGenerator {
   private resolveFormatGeneratedCodeOption(
     formatOption: boolean | "prettier" | "tsc" | "biome" | undefined,
   ): "prettier" | "tsc" | "biome" | undefined {
-    if (formatOption === false) {
-      return undefined; // No formatting, saved a lot of time
-    }
-    if (formatOption === undefined) {
-      return "tsc"; // Default to tsc when not specified
+    if (formatOption === false || formatOption === undefined) {
+      // No formatting by default — saves significant time.
+      // The previous default "tsc" ran `tsc --noEmit` which is type-checking,
+      // not formatting, and fails without a tsconfig in the output directory.
+      return undefined;
     }
     if (formatOption === true) {
-      return "tsc"; // true means use tsc
+      return "tsc"; // Explicit true means use tsc
     }
     // formatOption is either 'prettier', 'tsc', or 'biome' string
     return formatOption;
@@ -89,17 +91,20 @@ class CodeGenerator {
       options.emitTranspiledCode ??
       options.outputDirPath.includes("node_modules");
 
-    const project = new Project({
-      compilerOptions: Object.assign(
-        {},
-        baseCompilerOptions,
-        emitTranspiledCode
-          ? {
-              declaration: true,
-              importHelpers: true,
-            }
-          : {},
-      ),
+    const projectCompilerOptions = Object.assign(
+      {},
+      baseCompilerOptions,
+      emitTranspiledCode
+        ? {
+            declaration: true,
+            importHelpers: true,
+          }
+        : {},
+    );
+
+    const project = new Project({ compilerOptions: projectCompilerOptions });
+    const inputProject = new Project({
+      compilerOptions: projectCompilerOptions,
     });
 
     log("Transforming dmmfDocument...");
@@ -113,6 +118,7 @@ class CodeGenerator {
     // Initialize block generator factory
     const blockGeneratorFactory = new BlockGeneratorFactory(
       project,
+      inputProject,
       dmmfDocument,
       options,
       baseDirPath,
@@ -179,15 +185,17 @@ class CodeGenerator {
       performance.now() - auxiliaryStart,
     );
 
+    const allProjects = [project, inputProject];
+
     log("Emitting final code");
     const emitStart = performance.now();
     if (emitTranspiledCode) {
       log("Transpiling generated code");
-      await project.emit();
+      await this.fastEmitTranspiledCode(allProjects, baseDirPath, log);
     } else {
       log("Saving generated code");
       const saveStart = performance.now();
-      await project.save();
+      await Promise.all(allProjects.map(p => p.save()));
       this.metrics?.emitMetric("save-files", performance.now() - saveStart);
     }
 
@@ -274,6 +282,100 @@ class CodeGenerator {
     this.metrics?.emitMetric("code-emission", performance.now() - emitStart);
     this.metrics?.emitMetric("total-generation", performance.now() - startTime);
     this.metrics?.onComplete?.();
+  }
+
+  /**
+   * Replaces the slow `project.emit()` path which runs the full TypeScript
+   * type-checker on every source file (O(n²) for cross-file resolution).
+   *
+   * Instead:
+   *  1. Save .ts files to disk via project.save()
+   *  2. Transpile each .ts → .js independently via ts.transpileModule()
+   *     (no type-checking, supports emitDecoratorMetadata)
+   *  3. Generate .d.ts via ts.createProgram() with noCheck (TS 5.6+)
+   *     which skips the expensive type-checker pass
+   */
+  private async fastEmitTranspiledCode(
+    projects: Project[],
+    baseDirPath: string,
+    log: (msg: string) => void,
+  ): Promise<void> {
+    const sourceFiles = projects.flatMap(p => p.getSourceFiles());
+
+    // Phase 1: Write .ts source files to disk
+    const saveStart = performance.now();
+    await Promise.all(projects.map(p => p.save()));
+    this.metrics?.emitMetric("save-ts-files", performance.now() - saveStart);
+
+    // Phase 2: Per-file JS transpilation — no type-checker, supports decorators
+    log("  Transpiling .ts → .js (per-file, no type-checking)");
+    const transpileStart = performance.now();
+
+    const jsCompilerOptions: ts.CompilerOptions = {
+      target: ts.ScriptTarget.ES2021,
+      module: ts.ModuleKind.CommonJS,
+      experimentalDecorators: true,
+      emitDecoratorMetadata: true,
+      esModuleInterop: true,
+      importHelpers: true,
+      declaration: false,
+      sourceMap: false,
+    };
+
+    const JS_BATCH_SIZE = 200;
+    for (let i = 0; i < sourceFiles.length; i += JS_BATCH_SIZE) {
+      const batch = sourceFiles.slice(i, i + JS_BATCH_SIZE);
+      const transpiled = batch.map((sf: SourceFile) => {
+        const filePath = sf.getFilePath() as string;
+        const result = ts.transpileModule(sf.getFullText(), {
+          compilerOptions: jsCompilerOptions,
+          fileName: path.basename(filePath),
+        });
+        return {
+          jsPath: filePath.replace(/\.ts$/, ".js"),
+          content: result.outputText,
+        };
+      });
+      await Promise.all(
+        transpiled.map(f => fs.promises.writeFile(f.jsPath, f.content)),
+      );
+    }
+
+    this.metrics?.emitMetric(
+      "transpile-js",
+      performance.now() - transpileStart,
+      sourceFiles.length,
+    );
+
+    // Phase 3: Generate .d.ts declarations
+    log("  Generating .d.ts declarations");
+    const dtsStart = performance.now();
+
+    const filePaths = sourceFiles.map(sf => sf.getFilePath() as string);
+    const dtsCompilerOptions: ts.CompilerOptions = {
+      target: ts.ScriptTarget.ES2021,
+      module: ts.ModuleKind.CommonJS,
+      experimentalDecorators: true,
+      emitDecoratorMetadata: true,
+      esModuleInterop: true,
+      importHelpers: true,
+      skipLibCheck: true,
+      declaration: true,
+      emitDeclarationOnly: true,
+      // TS 5.6+: skip type-checker for declaration emit.
+      // On older TS versions this flag is silently ignored (checker runs normally).
+      noCheck: true,
+    };
+
+    const host = ts.createCompilerHost(dtsCompilerOptions);
+    const dtsProgram = ts.createProgram(filePaths, dtsCompilerOptions, host);
+    dtsProgram.emit();
+
+    this.metrics?.emitMetric(
+      "generate-dts",
+      performance.now() - dtsStart,
+      sourceFiles.length,
+    );
   }
 }
 
