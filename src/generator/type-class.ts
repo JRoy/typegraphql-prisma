@@ -269,3 +269,129 @@ export function generateInputTypeClassFromType(
     }),
   });
 }
+
+export function generateInputTypeText(
+  inputType: DMMF.InputType,
+  options: GeneratorOptions,
+): string {
+  const lines: string[] = [];
+
+  lines.push(`import * as TypeGraphQL from "type-graphql";`);
+  lines.push(`import * as GraphQLScalars from "graphql-scalars";`);
+
+  const prismaImportPath =
+    options.customPrismaImportPath ??
+    path.posix.join(options.relativePrismaOutputPath, "client");
+  const prismaModuleSpecifier =
+    options.absolutePrismaOutputPath ??
+    path.posix.join("..", "..", prismaImportPath);
+  lines.push(`import { Prisma } from "${prismaModuleSpecifier}";`);
+
+  const hasBytes = inputType.fields.some(
+    field => field.selectedInputType.type === "Bytes",
+  );
+  const scalarsPath = path.posix.join("..", "..", "scalars");
+  if (hasBytes) {
+    lines.push(
+      `import { DecimalJSScalar, BytesScalar } from "${scalarsPath}";`,
+    );
+  } else {
+    lines.push(`import { DecimalJSScalar } from "${scalarsPath}";`);
+  }
+
+  const inputTypeImports = [
+    ...new Set(
+      inputType.fields
+        .filter(
+          field => field.selectedInputType.location === "inputObjectTypes",
+        )
+        .map(field => field.selectedInputType.type)
+        .filter(fieldType => fieldType !== inputType.typeName),
+    ),
+  ].sort();
+  for (const importName of inputTypeImports) {
+    const importPath = path.posix.join("..", "inputs", importName);
+    lines.push(`import { ${importName} } from "${importPath}";`);
+  }
+
+  const enumImports = [
+    ...new Set(
+      inputType.fields
+        .map(field => field.selectedInputType)
+        .filter(fieldType => fieldType.location === "enumTypes")
+        .map(fieldType => fieldType.type as string),
+    ),
+  ].sort();
+  for (const enumName of enumImports) {
+    const importPath = path.posix.join("..", "..", "enums", enumName);
+    lines.push(`import { ${enumName} } from "${importPath}";`);
+  }
+
+  lines.push("");
+
+  const decoratorOptions = options.emitIsAbstract
+    ? "{ isAbstract: true }"
+    : "{}";
+  lines.push(
+    `@TypeGraphQL.InputType("${inputType.typeName}", ${decoratorOptions})`,
+  );
+  lines.push(`export class ${inputType.typeName} {`);
+
+  const fieldsToEmit = inputType.fields.filter(field => !field.isOmitted);
+  const mappedFields = fieldsToEmit.filter(field => field.hasMappedName);
+
+  for (let i = 0; i < fieldsToEmit.length; i++) {
+    const field = fieldsToEmit[i];
+    const isLast = i === fieldsToEmit.length - 1 && mappedFields.length === 0;
+
+    if (field.hasMappedName) {
+      if (field.isRequired) {
+        lines.push(`    ${field.name}!: ${field.fieldTSType};`);
+      } else {
+        lines.push(`    ${field.name}?: ${field.fieldTSType};`);
+      }
+    } else {
+      lines.push(
+        `    @TypeGraphQL.Field(_type => ${field.typeGraphQLType}, { nullable: ${!field.isRequired} })`,
+      );
+      if (field.isRequired) {
+        lines.push(`    ${field.name}!: ${field.fieldTSType};`);
+      } else {
+        lines.push(`    ${field.name}?: ${field.fieldTSType};`);
+      }
+    }
+
+    if (!isLast) {
+      lines.push("");
+    }
+  }
+
+  for (let i = 0; i < mappedFields.length; i++) {
+    const field = mappedFields[i];
+    const isLastMapped = i === mappedFields.length - 1;
+
+    lines.push(
+      `    @TypeGraphQL.Field(_type => ${field.typeGraphQLType}, { nullable: ${!field.isRequired} })`,
+    );
+    lines.push(`    get ${field.typeName}() {`);
+    lines.push(`        return this.${field.name};`);
+    lines.push(`    }`);
+
+    lines.push("");
+
+    lines.push(
+      `    set ${field.typeName}(${field.name}: ${field.fieldTSType}) {`,
+    );
+    lines.push(`        this.${field.name} = ${field.name};`);
+    lines.push(`    }`);
+
+    if (!isLastMapped) {
+      lines.push("");
+    }
+  }
+
+  lines.push(`}`);
+  lines.push("");
+
+  return lines.join("\n");
+}

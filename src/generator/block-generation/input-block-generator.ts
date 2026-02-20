@@ -1,10 +1,11 @@
+import fs from "node:fs";
 import path from "node:path";
 import { performance } from "node:perf_hooks";
 import {
   BaseBlockGenerator,
   type GenerationMetrics,
 } from "./base-block-generator";
-import { generateInputTypeClassFromType } from "../type-class";
+import { generateInputTypeText } from "../type-class";
 import { generateInputsBarrelFile } from "../imports";
 import { resolversFolderName, inputsFolderName } from "../config";
 
@@ -23,29 +24,26 @@ export class InputBlockGenerator extends BaseBlockGenerator {
     }
 
     const startTime = performance.now();
-    const resolversDirPath = path.resolve(
+    const inputsDirPath = path.resolve(
       this.baseDirPath,
       resolversFolderName,
+      inputsFolderName,
     );
-    const allInputTypes: string[] = [];
+    fs.mkdirSync(inputsDirPath, { recursive: true });
 
-    this.dmmfDocument.schema.inputTypes.forEach(type => {
+    const allInputTypes: string[] = [];
+    const directWrittenFilePaths: string[] = [];
+
+    for (const type of this.dmmfDocument.schema.inputTypes) {
       allInputTypes.push(type.typeName);
-      generateInputTypeClassFromType(
-        this.project,
-        resolversDirPath,
-        type,
-        this.options,
-      );
-    });
+      const filePath = path.resolve(inputsDirPath, `${type.typeName}.ts`);
+      const content = generateInputTypeText(type, this.options);
+      fs.writeFileSync(filePath, content);
+      directWrittenFilePaths.push(filePath);
+    }
 
     const inputsBarrelExportSourceFile = this.project.createSourceFile(
-      path.resolve(
-        this.baseDirPath,
-        resolversFolderName,
-        inputsFolderName,
-        "index.ts",
-      ),
+      path.resolve(inputsDirPath, "index.ts"),
       undefined,
       { overwrite: true },
     );
@@ -54,6 +52,7 @@ export class InputBlockGenerator extends BaseBlockGenerator {
     return {
       itemsGenerated: this.dmmfDocument.schema.inputTypes.length,
       timeElapsed: performance.now() - startTime,
+      directWrittenFilePaths,
     };
   }
 }

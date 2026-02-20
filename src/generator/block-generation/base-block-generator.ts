@@ -39,4 +39,5 @@ export abstract class BaseBlockGenerator {
 export interface GenerationMetrics {
   itemsGenerated: number;
   timeElapsed?: number;
+  directWrittenFilePaths?: string[];
 }

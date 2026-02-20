@@ -125,6 +125,7 @@ class CodeGenerator {
     );
 
     // Generate all blocks using the factory
+    const directWrittenFilePaths: string[] = [];
     const outputTypesToGenerate = await blockGeneratorFactory.generateAllBlocks(
       log,
       (blockName, metrics) => {
@@ -134,6 +135,9 @@ class CodeGenerator {
             metrics.timeElapsed,
             metrics.itemsGenerated,
           );
+        }
+        if (metrics.directWrittenFilePaths) {
+          directWrittenFilePaths.push(...metrics.directWrittenFilePaths);
         }
       },
     );
@@ -191,7 +195,12 @@ class CodeGenerator {
     const emitStart = performance.now();
     if (emitTranspiledCode) {
       log("Transpiling generated code");
-      await this.fastEmitTranspiledCode(allProjects, baseDirPath, log);
+      await this.fastEmitTranspiledCode(
+        allProjects,
+        directWrittenFilePaths,
+        baseDirPath,
+        log,
+      );
     } else {
       log("Saving generated code");
       const saveStart = performance.now();
@@ -297,23 +306,23 @@ class CodeGenerator {
    */
   private async fastEmitTranspiledCode(
     projects: Project[],
+    additionalFilePaths: string[],
     baseDirPath: string,
     log: (msg: string) => void,
   ): Promise<void> {
     const sourceFiles = projects.flatMap(p => p.getSourceFiles());
 
-    // Phase 1: Write .ts source files to disk
     const saveStart = performance.now();
     await Promise.all(projects.map(p => p.save()));
     this.metrics?.emitMetric("save-ts-files", performance.now() - saveStart);
 
-    // Phase 2: Single-pass emit of .js + .d.ts
-    // ts.createProgram with noCheck skips the type-checker but still resolves
-    // cross-file imports, giving correct emitDecoratorMetadata output.
     log("  Emitting .js + .d.ts (single-pass, no type-checking)");
     const emitPassStart = performance.now();
 
-    const filePaths = sourceFiles.map(sf => sf.getFilePath() as string);
+    const filePaths = [
+      ...sourceFiles.map(sf => sf.getFilePath() as string),
+      ...additionalFilePaths,
+    ];
     const compilerOptions: ts.CompilerOptions = {
       target: ts.ScriptTarget.ES2021,
       module: ts.ModuleKind.CommonJS,
