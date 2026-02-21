@@ -1,6 +1,5 @@
 import path from "node:path";
 import fs from "node:fs";
-import os from "node:os";
 import { promisify } from "node:util";
 import { performance } from "node:perf_hooks";
 import { exec } from "node:child_process";
@@ -48,15 +47,10 @@ const baseCompilerOptions: CompilerOptions = {
 const JS_WORKER_CODE = `
   const { workerData } = require('worker_threads');
   const ts = require(workerData.typescriptPath);
-  const fs = require('fs');
-  for (const filePath of workerData.filePaths) {
-    const content = fs.readFileSync(filePath, 'utf8');
-    const result = ts.transpileModule(content, {
-      compilerOptions: workerData.compilerOptions,
-      fileName: filePath,
-    });
-    fs.writeFileSync(filePath.replace(/\\.ts$/, '.js'), result.outputText);
-  }
+  const options = Object.assign({}, workerData.compilerOptions, { declaration: false });
+  const host = ts.createCompilerHost(options);
+  const program = ts.createProgram(workerData.filePaths, options, host);
+  program.emit();
 `;
 
 const DTS_WORKER_CODE = `
@@ -349,61 +343,31 @@ class CodeGenerator {
     };
 
     const typescriptPath = require.resolve("typescript");
-    const jsWorkerCount = Math.min(Math.max(1, os.cpus().length - 2), 8);
 
-    log(
-      `  Emitting .js (${jsWorkerCount} workers) + .d.ts (1 worker) in parallel`,
-    );
+    log("  Emitting .js (1 worker) + .d.ts (1 worker) in parallel");
     const emitStart = performance.now();
 
-    const jsCompilerOptions: ts.CompilerOptions = {
-      ...compilerOptions,
-      declaration: false,
-    };
-
-    const batchSize = Math.ceil(allFilePaths.length / jsWorkerCount);
-    const jsBatches: string[][] = [];
-    for (let i = 0; i < allFilePaths.length; i += batchSize) {
-      jsBatches.push(allFilePaths.slice(i, i + batchSize));
-    }
-
-    const jsPromise = Promise.all(
-      jsBatches.map(
-        batch =>
-          new Promise<void>((resolve, reject) => {
-            const worker = new Worker(JS_WORKER_CODE, {
-              eval: true,
-              workerData: {
-                filePaths: batch,
-                compilerOptions: jsCompilerOptions,
-                typescriptPath,
-              },
-            });
-            worker.on("exit", code =>
-              code === 0
-                ? resolve()
-                : reject(new Error(`JS worker exited with code ${code}`)),
-            );
-            worker.on("error", reject);
-          }),
-      ),
-    );
-
-    const dtsPromise = new Promise<void>((resolve, reject) => {
-      const worker = new Worker(DTS_WORKER_CODE, {
-        eval: true,
-        workerData: {
-          filePaths: allFilePaths,
-          compilerOptions,
-          typescriptPath,
-        },
+    const runWorker = (code: string, workerData: object) =>
+      new Promise<void>((resolve, reject) => {
+        const worker = new Worker(code, { eval: true, workerData });
+        worker.on("exit", code =>
+          code === 0
+            ? resolve()
+            : reject(new Error(`Worker exited with code ${code}`)),
+        );
+        worker.on("error", reject);
       });
-      worker.on("exit", code =>
-        code === 0
-          ? resolve()
-          : reject(new Error(`DTS worker exited with code ${code}`)),
-      );
-      worker.on("error", reject);
+
+    const jsPromise = runWorker(JS_WORKER_CODE, {
+      filePaths: allFilePaths,
+      compilerOptions,
+      typescriptPath,
+    });
+
+    const dtsPromise = runWorker(DTS_WORKER_CODE, {
+      filePaths: allFilePaths,
+      compilerOptions,
+      typescriptPath,
     });
 
     const [jsResult, dtsResult] = await Promise.allSettled([
