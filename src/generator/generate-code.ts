@@ -1,5 +1,6 @@
 import path from "node:path";
 import fs from "node:fs";
+import os from "node:os";
 import { promisify } from "node:util";
 import { performance } from "node:perf_hooks";
 import { exec } from "node:child_process";
@@ -44,13 +45,21 @@ const baseCompilerOptions: CompilerOptions = {
   skipLibCheck: true,
 };
 
-const JS_WORKER_CODE = `
+const JS_TRANSPILE_WORKER_CODE = `
   const { workerData } = require('worker_threads');
   const ts = require(workerData.typescriptPath);
-  const options = Object.assign({}, workerData.compilerOptions, { declaration: false });
-  const host = ts.createCompilerHost(options);
-  const program = ts.createProgram(workerData.filePaths, options, host);
-  program.emit();
+  const fs = require('fs');
+  const path = require('path');
+  const options = workerData.compilerOptions;
+  for (const filePath of workerData.filePaths) {
+    const source = fs.readFileSync(filePath, 'utf8');
+    const result = ts.transpileModule(source, {
+      compilerOptions: options,
+      fileName: filePath,
+    });
+    const jsPath = filePath.replace(/\\.ts$/, '.js');
+    fs.writeFileSync(jsPath, result.outputText);
+  }
 `;
 
 const DTS_WORKER_CODE = `
@@ -218,6 +227,7 @@ class CodeGenerator {
         allProjects,
         directWrittenFilePaths,
         baseDirPath,
+        baseOptions.prismaClientPath,
         log,
       );
     } else {
@@ -312,10 +322,31 @@ class CodeGenerator {
     this.metrics?.onComplete?.();
   }
 
+  private discoverTsFiles(dirPath: string): string[] {
+    const results: string[] = [];
+    if (!fs.existsSync(dirPath)) return results;
+
+    const entries = fs.readdirSync(dirPath, { withFileTypes: true });
+    for (const entry of entries) {
+      const fullPath = path.join(dirPath, entry.name);
+      if (entry.isDirectory()) {
+        results.push(...this.discoverTsFiles(fullPath));
+      } else if (
+        entry.isFile() &&
+        entry.name.endsWith(".ts") &&
+        !entry.name.endsWith(".d.ts")
+      ) {
+        results.push(fullPath);
+      }
+    }
+    return results;
+  }
+
   private async fastEmitTranspiledCode(
     projects: Project[],
     additionalFilePaths: string[],
     baseDirPath: string,
+    prismaClientPath: string,
     log: (msg: string) => void,
   ): Promise<void> {
     const sourceFiles = projects.flatMap(p => p.getSourceFiles());
@@ -324,10 +355,17 @@ class CodeGenerator {
     await Promise.all(projects.map(p => p.save()));
     this.metrics?.emitMetric("save-ts-files", performance.now() - saveStart);
 
-    const allFilePaths = [
+    const generatedFilePaths = [
       ...sourceFiles.map(sf => sf.getFilePath() as string),
       ...additionalFilePaths,
     ];
+
+    // transpileModule doesn't follow imports, so Prisma client .ts files
+    // must be explicitly included for JS emission to avoid MODULE_NOT_FOUND errors.
+    const prismaClientTsFiles = this.discoverTsFiles(prismaClientPath);
+
+    const jsFilePaths = [...generatedFilePaths, ...prismaClientTsFiles];
+    const dtsFilePaths = generatedFilePaths;
 
     const compilerOptions: ts.CompilerOptions = {
       target: ts.ScriptTarget.ES2021,
@@ -344,7 +382,18 @@ class CodeGenerator {
 
     const typescriptPath = require.resolve("typescript");
 
-    log("  Emitting .js (1 worker) + .d.ts (1 worker) in parallel");
+    const numJsWorkers = Math.min(Math.max(1, os.cpus().length - 2), 8);
+    const jsBatches: string[][] = Array.from(
+      { length: numJsWorkers },
+      () => [],
+    );
+    for (let i = 0; i < jsFilePaths.length; i++) {
+      jsBatches[i % numJsWorkers].push(jsFilePaths[i]);
+    }
+
+    log(
+      `  Emitting .js (${numJsWorkers} transpileModule workers) + .d.ts (1 createProgram worker) in parallel`,
+    );
     const emitStart = performance.now();
 
     const runWorker = (code: string, workerData: object) =>
@@ -358,34 +407,34 @@ class CodeGenerator {
         worker.on("error", reject);
       });
 
-    const jsPromise = runWorker(JS_WORKER_CODE, {
-      filePaths: allFilePaths,
-      compilerOptions,
-      typescriptPath,
-    });
+    const jsPromises = jsBatches
+      .filter(batch => batch.length > 0)
+      .map(batch =>
+        runWorker(JS_TRANSPILE_WORKER_CODE, {
+          filePaths: batch,
+          compilerOptions,
+          typescriptPath,
+        }),
+      );
 
     const dtsPromise = runWorker(DTS_WORKER_CODE, {
-      filePaths: allFilePaths,
+      filePaths: dtsFilePaths,
       compilerOptions,
       typescriptPath,
     });
 
-    const [jsResult, dtsResult] = await Promise.allSettled([
-      jsPromise,
-      dtsPromise,
-    ]);
+    const results = await Promise.allSettled([...jsPromises, dtsPromise]);
 
     this.metrics?.emitMetric(
       "emit-js-dts",
       performance.now() - emitStart,
-      allFilePaths.length,
+      jsFilePaths.length,
     );
 
-    if (jsResult.status === "rejected") {
-      throw new Error(`JS emission failed: ${jsResult.reason}`);
-    }
-    if (dtsResult.status === "rejected") {
-      throw new Error(`DTS emission failed: ${dtsResult.reason}`);
+    for (const result of results) {
+      if (result.status === "rejected") {
+        throw new Error(`Emission worker failed: ${result.reason}`);
+      }
     }
   }
 }
