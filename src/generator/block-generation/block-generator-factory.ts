@@ -15,7 +15,6 @@ import {
 
 export class BlockGeneratorFactory {
   private project: Project;
-  private inputProject: Project;
   private dmmfDocument: DmmfDocument;
   private options: GeneratorOptions;
   private baseDirPath: string;
@@ -23,13 +22,11 @@ export class BlockGeneratorFactory {
 
   constructor(
     project: Project,
-    inputProject: Project,
     dmmfDocument: DmmfDocument,
     options: GeneratorOptions,
     baseDirPath: string,
   ) {
     this.project = project;
-    this.inputProject = inputProject;
     this.dmmfDocument = dmmfDocument;
     this.options = options;
     this.baseDirPath = baseDirPath;
@@ -53,7 +50,7 @@ export class BlockGeneratorFactory {
     );
 
     const inputGenerator = new InputBlockGenerator(
-      this.inputProject,
+      this.project,
       this.dmmfDocument,
       this.options,
       this.baseDirPath,

@@ -15,7 +15,6 @@ interface BenchmarkOptions {
   formatType?: "biome" | "prettier" | "tsc" | "none" | undefined;
   iterations?: number;
   cleanup?: boolean;
-  emitTranspiledCode?: boolean;
 }
 
 class CodeGenerationBenchmark {
@@ -127,7 +126,7 @@ class CodeGenerationBenchmark {
       const generatorOptions: GeneratorOptions = {
         outputDirPath: this.options.outputDir,
         prismaClientPath: "./node_modules/.prisma/client",
-        emitTranspiledCode: this.options.emitTranspiledCode ?? false,
+        emitTranspiledCode: false,
         formatGeneratedCode:
           this.options.formatType === "none" ? false : this.options.formatType,
         contextPrismaKey: "prisma",
@@ -299,7 +298,6 @@ function parseArgs(): BenchmarkOptions {
       undefined,
     )
     .option("--no-cleanup", "Keep generated files after benchmark")
-    .option("--emit-transpiled", "Emit transpiled .js and .d.ts files")
     .addHelpText(
       "after",
       `
@@ -319,7 +317,6 @@ Examples:
     formatType: options.formatType,
     iterations: options.iterations,
     cleanup: options.cleanup,
-    emitTranspiledCode: options.emitTranspiled ?? false,
   };
 }
 

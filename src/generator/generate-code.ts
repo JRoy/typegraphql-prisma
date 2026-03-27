@@ -1,10 +1,8 @@
 import path from "node:path";
 import fs from "node:fs";
-import os from "node:os";
 import { promisify } from "node:util";
 import { performance } from "node:perf_hooks";
 import { exec } from "node:child_process";
-import { Worker } from "node:worker_threads";
 
 import type { DMMF as PrismaDMMF } from "@prisma/generator-helper";
 import {
@@ -12,8 +10,6 @@ import {
   ScriptTarget,
   ModuleKind,
   type CompilerOptions,
-  type SourceFile,
-  ts,
 } from "ts-morph";
 
 import { noop, toUnixPath } from "./helpers";
@@ -45,46 +41,20 @@ const baseCompilerOptions: CompilerOptions = {
   skipLibCheck: true,
 };
 
-const JS_TRANSPILE_WORKER_CODE = `
-  const { workerData } = require('worker_threads');
-  const ts = require(workerData.typescriptPath);
-  const fs = require('fs');
-  const path = require('path');
-  const options = workerData.compilerOptions;
-  for (const filePath of workerData.filePaths) {
-    const source = fs.readFileSync(filePath, 'utf8');
-    const result = ts.transpileModule(source, {
-      compilerOptions: options,
-      fileName: filePath,
-    });
-    const jsPath = filePath.replace(/\\.ts$/, '.js');
-    fs.writeFileSync(jsPath, result.outputText);
-  }
-`;
-
-const DTS_WORKER_CODE = `
-  const { workerData } = require('worker_threads');
-  const ts = require(workerData.typescriptPath);
-  const options = Object.assign({}, workerData.compilerOptions, { emitDeclarationOnly: true });
-  const host = ts.createCompilerHost(options);
-  const program = ts.createProgram(workerData.filePaths, options, host);
-  program.emit();
-`;
-
 class CodeGenerator {
   constructor(private metrics?: MetricsListener) {}
 
   private resolveFormatGeneratedCodeOption(
     formatOption: boolean | "prettier" | "tsc" | "biome" | undefined,
   ): "prettier" | "tsc" | "biome" | undefined {
-    if (formatOption === false || formatOption === undefined) {
-      // No formatting by default — saves significant time.
-      // The previous default "tsc" ran `tsc --noEmit` which is type-checking,
-      // not formatting, and fails without a tsconfig in the output directory.
-      return undefined;
+    if (formatOption === false) {
+      return undefined; // No formatting, saved a lot of time
+    }
+    if (formatOption === undefined) {
+      return "tsc"; // Default to tsc when not specified
     }
     if (formatOption === true) {
-      return "tsc"; // Explicit true means use tsc
+      return "tsc"; // true means use tsc
     }
     // formatOption is either 'prettier', 'tsc', or 'biome' string
     return formatOption;
@@ -119,20 +89,17 @@ class CodeGenerator {
       options.emitTranspiledCode ??
       options.outputDirPath.includes("node_modules");
 
-    const projectCompilerOptions = Object.assign(
-      {},
-      baseCompilerOptions,
-      emitTranspiledCode
-        ? {
-            declaration: true,
-            importHelpers: true,
-          }
-        : {},
-    );
-
-    const project = new Project({ compilerOptions: projectCompilerOptions });
-    const inputProject = new Project({
-      compilerOptions: projectCompilerOptions,
+    const project = new Project({
+      compilerOptions: Object.assign(
+        {},
+        baseCompilerOptions,
+        emitTranspiledCode
+          ? {
+              declaration: true,
+              importHelpers: true,
+            }
+          : {},
+      ),
     });
 
     log("Transforming dmmfDocument...");
@@ -146,14 +113,12 @@ class CodeGenerator {
     // Initialize block generator factory
     const blockGeneratorFactory = new BlockGeneratorFactory(
       project,
-      inputProject,
       dmmfDocument,
       options,
       baseDirPath,
     );
 
     // Generate all blocks using the factory
-    const directWrittenFilePaths: string[] = [];
     const outputTypesToGenerate = await blockGeneratorFactory.generateAllBlocks(
       log,
       (blockName, metrics) => {
@@ -163,9 +128,6 @@ class CodeGenerator {
             metrics.timeElapsed,
             metrics.itemsGenerated,
           );
-        }
-        if (metrics.directWrittenFilePaths) {
-          directWrittenFilePaths.push(...metrics.directWrittenFilePaths);
         }
       },
     );
@@ -217,23 +179,15 @@ class CodeGenerator {
       performance.now() - auxiliaryStart,
     );
 
-    const allProjects = [project, inputProject];
-
     log("Emitting final code");
     const emitStart = performance.now();
     if (emitTranspiledCode) {
       log("Transpiling generated code");
-      await this.fastEmitTranspiledCode(
-        allProjects,
-        directWrittenFilePaths,
-        baseDirPath,
-        baseOptions.prismaClientPath,
-        log,
-      );
+      await project.emit();
     } else {
       log("Saving generated code");
       const saveStart = performance.now();
-      await Promise.all(allProjects.map(p => p.save()));
+      await project.save();
       this.metrics?.emitMetric("save-files", performance.now() - saveStart);
     }
 
@@ -320,122 +274,6 @@ class CodeGenerator {
     this.metrics?.emitMetric("code-emission", performance.now() - emitStart);
     this.metrics?.emitMetric("total-generation", performance.now() - startTime);
     this.metrics?.onComplete?.();
-  }
-
-  private discoverTsFiles(dirPath: string): string[] {
-    const results: string[] = [];
-    if (!fs.existsSync(dirPath)) return results;
-
-    const entries = fs.readdirSync(dirPath, { withFileTypes: true });
-    for (const entry of entries) {
-      const fullPath = path.join(dirPath, entry.name);
-      if (entry.isDirectory()) {
-        results.push(...this.discoverTsFiles(fullPath));
-      } else if (
-        entry.isFile() &&
-        entry.name.endsWith(".ts") &&
-        !entry.name.endsWith(".d.ts")
-      ) {
-        results.push(fullPath);
-      }
-    }
-    return results;
-  }
-
-  private async fastEmitTranspiledCode(
-    projects: Project[],
-    additionalFilePaths: string[],
-    baseDirPath: string,
-    prismaClientPath: string,
-    log: (msg: string) => void,
-  ): Promise<void> {
-    const sourceFiles = projects.flatMap(p => p.getSourceFiles());
-
-    const saveStart = performance.now();
-    await Promise.all(projects.map(p => p.save()));
-    this.metrics?.emitMetric("save-ts-files", performance.now() - saveStart);
-
-    const generatedFilePaths = [
-      ...sourceFiles.map(sf => sf.getFilePath() as string),
-      ...additionalFilePaths,
-    ];
-
-    // transpileModule doesn't follow imports, so Prisma client .ts files
-    // must be explicitly included for JS emission to avoid MODULE_NOT_FOUND errors.
-    const prismaClientTsFiles = this.discoverTsFiles(prismaClientPath);
-
-    const jsFilePaths = [...generatedFilePaths, ...prismaClientTsFiles];
-    const dtsFilePaths = generatedFilePaths;
-
-    const compilerOptions: ts.CompilerOptions = {
-      target: ts.ScriptTarget.ES2021,
-      module: ts.ModuleKind.CommonJS,
-      experimentalDecorators: true,
-      emitDecoratorMetadata: true,
-      esModuleInterop: true,
-      importHelpers: true,
-      skipLibCheck: true,
-      declaration: true,
-      sourceMap: false,
-      noCheck: true,
-    };
-
-    const typescriptPath = require.resolve("typescript");
-
-    const numJsWorkers = Math.min(Math.max(1, os.cpus().length - 2), 8);
-    const jsBatches: string[][] = Array.from(
-      { length: numJsWorkers },
-      () => [],
-    );
-    for (let i = 0; i < jsFilePaths.length; i++) {
-      jsBatches[i % numJsWorkers].push(jsFilePaths[i]);
-    }
-
-    log(
-      `  Emitting .js (${numJsWorkers} transpileModule workers) + .d.ts (1 createProgram worker) in parallel`,
-    );
-    const emitStart = performance.now();
-
-    const runWorker = (code: string, workerData: object) =>
-      new Promise<void>((resolve, reject) => {
-        const worker = new Worker(code, { eval: true, workerData });
-        worker.on("exit", code =>
-          code === 0
-            ? resolve()
-            : reject(new Error(`Worker exited with code ${code}`)),
-        );
-        worker.on("error", reject);
-      });
-
-    const jsPromises = jsBatches
-      .filter(batch => batch.length > 0)
-      .map(batch =>
-        runWorker(JS_TRANSPILE_WORKER_CODE, {
-          filePaths: batch,
-          compilerOptions,
-          typescriptPath,
-        }),
-      );
-
-    const dtsPromise = runWorker(DTS_WORKER_CODE, {
-      filePaths: dtsFilePaths,
-      compilerOptions,
-      typescriptPath,
-    });
-
-    const results = await Promise.allSettled([...jsPromises, dtsPromise]);
-
-    this.metrics?.emitMetric(
-      "emit-js-dts",
-      performance.now() - emitStart,
-      jsFilePaths.length,
-    );
-
-    for (const result of results) {
-      if (result.status === "rejected") {
-        throw new Error(`Emission worker failed: ${result.reason}`);
-      }
-    }
   }
 }
 

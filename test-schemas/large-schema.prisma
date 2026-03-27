@@ -10,6 +10,7 @@ generator typegraphql {
 
 datasource db {
   provider = "postgresql"
+  url      = env("DATABASE_URL")
 }
 
 // Enums - many to test enum generation performance
