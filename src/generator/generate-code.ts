@@ -188,27 +188,42 @@ class CodeGenerator {
       await project.save();
       this.metrics?.emitMetric("save-files", performance.now() - saveStart);
 
-      log("Transpiling generated code (per-file)");
       const transpileStart = performance.now();
-      const transpileOptions: ts.CompilerOptions = {
-        target: ts.ScriptTarget.ES2021,
-        module: ts.ModuleKind.CommonJS,
-        emitDecoratorMetadata: true,
-        experimentalDecorators: true,
-        esModuleInterop: true,
-        importHelpers: true,
-      };
       const sourceFiles = project.getSourceFiles();
-      for (const sourceFile of sourceFiles) {
-        const filePath = sourceFile.getFilePath();
-        const result = ts.transpileModule(sourceFile.getFullText(), {
-          compilerOptions: transpileOptions,
-          fileName: path.basename(filePath),
-        });
-        fs.writeFileSync(filePath.replace(/\.ts$/, ".js"), result.outputText);
+      let usedBun = false;
+
+      if (await isBunAvailable()) {
+        log("Transpiling generated code via Bun");
+        try {
+          await transpileWithBun(baseDirPath);
+          usedBun = true;
+        } catch (e) {
+          log(`Bun transpile failed, falling back to tsc: ${e}`);
+        }
       }
+
+      if (!usedBun) {
+        log("Transpiling generated code via tsc (per-file)");
+        const transpileOptions: ts.CompilerOptions = {
+          target: ts.ScriptTarget.ES2021,
+          module: ts.ModuleKind.CommonJS,
+          emitDecoratorMetadata: true,
+          experimentalDecorators: true,
+          esModuleInterop: true,
+          importHelpers: true,
+        };
+        for (const sourceFile of sourceFiles) {
+          const filePath = sourceFile.getFilePath();
+          const result = ts.transpileModule(sourceFile.getFullText(), {
+            compilerOptions: transpileOptions,
+            fileName: path.basename(filePath),
+          });
+          fs.writeFileSync(filePath.replace(/\.ts$/, ".js"), result.outputText);
+        }
+      }
+
       this.metrics?.emitMetric(
-        "per-file-transpile",
+        usedBun ? "bun-transpile" : "per-file-transpile",
         performance.now() - transpileStart,
         sourceFiles.length,
       );
@@ -302,6 +317,44 @@ class CodeGenerator {
     this.metrics?.emitMetric("code-emission", performance.now() - emitStart);
     this.metrics?.emitMetric("total-generation", performance.now() - startTime);
     this.metrics?.onComplete?.();
+  }
+}
+
+async function isBunAvailable(): Promise<boolean> {
+  try {
+    await execa("bun --version");
+    return true;
+  } catch {
+    return false;
+  }
+}
+
+async function transpileWithBun(dir: string): Promise<void> {
+  const scriptPath = path.join(dir, "__transpile.ts");
+  const script = [
+    `const glob = new Bun.Glob("**/*.ts");`,
+    `const files: string[] = [];`,
+    `for await (const file of glob.scan({ cwd: ${JSON.stringify(dir)}, absolute: true })) {`,
+    `  if (!file.endsWith(".d.ts")) files.push(file);`,
+    `}`,
+    `const result = await Bun.build({`,
+    `  entrypoints: files,`,
+    `  outdir: ${JSON.stringify(dir)},`,
+    `  format: "cjs",`,
+    `  target: "node",`,
+    `  external: ["*"],`,
+    `  root: ${JSON.stringify(dir)},`,
+    `});`,
+    `if (!result.success) {`,
+    `  for (const msg of result.logs) console.error(msg);`,
+    `  process.exit(1);`,
+    `}`,
+  ].join("\n");
+  fs.writeFileSync(scriptPath, script);
+  try {
+    await execa(`bun ${scriptPath}`);
+  } finally {
+    fs.unlinkSync(scriptPath);
   }
 }
 
