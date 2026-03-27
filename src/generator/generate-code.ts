@@ -3,6 +3,7 @@ import fs from "node:fs";
 import { promisify } from "node:util";
 import { performance } from "node:perf_hooks";
 import { exec } from "node:child_process";
+import ts from "typescript";
 
 import type { DMMF as PrismaDMMF } from "@prisma/generator-helper";
 import {
@@ -182,8 +183,35 @@ class CodeGenerator {
     log("Emitting final code");
     const emitStart = performance.now();
     if (emitTranspiledCode) {
-      log("Transpiling generated code");
-      await project.emit();
+      log("Saving generated TypeScript files");
+      const saveStart = performance.now();
+      await project.save();
+      this.metrics?.emitMetric("save-files", performance.now() - saveStart);
+
+      log("Transpiling generated code (per-file)");
+      const transpileStart = performance.now();
+      const transpileOptions: ts.CompilerOptions = {
+        target: ts.ScriptTarget.ES2021,
+        module: ts.ModuleKind.CommonJS,
+        emitDecoratorMetadata: true,
+        experimentalDecorators: true,
+        esModuleInterop: true,
+        importHelpers: true,
+      };
+      const sourceFiles = project.getSourceFiles();
+      for (const sourceFile of sourceFiles) {
+        const filePath = sourceFile.getFilePath();
+        const result = ts.transpileModule(sourceFile.getFullText(), {
+          compilerOptions: transpileOptions,
+          fileName: path.basename(filePath),
+        });
+        fs.writeFileSync(filePath.replace(/\.ts$/, ".js"), result.outputText);
+      }
+      this.metrics?.emitMetric(
+        "per-file-transpile",
+        performance.now() - transpileStart,
+        sourceFiles.length,
+      );
     } else {
       log("Saving generated code");
       const saveStart = performance.now();
