@@ -183,22 +183,30 @@ class CodeGenerator {
     log("Emitting final code");
     const emitStart = performance.now();
     if (emitTranspiledCode) {
-      log("Saving generated TypeScript files");
-      const saveStart = performance.now();
-      await project.save();
-      this.metrics?.emitMetric("save-files", performance.now() - saveStart);
-
       const transpileStart = performance.now();
       const sourceFiles = project.getSourceFiles();
       let usedBun = false;
 
       if (await isBunAvailable()) {
+        log("Saving generated TypeScript files for Bun transpile");
+        const saveStart = performance.now();
+        await project.save();
+        this.metrics?.emitMetric("save-files", performance.now() - saveStart);
+
         log("Transpiling generated code via Bun");
         try {
           await transpileWithBun(baseDirPath);
           usedBun = true;
         } catch (e) {
           log(`Bun transpile failed, falling back to tsc: ${e}`);
+        }
+
+        log("Removing .ts source files (Bun prefers .ts over .js)");
+        for (const sourceFile of sourceFiles) {
+          const tsPath = sourceFile.getFilePath();
+          if (fs.existsSync(tsPath)) {
+            fs.unlinkSync(tsPath);
+          }
         }
       }
 
@@ -214,6 +222,10 @@ class CodeGenerator {
         };
         for (const sourceFile of sourceFiles) {
           const filePath = sourceFile.getFilePath();
+          const dirPath = path.dirname(filePath);
+          if (!fs.existsSync(dirPath)) {
+            fs.mkdirSync(dirPath, { recursive: true });
+          }
           const result = ts.transpileModule(sourceFile.getFullText(), {
             compilerOptions: transpileOptions,
             fileName: path.basename(filePath),
@@ -221,6 +233,27 @@ class CodeGenerator {
           fs.writeFileSync(filePath.replace(/\.ts$/, ".js"), result.outputText);
         }
       }
+
+      log("Generating declaration files");
+      const declStart = performance.now();
+      for (const sourceFile of sourceFiles) {
+        const filePath = sourceFile.getFilePath();
+        const dtsPath = filePath.replace(/\.ts$/, ".d.ts");
+        const dirPath = path.dirname(dtsPath);
+        if (!fs.existsSync(dirPath)) {
+          fs.mkdirSync(dirPath, { recursive: true });
+        }
+        const dtsContent = generateDeclarationFromSource(
+          sourceFile.getFullText(),
+          path.basename(filePath),
+        );
+        fs.writeFileSync(dtsPath, dtsContent);
+      }
+      this.metrics?.emitMetric(
+        "declaration-generation",
+        performance.now() - declStart,
+        sourceFiles.length,
+      );
 
       this.metrics?.emitMetric(
         usedBun ? "bun-transpile" : "per-file-transpile",
@@ -318,6 +351,56 @@ class CodeGenerator {
     this.metrics?.emitMetric("total-generation", performance.now() - startTime);
     this.metrics?.onComplete?.();
   }
+}
+
+function generateDeclarationFromSource(
+  sourceText: string,
+  fileName: string,
+): string {
+  const sourceFile = ts.createSourceFile(
+    fileName,
+    sourceText,
+    ts.ScriptTarget.ES2021,
+    true,
+  );
+
+  const lines: string[] = [];
+
+  for (const stmt of sourceFile.statements) {
+    if (ts.isImportDeclaration(stmt)) {
+      const importText = sourceText.substring(stmt.pos, stmt.end).trim();
+      if (importText.includes("import type")) {
+        lines.push(importText);
+      } else {
+        lines.push(importText.replace(/^import /, "import type "));
+      }
+    } else if (ts.isClassDeclaration(stmt) && stmt.name) {
+      const className = stmt.name.text;
+      const members: string[] = [];
+      for (const member of stmt.members) {
+        if (ts.isPropertyDeclaration(member) && member.name) {
+          const name = member.name.getText(sourceFile);
+          const questionToken = member.questionToken ? "?" : "";
+          const typeText = member.type
+            ? sourceText.substring(member.type.pos, member.type.end).trim()
+            : "any";
+          members.push(`    ${name}${questionToken}: ${typeText};`);
+        }
+      }
+      lines.push(`export declare class ${className} {`);
+      lines.push(members.join("\n"));
+      lines.push(`}`);
+    } else if (ts.isEnumDeclaration(stmt) && stmt.name) {
+      const enumText = sourceText.substring(stmt.pos, stmt.end).trim();
+      lines.push(
+        enumText
+          .replace(/^export /, "export declare ")
+          .replace(/^enum /, "declare enum "),
+      );
+    }
+  }
+
+  return lines.join("\n") + "\n";
 }
 
 async function isBunAvailable(): Promise<boolean> {
