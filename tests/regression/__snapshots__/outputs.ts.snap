@@ -1,4 +1,4 @@
-// Jest Snapshot v1, https://goo.gl/fbAQLP
+// Jest Snapshot v1, https://jestjs.io/docs/snapshot-testing
 
 exports[`outputs should properly generate aggregate classes for model with lowercase name: AggregateExample 1`] = `
 "\\"use strict\\";

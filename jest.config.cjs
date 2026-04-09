@@ -3,13 +3,19 @@ const config = {
   verbose: false,
   testEnvironment: "node",
   transform: {
-    // '^.+\\.[tj]sx?$' to process js/ts with `ts-jest`
-    // '^.+\\.m?[tj]sx?$' to process js/ts/mjs/mts with `ts-jest`
     "^.+\\.tsx?$": [
-      "ts-jest",
+      "@swc/jest",
       {
-        // ts-jest configuration goes here
-        tsconfig: "<rootDir>/tests/tsconfig.json",
+        jsc: {
+          parser: {
+            syntax: "typescript",
+            decorators: true,
+          },
+          transform: {
+            decoratorMetadata: true,
+          },
+          target: "es2022",
+        },
       },
     ],
   },

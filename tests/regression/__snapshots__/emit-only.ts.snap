@@ -1,4 +1,4 @@
-// Jest Snapshot v1, https://goo.gl/fbAQLP
+// Jest Snapshot v1, https://jestjs.io/docs/snapshot-testing
 
 exports[`emitOnly generator option when both 'crudResolvers' and \`inputs\` is set should not fail and generate proper files, enhance and index: enhance 1`] = `
 "\\"use strict\\";

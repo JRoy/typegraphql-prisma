@@ -1,4 +1,4 @@
-// Jest Snapshot v1, https://goo.gl/fbAQLP
+// Jest Snapshot v1, https://jestjs.io/docs/snapshot-testing
 
 exports[`structure should generate *.js and *.d.ts files when emitTranspiledCode is set to true: structure 1`] = `
 "
