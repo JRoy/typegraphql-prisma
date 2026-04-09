@@ -143,6 +143,7 @@ export function emitInputTypeModule(
   addCustomScalarsImportIfNeeded(
     jsImports,
     dtsImports,
+    runtimeRefs,
     fieldsToEmit.map(field => field.typeGraphQLType),
     2,
   );
@@ -396,6 +397,7 @@ export function emitModelModule(
   addCustomScalarsImportIfNeeded(
     jsImports,
     dtsImports,
+    runtimeRefs,
     model.fields.map(field => field.typeGraphQLType),
     1,
   );
@@ -597,6 +599,7 @@ export function emitOutputTypeModule(
   addCustomScalarsImportIfNeeded(
     jsImports,
     dtsImports,
+    runtimeRefs,
     type.fields.map(field => field.typeGraphQLType),
     2,
   );
@@ -1038,6 +1041,7 @@ function addGraphQLScalarsImportIfNeeded(
 function addCustomScalarsImportIfNeeded(
   jsImports: JSImport[],
   dtsImports: DtsImport[],
+  runtimeRefs: Map<string, string>,
   graphQLTypes: string[],
   level: number,
 ): void {
@@ -1068,6 +1072,9 @@ function addCustomScalarsImportIfNeeded(
     moduleSpecifier,
     named: scalarNames,
   });
+  for (const name of scalarNames) {
+    runtimeRefs.set(name, `scalars_1.${name}`);
+  }
 }
 
 function addNamedTypeImports(

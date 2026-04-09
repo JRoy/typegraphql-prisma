@@ -12,7 +12,7 @@ import {
 } from "./transform";
 import type { GeneratorOptions } from "../options";
 import type { EmitBlockKind } from "../emit-block";
-import { clearKeywordPositionCache } from "../helpers";
+import { clearKeywordPositionCache, clearInputTypeNameCache } from "../helpers";
 
 const RESERVED_KEYWORDS: string[] = ["async", "await", "using"];
 
@@ -36,6 +36,7 @@ export class DmmfDocument implements DMMF.Document {
   outputTypeFieldsCache: Map<string, Map<string, any>>;
   // Reverse index: fieldName → OutputType (eliminates O(n) scan in findOutputTypeWithField)
   fieldToOutputTypeCache: Map<string, DMMF.OutputType>;
+  modelsCiCache: Map<string, string | undefined>;
 
   constructor(
     { datamodel, schema, mappings }: PrismaDMMF.Document,
@@ -43,6 +44,7 @@ export class DmmfDocument implements DMMF.Document {
   ) {
     clearOutputTypeNameCache();
     clearKeywordPositionCache();
+    clearInputTypeNameCache();
 
     this.outputTypeCache = new Map();
     this.modelsCache = new Map();
@@ -53,6 +55,7 @@ export class DmmfDocument implements DMMF.Document {
     this.modelFieldsCache = new Map();
     this.outputTypeFieldsCache = new Map();
     this.fieldToOutputTypeCache = new Map();
+    this.modelsCiCache = new Map();
 
     const enumTypes = (schema.enumTypes.prisma ?? []).concat(
       schema.enumTypes.model ?? [],
@@ -77,6 +80,10 @@ export class DmmfDocument implements DMMF.Document {
 
       this.modelsCache.set(model.name, transformed);
       this.modelTypeNameCache.add(transformed.typeName);
+      this.modelsCiCache.set(
+        model.name.toLocaleLowerCase(),
+        transformed.typeName,
+      );
 
       const fieldAliases = new Map<string, string>();
       const modelFields = new Map<string, any>();
@@ -199,9 +206,9 @@ export class DmmfDocument implements DMMF.Document {
     if (cachedModel) {
       return cachedModel.typeName;
     }
-    return this.models.find(
-      it => it.name.toLocaleLowerCase() === modelName.toLocaleLowerCase(),
-    )?.typeName;
+    const lowerKey = modelName.toLocaleLowerCase();
+    const ciMatch = this.modelsCiCache.get(lowerKey);
+    return ciMatch;
   }
 
   isModelName(typeName: string): boolean {

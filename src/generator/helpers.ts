@@ -224,13 +224,24 @@ export function getModelNameFromInputType(inputTypeName: string) {
   return modelName;
 }
 
+const inputTypeNameCache = new Map<string, string>();
+
+export function clearInputTypeNameCache(): void {
+  inputTypeNameCache.clear();
+}
+
 export function getInputTypeName(
   originalInputName: string,
   dmmfDocument: DmmfDocument,
 ): string {
+  const cached = inputTypeNameCache.get(originalInputName);
+  if (cached !== undefined) {
+    return cached;
+  }
   const keywordPhrasePosition =
     getInputKeywordPhrasePosition(originalInputName);
   if (!keywordPhrasePosition) {
+    inputTypeNameCache.set(originalInputName, originalInputName);
     return originalInputName;
   }
 
@@ -238,10 +249,13 @@ export function getInputTypeName(
   const typeNameRest = originalInputName.slice(keywordPhrasePosition);
   const modelTypeName = dmmfDocument.getModelTypeName(modelName);
   if (!modelTypeName) {
+    inputTypeNameCache.set(originalInputName, originalInputName);
     return originalInputName;
   }
 
-  return `${modelTypeName}${typeNameRest}`;
+  const result = `${modelTypeName}${typeNameRest}`;
+  inputTypeNameCache.set(originalInputName, result);
+  return result;
 }
 
 export function cleanDocsString(

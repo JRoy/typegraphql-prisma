@@ -293,11 +293,11 @@ tslib_1.__decorate([
     tslib_1.__metadata(\\"design:type\\", BigInt)
 ], NativeTypeModel.prototype, \\"bigInt\\", void 0);
 tslib_1.__decorate([
-    TypeGraphQL.Field(_type => BytesScalar, { nullable: true }),
+    TypeGraphQL.Field(_type => scalars_1.BytesScalar, { nullable: true }),
     tslib_1.__metadata(\\"design:type\\", Object)
 ], NativeTypeModel.prototype, \\"byteA\\", void 0);
 tslib_1.__decorate([
-    TypeGraphQL.Field(_type => DecimalJSScalar, { nullable: true }),
+    TypeGraphQL.Field(_type => scalars_1.DecimalJSScalar, { nullable: true }),
     tslib_1.__metadata(\\"design:type\\", Object)
 ], NativeTypeModel.prototype, \\"decimal\\", void 0);
 tslib_1.__decorate([

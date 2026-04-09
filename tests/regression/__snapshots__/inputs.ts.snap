@@ -1021,7 +1021,7 @@ let BytesFieldUpdateOperationsInput = class BytesFieldUpdateOperationsInput {
 };
 exports.BytesFieldUpdateOperationsInput = BytesFieldUpdateOperationsInput;
 tslib_1.__decorate([
-    TypeGraphQL.Field(_type => BytesScalar, { nullable: true }),
+    TypeGraphQL.Field(_type => scalars_1.BytesScalar, { nullable: true }),
     tslib_1.__metadata(\\"design:type\\", Object)
 ], BytesFieldUpdateOperationsInput.prototype, \\"set\\", void 0);
 exports.BytesFieldUpdateOperationsInput = BytesFieldUpdateOperationsInput = tslib_1.__decorate([
@@ -1042,15 +1042,15 @@ let BytesFilter = class BytesFilter {
 };
 exports.BytesFilter = BytesFilter;
 tslib_1.__decorate([
-    TypeGraphQL.Field(_type => BytesScalar, { nullable: true }),
+    TypeGraphQL.Field(_type => scalars_1.BytesScalar, { nullable: true }),
     tslib_1.__metadata(\\"design:type\\", Object)
 ], BytesFilter.prototype, \\"equals\\", void 0);
 tslib_1.__decorate([
-    TypeGraphQL.Field(_type => [BytesScalar], { nullable: true }),
+    TypeGraphQL.Field(_type => [scalars_1.BytesScalar], { nullable: true }),
     tslib_1.__metadata(\\"design:type\\", Array)
 ], BytesFilter.prototype, \\"in\\", void 0);
 tslib_1.__decorate([
-    TypeGraphQL.Field(_type => [BytesScalar], { nullable: true }),
+    TypeGraphQL.Field(_type => [scalars_1.BytesScalar], { nullable: true }),
     tslib_1.__metadata(\\"design:type\\", Array)
 ], BytesFilter.prototype, \\"notIn\\", void 0);
 tslib_1.__decorate([
@@ -3747,11 +3747,11 @@ tslib_1.__decorate([
     tslib_1.__metadata(\\"design:type\\", BigInt)
 ], NativeTypeModelCreateInput.prototype, \\"bigInt\\", void 0);
 tslib_1.__decorate([
-    TypeGraphQL.Field(_type => BytesScalar, { nullable: true }),
+    TypeGraphQL.Field(_type => scalars_1.BytesScalar, { nullable: true }),
     tslib_1.__metadata(\\"design:type\\", Object)
 ], NativeTypeModelCreateInput.prototype, \\"byteA\\", void 0);
 tslib_1.__decorate([
-    TypeGraphQL.Field(_type => DecimalJSScalar, { nullable: true }),
+    TypeGraphQL.Field(_type => scalars_1.DecimalJSScalar, { nullable: true }),
     tslib_1.__metadata(\\"design:type\\", Object)
 ], NativeTypeModelCreateInput.prototype, \\"decimal\\", void 0);
 exports.NativeTypeModelCreateInput = NativeTypeModelCreateInput = tslib_1.__decorate([
@@ -6043,15 +6043,15 @@ let BytesNullableFilter = class BytesNullableFilter {
 };
 exports.BytesNullableFilter = BytesNullableFilter;
 tslib_1.__decorate([
-    TypeGraphQL.Field(_type => BytesScalar, { nullable: true }),
+    TypeGraphQL.Field(_type => scalars_1.BytesScalar, { nullable: true }),
     tslib_1.__metadata(\\"design:type\\", Object)
 ], BytesNullableFilter.prototype, \\"equals\\", void 0);
 tslib_1.__decorate([
-    TypeGraphQL.Field(_type => [BytesScalar], { nullable: true }),
+    TypeGraphQL.Field(_type => [scalars_1.BytesScalar], { nullable: true }),
     tslib_1.__metadata(\\"design:type\\", Array)
 ], BytesNullableFilter.prototype, \\"in\\", void 0);
 tslib_1.__decorate([
-    TypeGraphQL.Field(_type => [BytesScalar], { nullable: true }),
+    TypeGraphQL.Field(_type => [scalars_1.BytesScalar], { nullable: true }),
     tslib_1.__metadata(\\"design:type\\", Array)
 ], BytesNullableFilter.prototype, \\"notIn\\", void 0);
 tslib_1.__decorate([
@@ -6078,15 +6078,15 @@ let BytesNullableWithAggregatesFilter = class BytesNullableWithAggregatesFilter 
 };
 exports.BytesNullableWithAggregatesFilter = BytesNullableWithAggregatesFilter;
 tslib_1.__decorate([
-    TypeGraphQL.Field(_type => BytesScalar, { nullable: true }),
+    TypeGraphQL.Field(_type => scalars_1.BytesScalar, { nullable: true }),
     tslib_1.__metadata(\\"design:type\\", Object)
 ], BytesNullableWithAggregatesFilter.prototype, \\"equals\\", void 0);
 tslib_1.__decorate([
-    TypeGraphQL.Field(_type => [BytesScalar], { nullable: true }),
+    TypeGraphQL.Field(_type => [scalars_1.BytesScalar], { nullable: true }),
     tslib_1.__metadata(\\"design:type\\", Array)
 ], BytesNullableWithAggregatesFilter.prototype, \\"in\\", void 0);
 tslib_1.__decorate([
-    TypeGraphQL.Field(_type => [BytesScalar], { nullable: true }),
+    TypeGraphQL.Field(_type => [scalars_1.BytesScalar], { nullable: true }),
     tslib_1.__metadata(\\"design:type\\", Array)
 ], BytesNullableWithAggregatesFilter.prototype, \\"notIn\\", void 0);
 tslib_1.__decorate([
@@ -6123,31 +6123,31 @@ let DecimalNullableFilter = class DecimalNullableFilter {
 };
 exports.DecimalNullableFilter = DecimalNullableFilter;
 tslib_1.__decorate([
-    TypeGraphQL.Field(_type => DecimalJSScalar, { nullable: true }),
+    TypeGraphQL.Field(_type => scalars_1.DecimalJSScalar, { nullable: true }),
     tslib_1.__metadata(\\"design:type\\", Object)
 ], DecimalNullableFilter.prototype, \\"equals\\", void 0);
 tslib_1.__decorate([
-    TypeGraphQL.Field(_type => [DecimalJSScalar], { nullable: true }),
+    TypeGraphQL.Field(_type => [scalars_1.DecimalJSScalar], { nullable: true }),
     tslib_1.__metadata(\\"design:type\\", Array)
 ], DecimalNullableFilter.prototype, \\"in\\", void 0);
 tslib_1.__decorate([
-    TypeGraphQL.Field(_type => [DecimalJSScalar], { nullable: true }),
+    TypeGraphQL.Field(_type => [scalars_1.DecimalJSScalar], { nullable: true }),
     tslib_1.__metadata(\\"design:type\\", Array)
 ], DecimalNullableFilter.prototype, \\"notIn\\", void 0);
 tslib_1.__decorate([
-    TypeGraphQL.Field(_type => DecimalJSScalar, { nullable: true }),
+    TypeGraphQL.Field(_type => scalars_1.DecimalJSScalar, { nullable: true }),
     tslib_1.__metadata(\\"design:type\\", Object)
 ], DecimalNullableFilter.prototype, \\"lt\\", void 0);
 tslib_1.__decorate([
-    TypeGraphQL.Field(_type => DecimalJSScalar, { nullable: true }),
+    TypeGraphQL.Field(_type => scalars_1.DecimalJSScalar, { nullable: true }),
     tslib_1.__metadata(\\"design:type\\", Object)
 ], DecimalNullableFilter.prototype, \\"lte\\", void 0);
 tslib_1.__decorate([
-    TypeGraphQL.Field(_type => DecimalJSScalar, { nullable: true }),
+    TypeGraphQL.Field(_type => scalars_1.DecimalJSScalar, { nullable: true }),
     tslib_1.__metadata(\\"design:type\\", Object)
 ], DecimalNullableFilter.prototype, \\"gt\\", void 0);
 tslib_1.__decorate([
-    TypeGraphQL.Field(_type => DecimalJSScalar, { nullable: true }),
+    TypeGraphQL.Field(_type => scalars_1.DecimalJSScalar, { nullable: true }),
     tslib_1.__metadata(\\"design:type\\", Object)
 ], DecimalNullableFilter.prototype, \\"gte\\", void 0);
 tslib_1.__decorate([
@@ -6174,31 +6174,31 @@ let DecimalNullableWithAggregatesFilter = class DecimalNullableWithAggregatesFil
 };
 exports.DecimalNullableWithAggregatesFilter = DecimalNullableWithAggregatesFilter;
 tslib_1.__decorate([
-    TypeGraphQL.Field(_type => DecimalJSScalar, { nullable: true }),
+    TypeGraphQL.Field(_type => scalars_1.DecimalJSScalar, { nullable: true }),
     tslib_1.__metadata(\\"design:type\\", Object)
 ], DecimalNullableWithAggregatesFilter.prototype, \\"equals\\", void 0);
 tslib_1.__decorate([
-    TypeGraphQL.Field(_type => [DecimalJSScalar], { nullable: true }),
+    TypeGraphQL.Field(_type => [scalars_1.DecimalJSScalar], { nullable: true }),
     tslib_1.__metadata(\\"design:type\\", Array)
 ], DecimalNullableWithAggregatesFilter.prototype, \\"in\\", void 0);
 tslib_1.__decorate([
-    TypeGraphQL.Field(_type => [DecimalJSScalar], { nullable: true }),
+    TypeGraphQL.Field(_type => [scalars_1.DecimalJSScalar], { nullable: true }),
     tslib_1.__metadata(\\"design:type\\", Array)
 ], DecimalNullableWithAggregatesFilter.prototype, \\"notIn\\", void 0);
 tslib_1.__decorate([
-    TypeGraphQL.Field(_type => DecimalJSScalar, { nullable: true }),
+    TypeGraphQL.Field(_type => scalars_1.DecimalJSScalar, { nullable: true }),
     tslib_1.__metadata(\\"design:type\\", Object)
 ], DecimalNullableWithAggregatesFilter.prototype, \\"lt\\", void 0);
 tslib_1.__decorate([
-    TypeGraphQL.Field(_type => DecimalJSScalar, { nullable: true }),
+    TypeGraphQL.Field(_type => scalars_1.DecimalJSScalar, { nullable: true }),
     tslib_1.__metadata(\\"design:type\\", Object)
 ], DecimalNullableWithAggregatesFilter.prototype, \\"lte\\", void 0);
 tslib_1.__decorate([
-    TypeGraphQL.Field(_type => DecimalJSScalar, { nullable: true }),
+    TypeGraphQL.Field(_type => scalars_1.DecimalJSScalar, { nullable: true }),
     tslib_1.__metadata(\\"design:type\\", Object)
 ], DecimalNullableWithAggregatesFilter.prototype, \\"gt\\", void 0);
 tslib_1.__decorate([
-    TypeGraphQL.Field(_type => DecimalJSScalar, { nullable: true }),
+    TypeGraphQL.Field(_type => scalars_1.DecimalJSScalar, { nullable: true }),
     tslib_1.__metadata(\\"design:type\\", Object)
 ], DecimalNullableWithAggregatesFilter.prototype, \\"gte\\", void 0);
 tslib_1.__decorate([
@@ -6242,15 +6242,15 @@ let NestedBytesNullableFilter = class NestedBytesNullableFilter {
 };
 exports.NestedBytesNullableFilter = NestedBytesNullableFilter;
 tslib_1.__decorate([
-    TypeGraphQL.Field(_type => BytesScalar, { nullable: true }),
+    TypeGraphQL.Field(_type => scalars_1.BytesScalar, { nullable: true }),
     tslib_1.__metadata(\\"design:type\\", Object)
 ], NestedBytesNullableFilter.prototype, \\"equals\\", void 0);
 tslib_1.__decorate([
-    TypeGraphQL.Field(_type => [BytesScalar], { nullable: true }),
+    TypeGraphQL.Field(_type => [scalars_1.BytesScalar], { nullable: true }),
     tslib_1.__metadata(\\"design:type\\", Array)
 ], NestedBytesNullableFilter.prototype, \\"in\\", void 0);
 tslib_1.__decorate([
-    TypeGraphQL.Field(_type => [BytesScalar], { nullable: true }),
+    TypeGraphQL.Field(_type => [scalars_1.BytesScalar], { nullable: true }),
     tslib_1.__metadata(\\"design:type\\", Array)
 ], NestedBytesNullableFilter.prototype, \\"notIn\\", void 0);
 tslib_1.__decorate([
@@ -6276,15 +6276,15 @@ let NestedBytesNullableWithAggregatesFilter = class NestedBytesNullableWithAggre
 };
 exports.NestedBytesNullableWithAggregatesFilter = NestedBytesNullableWithAggregatesFilter;
 tslib_1.__decorate([
-    TypeGraphQL.Field(_type => BytesScalar, { nullable: true }),
+    TypeGraphQL.Field(_type => scalars_1.BytesScalar, { nullable: true }),
     tslib_1.__metadata(\\"design:type\\", Object)
 ], NestedBytesNullableWithAggregatesFilter.prototype, \\"equals\\", void 0);
 tslib_1.__decorate([
-    TypeGraphQL.Field(_type => [BytesScalar], { nullable: true }),
+    TypeGraphQL.Field(_type => [scalars_1.BytesScalar], { nullable: true }),
     tslib_1.__metadata(\\"design:type\\", Array)
 ], NestedBytesNullableWithAggregatesFilter.prototype, \\"in\\", void 0);
 tslib_1.__decorate([
-    TypeGraphQL.Field(_type => [BytesScalar], { nullable: true }),
+    TypeGraphQL.Field(_type => [scalars_1.BytesScalar], { nullable: true }),
     tslib_1.__metadata(\\"design:type\\", Array)
 ], NestedBytesNullableWithAggregatesFilter.prototype, \\"notIn\\", void 0);
 tslib_1.__decorate([
@@ -6320,31 +6320,31 @@ let NestedDecimalNullableFilter = class NestedDecimalNullableFilter {
 };
 exports.NestedDecimalNullableFilter = NestedDecimalNullableFilter;
 tslib_1.__decorate([
-    TypeGraphQL.Field(_type => DecimalJSScalar, { nullable: true }),
+    TypeGraphQL.Field(_type => scalars_1.DecimalJSScalar, { nullable: true }),
     tslib_1.__metadata(\\"design:type\\", Object)
 ], NestedDecimalNullableFilter.prototype, \\"equals\\", void 0);
 tslib_1.__decorate([
-    TypeGraphQL.Field(_type => [DecimalJSScalar], { nullable: true }),
+    TypeGraphQL.Field(_type => [scalars_1.DecimalJSScalar], { nullable: true }),
     tslib_1.__metadata(\\"design:type\\", Array)
 ], NestedDecimalNullableFilter.prototype, \\"in\\", void 0);
 tslib_1.__decorate([
-    TypeGraphQL.Field(_type => [DecimalJSScalar], { nullable: true }),
+    TypeGraphQL.Field(_type => [scalars_1.DecimalJSScalar], { nullable: true }),
     tslib_1.__metadata(\\"design:type\\", Array)
 ], NestedDecimalNullableFilter.prototype, \\"notIn\\", void 0);
 tslib_1.__decorate([
-    TypeGraphQL.Field(_type => DecimalJSScalar, { nullable: true }),
+    TypeGraphQL.Field(_type => scalars_1.DecimalJSScalar, { nullable: true }),
     tslib_1.__metadata(\\"design:type\\", Object)
 ], NestedDecimalNullableFilter.prototype, \\"lt\\", void 0);
 tslib_1.__decorate([
-    TypeGraphQL.Field(_type => DecimalJSScalar, { nullable: true }),
+    TypeGraphQL.Field(_type => scalars_1.DecimalJSScalar, { nullable: true }),
     tslib_1.__metadata(\\"design:type\\", Object)
 ], NestedDecimalNullableFilter.prototype, \\"lte\\", void 0);
 tslib_1.__decorate([
-    TypeGraphQL.Field(_type => DecimalJSScalar, { nullable: true }),
+    TypeGraphQL.Field(_type => scalars_1.DecimalJSScalar, { nullable: true }),
     tslib_1.__metadata(\\"design:type\\", Object)
 ], NestedDecimalNullableFilter.prototype, \\"gt\\", void 0);
 tslib_1.__decorate([
-    TypeGraphQL.Field(_type => DecimalJSScalar, { nullable: true }),
+    TypeGraphQL.Field(_type => scalars_1.DecimalJSScalar, { nullable: true }),
     tslib_1.__metadata(\\"design:type\\", Object)
 ], NestedDecimalNullableFilter.prototype, \\"gte\\", void 0);
 tslib_1.__decorate([
@@ -6370,31 +6370,31 @@ let NestedDecimalNullableWithAggregatesFilter = class NestedDecimalNullableWithA
 };
 exports.NestedDecimalNullableWithAggregatesFilter = NestedDecimalNullableWithAggregatesFilter;
 tslib_1.__decorate([
-    TypeGraphQL.Field(_type => DecimalJSScalar, { nullable: true }),
+    TypeGraphQL.Field(_type => scalars_1.DecimalJSScalar, { nullable: true }),
     tslib_1.__metadata(\\"design:type\\", Object)
 ], NestedDecimalNullableWithAggregatesFilter.prototype, \\"equals\\", void 0);
 tslib_1.__decorate([
-    TypeGraphQL.Field(_type => [DecimalJSScalar], { nullable: true }),
+    TypeGraphQL.Field(_type => [scalars_1.DecimalJSScalar], { nullable: true }),
     tslib_1.__metadata(\\"design:type\\", Array)
 ], NestedDecimalNullableWithAggregatesFilter.prototype, \\"in\\", void 0);
 tslib_1.__decorate([
-    TypeGraphQL.Field(_type => [DecimalJSScalar], { nullable: true }),
+    TypeGraphQL.Field(_type => [scalars_1.DecimalJSScalar], { nullable: true }),
     tslib_1.__metadata(\\"design:type\\", Array)
 ], NestedDecimalNullableWithAggregatesFilter.prototype, \\"notIn\\", void 0);
 tslib_1.__decorate([
-    TypeGraphQL.Field(_type => DecimalJSScalar, { nullable: true }),
+    TypeGraphQL.Field(_type => scalars_1.DecimalJSScalar, { nullable: true }),
     tslib_1.__metadata(\\"design:type\\", Object)
 ], NestedDecimalNullableWithAggregatesFilter.prototype, \\"lt\\", void 0);
 tslib_1.__decorate([
-    TypeGraphQL.Field(_type => DecimalJSScalar, { nullable: true }),
+    TypeGraphQL.Field(_type => scalars_1.DecimalJSScalar, { nullable: true }),
     tslib_1.__metadata(\\"design:type\\", Object)
 ], NestedDecimalNullableWithAggregatesFilter.prototype, \\"lte\\", void 0);
 tslib_1.__decorate([
-    TypeGraphQL.Field(_type => DecimalJSScalar, { nullable: true }),
+    TypeGraphQL.Field(_type => scalars_1.DecimalJSScalar, { nullable: true }),
     tslib_1.__metadata(\\"design:type\\", Object)
 ], NestedDecimalNullableWithAggregatesFilter.prototype, \\"gt\\", void 0);
 tslib_1.__decorate([
-    TypeGraphQL.Field(_type => DecimalJSScalar, { nullable: true }),
+    TypeGraphQL.Field(_type => scalars_1.DecimalJSScalar, { nullable: true }),
     tslib_1.__metadata(\\"design:type\\", Object)
 ], NestedDecimalNullableWithAggregatesFilter.prototype, \\"gte\\", void 0);
 tslib_1.__decorate([
@@ -6474,7 +6474,7 @@ let NullableBytesFieldUpdateOperationsInput = class NullableBytesFieldUpdateOper
 };
 exports.NullableBytesFieldUpdateOperationsInput = NullableBytesFieldUpdateOperationsInput;
 tslib_1.__decorate([
-    TypeGraphQL.Field(_type => BytesScalar, { nullable: true }),
+    TypeGraphQL.Field(_type => scalars_1.BytesScalar, { nullable: true }),
     tslib_1.__metadata(\\"design:type\\", Object)
 ], NullableBytesFieldUpdateOperationsInput.prototype, \\"set\\", void 0);
 exports.NullableBytesFieldUpdateOperationsInput = NullableBytesFieldUpdateOperationsInput = tslib_1.__decorate([
@@ -6494,23 +6494,23 @@ let NullableDecimalFieldUpdateOperationsInput = class NullableDecimalFieldUpdate
 };
 exports.NullableDecimalFieldUpdateOperationsInput = NullableDecimalFieldUpdateOperationsInput;
 tslib_1.__decorate([
-    TypeGraphQL.Field(_type => DecimalJSScalar, { nullable: true }),
+    TypeGraphQL.Field(_type => scalars_1.DecimalJSScalar, { nullable: true }),
     tslib_1.__metadata(\\"design:type\\", Object)
 ], NullableDecimalFieldUpdateOperationsInput.prototype, \\"set\\", void 0);
 tslib_1.__decorate([
-    TypeGraphQL.Field(_type => DecimalJSScalar, { nullable: true }),
+    TypeGraphQL.Field(_type => scalars_1.DecimalJSScalar, { nullable: true }),
     tslib_1.__metadata(\\"design:type\\", Object)
 ], NullableDecimalFieldUpdateOperationsInput.prototype, \\"increment\\", void 0);
 tslib_1.__decorate([
-    TypeGraphQL.Field(_type => DecimalJSScalar, { nullable: true }),
+    TypeGraphQL.Field(_type => scalars_1.DecimalJSScalar, { nullable: true }),
     tslib_1.__metadata(\\"design:type\\", Object)
 ], NullableDecimalFieldUpdateOperationsInput.prototype, \\"decrement\\", void 0);
 tslib_1.__decorate([
-    TypeGraphQL.Field(_type => DecimalJSScalar, { nullable: true }),
+    TypeGraphQL.Field(_type => scalars_1.DecimalJSScalar, { nullable: true }),
     tslib_1.__metadata(\\"design:type\\", Object)
 ], NullableDecimalFieldUpdateOperationsInput.prototype, \\"multiply\\", void 0);
 tslib_1.__decorate([
-    TypeGraphQL.Field(_type => DecimalJSScalar, { nullable: true }),
+    TypeGraphQL.Field(_type => scalars_1.DecimalJSScalar, { nullable: true }),
     tslib_1.__metadata(\\"design:type\\", Object)
 ], NullableDecimalFieldUpdateOperationsInput.prototype, \\"divide\\", void 0);
 exports.NullableDecimalFieldUpdateOperationsInput = NullableDecimalFieldUpdateOperationsInput = tslib_1.__decorate([
