@@ -12,6 +12,7 @@ import {
 } from "./transform";
 import type { GeneratorOptions } from "../options";
 import type { EmitBlockKind } from "../emit-block";
+import { clearKeywordPositionCache } from "../helpers";
 
 const RESERVED_KEYWORDS: string[] = ["async", "await", "using"];
 
@@ -29,63 +30,59 @@ export class DmmfDocument implements DMMF.Document {
   modelTypeNameCache: Set<string>;
   fieldAliasCache: Map<string, Map<string, string>>;
 
-  // Additional performance caches
   enumsCache: Map<string, DMMF.Enum>;
+  enumsByTypeNameCache: Map<string, DMMF.Enum>;
   modelFieldsCache: Map<string, Map<string, any>>;
   outputTypeFieldsCache: Map<string, Map<string, any>>;
+  // Reverse index: fieldName → OutputType (eliminates O(n) scan in findOutputTypeWithField)
+  fieldToOutputTypeCache: Map<string, DMMF.OutputType>;
 
   constructor(
     { datamodel, schema, mappings }: PrismaDMMF.Document,
     public options: GeneratorOptions,
   ) {
-    // Clear module-level caches to prevent pollution between test runs
     clearOutputTypeNameCache();
+    clearKeywordPositionCache();
 
-    // Initialize caches
     this.outputTypeCache = new Map();
     this.modelsCache = new Map();
     this.modelTypeNameCache = new Set();
     this.fieldAliasCache = new Map();
-
-    // Initialize additional performance caches
     this.enumsCache = new Map();
+    this.enumsByTypeNameCache = new Map();
     this.modelFieldsCache = new Map();
     this.outputTypeFieldsCache = new Map();
+    this.fieldToOutputTypeCache = new Map();
 
     const enumTypes = (schema.enumTypes.prisma ?? []).concat(
       schema.enumTypes.model ?? [],
     );
     const models = datamodel.models.concat(datamodel.types);
 
-    // transform bare model without fields
+    // Pass 1: bare models (no fields) — establishes model names + type names
     this.models = models.map(transformBareModel);
-    // transform enums before model fields to map enum types to enum values string union
+
+    // Pass 2: enums (first pass) — needed before model fields to resolve enum type names
     this.enums = enumTypes.map(transformEnums(this));
 
-    // then transform once again to map the fields (it requires mapped model type names)
-    // this also inits the modelTypeNameCache and fieldAliasCache
+    // Pass 3: models with fields — populates caches for field aliases
     this.models = models.map(model => {
       const transformed = transformModelWithFields(this)(model);
 
       this.modelsCache.set(model.name, transformed);
       this.modelTypeNameCache.add(transformed.typeName);
 
-      // Cache field aliases for this model
       const fieldAliases = new Map<string, string>();
       const modelFields = new Map<string, any>();
 
-      transformed.fields.forEach(field => {
-        // Cache field by name for fast lookup
+      for (const field of transformed.fields) {
         modelFields.set(field.name, field);
-
         if (field.typeFieldAlias) {
           fieldAliases.set(field.name, field.typeFieldAlias);
         }
-      });
+      }
 
-      // Store field cache for this model
       this.modelFieldsCache.set(model.name, modelFields);
-
       if (fieldAliases.size > 0) {
         this.fieldAliasCache.set(model.name, fieldAliases);
       }
@@ -93,10 +90,12 @@ export class DmmfDocument implements DMMF.Document {
       return transformed;
     });
 
-    // transform enums again to map renamed fields
+    // Pass 4: enums again — now with field aliases available for value renaming.
+    // Populates both name and typeName caches.
     this.enums = enumTypes.map(enumType => {
       const transformed = transformEnums(this)(enumType);
       this.enumsCache.set(enumType.name, transformed);
+      this.enumsByTypeNameCache.set(transformed.typeName, transformed);
       return transformed;
     });
 
@@ -111,16 +110,20 @@ export class DmmfDocument implements DMMF.Document {
       enums: this.enums,
     };
 
-    this.schema.outputTypes.forEach(outputType => {
+    // Build output type caches + reverse field index in a single pass
+    for (const outputType of this.schema.outputTypes) {
       this.outputTypeCache.set(outputType.name, outputType);
 
-      // Cache output type fields for fast lookup
       const fieldsCache = new Map<string, any>();
-      outputType.fields.forEach(field => {
+      for (const field of outputType.fields) {
         fieldsCache.set(field.name, field);
-      });
+        // Reverse index: field name → parent output type (for findOutputTypeWithField)
+        if (!this.fieldToOutputTypeCache.has(field.name)) {
+          this.fieldToOutputTypeCache.set(field.name, outputType);
+        }
+      }
       this.outputTypeFieldsCache.set(outputType.name, fieldsCache);
-    });
+    }
 
     this.modelMappings = transformMappings(
       mappings.modelOperations,
@@ -128,56 +131,68 @@ export class DmmfDocument implements DMMF.Document {
       options,
     );
 
-    this.relationModels = this.models
-      .filter(model =>
-        model.fields.some(
-          field => field.relationName !== undefined && !field.isOmitted.output,
-        ),
-      )
-      .filter(model => {
-        const outputType = this.outputTypeCache.get(model.name);
-        return outputType?.fields.some(outputTypeField =>
-          model.fields.some(
-            modelField =>
-              modelField.name === outputTypeField.name &&
-              modelField.relationName !== undefined &&
-              !modelField.isOmitted.output,
-          ),
-        );
-      })
-      .map(generateRelationModel(this));
+    // Optimized relation model computation: single filter pass + Set-based field lookup
+    this.relationModels = [];
+    for (const model of this.models) {
+      const hasRelationField = model.fields.some(
+        field => field.relationName !== undefined && !field.isOmitted.output,
+      );
+      if (!hasRelationField) {
+        continue;
+      }
 
+      const outputType = this.outputTypeCache.get(model.name);
+      if (!outputType) {
+        continue;
+      }
+
+      // Build a Set of output type field names for O(1) lookups
+      const outputFieldNames = this.outputTypeFieldsCache.get(model.name);
+      if (!outputFieldNames) {
+        continue;
+      }
+
+      const hasMatchingRelation = model.fields.some(
+        modelField =>
+          modelField.relationName !== undefined &&
+          !modelField.isOmitted.output &&
+          outputFieldNames.has(modelField.name),
+      );
+
+      if (hasMatchingRelation) {
+        this.relationModels.push(generateRelationModel(this)(model));
+      }
+    }
+
+    // Collect scalar types in a single pass
     const scalarTypes = new Set<string>();
-    this.schema.inputTypes.forEach(inputType =>
-      inputType.fields.forEach(field => {
+    for (const inputType of this.schema.inputTypes) {
+      for (const field of inputType.fields) {
         if (field.selectedInputType.location === "scalar") {
           scalarTypes.add(field.selectedInputType.type);
         }
-      }),
-    );
-    this.schema.outputTypes.forEach(outputType =>
-      outputType.fields.forEach(field => {
+      }
+    }
+    for (const outputType of this.schema.outputTypes) {
+      for (const field of outputType.fields) {
         if (field.outputType.location === "scalar") {
           scalarTypes.add(field.outputType.type);
         }
-        field.args.forEach(arg => {
+        for (const arg of field.args) {
           if (arg.selectedInputType.location === "scalar") {
             scalarTypes.add(arg.selectedInputType.type);
           }
-        });
-      }),
-    );
+        }
+      }
+    }
     this.scalarTypeNames = ["Bytes", "Decimal", ...scalarTypes];
   }
 
   getModelTypeName(modelName: string): string | undefined {
-    // Try cache first for exact match
     const cachedModel = this.modelsCache.get(modelName);
     if (cachedModel) {
       return cachedModel.typeName;
     }
-
-    // Fallback to case-insensitive search
     return this.models.find(
       it => it.name.toLocaleLowerCase() === modelName.toLocaleLowerCase(),
     )?.typeName;
@@ -192,37 +207,40 @@ export class DmmfDocument implements DMMF.Document {
   }
 
   getModelFieldAlias(modelName: string, fieldName: string): string | undefined {
-    const fieldAliases = this.fieldAliasCache.get(modelName);
-    return fieldAliases?.get(fieldName);
+    return this.fieldAliasCache.get(modelName)?.get(fieldName);
   }
 
   shouldGenerateBlock(block: EmitBlockKind): boolean {
     return this.options.blocksToEmit.includes(block);
   }
 
+  getEnumByName(name: string): DMMF.Enum | undefined {
+    return this.enumsCache.get(name);
+  }
+
   getEnumByTypeName(typeName: string): DMMF.Enum | undefined {
-    return this.enumsCache.get(typeName);
+    return this.enumsByTypeNameCache.get(typeName);
+  }
+
+  getEnumByTypeNameOrName(nameOrTypeName: string): DMMF.Enum | undefined {
+    return (
+      this.enumsCache.get(nameOrTypeName) ??
+      this.enumsByTypeNameCache.get(nameOrTypeName)
+    );
   }
 
   getModelField(modelName: string, fieldName: string): any | undefined {
-    const modelFields = this.modelFieldsCache.get(modelName);
-    return modelFields?.get(fieldName);
+    return this.modelFieldsCache.get(modelName)?.get(fieldName);
   }
 
   getOutputTypeField(
     outputTypeName: string,
     fieldName: string,
   ): any | undefined {
-    const outputTypeFields = this.outputTypeFieldsCache.get(outputTypeName);
-    return outputTypeFields?.get(fieldName);
+    return this.outputTypeFieldsCache.get(outputTypeName)?.get(fieldName);
   }
 
   findOutputTypeWithField(fieldName: string): DMMF.OutputType | undefined {
-    for (const outputType of this.outputTypeCache.values()) {
-      if (this.outputTypeFieldsCache.get(outputType.name)?.has(fieldName)) {
-        return outputType;
-      }
-    }
-    return undefined;
+    return this.fieldToOutputTypeCache.get(fieldName);
   }
 }

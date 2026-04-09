@@ -1,23 +1,25 @@
 import path from "node:path";
 import { performance } from "node:perf_hooks";
-import {
-  BaseBlockGenerator,
-  type GenerationMetrics,
-} from "./base-block-generator";
-import generateRelationsResolverClassesFromModel from "../resolvers/relations";
+
 import generateArgsTypeClassFromArgs from "../args-class";
 import {
-  generateResolversBarrelFile,
+  argsFolderName,
+  relationsResolversFolderName,
+  resolversFolderName,
+} from "../config";
+import {
   generateArgsBarrelFile,
   generateArgsIndexFile,
+  generateResolversBarrelFile,
   generateResolversIndexFile,
 } from "../imports";
-import {
-  resolversFolderName,
-  relationsResolversFolderName,
-  argsFolderName,
-} from "../config";
+import generateRelationsResolverClassesFromModel from "../resolvers/relations";
+import { createGeneratedFiles } from "../string-emitter";
 import type { GenerateMappingData } from "../types";
+import {
+  BaseBlockGenerator,
+  type GenerationResult,
+} from "./base-block-generator";
 
 export class RelationResolverBlockGenerator extends BaseBlockGenerator {
   protected shouldGenerate(): boolean {
@@ -31,56 +33,32 @@ export class RelationResolverBlockGenerator extends BaseBlockGenerator {
     return "relationResolvers";
   }
 
-  public generate(): GenerationMetrics {
+  public generate(): GenerationResult {
     if (!this.shouldGenerate()) {
-      return { itemsGenerated: 0 };
+      return { files: [], itemsGenerated: 0 };
     }
 
     const startTime = performance.now();
-
-    // Generate relation resolvers
-    this.dmmfDocument.relationModels.forEach(relationModel => {
+    const files = this.dmmfDocument.relationModels.flatMap(relationModel =>
       generateRelationsResolverClassesFromModel(
-        this.project,
         this.baseDirPath,
         this.dmmfDocument,
         relationModel,
         this.options,
-      );
-    });
+      ),
+    );
 
-    this.generateBarrelFiles();
-    this.generateArgs();
+    files.push(...this.generateBarrelFiles());
+    files.push(...this.generateArgs());
 
     return {
+      files,
       itemsGenerated: this.dmmfDocument.relationModels.length,
       timeElapsed: performance.now() - startTime,
     };
   }
 
-  private generateBarrelFiles(): void {
-    const relationResolversBarrelExportSourceFile =
-      this.project.createSourceFile(
-        path.resolve(
-          this.baseDirPath,
-          resolversFolderName,
-          relationsResolversFolderName,
-          "resolvers.index.ts",
-        ),
-        undefined,
-        { overwrite: true },
-      );
-    generateResolversBarrelFile(
-      relationResolversBarrelExportSourceFile,
-      this.dmmfDocument.relationModels.map<GenerateMappingData>(
-        relationModel => ({
-          resolverName: relationModel.resolverName,
-          modelName: relationModel.model.typeName,
-        }),
-      ),
-    );
-
-    // Generate remaining relation resolver index files
+  private generateBarrelFiles() {
     const relationModelsWithArgs = this.dmmfDocument.relationModels.filter(
       relationModelData =>
         relationModelData.relationFields.some(
@@ -88,44 +66,56 @@ export class RelationResolverBlockGenerator extends BaseBlockGenerator {
         ),
     );
 
-    if (relationModelsWithArgs.length > 0) {
-      const relationResolversArgsIndexSourceFile =
-        this.project.createSourceFile(
-          path.resolve(
-            this.baseDirPath,
-            resolversFolderName,
-            relationsResolversFolderName,
-            "args.index.ts",
-          ),
-          undefined,
-          { overwrite: true },
-        );
-      generateArgsIndexFile(
-        relationResolversArgsIndexSourceFile,
-        relationModelsWithArgs.map(
-          relationModelData => relationModelData.model.typeName,
+    return [
+      ...createGeneratedFiles(
+        path.resolve(
+          this.baseDirPath,
+          resolversFolderName,
+          relationsResolversFolderName,
+          "resolvers.index",
         ),
-      );
-    }
-
-    const relationResolversIndexSourceFile = this.project.createSourceFile(
-      path.resolve(
-        this.baseDirPath,
-        resolversFolderName,
-        relationsResolversFolderName,
-        "index.ts",
+        generateResolversBarrelFile(
+          this.dmmfDocument.relationModels.map<GenerateMappingData>(
+            relationModel => ({
+              resolverName: relationModel.resolverName,
+              modelName: relationModel.model.typeName,
+            }),
+          ),
+        ),
       ),
-      undefined,
-      { overwrite: true },
-    );
-    generateResolversIndexFile(
-      relationResolversIndexSourceFile,
-      "relations",
-      relationModelsWithArgs.length > 0,
-    );
+      ...(relationModelsWithArgs.length > 0
+        ? createGeneratedFiles(
+            path.resolve(
+              this.baseDirPath,
+              resolversFolderName,
+              relationsResolversFolderName,
+              "args.index",
+            ),
+            generateArgsIndexFile(
+              relationModelsWithArgs.map(
+                relationModelData => relationModelData.model.typeName,
+              ),
+            ),
+          )
+        : []),
+      ...createGeneratedFiles(
+        path.resolve(
+          this.baseDirPath,
+          resolversFolderName,
+          relationsResolversFolderName,
+          "index",
+        ),
+        generateResolversIndexFile(
+          "relations",
+          relationModelsWithArgs.length > 0,
+        ),
+      ),
+    ];
   }
 
-  private generateArgs(): void {
+  private generateArgs() {
+    const files = [] as ReturnType<typeof createGeneratedFiles>;
+
     this.dmmfDocument.relationModels.forEach(relationModelData => {
       const resolverDirPath = path.resolve(
         this.baseDirPath,
@@ -144,12 +134,14 @@ export class RelationResolverBlockGenerator extends BaseBlockGenerator {
             `Expected argsTypeName to be defined for relation field after filtering, but got ${field.argsTypeName}`,
           );
         }
-        generateArgsTypeClassFromArgs(
-          this.project,
-          resolverDirPath,
-          field.outputTypeField.args,
-          field.argsTypeName,
-          this.dmmfDocument,
+
+        files.push(
+          ...generateArgsTypeClassFromArgs(
+            resolverDirPath,
+            field.outputTypeField.args,
+            field.argsTypeName,
+            this.dmmfDocument,
+          ),
         );
       });
 
@@ -164,14 +156,16 @@ export class RelationResolverBlockGenerator extends BaseBlockGenerator {
           return it.argsTypeName;
         });
 
-      if (argTypeNames.length) {
-        const barrelExportSourceFile = this.project.createSourceFile(
-          path.resolve(resolverDirPath, argsFolderName, "index.ts"),
-          undefined,
-          { overwrite: true },
+      if (argTypeNames.length > 0) {
+        files.push(
+          ...createGeneratedFiles(
+            path.resolve(resolverDirPath, argsFolderName, "index"),
+            generateArgsBarrelFile(argTypeNames),
+          ),
         );
-        generateArgsBarrelFile(barrelExportSourceFile, argTypeNames);
       }
     });
+
+    return files;
   }
 }

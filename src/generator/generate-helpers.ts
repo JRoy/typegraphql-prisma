@@ -1,77 +1,77 @@
-import { SourceFile } from "ts-morph";
-import {
-  generateGraphQLFieldsImport,
-  generateGraphQLInfoImport,
-} from "./imports";
-import { GeneratorOptions } from "./options";
+import type { GeneratorOptions } from "./options";
+import type { GeneratedModule } from "./string-emitter";
 
 export function generateHelpersFile(
-  sourceFile: SourceFile,
   options: GeneratorOptions,
-) {
-  generateGraphQLInfoImport(sourceFile);
-  generateGraphQLFieldsImport(sourceFile);
+): GeneratedModule {
+  const jsLines = [
+    '"use strict";',
+    'Object.defineProperty(exports, "__esModule", { value: true });',
+    "exports.transformInfoIntoPrismaArgs = transformInfoIntoPrismaArgs;",
+    "exports.getPrismaFromContext = getPrismaFromContext;",
+    "exports.transformCountFieldIntoSelectRelationsCount = transformCountFieldIntoSelectRelationsCount;",
+    'const tslib_1 = require("tslib");',
+    'const graphql_fields_1 = tslib_1.__importDefault(require("graphql-fields"));',
+    "function transformInfoIntoPrismaArgs(info) {",
+    "    const fields = (0, graphql_fields_1.default)(info, {}, {",
+    '        excludedFields: ["__typename"],',
+    "        processArguments: true,",
+    "    });",
+    "    return transformFields(fields);",
+    "}",
+    "function transformFields(fields) {",
+    "    return Object.fromEntries(",
+    "        Object.entries(fields).map(([key, value]) => {",
+    "            if (Object.keys(value).length === 0) {",
+    "                return [key, true];",
+    "            }",
+    '            if ("__arguments" in value) {',
+    "                return [key, Object.fromEntries(",
+    "                    value.__arguments.map(argument => {",
+    "                        const [[argumentKey, { value: argumentValue }]] = Object.entries(argument);",
+    "                        return [argumentKey, argumentValue];",
+    "                    }),",
+    "                )];",
+    "            }",
+    "            return [key, transformFields(value)];",
+    "        }),",
+    "    );",
+    "}",
+    "function getPrismaFromContext(context) {",
+    `    const prismaClient = context[${JSON.stringify(options.contextPrismaKey)}];`,
+    "    if (!prismaClient) {",
+    `        throw new Error(${JSON.stringify(`Unable to find Prisma Client in GraphQL context. Please provide it under the \`context[\\"${options.contextPrismaKey}\\"]\` key.`)});`,
+    "    }",
+    "    return prismaClient;",
+    "}",
+    "function transformCountFieldIntoSelectRelationsCount(_count) {",
+    "    return {",
+    "        include: {",
+    "            _count: {",
+    "                select: {",
+    "                    ...Object.fromEntries(Object.entries(_count).filter(([_, value]) => value != null)),",
+    "                },",
+    "            },",
+    "        },",
+    "    };",
+    "}",
+  ];
 
-  sourceFile.addStatements(/* ts */ `
-    export function transformInfoIntoPrismaArgs(info: GraphQLResolveInfo): Record<string, any> {
-      const fields: Record<string, any> = graphqlFields(
-        // suppress GraphQLResolveInfo types issue
-        info as any,
-        {},
-        {
-          excludedFields: ['__typename'],
-          processArguments: true,
-        }
-      );
-      return transformFields(fields);
-    }
-  `);
+  const dtsLines = [
+    'import type { GraphQLResolveInfo } from "graphql";',
+    "export declare function transformInfoIntoPrismaArgs(info: GraphQLResolveInfo): Record<string, any>;",
+    "export declare function getPrismaFromContext(context: any): any;",
+    "export declare function transformCountFieldIntoSelectRelationsCount(_count: object): {",
+    "    include: {",
+    "        _count: {",
+    "            select: Record<string, unknown>;",
+    "        };",
+    "    };",
+    "};",
+  ];
 
-  sourceFile.addStatements(/* ts */ `
-    function transformFields(fields: Record<string, any>): Record<string, any> {
-      return Object.fromEntries(
-        Object.entries(fields)
-          .map<[string, any]>(([key, value]) => {
-            if (Object.keys(value).length === 0) {
-              return [key, true];
-            }
-            if ("__arguments" in value) {
-              return [key, Object.fromEntries(
-                value.__arguments.map((argument: object) => {
-                  const [[key, { value }]] = Object.entries(argument);
-                  return [key, value];
-                })
-              )];
-            }
-            return [key, transformFields(value)];
-          }),
-      );
-    }
-  `);
-
-  sourceFile.addStatements(/* ts */ `
-    export function getPrismaFromContext(context: any) {
-      const prismaClient = context["${options.contextPrismaKey}"];
-      if (!prismaClient) {
-        throw new Error("Unable to find Prisma Client in GraphQL context. Please provide it under the \`context[\\"${options.contextPrismaKey}\\"]\` key.");
-      }
-      return prismaClient;
-    }
-  `);
-
-  sourceFile.addStatements(/* ts */ `
-    export function transformCountFieldIntoSelectRelationsCount(_count: object) {
-      return {
-        include: {
-          _count: {
-            select: {
-              ...Object.fromEntries(
-                Object.entries(_count).filter(([_, v]) => v != null)
-              ),
-            }
-          },
-        },
-      }
-    }
-  `);
+  return {
+    js: `${jsLines.join("\n")}\n`,
+    dts: `${dtsLines.join("\n")}\n`,
+  };
 }

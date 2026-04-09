@@ -1,12 +1,14 @@
 import path from "node:path";
 import { performance } from "node:perf_hooks";
+
+import { modelsFolderName } from "../config";
+import { generateModelsBarrelFile } from "../imports";
+import generateObjectTypeClassFromModel from "../model-type-class";
+import { createGeneratedFiles } from "../string-emitter";
 import {
   BaseBlockGenerator,
-  type GenerationMetrics,
+  type GenerationResult,
 } from "./base-block-generator";
-import generateObjectTypeClassFromModel from "../model-type-class";
-import { generateModelsBarrelFile } from "../imports";
-import { modelsFolderName } from "../config";
 
 export class ModelBlockGenerator extends BaseBlockGenerator {
   protected shouldGenerate(): boolean {
@@ -17,14 +19,14 @@ export class ModelBlockGenerator extends BaseBlockGenerator {
     return "models";
   }
 
-  public generate(): GenerationMetrics {
+  public generate(): GenerationResult {
     if (!this.shouldGenerate()) {
-      return { itemsGenerated: 0 };
+      return { files: [], itemsGenerated: 0 };
     }
 
     const startTime = performance.now();
 
-    this.dmmfDocument.datamodel.models.forEach(model => {
+    const files = this.dmmfDocument.datamodel.models.flatMap(model => {
       const modelOutputType = this.dmmfDocument.outputTypeCache.get(model.name);
 
       if (!modelOutputType) {
@@ -33,8 +35,7 @@ export class ModelBlockGenerator extends BaseBlockGenerator {
         );
       }
 
-      generateObjectTypeClassFromModel(
-        this.project,
+      return generateObjectTypeClassFromModel(
         this.baseDirPath,
         model,
         modelOutputType,
@@ -42,17 +43,17 @@ export class ModelBlockGenerator extends BaseBlockGenerator {
       );
     });
 
-    const modelsBarrelExportSourceFile = this.project.createSourceFile(
-      path.resolve(this.baseDirPath, modelsFolderName, "index.ts"),
-      undefined,
-      { overwrite: true },
-    );
-    generateModelsBarrelFile(
-      modelsBarrelExportSourceFile,
-      this.dmmfDocument.datamodel.models.map(it => it.typeName),
+    files.push(
+      ...createGeneratedFiles(
+        path.resolve(this.baseDirPath, modelsFolderName, "index"),
+        generateModelsBarrelFile(
+          this.dmmfDocument.datamodel.models.map(it => it.typeName),
+        ),
+      ),
     );
 
     return {
+      files,
       itemsGenerated: this.dmmfDocument.datamodel.models.length,
       timeElapsed: performance.now() - startTime,
     };

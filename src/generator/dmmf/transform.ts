@@ -439,36 +439,44 @@ function transformMapping(
   };
 }
 
+// Pre-compiled regexes for useSimpleInputs filtering (avoid re-creating per call)
+const CREATE_INPUT_RE = /.+Create.+Input/;
+const UPDATE_INPUT_RE = /.+Update.+Input/;
+
 function selectInputTypeFromTypes(dmmfDocument: DmmfDocument) {
+  const { useUncheckedScalarInputs, useSimpleInputs } = dmmfDocument.options;
+
   return (
     inputTypes: readonly PrismaDMMF.InputTypeRef[],
   ): DMMF.SchemaArgInputType => {
-    const { useUncheckedScalarInputs, useSimpleInputs } = dmmfDocument.options;
-    let possibleInputTypes: readonly PrismaDMMF.InputTypeRef[];
-    possibleInputTypes = inputTypes.filter(
-      it =>
-        it.location === "inputObjectTypes" &&
-        // skip inputs with `set` and other fields when simple/flat inputs are enabled
-        (!useSimpleInputs ||
+    // Single-pass classification: bucket input types by location in one loop
+    let inputObjectTypes: PrismaDMMF.InputTypeRef[] | undefined;
+    let scalarTypes: PrismaDMMF.InputTypeRef[] | undefined;
+    let enumTypeRefs: PrismaDMMF.InputTypeRef[] | undefined;
+
+    for (const it of inputTypes) {
+      if (it.location === "inputObjectTypes") {
+        if (
+          !useSimpleInputs ||
           !(
-            it.type.includes("OperationsInput") || // postgres specific
-            // mongo specific
+            it.type.includes("OperationsInput") ||
             it.type.includes("CreateEnvelopeInput") ||
-            /.+Create.+Input/.test(it.type) ||
-            /.+Update.+Input/.test(it.type)
-          )),
-    );
-    if (possibleInputTypes.length === 0) {
-      possibleInputTypes = inputTypes.filter(
-        it => it.location === "scalar" && it.type !== "Null",
-      );
+            CREATE_INPUT_RE.test(it.type) ||
+            UPDATE_INPUT_RE.test(it.type)
+          )
+        ) {
+          (inputObjectTypes ??= []).push(it);
+        }
+      } else if (it.location === "scalar" && it.type !== "Null") {
+        (scalarTypes ??= []).push(it);
+      } else if (it.location === "enumTypes") {
+        (enumTypeRefs ??= []).push(it);
+      }
     }
-    if (possibleInputTypes.length === 0) {
-      possibleInputTypes = inputTypes.filter(it => it.location === "enumTypes");
-    }
-    if (possibleInputTypes.length === 0) {
-      possibleInputTypes = inputTypes;
-    }
+
+    const possibleInputTypes =
+      inputObjectTypes ?? scalarTypes ?? enumTypeRefs ?? inputTypes;
+
     const selectedInputType =
       possibleInputTypes.find(it => it.isList) ||
       (useUncheckedScalarInputs &&
@@ -477,7 +485,7 @@ function selectInputTypeFromTypes(dmmfDocument: DmmfDocument) {
 
     let inputType = selectedInputType.type;
     if (selectedInputType.location === "enumTypes") {
-      const enumDef = dmmfDocument.enums.find(it => it.name === inputType)!;
+      const enumDef = dmmfDocument.getEnumByTypeNameOrName(inputType)!;
       inputType = enumDef.typeName;
     } else if (selectedInputType.location === "inputObjectTypes") {
       inputType = getInputTypeName(inputType, dmmfDocument);
@@ -542,14 +550,16 @@ function mapDefaultActionName(actionName: DMMF.ModelAction, typeName: string) {
     : `${actionName}${typeName}`;
 }
 
+const queryActionsSet = new Set<string>(supportedQueryActions);
+const mutationActionsSet = new Set<string>(supportedMutationActions);
+
 function getOperationKindName(actionName: string) {
-  if ((supportedQueryActions as string[]).includes(actionName)) {
+  if (queryActionsSet.has(actionName)) {
     return "Query";
   }
-  if ((supportedMutationActions as string[]).includes(actionName)) {
+  if (mutationActionsSet.has(actionName)) {
     return "Mutation";
   }
-  // throw new Error(`Unsupported operation kind: '${actionName}'`);
 }
 
 function getPrismaMethodName(actionKind: DMMF.ModelAction) {
@@ -612,12 +622,15 @@ export function generateRelationModel(dmmfDocument: DmmfDocument) {
   return (model: DMMF.Model): DMMF.RelationModel => {
     const outputType = dmmfDocument.outputTypeCache.get(model.name)!;
     const resolverName = `${model.typeName}RelationsResolver`;
+    const outputFieldNames = dmmfDocument.outputTypeFieldsCache.get(
+      outputType.name,
+    );
     const relationFields = model.fields
       .filter(
         field =>
           field.relationName &&
           !field.isOmitted.output &&
-          outputType.fields.some(it => it.name === field.name),
+          (outputFieldNames?.has(field.name) ?? false),
       )
       .map<DMMF.RelationField>(field => {
         const outputTypeField = dmmfDocument.getOutputTypeField(

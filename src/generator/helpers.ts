@@ -35,9 +35,7 @@ export function getFieldTSType(
       TSType = getInputTypeName(typeInfo.type, dmmfDocument);
     }
   } else if (typeInfo.location === "enumTypes") {
-    const enumDef =
-      dmmfDocument.getEnumByTypeName(typeInfo.type) ||
-      dmmfDocument.enums.find(it => it.typeName == typeInfo.type);
+    const enumDef = dmmfDocument.getEnumByTypeNameOrName(typeInfo.type);
     if (!enumDef) {
       throw new Error(
         `Enum type '${typeInfo.type}' not found in DMMF document`,
@@ -169,34 +167,52 @@ export function pascalCase(str: string): string {
   return str[0].toUpperCase() + str.slice(1);
 }
 
-function getInputKeywordPhrasePosition(inputTypeName: string) {
-  const inputParseResult = [
-    "Unchecked",
-    "Create",
-    "CountOrderBy",
-    "AvgOrderBy",
-    "MaxOrderBy",
-    "MinOrderBy",
-    "SumOrderBy",
-    "OrderBy",
-    "Update",
-    "Upsert",
-    "ScalarWhere",
-    "Where",
-    "ListRelationFilter",
-    "ScalarRelationFilter",
-    "RelationFilter",
-    "Filter",
-  ]
-    .map(inputKeyword => inputTypeName.search(inputKeyword))
-    .filter(position => position >= 0);
+// Keywords ordered by priority — first match wins (must match original behavior).
+// More specific keywords come before less specific ones (e.g. ScalarWhere before Where).
+const INPUT_KEYWORDS = [
+  "Unchecked",
+  "Create",
+  "CountOrderBy",
+  "AvgOrderBy",
+  "MaxOrderBy",
+  "MinOrderBy",
+  "SumOrderBy",
+  "OrderBy",
+  "Update",
+  "Upsert",
+  "ScalarWhere",
+  "Where",
+  "ListRelationFilter",
+  "ScalarRelationFilter",
+  "RelationFilter",
+  "Filter",
+] as const;
 
-  if (inputParseResult.length === 0) {
-    return;
+// Cache results — the same input type names are looked up repeatedly
+// (15,899+ calls with many repeating model prefixes)
+const keywordPositionCache = new Map<string, number | undefined>();
+
+export function clearKeywordPositionCache(): void {
+  keywordPositionCache.clear();
+}
+
+function getInputKeywordPhrasePosition(
+  inputTypeName: string,
+): number | undefined {
+  const cached = keywordPositionCache.get(inputTypeName);
+  if (cached !== undefined) {
+    return cached;
   }
-
-  const keywordPhrasePosition = inputParseResult[0];
-  return keywordPhrasePosition;
+  // Short-circuit: return position of the first keyword found (by priority order)
+  for (const keyword of INPUT_KEYWORDS) {
+    const pos = inputTypeName.indexOf(keyword);
+    if (pos >= 0) {
+      keywordPositionCache.set(inputTypeName, pos);
+      return pos;
+    }
+  }
+  keywordPositionCache.set(inputTypeName, undefined);
+  return undefined;
 }
 
 export function getModelNameFromInputType(inputTypeName: string) {

@@ -1,12 +1,14 @@
 import path from "node:path";
 import { performance } from "node:perf_hooks";
+
+import { inputsFolderName, resolversFolderName } from "../config";
+import { generateInputsBarrelFile } from "../imports";
+import { createGeneratedFiles } from "../string-emitter";
+import { generateInputTypeClassFromType } from "../type-class";
 import {
   BaseBlockGenerator,
-  type GenerationMetrics,
+  type GenerationResult,
 } from "./base-block-generator";
-import { generateInputTypeClassFromType } from "../type-class";
-import { generateInputsBarrelFile } from "../imports";
-import { resolversFolderName, inputsFolderName } from "../config";
 
 export class InputBlockGenerator extends BaseBlockGenerator {
   protected shouldGenerate(): boolean {
@@ -17,9 +19,9 @@ export class InputBlockGenerator extends BaseBlockGenerator {
     return "inputs";
   }
 
-  public generate(): GenerationMetrics {
+  public generate(): GenerationResult {
     if (!this.shouldGenerate()) {
-      return { itemsGenerated: 0 };
+      return { files: [], itemsGenerated: 0 };
     }
 
     const startTime = performance.now();
@@ -28,30 +30,29 @@ export class InputBlockGenerator extends BaseBlockGenerator {
       resolversFolderName,
     );
     const allInputTypes: string[] = [];
-
-    this.dmmfDocument.schema.inputTypes.forEach(type => {
+    const files = this.dmmfDocument.schema.inputTypes.flatMap(type => {
       allInputTypes.push(type.typeName);
-      generateInputTypeClassFromType(
-        this.project,
+      return generateInputTypeClassFromType(
         resolversDirPath,
         type,
         this.options,
       );
     });
 
-    const inputsBarrelExportSourceFile = this.project.createSourceFile(
-      path.resolve(
-        this.baseDirPath,
-        resolversFolderName,
-        inputsFolderName,
-        "index.ts",
+    files.push(
+      ...createGeneratedFiles(
+        path.resolve(
+          this.baseDirPath,
+          resolversFolderName,
+          inputsFolderName,
+          "index",
+        ),
+        generateInputsBarrelFile(allInputTypes),
       ),
-      undefined,
-      { overwrite: true },
     );
-    generateInputsBarrelFile(inputsBarrelExportSourceFile, allInputTypes);
 
     return {
+      files,
       itemsGenerated: this.dmmfDocument.schema.inputTypes.length,
       timeElapsed: performance.now() - startTime,
     };

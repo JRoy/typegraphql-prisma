@@ -1,12 +1,14 @@
 import path from "node:path";
 import { performance } from "node:perf_hooks";
-import {
-  BaseBlockGenerator,
-  type GenerationMetrics,
-} from "./base-block-generator";
+
+import { enumsFolderName } from "../config";
 import generateEnumFromDef from "../enum";
 import { generateEnumsBarrelFile } from "../imports";
-import { enumsFolderName } from "../config";
+import { createGeneratedFiles } from "../string-emitter";
+import {
+  BaseBlockGenerator,
+  type GenerationResult,
+} from "./base-block-generator";
 
 export class EnumBlockGenerator extends BaseBlockGenerator {
   protected shouldGenerate(): boolean {
@@ -17,9 +19,9 @@ export class EnumBlockGenerator extends BaseBlockGenerator {
     return "enums";
   }
 
-  public generate(): GenerationMetrics {
+  public generate(): GenerationResult {
     if (!this.shouldGenerate()) {
-      return { itemsGenerated: 0 };
+      return { files: [], itemsGenerated: 0 };
     }
 
     const startTime = performance.now();
@@ -33,9 +35,9 @@ export class EnumBlockGenerator extends BaseBlockGenerator {
       ),
     );
 
-    allEnums.forEach(enumDef => {
-      generateEnumFromDef(this.project, this.baseDirPath, enumDef);
-    });
+    const files = allEnums.flatMap(enumDef =>
+      generateEnumFromDef(this.baseDirPath, enumDef),
+    );
 
     const emittedEnumNames = Array.from(
       new Set(
@@ -45,14 +47,15 @@ export class EnumBlockGenerator extends BaseBlockGenerator {
       ),
     );
 
-    const enumsBarrelExportSourceFile = this.project.createSourceFile(
-      path.resolve(this.baseDirPath, enumsFolderName, "index.ts"),
-      undefined,
-      { overwrite: true },
+    files.push(
+      ...createGeneratedFiles(
+        path.resolve(this.baseDirPath, enumsFolderName, "index"),
+        generateEnumsBarrelFile(emittedEnumNames),
+      ),
     );
-    generateEnumsBarrelFile(enumsBarrelExportSourceFile, emittedEnumNames);
 
     return {
+      files,
       itemsGenerated: allEnums.length,
       timeElapsed: performance.now() - startTime,
     };

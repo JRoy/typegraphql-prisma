@@ -5,41 +5,27 @@ import { performance } from "node:perf_hooks";
 import { exec } from "node:child_process";
 
 import type { DMMF as PrismaDMMF } from "@prisma/generator-helper";
-import {
-  Project,
-  ScriptTarget,
-  ModuleKind,
-  type CompilerOptions,
-} from "ts-morph";
 
 import { noop, toUnixPath } from "./helpers";
-import { generateIndexFile } from "./imports";
+import { BlockGeneratorFactory } from "./block-generation/block-generator-factory";
 import type {
-  InternalGeneratorOptions,
   ExternalGeneratorOptions,
   GeneratorOptions as BaseGeneratorOptions,
+  InternalGeneratorOptions,
 } from "./options";
-
 import { DmmfDocument } from "./dmmf/dmmf-document";
-import { BlockGeneratorFactory } from "./block-generation/block-generator-factory";
+import { getBlocksToEmit } from "./emit-block";
+import { writeGeneratedFiles } from "./file-writer";
+import { generateEnhanceMap } from "./generate-enhance";
+import { generateHelpersFile } from "./generate-helpers";
+import { generateCustomScalars } from "./generate-scalars";
+import { generateIndexFile } from "./imports";
+import type { MetricsListener } from "./metrics";
+import { createGeneratedFiles } from "./string-emitter";
 
 import { ensureInstalledCorrectPrismaPackage } from "../utils/prisma-version";
-import { generateEnhanceMap } from "./generate-enhance";
-import { generateCustomScalars } from "./generate-scalars";
-import { generateHelpersFile } from "./generate-helpers";
-import { getBlocksToEmit } from "./emit-block";
-import type { MetricsListener } from "./metrics";
 
 const execa = promisify(exec);
-
-const baseCompilerOptions: CompilerOptions = {
-  target: ScriptTarget.ES2021,
-  module: ModuleKind.CommonJS,
-  emitDecoratorMetadata: true,
-  experimentalDecorators: true,
-  esModuleInterop: true,
-  skipLibCheck: true,
-};
 
 class CodeGenerator {
   constructor(private metrics?: MetricsListener) {}
@@ -48,15 +34,11 @@ class CodeGenerator {
     formatOption: boolean | "prettier" | "tsc" | "biome" | undefined,
   ): "prettier" | "tsc" | "biome" | undefined {
     if (formatOption === false) {
-      return undefined; // No formatting, saved a lot of time
+      return undefined;
     }
-    if (formatOption === undefined) {
-      return "tsc"; // Default to tsc when not specified
+    if (formatOption === undefined || formatOption === true) {
+      return "tsc";
     }
-    if (formatOption === true) {
-      return "tsc"; // true means use tsc
-    }
-    // formatOption is either 'prettier', 'tsc', or 'biome' string
     return formatOption;
   }
 
@@ -85,22 +67,6 @@ class CodeGenerator {
     });
 
     const baseDirPath = options.outputDirPath;
-    const emitTranspiledCode =
-      options.emitTranspiledCode ??
-      options.outputDirPath.includes("node_modules");
-
-    const project = new Project({
-      compilerOptions: Object.assign(
-        {},
-        baseCompilerOptions,
-        emitTranspiledCode
-          ? {
-              declaration: true,
-              importHelpers: true,
-            }
-          : {},
-      ),
-    });
 
     log("Transforming dmmfDocument...");
     const dmmfStart = performance.now();
@@ -110,113 +76,79 @@ class CodeGenerator {
       performance.now() - dmmfStart,
     );
 
-    // Initialize block generator factory
     const blockGeneratorFactory = new BlockGeneratorFactory(
-      project,
       dmmfDocument,
       options,
       baseDirPath,
     );
 
-    // Generate all blocks using the factory
-    const outputTypesToGenerate = await blockGeneratorFactory.generateAllBlocks(
-      log,
-      (blockName, metrics) => {
-        if (this.metrics && metrics.timeElapsed) {
-          this.metrics.emitMetric(
-            `${blockName}-generation`,
-            metrics.timeElapsed,
-            metrics.itemsGenerated,
-          );
-        }
-      },
-    );
+    const { files, outputTypesToGenerate } =
+      await blockGeneratorFactory.generateAllBlocks(
+        log,
+        (blockName, metrics) => {
+          if (this.metrics && metrics.timeElapsed) {
+            this.metrics.emitMetric(
+              `${blockName}-generation`,
+              metrics.timeElapsed,
+              metrics.itemsGenerated,
+            );
+          }
+        },
+      );
 
-    // Generate auxiliary files
     log("Generate auxiliary files");
     const auxiliaryStart = performance.now();
-    const enhanceSourceFile = project.createSourceFile(
-      `${baseDirPath}/enhance.ts`,
-      undefined,
-      { overwrite: true },
-    );
-    generateEnhanceMap(
-      enhanceSourceFile,
-      dmmfDocument,
-      dmmfDocument.modelMappings,
-      dmmfDocument.relationModels,
-      dmmfDocument.datamodel.models,
-      dmmfDocument.schema.inputTypes,
-      outputTypesToGenerate,
-    );
-
-    const scalarsSourceFile = project.createSourceFile(
-      `${baseDirPath}/scalars.ts`,
-      undefined,
-      { overwrite: true },
-    );
-    generateCustomScalars(scalarsSourceFile, dmmfDocument);
-
-    const helpersSourceFile = project.createSourceFile(
-      `${baseDirPath}/helpers.ts`,
-      undefined,
-      { overwrite: true },
-    );
-    generateHelpersFile(helpersSourceFile, dmmfDocument.options);
-
-    const indexSourceFile = project.createSourceFile(
-      `${baseDirPath}/index.ts`,
-      undefined,
-      { overwrite: true },
-    );
-    generateIndexFile(
-      indexSourceFile,
-      dmmfDocument.relationModels.length > 0,
-      dmmfDocument.options.blocksToEmit,
+    files.push(
+      ...createGeneratedFiles(
+        path.resolve(baseDirPath, "enhance"),
+        generateEnhanceMap(
+          dmmfDocument,
+          dmmfDocument.modelMappings,
+          dmmfDocument.relationModels,
+          dmmfDocument.datamodel.models,
+          dmmfDocument.schema.inputTypes,
+          outputTypesToGenerate,
+        ),
+      ),
+      ...createGeneratedFiles(
+        path.resolve(baseDirPath, "scalars"),
+        generateCustomScalars(dmmfDocument),
+      ),
+      ...createGeneratedFiles(
+        path.resolve(baseDirPath, "helpers"),
+        generateHelpersFile(dmmfDocument.options),
+      ),
+      ...createGeneratedFiles(
+        path.resolve(baseDirPath, "index"),
+        generateIndexFile(
+          dmmfDocument.relationModels.length > 0,
+          dmmfDocument.options.blocksToEmit,
+        ),
+      ),
     );
     this.metrics?.emitMetric(
       "auxiliary-files",
       performance.now() - auxiliaryStart,
     );
 
-    log("Emitting final code");
+    log("Writing generated files");
     const emitStart = performance.now();
-    if (emitTranspiledCode) {
-      log("Transpiling generated code");
-      await project.emit();
-    } else {
-      log("Saving generated code");
-      const saveStart = performance.now();
-      await project.save();
-      this.metrics?.emitMetric("save-files", performance.now() - saveStart);
-    }
+    await writeGeneratedFiles(files);
 
-    // Format generated code if enabled
     if (options.formatGeneratedCode) {
       try {
         log(`Formatting generated code with ${options.formatGeneratedCode}`);
         const formatStart = performance.now();
 
-        if (options.formatGeneratedCode === "tsc") {
-          // Use tsc for formatting
-          const tscStart = performance.now();
-          const tscArgs = ["--noEmit", "--project", baseDirPath];
-          await execa(`tsc ${tscArgs.join(" ")}`, { cwd: baseDirPath });
-          this.metrics?.emitMetric(
-            "tsc-formatting",
-            performance.now() - tscStart,
-          );
-        } else if (options.formatGeneratedCode === "prettier") {
-          // Use prettier for formatting
+        if (options.formatGeneratedCode === "prettier") {
           const prettierStart = performance.now();
           const prettierArgs = [
             "--write",
-            `${baseDirPath}/**/*.ts`,
+            `${baseDirPath}/**/*.{js,d.ts}`,
             "--ignore-path",
             path.resolve(baseDirPath, ".prettierignore"),
           ];
 
-          // Check if prettier config exists, if not use default config
           try {
             await fs.promises.access(path.resolve(baseDirPath, ".prettierrc"));
           } catch {
@@ -240,23 +172,20 @@ class CodeGenerator {
             "prettier-formatting",
             performance.now() - prettierStart,
           );
-        } else {
-          // Use biome for formatting
+        } else if (options.formatGeneratedCode === "biome") {
           const biomeStart = performance.now();
-          const biomeArgs = ["format", "--write", `${baseDirPath}/**/*.ts`];
-
-          // Check if biome config exists, if not use default behavior
-          try {
-            await fs.promises.access(path.resolve(baseDirPath, "biome.json"));
-          } catch {
-            // Biome will use its default configuration if no config file is found
-          }
-
-          await execa(`npx biome ${biomeArgs.join(" ")}`, { cwd: baseDirPath });
+          await execa(
+            `npx biome format --write ${baseDirPath}/**/*.{js,d.ts}`,
+            {
+              cwd: baseDirPath,
+            },
+          );
           this.metrics?.emitMetric(
             "biome-formatting",
             performance.now() - biomeStart,
           );
+        } else {
+          log("Skipping tsc formatting for direct js/d.ts emission");
         }
 
         this.metrics?.emitMetric(
@@ -264,7 +193,6 @@ class CodeGenerator {
           performance.now() - formatStart,
         );
       } catch (error) {
-        // Don't fail the entire generation for formatting errors
         log(
           `Warning: Code formatting failed: ${error instanceof Error ? error.message : String(error)}`,
         );

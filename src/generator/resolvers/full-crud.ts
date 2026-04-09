@@ -1,56 +1,32 @@
-import type {
-  OptionalKind,
-  MethodDeclarationStructure,
-  Project,
-  SourceFile,
-} from "ts-morph";
 import path from "node:path";
 
-import { resolversFolderName, crudResolversFolderName } from "../config";
-import {
-  generateTypeGraphQLImport,
-  generateArgsImports,
-  generateModelsImports,
-  generateOutputsImports,
-  generateGraphQLInfoImport,
-  generateHelpersFileImport,
-} from "../imports";
-import { generateCrudResolverClassMethodDeclaration } from "./helpers";
+import { crudResolversFolderName, resolversFolderName } from "../config";
 import type { DmmfDocument } from "../dmmf/dmmf-document";
 import type { DMMF } from "../dmmf/types";
 import type { GeneratorOptions } from "../options";
+import {
+  buildCrudResolverMethod,
+  createGeneratedFiles,
+  createImportModuleSpecifier,
+  renderResolverModule,
+  type GeneratedFile,
+  type DtsImport,
+} from "../string-emitter";
 
 export default function generateCrudResolverClassFromMapping(
-  project: Project,
   baseDirPath: string,
   mapping: DMMF.ModelMapping,
   model: DMMF.Model,
   dmmfDocument: DmmfDocument,
   generatorOptions: GeneratorOptions,
-): SourceFile {
+): GeneratedFile[] {
   const filePath = path.resolve(
-    path.resolve(
-      baseDirPath,
-      resolversFolderName,
-      crudResolversFolderName,
-      model.typeName,
-    ),
-    `${mapping.resolverName}.ts`,
+    baseDirPath,
+    resolversFolderName,
+    crudResolversFolderName,
+    model.typeName,
+    mapping.resolverName,
   );
-  const sourceFile = project.createSourceFile(filePath, undefined, {
-    overwrite: true,
-  });
-
-  generateTypeGraphQLImport(sourceFile);
-  generateGraphQLInfoImport(sourceFile);
-  generateArgsImports(
-    sourceFile,
-    mapping.actions
-      .filter(it => it.argsTypeName !== undefined)
-      .map(it => it.argsTypeName!),
-    0,
-  );
-  generateHelpersFileImport(sourceFile, 3);
 
   const distinctOutputTypesNames = Array.from(
     new Set(mapping.actions.map(it => it.outputTypeName)),
@@ -61,28 +37,94 @@ export default function generateCrudResolverClassFromMapping(
   const otherOutputTypeNames = distinctOutputTypesNames.filter(
     typeName => !dmmfDocument.isModelTypeName(typeName),
   );
-  generateModelsImports(sourceFile, modelOutputTypeNames, 3);
-  generateOutputsImports(sourceFile, otherOutputTypeNames, 2);
 
-  sourceFile.addClass({
-    name: mapping.resolverName,
-    isExported: true,
-    decorators: [
-      {
-        name: "TypeGraphQL.Resolver",
-        arguments: [`_of => ${model.typeName}`],
-      },
-    ],
-    methods: mapping.actions.map<OptionalKind<MethodDeclarationStructure>>(
-      action =>
-        generateCrudResolverClassMethodDeclaration(
-          action,
-          mapping,
-          dmmfDocument,
-          generatorOptions,
-        ),
+  const runtimeRefs = new Map<string, string>();
+  const jsImports = [
+    {
+      alias: "TypeGraphQL",
+      moduleSpecifier: "type-graphql",
+      kind: "namespace" as const,
+    },
+    {
+      alias: "helpers_1",
+      moduleSpecifier: "../../../helpers",
+      kind: "named" as const,
+      names: [
+        "transformInfoIntoPrismaArgs",
+        "getPrismaFromContext",
+        "transformCountFieldIntoSelectRelationsCount",
+      ],
+    },
+  ];
+  const dtsImports: DtsImport[] = [
+    {
+      moduleSpecifier: "graphql",
+      named: ["GraphQLResolveInfo"],
+      isTypeOnly: true,
+    },
+  ];
+
+  for (const argsTypeName of mapping.actions
+    .filter(it => it.argsTypeName !== undefined)
+    .map(it => it.argsTypeName!)) {
+    const alias = `${argsTypeName}_1`;
+    jsImports.push({
+      alias,
+      moduleSpecifier: `./args/${argsTypeName}`,
+      kind: "named",
+      names: [argsTypeName],
+    });
+    dtsImports.push({
+      moduleSpecifier: `./args/${argsTypeName}`,
+      named: [argsTypeName],
+    });
+    runtimeRefs.set(argsTypeName, `${alias}.${argsTypeName}`);
+  }
+
+  for (const typeName of modelOutputTypeNames) {
+    const alias = `${typeName}_1`;
+    jsImports.push({
+      alias,
+      moduleSpecifier: createImportModuleSpecifier("models", typeName, 3),
+      kind: "named",
+      names: [typeName],
+    });
+    dtsImports.push({
+      moduleSpecifier: createImportModuleSpecifier("models", typeName, 3),
+      named: [typeName],
+    });
+    runtimeRefs.set(typeName, `${alias}.${typeName}`);
+  }
+
+  for (const typeName of otherOutputTypeNames) {
+    const alias = `${typeName}_1`;
+    jsImports.push({
+      alias,
+      moduleSpecifier: createImportModuleSpecifier("outputs", typeName, 2),
+      kind: "named",
+      names: [typeName],
+    });
+    dtsImports.push({
+      moduleSpecifier: createImportModuleSpecifier("outputs", typeName, 2),
+      named: [typeName],
+    });
+    runtimeRefs.set(typeName, `${alias}.${typeName}`);
+  }
+
+  const module = renderResolverModule({
+    className: mapping.resolverName,
+    modelTypeName: model.typeName,
+    jsImports,
+    dtsImports,
+    methods: mapping.actions.map(action =>
+      buildCrudResolverMethod({
+        action,
+        mapping,
+        generatorOptions,
+        runtimeRefs,
+      }),
     ),
   });
 
-  return sourceFile;
+  return createGeneratedFiles(filePath, module);
 }

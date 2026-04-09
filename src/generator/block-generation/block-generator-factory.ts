@@ -1,32 +1,29 @@
-import type { Project } from "ts-morph";
 import type { DmmfDocument } from "../dmmf/dmmf-document";
-import type { GeneratorOptions } from "../options";
 import type { DMMF } from "../dmmf/types";
+import type { GeneratorOptions } from "../options";
+import type { GeneratedFile } from "../string-emitter";
 import {
   type BaseBlockGenerator,
-  EnumBlockGenerator,
-  ModelBlockGenerator,
-  InputBlockGenerator,
-  OutputBlockGenerator,
   CrudResolverBlockGenerator,
+  EnumBlockGenerator,
+  InputBlockGenerator,
+  ModelBlockGenerator,
+  OutputBlockGenerator,
   RelationResolverBlockGenerator,
   type GenerationMetrics,
 } from "./index";
 
 export class BlockGeneratorFactory {
-  private project: Project;
   private dmmfDocument: DmmfDocument;
   private options: GeneratorOptions;
   private baseDirPath: string;
   private generators: Map<string, BaseBlockGenerator> = new Map();
 
   constructor(
-    project: Project,
     dmmfDocument: DmmfDocument,
     options: GeneratorOptions,
     baseDirPath: string,
   ) {
-    this.project = project;
     this.dmmfDocument = dmmfDocument;
     this.options = options;
     this.baseDirPath = baseDirPath;
@@ -35,61 +32,61 @@ export class BlockGeneratorFactory {
   }
 
   private initializeGenerators(): void {
-    const enumGenerator = new EnumBlockGenerator(
-      this.project,
-      this.dmmfDocument,
-      this.options,
-      this.baseDirPath,
+    this.generators.set(
+      "enums",
+      new EnumBlockGenerator(this.dmmfDocument, this.options, this.baseDirPath),
     );
-
-    const modelGenerator = new ModelBlockGenerator(
-      this.project,
-      this.dmmfDocument,
-      this.options,
-      this.baseDirPath,
+    this.generators.set(
+      "models",
+      new ModelBlockGenerator(
+        this.dmmfDocument,
+        this.options,
+        this.baseDirPath,
+      ),
     );
-
-    const inputGenerator = new InputBlockGenerator(
-      this.project,
-      this.dmmfDocument,
-      this.options,
-      this.baseDirPath,
+    this.generators.set(
+      "inputs",
+      new InputBlockGenerator(
+        this.dmmfDocument,
+        this.options,
+        this.baseDirPath,
+      ),
     );
-
-    const outputGenerator = new OutputBlockGenerator(
-      this.project,
-      this.dmmfDocument,
-      this.options,
-      this.baseDirPath,
+    this.generators.set(
+      "outputs",
+      new OutputBlockGenerator(
+        this.dmmfDocument,
+        this.options,
+        this.baseDirPath,
+      ),
     );
-
-    const relationResolverGenerator = new RelationResolverBlockGenerator(
-      this.project,
-      this.dmmfDocument,
-      this.options,
-      this.baseDirPath,
+    this.generators.set(
+      "relationResolvers",
+      new RelationResolverBlockGenerator(
+        this.dmmfDocument,
+        this.options,
+        this.baseDirPath,
+      ),
     );
-
-    const crudResolverGenerator = new CrudResolverBlockGenerator(
-      this.project,
-      this.dmmfDocument,
-      this.options,
-      this.baseDirPath,
+    this.generators.set(
+      "crudResolvers",
+      new CrudResolverBlockGenerator(
+        this.dmmfDocument,
+        this.options,
+        this.baseDirPath,
+      ),
     );
-
-    this.generators.set("enums", enumGenerator);
-    this.generators.set("models", modelGenerator);
-    this.generators.set("inputs", inputGenerator);
-    this.generators.set("outputs", outputGenerator);
-    this.generators.set("relationResolvers", relationResolverGenerator);
-    this.generators.set("crudResolvers", crudResolverGenerator);
   }
 
   public async generateAllBlocks(
     log: (msg: string) => void,
     metricsCallback?: (blockName: string, metrics: GenerationMetrics) => void,
-  ): Promise<DMMF.OutputType[]> {
+  ): Promise<{
+    files: GeneratedFile[];
+    outputTypesToGenerate: DMMF.OutputType[];
+  }> {
     let outputTypesToGenerate: DMMF.OutputType[] = [];
+    const files: GeneratedFile[] = [];
 
     const blockOrder = [
       "enums",
@@ -107,15 +104,13 @@ export class BlockGeneratorFactory {
       }
 
       log(`Generating ${generator.getBlockName()}...`);
-      // note: this isn't a true async function, but we'll await it anyway
-      // in the future, we can try to parallelize this
-      const metrics = await generator.generate();
+      const result = await generator.generate();
+      files.push(...result.files);
 
-      if (metricsCallback && metrics.itemsGenerated > 0) {
-        metricsCallback(blockName, metrics);
+      if (metricsCallback && result.itemsGenerated > 0) {
+        metricsCallback(blockName, result);
       }
 
-      // Special case: capture output types for enhance map generation
       if (
         blockName === "outputs" &&
         generator instanceof OutputBlockGenerator
@@ -124,7 +119,7 @@ export class BlockGeneratorFactory {
       }
     }
 
-    return outputTypesToGenerate;
+    return { files, outputTypesToGenerate };
   }
 
   public getGenerator(blockName: string): BaseBlockGenerator | undefined {
