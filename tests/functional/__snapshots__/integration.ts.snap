@@ -1167,7 +1167,7 @@ exports[`generator integration should generates TypeGraphQL classes files to out
       index.js
       resolvers.index.d.ts
       resolvers.index.js
-   scalars.d.ts
+  scalars.d.ts
   scalars.js
 "
 `;
