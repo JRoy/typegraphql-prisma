@@ -24,7 +24,7 @@ describe("crud resolvers execution", () => {
       `;
       await generateCodeFromSchema(prismaSchema, { outputDirPath });
       const { UserCrudResolver } = require(
-        outputDirPath + "/resolvers/crud/User/UserCrudResolver.ts",
+        outputDirPath + "/resolvers/crud/User/UserCrudResolver.js",
       );
 
       graphQLSchema = await buildSchema({
@@ -354,7 +354,7 @@ describe("crud resolvers execution", () => {
         await generateCodeFromSchema(prismaSchema, { outputDirPath });
         const { FirstModelCrudResolver } = require(
           outputDirPath +
-            "/resolvers/crud/FirstModel/FirstModelCrudResolver.ts",
+            "/resolvers/crud/FirstModel/FirstModelCrudResolver.js",
         );
 
         graphQLSchema = await buildSchema({
@@ -413,7 +413,7 @@ describe("crud resolvers execution", () => {
       `;
       await generateCodeFromSchema(prismaSchema, { outputDirPath });
       const { UserCrudResolver } = require(
-        outputDirPath + "/resolvers/crud/User/UserCrudResolver.ts",
+        outputDirPath + "/resolvers/crud/User/UserCrudResolver.js",
       );
 
       graphQLSchema = await buildSchema({

@@ -1,224 +1,289 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`enums should properly generate NullsOrder enum type: NullsOrder 1`] = `
-"import * as TypeGraphQL from \\"type-graphql\\";
-
-export enum NullsOrder {
-    first = \\"first\\",
-    last = \\"last\\"
-}
+"\\"use strict\\";
+Object.defineProperty(exports, \\"__esModule\\", { value: true });
+exports.NullsOrder = void 0;
+const tslib_1 = require(\\"tslib\\");
+const TypeGraphQL = tslib_1.__importStar(require(\\"type-graphql\\"));
+var NullsOrder;
+(function (NullsOrder) {
+    NullsOrder[\\"first\\"] = \\"first\\";
+    NullsOrder[\\"last\\"] = \\"last\\";
+})(NullsOrder || (exports.NullsOrder = NullsOrder = {}));
 TypeGraphQL.registerEnumType(NullsOrder, {
-      name: \\"NullsOrder\\",
-      description: undefined,
-    });
+    name: \\"NullsOrder\\",
+    description: undefined,
+});
 "
 `;
 
 exports[`enums should properly generate NullsOrder enum type: enums index 1`] = `
-"export { FirstModelScalarFieldEnum } from \\"./FirstModelScalarFieldEnum\\";
-export { NullsOrder } from \\"./NullsOrder\\";
-export { QueryMode } from \\"./QueryMode\\";
-export { SecondModelScalarFieldEnum } from \\"./SecondModelScalarFieldEnum\\";
-export { SortOrder } from \\"./SortOrder\\";
-export { TransactionIsolationLevel } from \\"./TransactionIsolationLevel\\";
+"\\"use strict\\";
+Object.defineProperty(exports, \\"__esModule\\", { value: true });
+const tslib_1 = require(\\"tslib\\");
+tslib_1.__exportStar(require(\\"./FirstModelScalarFieldEnum\\"), exports);
+tslib_1.__exportStar(require(\\"./NullsOrder\\"), exports);
+tslib_1.__exportStar(require(\\"./QueryMode\\"), exports);
+tslib_1.__exportStar(require(\\"./SecondModelScalarFieldEnum\\"), exports);
+tslib_1.__exportStar(require(\\"./SortOrder\\"), exports);
+tslib_1.__exportStar(require(\\"./TransactionIsolationLevel\\"), exports);
 "
 `;
 
 exports[`enums should properly generate code for enum with docs 1`] = `
-"import * as TypeGraphQL from \\"type-graphql\\";
-
-/** Role enum doc */
-export enum Role {
-    USER = \\"USER\\",
-    ADMIN = \\"ADMIN\\"
-}
+"\\"use strict\\";
+Object.defineProperty(exports, \\"__esModule\\", { value: true });
+exports.Role = void 0;
+const tslib_1 = require(\\"tslib\\");
+const TypeGraphQL = tslib_1.__importStar(require(\\"type-graphql\\"));
+var Role;
+(function (Role) {
+    Role[\\"USER\\"] = \\"USER\\";
+    Role[\\"ADMIN\\"] = \\"ADMIN\\";
+})(Role || (exports.Role = Role = {}));
 TypeGraphQL.registerEnumType(Role, {
-      name: \\"Role\\",
-      description: \\"Role enum doc\\",
-    });
+    name: \\"Role\\",
+    description: \\"Role enum doc\\",
+});
 "
 `;
 
 exports[`enums should properly generate code for enum with docs: enums index 1`] = `
-"export { Role } from \\"./Role\\";
-export { TransactionIsolationLevel } from \\"./TransactionIsolationLevel\\";
+"\\"use strict\\";
+Object.defineProperty(exports, \\"__esModule\\", { value: true });
+const tslib_1 = require(\\"tslib\\");
+tslib_1.__exportStar(require(\\"./Role\\"), exports);
+tslib_1.__exportStar(require(\\"./TransactionIsolationLevel\\"), exports);
 "
 `;
 
 exports[`enums should properly generate code for normal enum 1`] = `
-"import * as TypeGraphQL from \\"type-graphql\\";
-
-export enum Color {
-    RED = \\"RED\\",
-    GREEN = \\"GREEN\\",
-    BLUE = \\"BLUE\\"
-}
+"\\"use strict\\";
+Object.defineProperty(exports, \\"__esModule\\", { value: true });
+exports.Color = void 0;
+const tslib_1 = require(\\"tslib\\");
+const TypeGraphQL = tslib_1.__importStar(require(\\"type-graphql\\"));
+var Color;
+(function (Color) {
+    Color[\\"RED\\"] = \\"RED\\";
+    Color[\\"GREEN\\"] = \\"GREEN\\";
+    Color[\\"BLUE\\"] = \\"BLUE\\";
+})(Color || (exports.Color = Color = {}));
 TypeGraphQL.registerEnumType(Color, {
-      name: \\"Color\\",
-      description: undefined,
-    });
+    name: \\"Color\\",
+    description: undefined,
+});
 "
 `;
 
 exports[`enums should properly generate model scalar enum when model field is renamed: SampleModelScalarFieldEnum 1`] = `
-"import * as TypeGraphQL from \\"type-graphql\\";
-
-export enum SampleModelScalarFieldEnum {
-    intIdField = \\"intIdField\\",
-    mappedFieldName = \\"stringField\\",
-    intField = \\"intField\\"
-}
+"\\"use strict\\";
+Object.defineProperty(exports, \\"__esModule\\", { value: true });
+exports.SampleModelScalarFieldEnum = void 0;
+const tslib_1 = require(\\"tslib\\");
+const TypeGraphQL = tslib_1.__importStar(require(\\"type-graphql\\"));
+var SampleModelScalarFieldEnum;
+(function (SampleModelScalarFieldEnum) {
+    SampleModelScalarFieldEnum[\\"intIdField\\"] = \\"intIdField\\";
+    SampleModelScalarFieldEnum[\\"mappedFieldName\\"] = \\"stringField\\";
+    SampleModelScalarFieldEnum[\\"intField\\"] = \\"intField\\";
+})(SampleModelScalarFieldEnum || (exports.SampleModelScalarFieldEnum = SampleModelScalarFieldEnum = {}));
 TypeGraphQL.registerEnumType(SampleModelScalarFieldEnum, {
-      name: \\"SampleModelScalarFieldEnum\\",
-      description: undefined,
-    });
+    name: \\"SampleModelScalarFieldEnum\\",
+    description: undefined,
+});
 "
 `;
 
 exports[`enums should properly generate model scalar enum when model field is renamed: enums index 1`] = `
-"export { QueryMode } from \\"./QueryMode\\";
-export { SampleModelScalarFieldEnum } from \\"./SampleModelScalarFieldEnum\\";
-export { SortOrder } from \\"./SortOrder\\";
-export { TransactionIsolationLevel } from \\"./TransactionIsolationLevel\\";
+"\\"use strict\\";
+Object.defineProperty(exports, \\"__esModule\\", { value: true });
+const tslib_1 = require(\\"tslib\\");
+tslib_1.__exportStar(require(\\"./QueryMode\\"), exports);
+tslib_1.__exportStar(require(\\"./SampleModelScalarFieldEnum\\"), exports);
+tslib_1.__exportStar(require(\\"./SortOrder\\"), exports);
+tslib_1.__exportStar(require(\\"./TransactionIsolationLevel\\"), exports);
 "
 `;
 
 exports[`enums should properly generate model scalar enum when model is renamed: ExampleModelScalarFieldEnum 1`] = `
-"import * as TypeGraphQL from \\"type-graphql\\";
-
-export enum ExampleModelScalarFieldEnum {
-    intIdField = \\"intIdField\\",
-    stringField = \\"stringField\\",
-    intField = \\"intField\\"
-}
+"\\"use strict\\";
+Object.defineProperty(exports, \\"__esModule\\", { value: true });
+exports.ExampleModelScalarFieldEnum = void 0;
+const tslib_1 = require(\\"tslib\\");
+const TypeGraphQL = tslib_1.__importStar(require(\\"type-graphql\\"));
+var ExampleModelScalarFieldEnum;
+(function (ExampleModelScalarFieldEnum) {
+    ExampleModelScalarFieldEnum[\\"intIdField\\"] = \\"intIdField\\";
+    ExampleModelScalarFieldEnum[\\"stringField\\"] = \\"stringField\\";
+    ExampleModelScalarFieldEnum[\\"intField\\"] = \\"intField\\";
+})(ExampleModelScalarFieldEnum || (exports.ExampleModelScalarFieldEnum = ExampleModelScalarFieldEnum = {}));
 TypeGraphQL.registerEnumType(ExampleModelScalarFieldEnum, {
-      name: \\"ExampleModelScalarFieldEnum\\",
-      description: undefined,
-    });
+    name: \\"ExampleModelScalarFieldEnum\\",
+    description: undefined,
+});
 "
 `;
 
 exports[`enums should properly generate model scalar enum when model is renamed: enums index 1`] = `
-"export { ExampleModelScalarFieldEnum } from \\"./ExampleModelScalarFieldEnum\\";
-export { QueryMode } from \\"./QueryMode\\";
-export { SortOrder } from \\"./SortOrder\\";
-export { TransactionIsolationLevel } from \\"./TransactionIsolationLevel\\";
+"\\"use strict\\";
+Object.defineProperty(exports, \\"__esModule\\", { value: true });
+const tslib_1 = require(\\"tslib\\");
+tslib_1.__exportStar(require(\\"./ExampleModelScalarFieldEnum\\"), exports);
+tslib_1.__exportStar(require(\\"./QueryMode\\"), exports);
+tslib_1.__exportStar(require(\\"./SortOrder\\"), exports);
+tslib_1.__exportStar(require(\\"./TransactionIsolationLevel\\"), exports);
 "
 `;
 
 exports[`enums should properly generate model scalar field enum: SampleModelScalarFieldEnum 1`] = `
-"import * as TypeGraphQL from \\"type-graphql\\";
-
-export enum SampleModelScalarFieldEnum {
-    intIdField = \\"intIdField\\",
-    stringField = \\"stringField\\",
-    intField = \\"intField\\"
-}
+"\\"use strict\\";
+Object.defineProperty(exports, \\"__esModule\\", { value: true });
+exports.SampleModelScalarFieldEnum = void 0;
+const tslib_1 = require(\\"tslib\\");
+const TypeGraphQL = tslib_1.__importStar(require(\\"type-graphql\\"));
+var SampleModelScalarFieldEnum;
+(function (SampleModelScalarFieldEnum) {
+    SampleModelScalarFieldEnum[\\"intIdField\\"] = \\"intIdField\\";
+    SampleModelScalarFieldEnum[\\"stringField\\"] = \\"stringField\\";
+    SampleModelScalarFieldEnum[\\"intField\\"] = \\"intField\\";
+})(SampleModelScalarFieldEnum || (exports.SampleModelScalarFieldEnum = SampleModelScalarFieldEnum = {}));
 TypeGraphQL.registerEnumType(SampleModelScalarFieldEnum, {
-      name: \\"SampleModelScalarFieldEnum\\",
-      description: undefined,
-    });
+    name: \\"SampleModelScalarFieldEnum\\",
+    description: undefined,
+});
 "
 `;
 
 exports[`enums should properly generate model scalar field enum: enums index 1`] = `
-"export { QueryMode } from \\"./QueryMode\\";
-export { SampleModelScalarFieldEnum } from \\"./SampleModelScalarFieldEnum\\";
-export { SortOrder } from \\"./SortOrder\\";
-export { TransactionIsolationLevel } from \\"./TransactionIsolationLevel\\";
+"\\"use strict\\";
+Object.defineProperty(exports, \\"__esModule\\", { value: true });
+const tslib_1 = require(\\"tslib\\");
+tslib_1.__exportStar(require(\\"./QueryMode\\"), exports);
+tslib_1.__exportStar(require(\\"./SampleModelScalarFieldEnum\\"), exports);
+tslib_1.__exportStar(require(\\"./SortOrder\\"), exports);
+tslib_1.__exportStar(require(\\"./TransactionIsolationLevel\\"), exports);
 "
 `;
 
 exports[`enums should properly generate standard prisma enums: JsonNullValueFilter 1`] = `
-"import * as TypeGraphQL from \\"type-graphql\\";
-
-export enum JsonNullValueFilter {
-    DbNull = \\"DbNull\\",
-    JsonNull = \\"JsonNull\\",
-    AnyNull = \\"AnyNull\\"
-}
+"\\"use strict\\";
+Object.defineProperty(exports, \\"__esModule\\", { value: true });
+exports.JsonNullValueFilter = void 0;
+const tslib_1 = require(\\"tslib\\");
+const TypeGraphQL = tslib_1.__importStar(require(\\"type-graphql\\"));
+var JsonNullValueFilter;
+(function (JsonNullValueFilter) {
+    JsonNullValueFilter[\\"DbNull\\"] = \\"DbNull\\";
+    JsonNullValueFilter[\\"JsonNull\\"] = \\"JsonNull\\";
+    JsonNullValueFilter[\\"AnyNull\\"] = \\"AnyNull\\";
+})(JsonNullValueFilter || (exports.JsonNullValueFilter = JsonNullValueFilter = {}));
 TypeGraphQL.registerEnumType(JsonNullValueFilter, {
-      name: \\"JsonNullValueFilter\\",
-      description: undefined,
-    });
+    name: \\"JsonNullValueFilter\\",
+    description: undefined,
+});
 "
 `;
 
 exports[`enums should properly generate standard prisma enums: JsonNullValueInput 1`] = `
-"import * as TypeGraphQL from \\"type-graphql\\";
-
-export enum JsonNullValueInput {
-    JsonNull = \\"JsonNull\\"
-}
+"\\"use strict\\";
+Object.defineProperty(exports, \\"__esModule\\", { value: true });
+exports.JsonNullValueInput = void 0;
+const tslib_1 = require(\\"tslib\\");
+const TypeGraphQL = tslib_1.__importStar(require(\\"type-graphql\\"));
+var JsonNullValueInput;
+(function (JsonNullValueInput) {
+    JsonNullValueInput[\\"JsonNull\\"] = \\"JsonNull\\";
+})(JsonNullValueInput || (exports.JsonNullValueInput = JsonNullValueInput = {}));
 TypeGraphQL.registerEnumType(JsonNullValueInput, {
-      name: \\"JsonNullValueInput\\",
-      description: undefined,
-    });
+    name: \\"JsonNullValueInput\\",
+    description: undefined,
+});
 "
 `;
 
 exports[`enums should properly generate standard prisma enums: QueryMode 1`] = `
-"import * as TypeGraphQL from \\"type-graphql\\";
-
-export enum QueryMode {
-    \\"default\\" = \\"default\\",
-    insensitive = \\"insensitive\\"
-}
+"\\"use strict\\";
+Object.defineProperty(exports, \\"__esModule\\", { value: true });
+exports.QueryMode = void 0;
+const tslib_1 = require(\\"tslib\\");
+const TypeGraphQL = tslib_1.__importStar(require(\\"type-graphql\\"));
+var QueryMode;
+(function (QueryMode) {
+    QueryMode[\\"default\\"] = \\"default\\";
+    QueryMode[\\"insensitive\\"] = \\"insensitive\\";
+})(QueryMode || (exports.QueryMode = QueryMode = {}));
 TypeGraphQL.registerEnumType(QueryMode, {
-      name: \\"QueryMode\\",
-      description: undefined,
-    });
+    name: \\"QueryMode\\",
+    description: undefined,
+});
 "
 `;
 
 exports[`enums should properly generate standard prisma enums: SortOrder 1`] = `
-"import * as TypeGraphQL from \\"type-graphql\\";
-
-export enum SortOrder {
-    asc = \\"asc\\",
-    desc = \\"desc\\"
-}
+"\\"use strict\\";
+Object.defineProperty(exports, \\"__esModule\\", { value: true });
+exports.SortOrder = void 0;
+const tslib_1 = require(\\"tslib\\");
+const TypeGraphQL = tslib_1.__importStar(require(\\"type-graphql\\"));
+var SortOrder;
+(function (SortOrder) {
+    SortOrder[\\"asc\\"] = \\"asc\\";
+    SortOrder[\\"desc\\"] = \\"desc\\";
+})(SortOrder || (exports.SortOrder = SortOrder = {}));
 TypeGraphQL.registerEnumType(SortOrder, {
-      name: \\"SortOrder\\",
-      description: undefined,
-    });
+    name: \\"SortOrder\\",
+    description: undefined,
+});
 "
 `;
 
 exports[`enums should properly generate standard prisma enums: enums index 1`] = `
-"export { JsonNullValueFilter } from \\"./JsonNullValueFilter\\";
-export { JsonNullValueInput } from \\"./JsonNullValueInput\\";
-export { NullableJsonNullValueInput } from \\"./NullableJsonNullValueInput\\";
-export { NullsOrder } from \\"./NullsOrder\\";
-export { QueryMode } from \\"./QueryMode\\";
-export { SampleModelScalarFieldEnum } from \\"./SampleModelScalarFieldEnum\\";
-export { SortOrder } from \\"./SortOrder\\";
-export { TransactionIsolationLevel } from \\"./TransactionIsolationLevel\\";
+"\\"use strict\\";
+Object.defineProperty(exports, \\"__esModule\\", { value: true });
+const tslib_1 = require(\\"tslib\\");
+tslib_1.__exportStar(require(\\"./JsonNullValueFilter\\"), exports);
+tslib_1.__exportStar(require(\\"./JsonNullValueInput\\"), exports);
+tslib_1.__exportStar(require(\\"./NullableJsonNullValueInput\\"), exports);
+tslib_1.__exportStar(require(\\"./NullsOrder\\"), exports);
+tslib_1.__exportStar(require(\\"./QueryMode\\"), exports);
+tslib_1.__exportStar(require(\\"./SampleModelScalarFieldEnum\\"), exports);
+tslib_1.__exportStar(require(\\"./SortOrder\\"), exports);
+tslib_1.__exportStar(require(\\"./TransactionIsolationLevel\\"), exports);
 "
 `;
 
 exports[`enums when \`fullTextSearchPostgres\` preview feature is enabled should properly generate enums for relevance: SampleModelOrderByRelevanceFieldEnum 1`] = `
-"import * as TypeGraphQL from \\"type-graphql\\";
-
-export enum SampleModelOrderByRelevanceFieldEnum {
-    stringField = \\"stringField\\"
-}
+"\\"use strict\\";
+Object.defineProperty(exports, \\"__esModule\\", { value: true });
+exports.SampleModelOrderByRelevanceFieldEnum = void 0;
+const tslib_1 = require(\\"tslib\\");
+const TypeGraphQL = tslib_1.__importStar(require(\\"type-graphql\\"));
+var SampleModelOrderByRelevanceFieldEnum;
+(function (SampleModelOrderByRelevanceFieldEnum) {
+    SampleModelOrderByRelevanceFieldEnum[\\"stringField\\"] = \\"stringField\\";
+})(SampleModelOrderByRelevanceFieldEnum || (exports.SampleModelOrderByRelevanceFieldEnum = SampleModelOrderByRelevanceFieldEnum = {}));
 TypeGraphQL.registerEnumType(SampleModelOrderByRelevanceFieldEnum, {
-      name: \\"SampleModelOrderByRelevanceFieldEnum\\",
-      description: undefined,
-    });
+    name: \\"SampleModelOrderByRelevanceFieldEnum\\",
+    description: undefined,
+});
 "
 `;
 
 exports[`enums when \`fullTextSearchPostgres\` preview feature is enabled when model is renamed should properly generate enums for relevance: SampleRenamedModelOrderByRelevanceFieldEnum 1`] = `
-"import * as TypeGraphQL from \\"type-graphql\\";
-
-export enum SampleRenamedModelOrderByRelevanceFieldEnum {
-    stringField = \\"stringField\\"
-}
+"\\"use strict\\";
+Object.defineProperty(exports, \\"__esModule\\", { value: true });
+exports.SampleRenamedModelOrderByRelevanceFieldEnum = void 0;
+const tslib_1 = require(\\"tslib\\");
+const TypeGraphQL = tslib_1.__importStar(require(\\"type-graphql\\"));
+var SampleRenamedModelOrderByRelevanceFieldEnum;
+(function (SampleRenamedModelOrderByRelevanceFieldEnum) {
+    SampleRenamedModelOrderByRelevanceFieldEnum[\\"stringField\\"] = \\"stringField\\";
+})(SampleRenamedModelOrderByRelevanceFieldEnum || (exports.SampleRenamedModelOrderByRelevanceFieldEnum = SampleRenamedModelOrderByRelevanceFieldEnum = {}));
 TypeGraphQL.registerEnumType(SampleRenamedModelOrderByRelevanceFieldEnum, {
-      name: \\"SampleRenamedModelOrderByRelevanceFieldEnum\\",
-      description: undefined,
-    });
+    name: \\"SampleRenamedModelOrderByRelevanceFieldEnum\\",
+    description: undefined,
+});
 "
 `;

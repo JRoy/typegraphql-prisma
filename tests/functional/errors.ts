@@ -24,7 +24,7 @@ describe("errors", () => {
       `;
       await generateCodeFromSchema(prismaSchema, { outputDirPath });
       const { UserCrudResolver } = require(
-        outputDirPath + "/resolvers/crud/User/UserCrudResolver.ts",
+        outputDirPath + "/resolvers/crud/User/UserCrudResolver.js",
       );
 
       graphQLSchema = await buildSchema({
@@ -53,7 +53,7 @@ describe("errors", () => {
 
       expect(errors).toMatchInlineSnapshot(`
         Array [
-          [GraphQLError: Unable to find Prisma Client in GraphQL context. Please provide it under the \`context["prisma"]\` key.],
+          [GraphQLError: Unable to find Prisma Client in GraphQL context. Please provide it under the \`context[\\"prisma\\"]\` key.],
         ]
       `);
     });

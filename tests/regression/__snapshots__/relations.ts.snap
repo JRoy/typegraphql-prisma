@@ -1,712 +1,903 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`relations resolvers generation should not emit relation resolver when relation field is ignored: UserRelationsResolver 1`] = `
-"import * as TypeGraphQL from \\"type-graphql\\";
-import type { GraphQLResolveInfo } from \\"graphql\\";
-import { Point } from \\"../../../models/Point\\";
-import { User } from \\"../../../models/User\\";
-import { UserPointsArgs } from \\"./args/UserPointsArgs\\";
-import { transformInfoIntoPrismaArgs, getPrismaFromContext, transformCountFieldIntoSelectRelationsCount } from \\"../../../helpers\\";
-
-@TypeGraphQL.Resolver(_of => User)
-export class UserRelationsResolver {
-    @TypeGraphQL.FieldResolver(_type => [Point], {
-            nullable: false
-        })
-    async points(@TypeGraphQL.Root() user: User, @TypeGraphQL.Ctx() ctx: any, @TypeGraphQL.Info() info: GraphQLResolveInfo, @TypeGraphQL.Args() args: UserPointsArgs): Promise<Point[]> {
-         const { _count } = transformInfoIntoPrismaArgs(info);
-                    return getPrismaFromContext(ctx).user.findUniqueOrThrow({
-                      where: {
-                    id: user.id,
-                  },
-                    }).points({ 
-        ...args,
-                      ...(_count && transformCountFieldIntoSelectRelationsCount(_count)),
-                    });
-    }
-}
+"\\"use strict\\";
+Object.defineProperty(exports, \\"__esModule\\", { value: true });
+exports.UserRelationsResolver = void 0;
+const tslib_1 = require(\\"tslib\\");
+const TypeGraphQL = tslib_1.__importStar(require(\\"type-graphql\\"));
+const helpers_1 = require(\\"../../../helpers\\");
+const Point_1 = require(\\"../../../models/Point\\");
+const User_1 = require(\\"../../../models/User\\");
+const UserPointsArgs_1 = require(\\"./args/UserPointsArgs\\");
+let UserRelationsResolver = class UserRelationsResolver {
+  points(user, ctx, info, args) {
+    const { _count } = helpers_1.transformInfoIntoPrismaArgs(info);
+    return helpers_1.getPrismaFromContext(ctx).user.findUniqueOrThrow({
+      where: {
+        id: user.id,
+      },
+    }).points({
+  ...args,
+      ...(_count && helpers_1.transformCountFieldIntoSelectRelationsCount(_count)),
+    });
+  }
+};
+exports.UserRelationsResolver = UserRelationsResolver;
+tslib_1.__decorate([
+    TypeGraphQL.FieldResolver(_type => [Point_1.Point], { nullable: false }),
+    tslib_1.__param(0, TypeGraphQL.Root()),
+    tslib_1.__param(1, TypeGraphQL.Ctx()),
+    tslib_1.__param(2, TypeGraphQL.Info()),
+    tslib_1.__param(3, TypeGraphQL.Args()),
+    tslib_1.__metadata(\\"design:type\\", Function),
+    tslib_1.__metadata(\\"design:paramtypes\\", [User_1.User, Object, Object, UserPointsArgs_1.UserPointsArgs]),
+    tslib_1.__metadata(\\"design:returntype\\", Promise)
+], UserRelationsResolver.prototype, \\"points\\", null);
+exports.UserRelationsResolver = UserRelationsResolver = tslib_1.__decorate([
+    TypeGraphQL.Resolver(_of => User_1.User)
+], UserRelationsResolver);
 "
 `;
 
 exports[`relations resolvers generation should not emit relation resolver when relation field is ignored: argsIndex 1`] = `
-"export * from \\"./User/args\\";
+"\\"use strict\\";
+Object.defineProperty(exports, \\"__esModule\\", { value: true });
+const tslib_1 = require(\\"tslib\\");
+tslib_1.__exportStar(require(\\"./User/args\\"), exports);
 "
 `;
 
 exports[`relations resolvers generation should not emit relation resolver when relation field is ignored: index 1`] = `
-"export * from \\"./resolvers.index\\";
-export * from \\"./args.index\\";
+"\\"use strict\\";
+Object.defineProperty(exports, \\"__esModule\\", { value: true });
+const tslib_1 = require(\\"tslib\\");
+tslib_1.__exportStar(require(\\"./args.index\\"), exports);
+tslib_1.__exportStar(require(\\"./resolvers.index\\"), exports);
 "
 `;
 
 exports[`relations resolvers generation should not emit relation resolver when relation field is ignored: mainIndex 1`] = `
-"import * as crudResolversImport from \\"./resolvers/crud/resolvers-crud.index\\";
-import * as relationResolversImport from \\"./resolvers/relations/resolvers.index\\";
-import { NonEmptyArray } from \\"type-graphql\\";
-
-export * from \\"./enums\\";
-export * from \\"./models\\";
-export * from \\"./resolvers/crud\\";
-
-export const crudResolvers = Object.values(crudResolversImport) as unknown as NonEmptyArray<Function>;
-
-export * from \\"./resolvers/relations\\";
-
-export const relationResolvers = Object.values(relationResolversImport) as unknown as NonEmptyArray<Function>;
-
-export * from \\"./resolvers/inputs\\";
-export * from \\"./resolvers/outputs\\";
-export * from \\"./enhance\\";
-export * from \\"./scalars\\";
-
-export const resolvers = [
-                ...crudResolvers,
-                ...relationResolvers,
-                ] as unknown as NonEmptyArray<Function>;
+"\\"use strict\\";
+Object.defineProperty(exports, \\"__esModule\\", { value: true });
+exports.resolvers = void 0;
+exports.crudResolvers = void 0;
+exports.relationResolvers = void 0;
+const tslib_1 = require(\\"tslib\\");
+tslib_1.__exportStar(require(\\"./enums\\"), exports);
+tslib_1.__exportStar(require(\\"./models\\"), exports);
+tslib_1.__exportStar(require(\\"./resolvers/crud\\"), exports);
+const crudResolversImport = tslib_1.__importStar(require(\\"./resolvers/crud/resolvers-crud.index\\"));
+exports.crudResolvers = Object.values(crudResolversImport);
+tslib_1.__exportStar(require(\\"./resolvers/relations\\"), exports);
+const relationResolversImport = tslib_1.__importStar(require(\\"./resolvers/relations/resolvers.index\\"));
+exports.relationResolvers = Object.values(relationResolversImport);
+tslib_1.__exportStar(require(\\"./resolvers/inputs\\"), exports);
+tslib_1.__exportStar(require(\\"./resolvers/outputs\\"), exports);
+tslib_1.__exportStar(require(\\"./enhance\\"), exports);
+tslib_1.__exportStar(require(\\"./scalars\\"), exports);
+exports.resolvers = [...exports.crudResolvers,...exports.relationResolvers,];
 "
 `;
 
 exports[`relations resolvers generation should not emit relation resolver when relation field is ignored: resolversIndex 1`] = `
-"export { PointRelationsResolver } from \\"./Point/PointRelationsResolver\\";
-export { UserRelationsResolver } from \\"./User/UserRelationsResolver\\";
+"\\"use strict\\";
+Object.defineProperty(exports, \\"__esModule\\", { value: true });
+const tslib_1 = require(\\"tslib\\");
+tslib_1.__exportStar(require(\\"./Point/PointRelationsResolver\\"), exports);
+tslib_1.__exportStar(require(\\"./User/UserRelationsResolver\\"), exports);
 "
 `;
 
 exports[`relations resolvers generation should properly generate args classes for sorting by relation fields: FirstModelSecondModelsFieldArgs 1`] = `
-"import * as TypeGraphQL from \\"type-graphql\\";
-import * as GraphQLScalars from \\"graphql-scalars\\";
-import { SecondModelOrderByWithRelationInput } from \\"../../../inputs/SecondModelOrderByWithRelationInput\\";
-import { SecondModelWhereInput } from \\"../../../inputs/SecondModelWhereInput\\";
-import { SecondModelWhereUniqueInput } from \\"../../../inputs/SecondModelWhereUniqueInput\\";
-import { SecondModelScalarFieldEnum } from \\"../../../../enums/SecondModelScalarFieldEnum\\";
-
-@TypeGraphQL.ArgsType()
-export class FirstModelSecondModelsFieldArgs {
-    @TypeGraphQL.Field(_type => SecondModelWhereInput, {
-            nullable: true
-        })
-    where?: SecondModelWhereInput | undefined;
-
-    @TypeGraphQL.Field(_type => [SecondModelOrderByWithRelationInput], {
-            nullable: true
-        })
-    orderBy?: SecondModelOrderByWithRelationInput[] | undefined;
-
-    @TypeGraphQL.Field(_type => SecondModelWhereUniqueInput, {
-            nullable: true
-        })
-    cursor?: SecondModelWhereUniqueInput | undefined;
-
-    @TypeGraphQL.Field(_type => TypeGraphQL.Int, {
-            nullable: true
-        })
-    take?: number | undefined;
-
-    @TypeGraphQL.Field(_type => TypeGraphQL.Int, {
-            nullable: true
-        })
-    skip?: number | undefined;
-
-    @TypeGraphQL.Field(_type => [SecondModelScalarFieldEnum], {
-            nullable: true
-        })
-    distinct?: Array<\\"idField\\" | \\"uniqueStringField\\" | \\"floatField\\" | \\"firstModelFieldId\\"> | undefined;
-}
+"\\"use strict\\";
+Object.defineProperty(exports, \\"__esModule\\", { value: true });
+exports.FirstModelSecondModelsFieldArgs = void 0;
+const tslib_1 = require(\\"tslib\\");
+const TypeGraphQL = tslib_1.__importStar(require(\\"type-graphql\\"));
+const SecondModelOrderByWithRelationInput_1 = require(\\"../../../inputs/SecondModelOrderByWithRelationInput\\");
+const SecondModelWhereInput_1 = require(\\"../../../inputs/SecondModelWhereInput\\");
+const SecondModelWhereUniqueInput_1 = require(\\"../../../inputs/SecondModelWhereUniqueInput\\");
+const SecondModelScalarFieldEnum_1 = require(\\"../../../../enums/SecondModelScalarFieldEnum\\");
+let FirstModelSecondModelsFieldArgs = class FirstModelSecondModelsFieldArgs {};
+exports.FirstModelSecondModelsFieldArgs = FirstModelSecondModelsFieldArgs;
+tslib_1.__decorate([
+    TypeGraphQL.Field(_type => SecondModelWhereInput_1.SecondModelWhereInput, { nullable: true }),
+    tslib_1.__metadata(\\"design:type\\", String)
+], FirstModelSecondModelsFieldArgs.prototype, \\"where\\", void 0);
+tslib_1.__decorate([
+    TypeGraphQL.Field(_type => [SecondModelOrderByWithRelationInput_1.SecondModelOrderByWithRelationInput], { nullable: true }),
+    tslib_1.__metadata(\\"design:type\\", Array)
+], FirstModelSecondModelsFieldArgs.prototype, \\"orderBy\\", void 0);
+tslib_1.__decorate([
+    TypeGraphQL.Field(_type => SecondModelWhereUniqueInput_1.SecondModelWhereUniqueInput, { nullable: true }),
+    tslib_1.__metadata(\\"design:type\\", String)
+], FirstModelSecondModelsFieldArgs.prototype, \\"cursor\\", void 0);
+tslib_1.__decorate([
+    TypeGraphQL.Field(_type => TypeGraphQL.Int, { nullable: true }),
+    tslib_1.__metadata(\\"design:type\\", Number)
+], FirstModelSecondModelsFieldArgs.prototype, \\"take\\", void 0);
+tslib_1.__decorate([
+    TypeGraphQL.Field(_type => TypeGraphQL.Int, { nullable: true }),
+    tslib_1.__metadata(\\"design:type\\", Number)
+], FirstModelSecondModelsFieldArgs.prototype, \\"skip\\", void 0);
+tslib_1.__decorate([
+    TypeGraphQL.Field(_type => [SecondModelScalarFieldEnum_1.SecondModelScalarFieldEnum], { nullable: true }),
+    tslib_1.__metadata(\\"design:type\\", Array)
+], FirstModelSecondModelsFieldArgs.prototype, \\"distinct\\", void 0);
+exports.FirstModelSecondModelsFieldArgs = FirstModelSecondModelsFieldArgs = tslib_1.__decorate([
+    TypeGraphQL.ArgsType()
+], FirstModelSecondModelsFieldArgs);
 "
 `;
 
 exports[`relations resolvers generation should properly generate args classes for sorting by relation fields: index 1`] = `
-"export { FirstModelSecondModelsFieldArgs } from \\"./FirstModelSecondModelsFieldArgs\\";
+"\\"use strict\\";
+Object.defineProperty(exports, \\"__esModule\\", { value: true });
+const tslib_1 = require(\\"tslib\\");
+tslib_1.__exportStar(require(\\"./FirstModelSecondModelsFieldArgs\\"), exports);
 "
 `;
 
 exports[`relations resolvers generation should properly generate composite keys where phrase in resolver: UsersOnProjectsRelationsResolver 1`] = `
-"import * as TypeGraphQL from \\"type-graphql\\";
-import type { GraphQLResolveInfo } from \\"graphql\\";
-import { Project } from \\"../../../models/Project\\";
-import { User } from \\"../../../models/User\\";
-import { UsersOnProjects } from \\"../../../models/UsersOnProjects\\";
-import { transformInfoIntoPrismaArgs, getPrismaFromContext, transformCountFieldIntoSelectRelationsCount } from \\"../../../helpers\\";
-
-@TypeGraphQL.Resolver(_of => UsersOnProjects)
-export class UsersOnProjectsRelationsResolver {
-    @TypeGraphQL.FieldResolver(_type => Project, {
-            nullable: false
-        })
-    async project(@TypeGraphQL.Root() usersOnProjects: UsersOnProjects, @TypeGraphQL.Ctx() ctx: any, @TypeGraphQL.Info() info: GraphQLResolveInfo): Promise<Project> {
-         const { _count } = transformInfoIntoPrismaArgs(info);
-                    return getPrismaFromContext(ctx).usersOnProjects.findUniqueOrThrow({
-                      where: {
-                    userId_projectId: {
-                      userId: usersOnProjects.userId,
-        projectId: usersOnProjects.projectId,
-                    },
-                  },
-                    }).project({ 
-                      ...(_count && transformCountFieldIntoSelectRelationsCount(_count)),
-                    });
-    }
-
-    @TypeGraphQL.FieldResolver(_type => User, {
-            nullable: false
-        })
-    async user(@TypeGraphQL.Root() usersOnProjects: UsersOnProjects, @TypeGraphQL.Ctx() ctx: any, @TypeGraphQL.Info() info: GraphQLResolveInfo): Promise<User> {
-         const { _count } = transformInfoIntoPrismaArgs(info);
-                    return getPrismaFromContext(ctx).usersOnProjects.findUniqueOrThrow({
-                      where: {
-                    userId_projectId: {
-                      userId: usersOnProjects.userId,
-        projectId: usersOnProjects.projectId,
-                    },
-                  },
-                    }).user({ 
-                      ...(_count && transformCountFieldIntoSelectRelationsCount(_count)),
-                    });
-    }
-}
+"\\"use strict\\";
+Object.defineProperty(exports, \\"__esModule\\", { value: true });
+exports.UsersOnProjectsRelationsResolver = void 0;
+const tslib_1 = require(\\"tslib\\");
+const TypeGraphQL = tslib_1.__importStar(require(\\"type-graphql\\"));
+const helpers_1 = require(\\"../../../helpers\\");
+const Project_1 = require(\\"../../../models/Project\\");
+const User_1 = require(\\"../../../models/User\\");
+const UsersOnProjects_1 = require(\\"../../../models/UsersOnProjects\\");
+let UsersOnProjectsRelationsResolver = class UsersOnProjectsRelationsResolver {
+  project(usersOnProjects, ctx, info) {
+    const { _count } = helpers_1.transformInfoIntoPrismaArgs(info);
+    return helpers_1.getPrismaFromContext(ctx).usersOnProjects.findUniqueOrThrow({
+      where: {
+        userId_projectId: {
+          userId: usersOnProjects.userId,
+          projectId: usersOnProjects.projectId,
+        },
+      },
+    }).project({
+      ...(_count && helpers_1.transformCountFieldIntoSelectRelationsCount(_count)),
+    });
+  }
+  user(usersOnProjects, ctx, info) {
+    const { _count } = helpers_1.transformInfoIntoPrismaArgs(info);
+    return helpers_1.getPrismaFromContext(ctx).usersOnProjects.findUniqueOrThrow({
+      where: {
+        userId_projectId: {
+          userId: usersOnProjects.userId,
+          projectId: usersOnProjects.projectId,
+        },
+      },
+    }).user({
+      ...(_count && helpers_1.transformCountFieldIntoSelectRelationsCount(_count)),
+    });
+  }
+};
+exports.UsersOnProjectsRelationsResolver = UsersOnProjectsRelationsResolver;
+tslib_1.__decorate([
+    TypeGraphQL.FieldResolver(_type => Project_1.Project, { nullable: false }),
+    tslib_1.__param(0, TypeGraphQL.Root()),
+    tslib_1.__param(1, TypeGraphQL.Ctx()),
+    tslib_1.__param(2, TypeGraphQL.Info()),
+    tslib_1.__metadata(\\"design:type\\", Function),
+    tslib_1.__metadata(\\"design:paramtypes\\", [UsersOnProjects_1.UsersOnProjects, Object, Object]),
+    tslib_1.__metadata(\\"design:returntype\\", Promise)
+], UsersOnProjectsRelationsResolver.prototype, \\"project\\", null);
+tslib_1.__decorate([
+    TypeGraphQL.FieldResolver(_type => User_1.User, { nullable: false }),
+    tslib_1.__param(0, TypeGraphQL.Root()),
+    tslib_1.__param(1, TypeGraphQL.Ctx()),
+    tslib_1.__param(2, TypeGraphQL.Info()),
+    tslib_1.__metadata(\\"design:type\\", Function),
+    tslib_1.__metadata(\\"design:paramtypes\\", [UsersOnProjects_1.UsersOnProjects, Object, Object]),
+    tslib_1.__metadata(\\"design:returntype\\", Promise)
+], UsersOnProjectsRelationsResolver.prototype, \\"user\\", null);
+exports.UsersOnProjectsRelationsResolver = UsersOnProjectsRelationsResolver = tslib_1.__decorate([
+    TypeGraphQL.Resolver(_of => UsersOnProjects_1.UsersOnProjects)
+], UsersOnProjectsRelationsResolver);
 "
 `;
 
 exports[`relations resolvers generation should properly generate index files for 1-1 relation resolvers: index 1`] = `
-"export * from \\"./resolvers.index\\";
-export * from \\"./args.index\\";
+"\\"use strict\\";
+Object.defineProperty(exports, \\"__esModule\\", { value: true });
+const tslib_1 = require(\\"tslib\\");
+tslib_1.__exportStar(require(\\"./args.index\\"), exports);
+tslib_1.__exportStar(require(\\"./resolvers.index\\"), exports);
 "
 `;
 
 exports[`relations resolvers generation should properly generate index files for 1-1 relation resolvers: mainIndex 1`] = `
-"import * as crudResolversImport from \\"./resolvers/crud/resolvers-crud.index\\";
-import * as relationResolversImport from \\"./resolvers/relations/resolvers.index\\";
-import { NonEmptyArray } from \\"type-graphql\\";
-
-export * from \\"./enums\\";
-export * from \\"./models\\";
-export * from \\"./resolvers/crud\\";
-
-export const crudResolvers = Object.values(crudResolversImport) as unknown as NonEmptyArray<Function>;
-
-export * from \\"./resolvers/relations\\";
-
-export const relationResolvers = Object.values(relationResolversImport) as unknown as NonEmptyArray<Function>;
-
-export * from \\"./resolvers/inputs\\";
-export * from \\"./resolvers/outputs\\";
-export * from \\"./enhance\\";
-export * from \\"./scalars\\";
-
-export const resolvers = [
-                ...crudResolvers,
-                ...relationResolvers,
-                ] as unknown as NonEmptyArray<Function>;
+"\\"use strict\\";
+Object.defineProperty(exports, \\"__esModule\\", { value: true });
+exports.resolvers = void 0;
+exports.crudResolvers = void 0;
+exports.relationResolvers = void 0;
+const tslib_1 = require(\\"tslib\\");
+tslib_1.__exportStar(require(\\"./enums\\"), exports);
+tslib_1.__exportStar(require(\\"./models\\"), exports);
+tslib_1.__exportStar(require(\\"./resolvers/crud\\"), exports);
+const crudResolversImport = tslib_1.__importStar(require(\\"./resolvers/crud/resolvers-crud.index\\"));
+exports.crudResolvers = Object.values(crudResolversImport);
+tslib_1.__exportStar(require(\\"./resolvers/relations\\"), exports);
+const relationResolversImport = tslib_1.__importStar(require(\\"./resolvers/relations/resolvers.index\\"));
+exports.relationResolvers = Object.values(relationResolversImport);
+tslib_1.__exportStar(require(\\"./resolvers/inputs\\"), exports);
+tslib_1.__exportStar(require(\\"./resolvers/outputs\\"), exports);
+tslib_1.__exportStar(require(\\"./enhance\\"), exports);
+tslib_1.__exportStar(require(\\"./scalars\\"), exports);
+exports.resolvers = [...exports.crudResolvers,...exports.relationResolvers,];
 "
 `;
 
 exports[`relations resolvers generation should properly generate index files for 1-1 relation resolvers: resolversIndex 1`] = `
-"export { AdminUserRelationsResolver } from \\"./AdminUser/AdminUserRelationsResolver\\";
-export { UserRelationsResolver } from \\"./User/UserRelationsResolver\\";
+"\\"use strict\\";
+Object.defineProperty(exports, \\"__esModule\\", { value: true });
+const tslib_1 = require(\\"tslib\\");
+tslib_1.__exportStar(require(\\"./AdminUser/AdminUserRelationsResolver\\"), exports);
+tslib_1.__exportStar(require(\\"./User/UserRelationsResolver\\"), exports);
 "
 `;
 
 exports[`relations resolvers generation should properly generate index files for 1-many relation resolvers: argsIndex 1`] = `
-"export * from \\"./User/args\\";
+"\\"use strict\\";
+Object.defineProperty(exports, \\"__esModule\\", { value: true });
+const tslib_1 = require(\\"tslib\\");
+tslib_1.__exportStar(require(\\"./User/args\\"), exports);
 "
 `;
 
 exports[`relations resolvers generation should properly generate index files for 1-many relation resolvers: index 1`] = `
-"export * from \\"./resolvers.index\\";
-export * from \\"./args.index\\";
+"\\"use strict\\";
+Object.defineProperty(exports, \\"__esModule\\", { value: true });
+const tslib_1 = require(\\"tslib\\");
+tslib_1.__exportStar(require(\\"./args.index\\"), exports);
+tslib_1.__exportStar(require(\\"./resolvers.index\\"), exports);
 "
 `;
 
 exports[`relations resolvers generation should properly generate index files for 1-many relation resolvers: mainIndex 1`] = `
-"import * as crudResolversImport from \\"./resolvers/crud/resolvers-crud.index\\";
-import * as relationResolversImport from \\"./resolvers/relations/resolvers.index\\";
-import { NonEmptyArray } from \\"type-graphql\\";
-
-export * from \\"./enums\\";
-export * from \\"./models\\";
-export * from \\"./resolvers/crud\\";
-
-export const crudResolvers = Object.values(crudResolversImport) as unknown as NonEmptyArray<Function>;
-
-export * from \\"./resolvers/relations\\";
-
-export const relationResolvers = Object.values(relationResolversImport) as unknown as NonEmptyArray<Function>;
-
-export * from \\"./resolvers/inputs\\";
-export * from \\"./resolvers/outputs\\";
-export * from \\"./enhance\\";
-export * from \\"./scalars\\";
-
-export const resolvers = [
-                ...crudResolvers,
-                ...relationResolvers,
-                ] as unknown as NonEmptyArray<Function>;
+"\\"use strict\\";
+Object.defineProperty(exports, \\"__esModule\\", { value: true });
+exports.resolvers = void 0;
+exports.crudResolvers = void 0;
+exports.relationResolvers = void 0;
+const tslib_1 = require(\\"tslib\\");
+tslib_1.__exportStar(require(\\"./enums\\"), exports);
+tslib_1.__exportStar(require(\\"./models\\"), exports);
+tslib_1.__exportStar(require(\\"./resolvers/crud\\"), exports);
+const crudResolversImport = tslib_1.__importStar(require(\\"./resolvers/crud/resolvers-crud.index\\"));
+exports.crudResolvers = Object.values(crudResolversImport);
+tslib_1.__exportStar(require(\\"./resolvers/relations\\"), exports);
+const relationResolversImport = tslib_1.__importStar(require(\\"./resolvers/relations/resolvers.index\\"));
+exports.relationResolvers = Object.values(relationResolversImport);
+tslib_1.__exportStar(require(\\"./resolvers/inputs\\"), exports);
+tslib_1.__exportStar(require(\\"./resolvers/outputs\\"), exports);
+tslib_1.__exportStar(require(\\"./enhance\\"), exports);
+tslib_1.__exportStar(require(\\"./scalars\\"), exports);
+exports.resolvers = [...exports.crudResolvers,...exports.relationResolvers,];
 "
 `;
 
 exports[`relations resolvers generation should properly generate index files for 1-many relation resolvers: resolversIndex 1`] = `
-"export { AddressRelationsResolver } from \\"./Address/AddressRelationsResolver\\";
-export { UserRelationsResolver } from \\"./User/UserRelationsResolver\\";
+"\\"use strict\\";
+Object.defineProperty(exports, \\"__esModule\\", { value: true });
+const tslib_1 = require(\\"tslib\\");
+tslib_1.__exportStar(require(\\"./Address/AddressRelationsResolver\\"), exports);
+tslib_1.__exportStar(require(\\"./User/UserRelationsResolver\\"), exports);
 "
 `;
 
 exports[`relations resolvers generation should properly generate relation resolver class for model with multi id keys with relation: MovieRelationsResolver 1`] = `
-"import * as TypeGraphQL from \\"type-graphql\\";
-import type { GraphQLResolveInfo } from \\"graphql\\";
-import { Director } from \\"../../../models/Director\\";
-import { Movie } from \\"../../../models/Movie\\";
-import { transformInfoIntoPrismaArgs, getPrismaFromContext, transformCountFieldIntoSelectRelationsCount } from \\"../../../helpers\\";
-
-@TypeGraphQL.Resolver(_of => Movie)
-export class MovieRelationsResolver {
-    @TypeGraphQL.FieldResolver(_type => Director, {
-            nullable: false
-        })
-    async director(@TypeGraphQL.Root() movie: Movie, @TypeGraphQL.Ctx() ctx: any, @TypeGraphQL.Info() info: GraphQLResolveInfo): Promise<Director> {
-         const { _count } = transformInfoIntoPrismaArgs(info);
-                    return getPrismaFromContext(ctx).movie.findUniqueOrThrow({
-                      where: {
-                    directorFirstName_directorLastName_title: {
-                      directorFirstName: movie.directorFirstName,
-        directorLastName: movie.directorLastName,
-        title: movie.title,
-                    },
-                  },
-                    }).director({ 
-                      ...(_count && transformCountFieldIntoSelectRelationsCount(_count)),
-                    });
-    }
-}
+"\\"use strict\\";
+Object.defineProperty(exports, \\"__esModule\\", { value: true });
+exports.MovieRelationsResolver = void 0;
+const tslib_1 = require(\\"tslib\\");
+const TypeGraphQL = tslib_1.__importStar(require(\\"type-graphql\\"));
+const helpers_1 = require(\\"../../../helpers\\");
+const Director_1 = require(\\"../../../models/Director\\");
+const Movie_1 = require(\\"../../../models/Movie\\");
+let MovieRelationsResolver = class MovieRelationsResolver {
+  director(movie, ctx, info) {
+    const { _count } = helpers_1.transformInfoIntoPrismaArgs(info);
+    return helpers_1.getPrismaFromContext(ctx).movie.findUniqueOrThrow({
+      where: {
+        directorFirstName_directorLastName_title: {
+          directorFirstName: movie.directorFirstName,
+          directorLastName: movie.directorLastName,
+          title: movie.title,
+        },
+      },
+    }).director({
+      ...(_count && helpers_1.transformCountFieldIntoSelectRelationsCount(_count)),
+    });
+  }
+};
+exports.MovieRelationsResolver = MovieRelationsResolver;
+tslib_1.__decorate([
+    TypeGraphQL.FieldResolver(_type => Director_1.Director, { nullable: false }),
+    tslib_1.__param(0, TypeGraphQL.Root()),
+    tslib_1.__param(1, TypeGraphQL.Ctx()),
+    tslib_1.__param(2, TypeGraphQL.Info()),
+    tslib_1.__metadata(\\"design:type\\", Function),
+    tslib_1.__metadata(\\"design:paramtypes\\", [Movie_1.Movie, Object, Object]),
+    tslib_1.__metadata(\\"design:returntype\\", Promise)
+], MovieRelationsResolver.prototype, \\"director\\", null);
+exports.MovieRelationsResolver = MovieRelationsResolver = tslib_1.__decorate([
+    TypeGraphQL.Resolver(_of => Movie_1.Movie)
+], MovieRelationsResolver);
 "
 `;
 
 exports[`relations resolvers generation should properly generate relation resolver class for model with named compound id with relation: MovieRelationsResolver 1`] = `
-"import * as TypeGraphQL from \\"type-graphql\\";
-import type { GraphQLResolveInfo } from \\"graphql\\";
-import { Director } from \\"../../../models/Director\\";
-import { Movie } from \\"../../../models/Movie\\";
-import { transformInfoIntoPrismaArgs, getPrismaFromContext, transformCountFieldIntoSelectRelationsCount } from \\"../../../helpers\\";
-
-@TypeGraphQL.Resolver(_of => Movie)
-export class MovieRelationsResolver {
-    @TypeGraphQL.FieldResolver(_type => Director, {
-            nullable: false
-        })
-    async director(@TypeGraphQL.Root() movie: Movie, @TypeGraphQL.Ctx() ctx: any, @TypeGraphQL.Info() info: GraphQLResolveInfo): Promise<Director> {
-         const { _count } = transformInfoIntoPrismaArgs(info);
-                    return getPrismaFromContext(ctx).movie.findUniqueOrThrow({
-                      where: {
-                    movieIdCompoundName: {
-                      directorFirstName: movie.directorFirstName,
-        directorLastName: movie.directorLastName,
-        title: movie.title,
-                    },
-                  },
-                    }).director({ 
-                      ...(_count && transformCountFieldIntoSelectRelationsCount(_count)),
-                    });
-    }
-}
+"\\"use strict\\";
+Object.defineProperty(exports, \\"__esModule\\", { value: true });
+exports.MovieRelationsResolver = void 0;
+const tslib_1 = require(\\"tslib\\");
+const TypeGraphQL = tslib_1.__importStar(require(\\"type-graphql\\"));
+const helpers_1 = require(\\"../../../helpers\\");
+const Director_1 = require(\\"../../../models/Director\\");
+const Movie_1 = require(\\"../../../models/Movie\\");
+let MovieRelationsResolver = class MovieRelationsResolver {
+  director(movie, ctx, info) {
+    const { _count } = helpers_1.transformInfoIntoPrismaArgs(info);
+    return helpers_1.getPrismaFromContext(ctx).movie.findUniqueOrThrow({
+      where: {
+        movieIdCompoundName: {
+          directorFirstName: movie.directorFirstName,
+          directorLastName: movie.directorLastName,
+          title: movie.title,
+        },
+      },
+    }).director({
+      ...(_count && helpers_1.transformCountFieldIntoSelectRelationsCount(_count)),
+    });
+  }
+};
+exports.MovieRelationsResolver = MovieRelationsResolver;
+tslib_1.__decorate([
+    TypeGraphQL.FieldResolver(_type => Director_1.Director, { nullable: false }),
+    tslib_1.__param(0, TypeGraphQL.Root()),
+    tslib_1.__param(1, TypeGraphQL.Ctx()),
+    tslib_1.__param(2, TypeGraphQL.Info()),
+    tslib_1.__metadata(\\"design:type\\", Function),
+    tslib_1.__metadata(\\"design:paramtypes\\", [Movie_1.Movie, Object, Object]),
+    tslib_1.__metadata(\\"design:returntype\\", Promise)
+], MovieRelationsResolver.prototype, \\"director\\", null);
+exports.MovieRelationsResolver = MovieRelationsResolver = tslib_1.__decorate([
+    TypeGraphQL.Resolver(_of => Movie_1.Movie)
+], MovieRelationsResolver);
 "
 `;
 
 exports[`relations resolvers generation should properly generate relation resolver class for model with named compound unique with relation: MovieRelationsResolver 1`] = `
-"import * as TypeGraphQL from \\"type-graphql\\";
-import type { GraphQLResolveInfo } from \\"graphql\\";
-import { Director } from \\"../../../models/Director\\";
-import { Movie } from \\"../../../models/Movie\\";
-import { transformInfoIntoPrismaArgs, getPrismaFromContext, transformCountFieldIntoSelectRelationsCount } from \\"../../../helpers\\";
-
-@TypeGraphQL.Resolver(_of => Movie)
-export class MovieRelationsResolver {
-    @TypeGraphQL.FieldResolver(_type => Director, {
-            nullable: false
-        })
-    async director(@TypeGraphQL.Root() movie: Movie, @TypeGraphQL.Ctx() ctx: any, @TypeGraphQL.Info() info: GraphQLResolveInfo): Promise<Director> {
-         const { _count } = transformInfoIntoPrismaArgs(info);
-                    return getPrismaFromContext(ctx).movie.findUniqueOrThrow({
-                      where: {
-                    movieUniqueCompoundName: {
-                      directorFirstName: movie.directorFirstName,
-        directorLastName: movie.directorLastName,
-        title: movie.title,
-                    },
-                  },
-                    }).director({ 
-                      ...(_count && transformCountFieldIntoSelectRelationsCount(_count)),
-                    });
-    }
-}
+"\\"use strict\\";
+Object.defineProperty(exports, \\"__esModule\\", { value: true });
+exports.MovieRelationsResolver = void 0;
+const tslib_1 = require(\\"tslib\\");
+const TypeGraphQL = tslib_1.__importStar(require(\\"type-graphql\\"));
+const helpers_1 = require(\\"../../../helpers\\");
+const Director_1 = require(\\"../../../models/Director\\");
+const Movie_1 = require(\\"../../../models/Movie\\");
+let MovieRelationsResolver = class MovieRelationsResolver {
+  director(movie, ctx, info) {
+    const { _count } = helpers_1.transformInfoIntoPrismaArgs(info);
+    return helpers_1.getPrismaFromContext(ctx).movie.findUniqueOrThrow({
+      where: {
+        movieUniqueCompoundName: {
+          directorFirstName: movie.directorFirstName,
+          directorLastName: movie.directorLastName,
+          title: movie.title,
+        },
+      },
+    }).director({
+      ...(_count && helpers_1.transformCountFieldIntoSelectRelationsCount(_count)),
+    });
+  }
+};
+exports.MovieRelationsResolver = MovieRelationsResolver;
+tslib_1.__decorate([
+    TypeGraphQL.FieldResolver(_type => Director_1.Director, { nullable: false }),
+    tslib_1.__param(0, TypeGraphQL.Root()),
+    tslib_1.__param(1, TypeGraphQL.Ctx()),
+    tslib_1.__param(2, TypeGraphQL.Info()),
+    tslib_1.__metadata(\\"design:type\\", Function),
+    tslib_1.__metadata(\\"design:paramtypes\\", [Movie_1.Movie, Object, Object]),
+    tslib_1.__metadata(\\"design:returntype\\", Promise)
+], MovieRelationsResolver.prototype, \\"director\\", null);
+exports.MovieRelationsResolver = MovieRelationsResolver = tslib_1.__decorate([
+    TypeGraphQL.Resolver(_of => Movie_1.Movie)
+], MovieRelationsResolver);
 "
 `;
 
 exports[`relations resolvers generation should properly generate relation resolver class for model with unique fields: DirectorRelationsResolver 1`] = `
-"import * as TypeGraphQL from \\"type-graphql\\";
-import type { GraphQLResolveInfo } from \\"graphql\\";
-import { Director } from \\"../../../models/Director\\";
-import { Movie } from \\"../../../models/Movie\\";
-import { DirectorMoviesArgs } from \\"./args/DirectorMoviesArgs\\";
-import { transformInfoIntoPrismaArgs, getPrismaFromContext, transformCountFieldIntoSelectRelationsCount } from \\"../../../helpers\\";
-
-@TypeGraphQL.Resolver(_of => Director)
-export class DirectorRelationsResolver {
-    @TypeGraphQL.FieldResolver(_type => [Movie], {
-            nullable: false
-        })
-    async movies(@TypeGraphQL.Root() director: Director, @TypeGraphQL.Ctx() ctx: any, @TypeGraphQL.Info() info: GraphQLResolveInfo, @TypeGraphQL.Args() args: DirectorMoviesArgs): Promise<Movie[]> {
-         const { _count } = transformInfoIntoPrismaArgs(info);
-                    return getPrismaFromContext(ctx).director.findUniqueOrThrow({
-                      where: {
-                    firstName_lastName: {
-                      firstName: director.firstName,
-        lastName: director.lastName,
-                    },
-                  },
-                    }).movies({ 
-        ...args,
-                      ...(_count && transformCountFieldIntoSelectRelationsCount(_count)),
-                    });
-    }
-}
+"\\"use strict\\";
+Object.defineProperty(exports, \\"__esModule\\", { value: true });
+exports.DirectorRelationsResolver = void 0;
+const tslib_1 = require(\\"tslib\\");
+const TypeGraphQL = tslib_1.__importStar(require(\\"type-graphql\\"));
+const helpers_1 = require(\\"../../../helpers\\");
+const Movie_1 = require(\\"../../../models/Movie\\");
+const Director_1 = require(\\"../../../models/Director\\");
+const DirectorMoviesArgs_1 = require(\\"./args/DirectorMoviesArgs\\");
+let DirectorRelationsResolver = class DirectorRelationsResolver {
+  movies(director, ctx, info, args) {
+    const { _count } = helpers_1.transformInfoIntoPrismaArgs(info);
+    return helpers_1.getPrismaFromContext(ctx).director.findUniqueOrThrow({
+      where: {
+        firstName_lastName: {
+          firstName: director.firstName,
+          lastName: director.lastName,
+        },
+      },
+    }).movies({
+  ...args,
+      ...(_count && helpers_1.transformCountFieldIntoSelectRelationsCount(_count)),
+    });
+  }
+};
+exports.DirectorRelationsResolver = DirectorRelationsResolver;
+tslib_1.__decorate([
+    TypeGraphQL.FieldResolver(_type => [Movie_1.Movie], { nullable: false }),
+    tslib_1.__param(0, TypeGraphQL.Root()),
+    tslib_1.__param(1, TypeGraphQL.Ctx()),
+    tslib_1.__param(2, TypeGraphQL.Info()),
+    tslib_1.__param(3, TypeGraphQL.Args()),
+    tslib_1.__metadata(\\"design:type\\", Function),
+    tslib_1.__metadata(\\"design:paramtypes\\", [Director_1.Director, Object, Object, DirectorMoviesArgs_1.DirectorMoviesArgs]),
+    tslib_1.__metadata(\\"design:returntype\\", Promise)
+], DirectorRelationsResolver.prototype, \\"movies\\", null);
+exports.DirectorRelationsResolver = DirectorRelationsResolver = tslib_1.__decorate([
+    TypeGraphQL.Resolver(_of => Director_1.Director)
+], DirectorRelationsResolver);
 "
 `;
 
 exports[`relations resolvers generation should properly generate relation resolvers classes for models with omitted relation field: PostRelationsResolver 1`] = `
-"import * as TypeGraphQL from \\"type-graphql\\";
-import type { GraphQLResolveInfo } from \\"graphql\\";
-import { Post } from \\"../../../models/Post\\";
-import { User } from \\"../../../models/User\\";
-import { PostAuthorArgs } from \\"./args/PostAuthorArgs\\";
-import { transformInfoIntoPrismaArgs, getPrismaFromContext, transformCountFieldIntoSelectRelationsCount } from \\"../../../helpers\\";
-
-@TypeGraphQL.Resolver(_of => Post)
-export class PostRelationsResolver {
-    @TypeGraphQL.FieldResolver(_type => User, {
-            nullable: true
-        })
-    async author(@TypeGraphQL.Root() post: Post, @TypeGraphQL.Ctx() ctx: any, @TypeGraphQL.Info() info: GraphQLResolveInfo, @TypeGraphQL.Args() args: PostAuthorArgs): Promise<User | null> {
-         const { _count } = transformInfoIntoPrismaArgs(info);
-                    return getPrismaFromContext(ctx).post.findUniqueOrThrow({
-                      where: {
-                    uuid: post.uuid,
-                  },
-                    }).author({ 
-        ...args,
-                      ...(_count && transformCountFieldIntoSelectRelationsCount(_count)),
-                    });
-    }
-}
+"\\"use strict\\";
+Object.defineProperty(exports, \\"__esModule\\", { value: true });
+exports.PostRelationsResolver = void 0;
+const tslib_1 = require(\\"tslib\\");
+const TypeGraphQL = tslib_1.__importStar(require(\\"type-graphql\\"));
+const helpers_1 = require(\\"../../../helpers\\");
+const User_1 = require(\\"../../../models/User\\");
+const Post_1 = require(\\"../../../models/Post\\");
+const PostAuthorArgs_1 = require(\\"./args/PostAuthorArgs\\");
+let PostRelationsResolver = class PostRelationsResolver {
+  author(post, ctx, info, args) {
+    const { _count } = helpers_1.transformInfoIntoPrismaArgs(info);
+    return helpers_1.getPrismaFromContext(ctx).post.findUniqueOrThrow({
+      where: {
+        uuid: post.uuid,
+      },
+    }).author({
+  ...args,
+      ...(_count && helpers_1.transformCountFieldIntoSelectRelationsCount(_count)),
+    });
+  }
+};
+exports.PostRelationsResolver = PostRelationsResolver;
+tslib_1.__decorate([
+    TypeGraphQL.FieldResolver(_type => User_1.User, { nullable: true }),
+    tslib_1.__param(0, TypeGraphQL.Root()),
+    tslib_1.__param(1, TypeGraphQL.Ctx()),
+    tslib_1.__param(2, TypeGraphQL.Info()),
+    tslib_1.__param(3, TypeGraphQL.Args()),
+    tslib_1.__metadata(\\"design:type\\", Function),
+    tslib_1.__metadata(\\"design:paramtypes\\", [Post_1.Post, Object, Object, PostAuthorArgs_1.PostAuthorArgs]),
+    tslib_1.__metadata(\\"design:returntype\\", Promise)
+], PostRelationsResolver.prototype, \\"author\\", null);
+exports.PostRelationsResolver = PostRelationsResolver = tslib_1.__decorate([
+    TypeGraphQL.Resolver(_of => Post_1.Post)
+], PostRelationsResolver);
 "
 `;
 
 exports[`relations resolvers generation should properly generate relation resolvers classes for models with omitted relation field: UserRelationsResolver 1`] = `
-"import * as TypeGraphQL from \\"type-graphql\\";
-import type { GraphQLResolveInfo } from \\"graphql\\";
-import { Post } from \\"../../../models/Post\\";
-import { User } from \\"../../../models/User\\";
-import { UserPostsArgs } from \\"./args/UserPostsArgs\\";
-import { transformInfoIntoPrismaArgs, getPrismaFromContext, transformCountFieldIntoSelectRelationsCount } from \\"../../../helpers\\";
-
-@TypeGraphQL.Resolver(_of => User)
-export class UserRelationsResolver {
-    @TypeGraphQL.FieldResolver(_type => [Post], {
-            nullable: false
-        })
-    async posts(@TypeGraphQL.Root() user: User, @TypeGraphQL.Ctx() ctx: any, @TypeGraphQL.Info() info: GraphQLResolveInfo, @TypeGraphQL.Args() args: UserPostsArgs): Promise<Post[]> {
-         const { _count } = transformInfoIntoPrismaArgs(info);
-                    return getPrismaFromContext(ctx).user.findUniqueOrThrow({
-                      where: {
-                    id: user.id,
-                  },
-                    }).posts({ 
-        ...args,
-                      ...(_count && transformCountFieldIntoSelectRelationsCount(_count)),
-                    });
-    }
-}
+"\\"use strict\\";
+Object.defineProperty(exports, \\"__esModule\\", { value: true });
+exports.UserRelationsResolver = void 0;
+const tslib_1 = require(\\"tslib\\");
+const TypeGraphQL = tslib_1.__importStar(require(\\"type-graphql\\"));
+const helpers_1 = require(\\"../../../helpers\\");
+const Post_1 = require(\\"../../../models/Post\\");
+const User_1 = require(\\"../../../models/User\\");
+const UserPostsArgs_1 = require(\\"./args/UserPostsArgs\\");
+let UserRelationsResolver = class UserRelationsResolver {
+  posts(user, ctx, info, args) {
+    const { _count } = helpers_1.transformInfoIntoPrismaArgs(info);
+    return helpers_1.getPrismaFromContext(ctx).user.findUniqueOrThrow({
+      where: {
+        id: user.id,
+      },
+    }).posts({
+  ...args,
+      ...(_count && helpers_1.transformCountFieldIntoSelectRelationsCount(_count)),
+    });
+  }
+};
+exports.UserRelationsResolver = UserRelationsResolver;
+tslib_1.__decorate([
+    TypeGraphQL.FieldResolver(_type => [Post_1.Post], { nullable: false }),
+    tslib_1.__param(0, TypeGraphQL.Root()),
+    tslib_1.__param(1, TypeGraphQL.Ctx()),
+    tslib_1.__param(2, TypeGraphQL.Info()),
+    tslib_1.__param(3, TypeGraphQL.Args()),
+    tslib_1.__metadata(\\"design:type\\", Function),
+    tslib_1.__metadata(\\"design:paramtypes\\", [User_1.User, Object, Object, UserPostsArgs_1.UserPostsArgs]),
+    tslib_1.__metadata(\\"design:returntype\\", Promise)
+], UserRelationsResolver.prototype, \\"posts\\", null);
+exports.UserRelationsResolver = UserRelationsResolver = tslib_1.__decorate([
+    TypeGraphQL.Resolver(_of => User_1.User)
+], UserRelationsResolver);
 "
 `;
 
 exports[`relations resolvers generation should properly generate relation resolvers classes for models with renamed relation fields: PostRelationsResolver 1`] = `
-"import * as TypeGraphQL from \\"type-graphql\\";
-import type { GraphQLResolveInfo } from \\"graphql\\";
-import { Post } from \\"../../../models/Post\\";
-import { User } from \\"../../../models/User\\";
-import { PostAuthorArgs } from \\"./args/PostAuthorArgs\\";
-import { transformInfoIntoPrismaArgs, getPrismaFromContext, transformCountFieldIntoSelectRelationsCount } from \\"../../../helpers\\";
-
-@TypeGraphQL.Resolver(_of => Post)
-export class PostRelationsResolver {
-    @TypeGraphQL.FieldResolver(_type => User, {
-            nullable: true,
-            description: \\"author field doc\\"
-        })
-    async postAuthor(@TypeGraphQL.Root() post: Post, @TypeGraphQL.Ctx() ctx: any, @TypeGraphQL.Info() info: GraphQLResolveInfo, @TypeGraphQL.Args() args: PostAuthorArgs): Promise<User | null> {
-         const { _count } = transformInfoIntoPrismaArgs(info);
-                    return getPrismaFromContext(ctx).post.findUniqueOrThrow({
-                      where: {
-                    uuid: post.uuid,
-                  },
-                    }).author({ 
-        ...args,
-                      ...(_count && transformCountFieldIntoSelectRelationsCount(_count)),
-                    });
-    }
-}
+"\\"use strict\\";
+Object.defineProperty(exports, \\"__esModule\\", { value: true });
+exports.PostRelationsResolver = void 0;
+const tslib_1 = require(\\"tslib\\");
+const TypeGraphQL = tslib_1.__importStar(require(\\"type-graphql\\"));
+const helpers_1 = require(\\"../../../helpers\\");
+const User_1 = require(\\"../../../models/User\\");
+const Post_1 = require(\\"../../../models/Post\\");
+const PostAuthorArgs_1 = require(\\"./args/PostAuthorArgs\\");
+let PostRelationsResolver = class PostRelationsResolver {
+  postAuthor(post, ctx, info, args) {
+    const { _count } = helpers_1.transformInfoIntoPrismaArgs(info);
+    return helpers_1.getPrismaFromContext(ctx).post.findUniqueOrThrow({
+      where: {
+        uuid: post.uuid,
+      },
+    }).author({
+  ...args,
+      ...(_count && helpers_1.transformCountFieldIntoSelectRelationsCount(_count)),
+    });
+  }
+};
+exports.PostRelationsResolver = PostRelationsResolver;
+tslib_1.__decorate([
+    TypeGraphQL.FieldResolver(_type => User_1.User, { nullable: true, description: \\"author field doc\\" }),
+    tslib_1.__param(0, TypeGraphQL.Root()),
+    tslib_1.__param(1, TypeGraphQL.Ctx()),
+    tslib_1.__param(2, TypeGraphQL.Info()),
+    tslib_1.__param(3, TypeGraphQL.Args()),
+    tslib_1.__metadata(\\"design:type\\", Function),
+    tslib_1.__metadata(\\"design:paramtypes\\", [Post_1.Post, Object, Object, PostAuthorArgs_1.PostAuthorArgs]),
+    tslib_1.__metadata(\\"design:returntype\\", Promise)
+], PostRelationsResolver.prototype, \\"postAuthor\\", null);
+exports.PostRelationsResolver = PostRelationsResolver = tslib_1.__decorate([
+    TypeGraphQL.Resolver(_of => Post_1.Post)
+], PostRelationsResolver);
 "
 `;
 
 exports[`relations resolvers generation should properly generate relation resolvers classes for models with renamed relation fields: UserRelationsResolver 1`] = `
-"import * as TypeGraphQL from \\"type-graphql\\";
-import type { GraphQLResolveInfo } from \\"graphql\\";
-import { Post } from \\"../../../models/Post\\";
-import { User } from \\"../../../models/User\\";
-import { UserPostsArgs } from \\"./args/UserPostsArgs\\";
-import { transformInfoIntoPrismaArgs, getPrismaFromContext, transformCountFieldIntoSelectRelationsCount } from \\"../../../helpers\\";
-
-@TypeGraphQL.Resolver(_of => User)
-export class UserRelationsResolver {
-    @TypeGraphQL.FieldResolver(_type => [Post], {
-            nullable: false
-        })
-    async userPosts(@TypeGraphQL.Root() user: User, @TypeGraphQL.Ctx() ctx: any, @TypeGraphQL.Info() info: GraphQLResolveInfo, @TypeGraphQL.Args() args: UserPostsArgs): Promise<Post[]> {
-         const { _count } = transformInfoIntoPrismaArgs(info);
-                    return getPrismaFromContext(ctx).user.findUniqueOrThrow({
-                      where: {
-                    id: user.id,
-                  },
-                    }).posts({ 
-        ...args,
-                      ...(_count && transformCountFieldIntoSelectRelationsCount(_count)),
-                    });
-    }
-}
+"\\"use strict\\";
+Object.defineProperty(exports, \\"__esModule\\", { value: true });
+exports.UserRelationsResolver = void 0;
+const tslib_1 = require(\\"tslib\\");
+const TypeGraphQL = tslib_1.__importStar(require(\\"type-graphql\\"));
+const helpers_1 = require(\\"../../../helpers\\");
+const Post_1 = require(\\"../../../models/Post\\");
+const User_1 = require(\\"../../../models/User\\");
+const UserPostsArgs_1 = require(\\"./args/UserPostsArgs\\");
+let UserRelationsResolver = class UserRelationsResolver {
+  userPosts(user, ctx, info, args) {
+    const { _count } = helpers_1.transformInfoIntoPrismaArgs(info);
+    return helpers_1.getPrismaFromContext(ctx).user.findUniqueOrThrow({
+      where: {
+        id: user.id,
+      },
+    }).posts({
+  ...args,
+      ...(_count && helpers_1.transformCountFieldIntoSelectRelationsCount(_count)),
+    });
+  }
+};
+exports.UserRelationsResolver = UserRelationsResolver;
+tslib_1.__decorate([
+    TypeGraphQL.FieldResolver(_type => [Post_1.Post], { nullable: false }),
+    tslib_1.__param(0, TypeGraphQL.Root()),
+    tslib_1.__param(1, TypeGraphQL.Ctx()),
+    tslib_1.__param(2, TypeGraphQL.Info()),
+    tslib_1.__param(3, TypeGraphQL.Args()),
+    tslib_1.__metadata(\\"design:type\\", Function),
+    tslib_1.__metadata(\\"design:paramtypes\\", [User_1.User, Object, Object, UserPostsArgs_1.UserPostsArgs]),
+    tslib_1.__metadata(\\"design:returntype\\", Promise)
+], UserRelationsResolver.prototype, \\"userPosts\\", null);
+exports.UserRelationsResolver = UserRelationsResolver = tslib_1.__decorate([
+    TypeGraphQL.Resolver(_of => User_1.User)
+], UserRelationsResolver);
 "
 `;
 
 exports[`relations resolvers generation should properly generate resolver and args class for array relation resolvers: UserPostsArgs 1`] = `
-"import * as TypeGraphQL from \\"type-graphql\\";
-import * as GraphQLScalars from \\"graphql-scalars\\";
-import { PostOrderByWithRelationInput } from \\"../../../inputs/PostOrderByWithRelationInput\\";
-import { PostWhereInput } from \\"../../../inputs/PostWhereInput\\";
-import { PostWhereUniqueInput } from \\"../../../inputs/PostWhereUniqueInput\\";
-import { PostScalarFieldEnum } from \\"../../../../enums/PostScalarFieldEnum\\";
-
-@TypeGraphQL.ArgsType()
-export class UserPostsArgs {
-    @TypeGraphQL.Field(_type => PostWhereInput, {
-            nullable: true
-        })
-    where?: PostWhereInput | undefined;
-
-    @TypeGraphQL.Field(_type => [PostOrderByWithRelationInput], {
-            nullable: true
-        })
-    orderBy?: PostOrderByWithRelationInput[] | undefined;
-
-    @TypeGraphQL.Field(_type => PostWhereUniqueInput, {
-            nullable: true
-        })
-    cursor?: PostWhereUniqueInput | undefined;
-
-    @TypeGraphQL.Field(_type => TypeGraphQL.Int, {
-            nullable: true
-        })
-    take?: number | undefined;
-
-    @TypeGraphQL.Field(_type => TypeGraphQL.Int, {
-            nullable: true
-        })
-    skip?: number | undefined;
-
-    @TypeGraphQL.Field(_type => [PostScalarFieldEnum], {
-            nullable: true
-        })
-    distinct?: Array<\\"uuid\\" | \\"content\\" | \\"authorId\\"> | undefined;
-}
+"\\"use strict\\";
+Object.defineProperty(exports, \\"__esModule\\", { value: true });
+exports.UserPostsArgs = void 0;
+const tslib_1 = require(\\"tslib\\");
+const TypeGraphQL = tslib_1.__importStar(require(\\"type-graphql\\"));
+const PostOrderByWithRelationInput_1 = require(\\"../../../inputs/PostOrderByWithRelationInput\\");
+const PostWhereInput_1 = require(\\"../../../inputs/PostWhereInput\\");
+const PostWhereUniqueInput_1 = require(\\"../../../inputs/PostWhereUniqueInput\\");
+const PostScalarFieldEnum_1 = require(\\"../../../../enums/PostScalarFieldEnum\\");
+let UserPostsArgs = class UserPostsArgs {};
+exports.UserPostsArgs = UserPostsArgs;
+tslib_1.__decorate([
+    TypeGraphQL.Field(_type => PostWhereInput_1.PostWhereInput, { nullable: true }),
+    tslib_1.__metadata(\\"design:type\\", String)
+], UserPostsArgs.prototype, \\"where\\", void 0);
+tslib_1.__decorate([
+    TypeGraphQL.Field(_type => [PostOrderByWithRelationInput_1.PostOrderByWithRelationInput], { nullable: true }),
+    tslib_1.__metadata(\\"design:type\\", Array)
+], UserPostsArgs.prototype, \\"orderBy\\", void 0);
+tslib_1.__decorate([
+    TypeGraphQL.Field(_type => PostWhereUniqueInput_1.PostWhereUniqueInput, { nullable: true }),
+    tslib_1.__metadata(\\"design:type\\", String)
+], UserPostsArgs.prototype, \\"cursor\\", void 0);
+tslib_1.__decorate([
+    TypeGraphQL.Field(_type => TypeGraphQL.Int, { nullable: true }),
+    tslib_1.__metadata(\\"design:type\\", Number)
+], UserPostsArgs.prototype, \\"take\\", void 0);
+tslib_1.__decorate([
+    TypeGraphQL.Field(_type => TypeGraphQL.Int, { nullable: true }),
+    tslib_1.__metadata(\\"design:type\\", Number)
+], UserPostsArgs.prototype, \\"skip\\", void 0);
+tslib_1.__decorate([
+    TypeGraphQL.Field(_type => [PostScalarFieldEnum_1.PostScalarFieldEnum], { nullable: true }),
+    tslib_1.__metadata(\\"design:type\\", Array)
+], UserPostsArgs.prototype, \\"distinct\\", void 0);
+exports.UserPostsArgs = UserPostsArgs = tslib_1.__decorate([
+    TypeGraphQL.ArgsType()
+], UserPostsArgs);
 "
 `;
 
 exports[`relations resolvers generation should properly generate resolver and args class for array relation resolvers: UserRelationsResolver 1`] = `
-"import * as TypeGraphQL from \\"type-graphql\\";
-import type { GraphQLResolveInfo } from \\"graphql\\";
-import { Post } from \\"../../../models/Post\\";
-import { User } from \\"../../../models/User\\";
-import { UserPostsArgs } from \\"./args/UserPostsArgs\\";
-import { transformInfoIntoPrismaArgs, getPrismaFromContext, transformCountFieldIntoSelectRelationsCount } from \\"../../../helpers\\";
-
-@TypeGraphQL.Resolver(_of => User)
-export class UserRelationsResolver {
-    @TypeGraphQL.FieldResolver(_type => [Post], {
-            nullable: false
-        })
-    async posts(@TypeGraphQL.Root() user: User, @TypeGraphQL.Ctx() ctx: any, @TypeGraphQL.Info() info: GraphQLResolveInfo, @TypeGraphQL.Args() args: UserPostsArgs): Promise<Post[]> {
-         const { _count } = transformInfoIntoPrismaArgs(info);
-                    return getPrismaFromContext(ctx).user.findUniqueOrThrow({
-                      where: {
-                    id: user.id,
-                  },
-                    }).posts({ 
-        ...args,
-                      ...(_count && transformCountFieldIntoSelectRelationsCount(_count)),
-                    });
-    }
-}
+"\\"use strict\\";
+Object.defineProperty(exports, \\"__esModule\\", { value: true });
+exports.UserRelationsResolver = void 0;
+const tslib_1 = require(\\"tslib\\");
+const TypeGraphQL = tslib_1.__importStar(require(\\"type-graphql\\"));
+const helpers_1 = require(\\"../../../helpers\\");
+const Post_1 = require(\\"../../../models/Post\\");
+const User_1 = require(\\"../../../models/User\\");
+const UserPostsArgs_1 = require(\\"./args/UserPostsArgs\\");
+let UserRelationsResolver = class UserRelationsResolver {
+  posts(user, ctx, info, args) {
+    const { _count } = helpers_1.transformInfoIntoPrismaArgs(info);
+    return helpers_1.getPrismaFromContext(ctx).user.findUniqueOrThrow({
+      where: {
+        id: user.id,
+      },
+    }).posts({
+  ...args,
+      ...(_count && helpers_1.transformCountFieldIntoSelectRelationsCount(_count)),
+    });
+  }
+};
+exports.UserRelationsResolver = UserRelationsResolver;
+tslib_1.__decorate([
+    TypeGraphQL.FieldResolver(_type => [Post_1.Post], { nullable: false }),
+    tslib_1.__param(0, TypeGraphQL.Root()),
+    tslib_1.__param(1, TypeGraphQL.Ctx()),
+    tslib_1.__param(2, TypeGraphQL.Info()),
+    tslib_1.__param(3, TypeGraphQL.Args()),
+    tslib_1.__metadata(\\"design:type\\", Function),
+    tslib_1.__metadata(\\"design:paramtypes\\", [User_1.User, Object, Object, UserPostsArgs_1.UserPostsArgs]),
+    tslib_1.__metadata(\\"design:returntype\\", Promise)
+], UserRelationsResolver.prototype, \\"posts\\", null);
+exports.UserRelationsResolver = UserRelationsResolver = tslib_1.__decorate([
+    TypeGraphQL.Resolver(_of => User_1.User)
+], UserRelationsResolver);
 "
 `;
 
 exports[`relations resolvers generation should properly generate resolver class for single relation resolvers: UserRelationsResolver 1`] = `
-"import * as TypeGraphQL from \\"type-graphql\\";
-import type { GraphQLResolveInfo } from \\"graphql\\";
-import { Address } from \\"../../../models/Address\\";
-import { User } from \\"../../../models/User\\";
-import { UserAddressArgs } from \\"./args/UserAddressArgs\\";
-import { transformInfoIntoPrismaArgs, getPrismaFromContext, transformCountFieldIntoSelectRelationsCount } from \\"../../../helpers\\";
-
-@TypeGraphQL.Resolver(_of => User)
-export class UserRelationsResolver {
-    @TypeGraphQL.FieldResolver(_type => Address, {
-            nullable: true
-        })
-    async address(@TypeGraphQL.Root() user: User, @TypeGraphQL.Ctx() ctx: any, @TypeGraphQL.Info() info: GraphQLResolveInfo, @TypeGraphQL.Args() args: UserAddressArgs): Promise<Address | null> {
-         const { _count } = transformInfoIntoPrismaArgs(info);
-                    return getPrismaFromContext(ctx).user.findUniqueOrThrow({
-                      where: {
-                    id: user.id,
-                  },
-                    }).address({ 
-        ...args,
-                      ...(_count && transformCountFieldIntoSelectRelationsCount(_count)),
-                    });
-    }
-}
+"\\"use strict\\";
+Object.defineProperty(exports, \\"__esModule\\", { value: true });
+exports.UserRelationsResolver = void 0;
+const tslib_1 = require(\\"tslib\\");
+const TypeGraphQL = tslib_1.__importStar(require(\\"type-graphql\\"));
+const helpers_1 = require(\\"../../../helpers\\");
+const Address_1 = require(\\"../../../models/Address\\");
+const User_1 = require(\\"../../../models/User\\");
+const UserAddressArgs_1 = require(\\"./args/UserAddressArgs\\");
+let UserRelationsResolver = class UserRelationsResolver {
+  address(user, ctx, info, args) {
+    const { _count } = helpers_1.transformInfoIntoPrismaArgs(info);
+    return helpers_1.getPrismaFromContext(ctx).user.findUniqueOrThrow({
+      where: {
+        id: user.id,
+      },
+    }).address({
+  ...args,
+      ...(_count && helpers_1.transformCountFieldIntoSelectRelationsCount(_count)),
+    });
+  }
+};
+exports.UserRelationsResolver = UserRelationsResolver;
+tslib_1.__decorate([
+    TypeGraphQL.FieldResolver(_type => Address_1.Address, { nullable: true }),
+    tslib_1.__param(0, TypeGraphQL.Root()),
+    tslib_1.__param(1, TypeGraphQL.Ctx()),
+    tslib_1.__param(2, TypeGraphQL.Info()),
+    tslib_1.__param(3, TypeGraphQL.Args()),
+    tslib_1.__metadata(\\"design:type\\", Function),
+    tslib_1.__metadata(\\"design:paramtypes\\", [User_1.User, Object, Object, UserAddressArgs_1.UserAddressArgs]),
+    tslib_1.__metadata(\\"design:returntype\\", Promise)
+], UserRelationsResolver.prototype, \\"address\\", null);
+exports.UserRelationsResolver = UserRelationsResolver = tslib_1.__decorate([
+    TypeGraphQL.Resolver(_of => User_1.User)
+], UserRelationsResolver);
 "
 `;
 
 exports[`relations resolvers generation should properly generate resolvers classes for prisma models with cyclic relations: Post 1`] = `
-"import * as TypeGraphQL from \\"type-graphql\\";
-import type { GraphQLResolveInfo } from \\"graphql\\";
-import { Post } from \\"../../../models/Post\\";
-import { User } from \\"../../../models/User\\";
-import { PostAuthorArgs } from \\"./args/PostAuthorArgs\\";
-import { transformInfoIntoPrismaArgs, getPrismaFromContext, transformCountFieldIntoSelectRelationsCount } from \\"../../../helpers\\";
-
-@TypeGraphQL.Resolver(_of => Post)
-export class PostRelationsResolver {
-    @TypeGraphQL.FieldResolver(_type => User, {
-            nullable: true,
-            description: \\"author field doc\\"
-        })
-    async author(@TypeGraphQL.Root() post: Post, @TypeGraphQL.Ctx() ctx: any, @TypeGraphQL.Info() info: GraphQLResolveInfo, @TypeGraphQL.Args() args: PostAuthorArgs): Promise<User | null> {
-         const { _count } = transformInfoIntoPrismaArgs(info);
-                    return getPrismaFromContext(ctx).post.findUniqueOrThrow({
-                      where: {
-                    uuid: post.uuid,
-                  },
-                    }).author({ 
-        ...args,
-                      ...(_count && transformCountFieldIntoSelectRelationsCount(_count)),
-                    });
-    }
-}
+"\\"use strict\\";
+Object.defineProperty(exports, \\"__esModule\\", { value: true });
+exports.PostRelationsResolver = void 0;
+const tslib_1 = require(\\"tslib\\");
+const TypeGraphQL = tslib_1.__importStar(require(\\"type-graphql\\"));
+const helpers_1 = require(\\"../../../helpers\\");
+const User_1 = require(\\"../../../models/User\\");
+const Post_1 = require(\\"../../../models/Post\\");
+const PostAuthorArgs_1 = require(\\"./args/PostAuthorArgs\\");
+let PostRelationsResolver = class PostRelationsResolver {
+  author(post, ctx, info, args) {
+    const { _count } = helpers_1.transformInfoIntoPrismaArgs(info);
+    return helpers_1.getPrismaFromContext(ctx).post.findUniqueOrThrow({
+      where: {
+        uuid: post.uuid,
+      },
+    }).author({
+  ...args,
+      ...(_count && helpers_1.transformCountFieldIntoSelectRelationsCount(_count)),
+    });
+  }
+};
+exports.PostRelationsResolver = PostRelationsResolver;
+tslib_1.__decorate([
+    TypeGraphQL.FieldResolver(_type => User_1.User, { nullable: true, description: \\"author field doc\\" }),
+    tslib_1.__param(0, TypeGraphQL.Root()),
+    tslib_1.__param(1, TypeGraphQL.Ctx()),
+    tslib_1.__param(2, TypeGraphQL.Info()),
+    tslib_1.__param(3, TypeGraphQL.Args()),
+    tslib_1.__metadata(\\"design:type\\", Function),
+    tslib_1.__metadata(\\"design:paramtypes\\", [Post_1.Post, Object, Object, PostAuthorArgs_1.PostAuthorArgs]),
+    tslib_1.__metadata(\\"design:returntype\\", Promise)
+], PostRelationsResolver.prototype, \\"author\\", null);
+exports.PostRelationsResolver = PostRelationsResolver = tslib_1.__decorate([
+    TypeGraphQL.Resolver(_of => Post_1.Post)
+], PostRelationsResolver);
 "
 `;
 
 exports[`relations resolvers generation should properly generate resolvers classes for prisma models with cyclic relations: User 1`] = `
-"import * as TypeGraphQL from \\"type-graphql\\";
-import type { GraphQLResolveInfo } from \\"graphql\\";
-import { Post } from \\"../../../models/Post\\";
-import { User } from \\"../../../models/User\\";
-import { UserPostsArgs } from \\"./args/UserPostsArgs\\";
-import { transformInfoIntoPrismaArgs, getPrismaFromContext, transformCountFieldIntoSelectRelationsCount } from \\"../../../helpers\\";
-
-@TypeGraphQL.Resolver(_of => User)
-export class UserRelationsResolver {
-    @TypeGraphQL.FieldResolver(_type => [Post], {
-            nullable: false
-        })
-    async posts(@TypeGraphQL.Root() user: User, @TypeGraphQL.Ctx() ctx: any, @TypeGraphQL.Info() info: GraphQLResolveInfo, @TypeGraphQL.Args() args: UserPostsArgs): Promise<Post[]> {
-         const { _count } = transformInfoIntoPrismaArgs(info);
-                    return getPrismaFromContext(ctx).user.findUniqueOrThrow({
-                      where: {
-                    id: user.id,
-                  },
-                    }).posts({ 
-        ...args,
-                      ...(_count && transformCountFieldIntoSelectRelationsCount(_count)),
-                    });
-    }
-}
+"\\"use strict\\";
+Object.defineProperty(exports, \\"__esModule\\", { value: true });
+exports.UserRelationsResolver = void 0;
+const tslib_1 = require(\\"tslib\\");
+const TypeGraphQL = tslib_1.__importStar(require(\\"type-graphql\\"));
+const helpers_1 = require(\\"../../../helpers\\");
+const Post_1 = require(\\"../../../models/Post\\");
+const User_1 = require(\\"../../../models/User\\");
+const UserPostsArgs_1 = require(\\"./args/UserPostsArgs\\");
+let UserRelationsResolver = class UserRelationsResolver {
+  posts(user, ctx, info, args) {
+    const { _count } = helpers_1.transformInfoIntoPrismaArgs(info);
+    return helpers_1.getPrismaFromContext(ctx).user.findUniqueOrThrow({
+      where: {
+        id: user.id,
+      },
+    }).posts({
+  ...args,
+      ...(_count && helpers_1.transformCountFieldIntoSelectRelationsCount(_count)),
+    });
+  }
+};
+exports.UserRelationsResolver = UserRelationsResolver;
+tslib_1.__decorate([
+    TypeGraphQL.FieldResolver(_type => [Post_1.Post], { nullable: false }),
+    tslib_1.__param(0, TypeGraphQL.Root()),
+    tslib_1.__param(1, TypeGraphQL.Ctx()),
+    tslib_1.__param(2, TypeGraphQL.Info()),
+    tslib_1.__param(3, TypeGraphQL.Args()),
+    tslib_1.__metadata(\\"design:type\\", Function),
+    tslib_1.__metadata(\\"design:paramtypes\\", [User_1.User, Object, Object, UserPostsArgs_1.UserPostsArgs]),
+    tslib_1.__metadata(\\"design:returntype\\", Promise)
+], UserRelationsResolver.prototype, \\"posts\\", null);
+exports.UserRelationsResolver = UserRelationsResolver = tslib_1.__decorate([
+    TypeGraphQL.Resolver(_of => User_1.User)
+], UserRelationsResolver);
 "
 `;
 
 exports[`relations resolvers generation when \`fullTextSearchPostgres\` preview feature is enabled should properly generate args type classes using SearchRelevanceInput: FirstModelSecondModelsFieldArgs 1`] = `
-"import * as TypeGraphQL from \\"type-graphql\\";
-import * as GraphQLScalars from \\"graphql-scalars\\";
-import { SecondModelOrderByWithRelationInput } from \\"../../../inputs/SecondModelOrderByWithRelationInput\\";
-import { SecondModelWhereInput } from \\"../../../inputs/SecondModelWhereInput\\";
-import { SecondModelWhereUniqueInput } from \\"../../../inputs/SecondModelWhereUniqueInput\\";
-import { SecondModelScalarFieldEnum } from \\"../../../../enums/SecondModelScalarFieldEnum\\";
-
-@TypeGraphQL.ArgsType()
-export class FirstModelSecondModelsFieldArgs {
-    @TypeGraphQL.Field(_type => SecondModelWhereInput, {
-            nullable: true
-        })
-    where?: SecondModelWhereInput | undefined;
-
-    @TypeGraphQL.Field(_type => [SecondModelOrderByWithRelationInput], {
-            nullable: true
-        })
-    orderBy?: SecondModelOrderByWithRelationInput[] | undefined;
-
-    @TypeGraphQL.Field(_type => SecondModelWhereUniqueInput, {
-            nullable: true
-        })
-    cursor?: SecondModelWhereUniqueInput | undefined;
-
-    @TypeGraphQL.Field(_type => TypeGraphQL.Int, {
-            nullable: true
-        })
-    take?: number | undefined;
-
-    @TypeGraphQL.Field(_type => TypeGraphQL.Int, {
-            nullable: true
-        })
-    skip?: number | undefined;
-
-    @TypeGraphQL.Field(_type => [SecondModelScalarFieldEnum], {
-            nullable: true
-        })
-    distinct?: Array<\\"idField\\" | \\"uniqueStringField\\" | \\"floatField\\" | \\"firstModelFieldId\\"> | undefined;
-}
+"\\"use strict\\";
+Object.defineProperty(exports, \\"__esModule\\", { value: true });
+exports.FirstModelSecondModelsFieldArgs = void 0;
+const tslib_1 = require(\\"tslib\\");
+const TypeGraphQL = tslib_1.__importStar(require(\\"type-graphql\\"));
+const SecondModelOrderByWithRelationInput_1 = require(\\"../../../inputs/SecondModelOrderByWithRelationInput\\");
+const SecondModelWhereInput_1 = require(\\"../../../inputs/SecondModelWhereInput\\");
+const SecondModelWhereUniqueInput_1 = require(\\"../../../inputs/SecondModelWhereUniqueInput\\");
+const SecondModelScalarFieldEnum_1 = require(\\"../../../../enums/SecondModelScalarFieldEnum\\");
+let FirstModelSecondModelsFieldArgs = class FirstModelSecondModelsFieldArgs {};
+exports.FirstModelSecondModelsFieldArgs = FirstModelSecondModelsFieldArgs;
+tslib_1.__decorate([
+    TypeGraphQL.Field(_type => SecondModelWhereInput_1.SecondModelWhereInput, { nullable: true }),
+    tslib_1.__metadata(\\"design:type\\", String)
+], FirstModelSecondModelsFieldArgs.prototype, \\"where\\", void 0);
+tslib_1.__decorate([
+    TypeGraphQL.Field(_type => [SecondModelOrderByWithRelationInput_1.SecondModelOrderByWithRelationInput], { nullable: true }),
+    tslib_1.__metadata(\\"design:type\\", Array)
+], FirstModelSecondModelsFieldArgs.prototype, \\"orderBy\\", void 0);
+tslib_1.__decorate([
+    TypeGraphQL.Field(_type => SecondModelWhereUniqueInput_1.SecondModelWhereUniqueInput, { nullable: true }),
+    tslib_1.__metadata(\\"design:type\\", String)
+], FirstModelSecondModelsFieldArgs.prototype, \\"cursor\\", void 0);
+tslib_1.__decorate([
+    TypeGraphQL.Field(_type => TypeGraphQL.Int, { nullable: true }),
+    tslib_1.__metadata(\\"design:type\\", Number)
+], FirstModelSecondModelsFieldArgs.prototype, \\"take\\", void 0);
+tslib_1.__decorate([
+    TypeGraphQL.Field(_type => TypeGraphQL.Int, { nullable: true }),
+    tslib_1.__metadata(\\"design:type\\", Number)
+], FirstModelSecondModelsFieldArgs.prototype, \\"skip\\", void 0);
+tslib_1.__decorate([
+    TypeGraphQL.Field(_type => [SecondModelScalarFieldEnum_1.SecondModelScalarFieldEnum], { nullable: true }),
+    tslib_1.__metadata(\\"design:type\\", Array)
+], FirstModelSecondModelsFieldArgs.prototype, \\"distinct\\", void 0);
+exports.FirstModelSecondModelsFieldArgs = FirstModelSecondModelsFieldArgs = tslib_1.__decorate([
+    TypeGraphQL.ArgsType()
+], FirstModelSecondModelsFieldArgs);
 "
 `;
 
 exports[`relations resolvers generation when emitRedundantTypesInfo is set to true should properly generate type info for @Args decorator: UserRelationsResolver 1`] = `
-"import * as TypeGraphQL from \\"type-graphql\\";
-import type { GraphQLResolveInfo } from \\"graphql\\";
-import { Post } from \\"../../../models/Post\\";
-import { User } from \\"../../../models/User\\";
-import { UserPostsArgs } from \\"./args/UserPostsArgs\\";
-import { transformInfoIntoPrismaArgs, getPrismaFromContext, transformCountFieldIntoSelectRelationsCount } from \\"../../../helpers\\";
-
-@TypeGraphQL.Resolver(_of => User)
-export class UserRelationsResolver {
-    @TypeGraphQL.FieldResolver(_type => [Post], {
-            nullable: false
-        })
-    async posts(@TypeGraphQL.Root() user: User, @TypeGraphQL.Ctx() ctx: any, @TypeGraphQL.Info() info: GraphQLResolveInfo, @TypeGraphQL.Args(_type => UserPostsArgs) args: UserPostsArgs): Promise<Post[]> {
-         const { _count } = transformInfoIntoPrismaArgs(info);
-                    return getPrismaFromContext(ctx).user.findUniqueOrThrow({
-                      where: {
-                    id: user.id,
-                  },
-                    }).posts({ 
-        ...args,
-                      ...(_count && transformCountFieldIntoSelectRelationsCount(_count)),
-                    });
-    }
-}
+"\\"use strict\\";
+Object.defineProperty(exports, \\"__esModule\\", { value: true });
+exports.UserRelationsResolver = void 0;
+const tslib_1 = require(\\"tslib\\");
+const TypeGraphQL = tslib_1.__importStar(require(\\"type-graphql\\"));
+const helpers_1 = require(\\"../../../helpers\\");
+const Post_1 = require(\\"../../../models/Post\\");
+const User_1 = require(\\"../../../models/User\\");
+const UserPostsArgs_1 = require(\\"./args/UserPostsArgs\\");
+let UserRelationsResolver = class UserRelationsResolver {
+  posts(user, ctx, info, args) {
+    const { _count } = helpers_1.transformInfoIntoPrismaArgs(info);
+    return helpers_1.getPrismaFromContext(ctx).user.findUniqueOrThrow({
+      where: {
+        id: user.id,
+      },
+    }).posts({
+  ...args,
+      ...(_count && helpers_1.transformCountFieldIntoSelectRelationsCount(_count)),
+    });
+  }
+};
+exports.UserRelationsResolver = UserRelationsResolver;
+tslib_1.__decorate([
+    TypeGraphQL.FieldResolver(_type => [Post_1.Post], { nullable: false }),
+    tslib_1.__param(0, TypeGraphQL.Root()),
+    tslib_1.__param(1, TypeGraphQL.Ctx()),
+    tslib_1.__param(2, TypeGraphQL.Info()),
+    tslib_1.__param(3, TypeGraphQL.Args(_type => UserPostsArgs_1.UserPostsArgs)),
+    tslib_1.__metadata(\\"design:type\\", Function),
+    tslib_1.__metadata(\\"design:paramtypes\\", [User_1.User, Object, Object, UserPostsArgs_1.UserPostsArgs]),
+    tslib_1.__metadata(\\"design:returntype\\", Promise)
+], UserRelationsResolver.prototype, \\"posts\\", null);
+exports.UserRelationsResolver = UserRelationsResolver = tslib_1.__decorate([
+    TypeGraphQL.Resolver(_of => User_1.User)
+], UserRelationsResolver);
 "
 `;

@@ -113,6 +113,7 @@ export default function generateActionResolverClass(
   const module = renderResolverModule({
     className: action.actionResolverName,
     modelTypeName: model.typeName,
+    modelRuntimeRef: runtimeRefs.get(model.typeName),
     jsImports,
     dtsImports,
     methods: [

@@ -42,6 +42,7 @@ interface PropertyDecoratorSpec {
   decorator: string;
   targetName: string;
   propertyName: string;
+  isAccessor?: boolean;
 }
 
 interface MethodDecoratorSpec {
@@ -280,9 +281,9 @@ export function emitArgsModule(
       .map(arg => arg.selectedInputType.type),
     typeName =>
       createImportModuleSpecifier(
-        argsFolderName,
+        inputsFolderName,
         typeName,
-        inputImportsLevel - 1,
+        inputImportsLevel,
       ),
   );
   addNamedTypeImports(
@@ -292,7 +293,12 @@ export function emitArgsModule(
     fields
       .filter(arg => arg.selectedInputType.location === "enumTypes")
       .map(arg => arg.selectedInputType.type),
-    typeName => createImportModuleSpecifier(enumsFolderName, typeName, 4),
+    typeName =>
+      createImportModuleSpecifier(
+        enumsFolderName,
+        typeName,
+        inputImportsLevel + 1,
+      ),
   );
 
   const jsLines = [
@@ -456,6 +462,9 @@ export function emitModelModule(
       `  get ${field.typeFieldAlias!}() {`,
       `    return ${field.isRequired ? `this.${field.name}` : `this.${field.name} ?? null`};`,
       "  }",
+      `  set ${field.typeFieldAlias!}(${field.name}) {`,
+      `    this.${field.name} = ${field.name};`,
+      "  }",
     ]),
     "}",
     `exports.${model.typeName} = ${model.typeName};`,
@@ -499,6 +508,7 @@ export function emitModelModule(
           runtimeRefs,
         ),
         targetName: model.typeName,
+        isAccessor: true,
       });
     }),
     ...(countField && shouldEmitCountField
@@ -706,6 +716,7 @@ export function emitOutputTypeModule(
 export function renderResolverModule(options: {
   className: string;
   modelTypeName: string;
+  modelRuntimeRef?: string;
   jsImports: JSImport[];
   dtsImports: DtsImport[];
   methods: Array<{
@@ -740,7 +751,7 @@ export function renderResolverModule(options: {
       }),
     ),
     `exports.${options.className} = ${options.className} = tslib_1.__decorate([`,
-    `    TypeGraphQL.Resolver(_of => ${options.modelTypeName})`,
+    `    TypeGraphQL.Resolver(_of => ${options.modelRuntimeRef ?? options.modelTypeName})`,
     `], ${options.className});`,
   ];
 
@@ -1140,11 +1151,12 @@ function toDesignTypeReference(
 }
 
 function renderPropertyDecorator(spec: PropertyDecoratorSpec): string[] {
+  const descriptorArg = spec.isAccessor ? "null" : "void 0";
   return [
     "tslib_1.__decorate([",
     `    ${spec.decorator},`,
     `    tslib_1.__metadata("design:type", ${spec.runtimeType})`,
-    `], ${spec.targetName}.prototype, ${JSON.stringify(spec.propertyName)}, void 0);`,
+    `], ${spec.targetName}.prototype, ${JSON.stringify(spec.propertyName)}, ${descriptorArg});`,
   ];
 }
 

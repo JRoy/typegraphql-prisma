@@ -62,8 +62,14 @@ export class DmmfDocument implements DMMF.Document {
     // Pass 1: bare models (no fields) — establishes model names + type names
     this.models = models.map(transformBareModel);
 
-    // Pass 2: enums (first pass) — needed before model fields to resolve enum type names
-    this.enums = enumTypes.map(transformEnums(this));
+    // Pass 2: enums (first pass) — needed before model fields to resolve enum type names.
+    // Caches populated here so getFieldTSType can look up enums during pass 3.
+    this.enums = enumTypes.map(enumType => {
+      const transformed = transformEnums(this)(enumType);
+      this.enumsCache.set(enumType.name, transformed);
+      this.enumsByTypeNameCache.set(transformed.typeName, transformed);
+      return transformed;
+    });
 
     // Pass 3: models with fields — populates caches for field aliases
     this.models = models.map(model => {

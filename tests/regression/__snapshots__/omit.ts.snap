@@ -1,1521 +1,1995 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`omit-fields when \`omitInputFieldsByDefault\` generator option is provided should properly generate input type class for prisma model without the omitted field: UserCreateInput 1`] = `
-"import * as TypeGraphQL from \\"type-graphql\\";
-import * as GraphQLScalars from \\"graphql-scalars\\";
-import { Prisma } from \\"../../../../helpers/prisma-client-mock/client\\";
-import { DecimalJSScalar } from \\"../../scalars\\";
-
-@TypeGraphQL.InputType(\\"UserCreateInput\\", {})
-export class UserCreateInput {
-    @TypeGraphQL.Field(_type => Date, { nullable: false })
-    dateOfBirth!: Date;
-
-    @TypeGraphQL.Field(_type => String, { nullable: false })
-    name!: string;
-
-    @TypeGraphQL.Field(_type => TypeGraphQL.Float, { nullable: true })
-    balance?: number | undefined;
-}
+"\\"use strict\\";
+Object.defineProperty(exports, \\"__esModule\\", { value: true });
+exports.UserCreateInput = void 0;
+const tslib_1 = require(\\"tslib\\");
+const TypeGraphQL = tslib_1.__importStar(require(\\"type-graphql\\"));
+let UserCreateInput = class UserCreateInput {
+};
+exports.UserCreateInput = UserCreateInput;
+tslib_1.__decorate([
+    TypeGraphQL.Field(_type => Date, { nullable: false }),
+    tslib_1.__metadata(\\"design:type\\", Date)
+], UserCreateInput.prototype, \\"dateOfBirth\\", void 0);
+tslib_1.__decorate([
+    TypeGraphQL.Field(_type => String, { nullable: false }),
+    tslib_1.__metadata(\\"design:type\\", String)
+], UserCreateInput.prototype, \\"name\\", void 0);
+tslib_1.__decorate([
+    TypeGraphQL.Field(_type => TypeGraphQL.Float, { nullable: true }),
+    tslib_1.__metadata(\\"design:type\\", Number)
+], UserCreateInput.prototype, \\"balance\\", void 0);
+exports.UserCreateInput = UserCreateInput = tslib_1.__decorate([
+    TypeGraphQL.InputType(\\"UserCreateInput\\", {})
+], UserCreateInput);
 "
 `;
 
 exports[`omit-fields when \`omitInputFieldsByDefault\` generator option is provided should properly generate input type class for prisma model without the omitted field: UserCreateManyInput 1`] = `
-"import * as TypeGraphQL from \\"type-graphql\\";
-import * as GraphQLScalars from \\"graphql-scalars\\";
-import { Prisma } from \\"../../../../helpers/prisma-client-mock/client\\";
-import { DecimalJSScalar } from \\"../../scalars\\";
-
-@TypeGraphQL.InputType(\\"UserCreateManyInput\\", {})
-export class UserCreateManyInput {
-    @TypeGraphQL.Field(_type => Date, { nullable: false })
-    dateOfBirth!: Date;
-
-    @TypeGraphQL.Field(_type => String, { nullable: false })
-    name!: string;
-
-    @TypeGraphQL.Field(_type => TypeGraphQL.Float, { nullable: true })
-    balance?: number | undefined;
-}
+"\\"use strict\\";
+Object.defineProperty(exports, \\"__esModule\\", { value: true });
+exports.UserCreateManyInput = void 0;
+const tslib_1 = require(\\"tslib\\");
+const TypeGraphQL = tslib_1.__importStar(require(\\"type-graphql\\"));
+let UserCreateManyInput = class UserCreateManyInput {
+};
+exports.UserCreateManyInput = UserCreateManyInput;
+tslib_1.__decorate([
+    TypeGraphQL.Field(_type => Date, { nullable: false }),
+    tslib_1.__metadata(\\"design:type\\", Date)
+], UserCreateManyInput.prototype, \\"dateOfBirth\\", void 0);
+tslib_1.__decorate([
+    TypeGraphQL.Field(_type => String, { nullable: false }),
+    tslib_1.__metadata(\\"design:type\\", String)
+], UserCreateManyInput.prototype, \\"name\\", void 0);
+tslib_1.__decorate([
+    TypeGraphQL.Field(_type => TypeGraphQL.Float, { nullable: true }),
+    tslib_1.__metadata(\\"design:type\\", Number)
+], UserCreateManyInput.prototype, \\"balance\\", void 0);
+exports.UserCreateManyInput = UserCreateManyInput = tslib_1.__decorate([
+    TypeGraphQL.InputType(\\"UserCreateManyInput\\", {})
+], UserCreateManyInput);
 "
 `;
 
 exports[`omit-fields when \`omitInputFieldsByDefault\` generator option is provided should properly generate input type class for prisma model without the omitted field: UserOrderByWithRelationInput 1`] = `
-"import * as TypeGraphQL from \\"type-graphql\\";
-import * as GraphQLScalars from \\"graphql-scalars\\";
-import { Prisma } from \\"../../../../helpers/prisma-client-mock/client\\";
-import { DecimalJSScalar } from \\"../../scalars\\";
-import { SortOrderInput } from \\"../inputs/SortOrderInput\\";
-import { SortOrder } from \\"../../enums/SortOrder\\";
-
-@TypeGraphQL.InputType(\\"UserOrderByWithRelationInput\\", {})
-export class UserOrderByWithRelationInput {
-    @TypeGraphQL.Field(_type => SortOrder, { nullable: true })
-    dateOfBirth?: \\"asc\\" | \\"desc\\" | undefined;
-
-    @TypeGraphQL.Field(_type => SortOrder, { nullable: true })
-    name?: \\"asc\\" | \\"desc\\" | undefined;
-
-    @TypeGraphQL.Field(_type => SortOrderInput, { nullable: true })
-    balance?: SortOrderInput | undefined;
-}
+"\\"use strict\\";
+Object.defineProperty(exports, \\"__esModule\\", { value: true });
+exports.UserOrderByWithRelationInput = void 0;
+const tslib_1 = require(\\"tslib\\");
+const TypeGraphQL = tslib_1.__importStar(require(\\"type-graphql\\"));
+const SortOrderInput_1 = require(\\"../inputs/SortOrderInput\\");
+const SortOrder_1 = require(\\"../../enums/SortOrder\\");
+let UserOrderByWithRelationInput = class UserOrderByWithRelationInput {
+};
+exports.UserOrderByWithRelationInput = UserOrderByWithRelationInput;
+tslib_1.__decorate([
+    TypeGraphQL.Field(_type => SortOrder_1.SortOrder, { nullable: true }),
+    tslib_1.__metadata(\\"design:type\\", String)
+], UserOrderByWithRelationInput.prototype, \\"dateOfBirth\\", void 0);
+tslib_1.__decorate([
+    TypeGraphQL.Field(_type => SortOrder_1.SortOrder, { nullable: true }),
+    tslib_1.__metadata(\\"design:type\\", String)
+], UserOrderByWithRelationInput.prototype, \\"name\\", void 0);
+tslib_1.__decorate([
+    TypeGraphQL.Field(_type => SortOrderInput_1.SortOrderInput, { nullable: true }),
+    tslib_1.__metadata(\\"design:type\\", String)
+], UserOrderByWithRelationInput.prototype, \\"balance\\", void 0);
+exports.UserOrderByWithRelationInput = UserOrderByWithRelationInput = tslib_1.__decorate([
+    TypeGraphQL.InputType(\\"UserOrderByWithRelationInput\\", {})
+], UserOrderByWithRelationInput);
 "
 `;
 
 exports[`omit-fields when \`omitInputFieldsByDefault\` generator option is provided should properly generate input type class for prisma model without the omitted field: UserScalarWhereWithAggregatesInput 1`] = `
-"import * as TypeGraphQL from \\"type-graphql\\";
-import * as GraphQLScalars from \\"graphql-scalars\\";
-import { Prisma } from \\"../../../../helpers/prisma-client-mock/client\\";
-import { DecimalJSScalar } from \\"../../scalars\\";
-import { DateTimeWithAggregatesFilter } from \\"../inputs/DateTimeWithAggregatesFilter\\";
-import { FloatNullableWithAggregatesFilter } from \\"../inputs/FloatNullableWithAggregatesFilter\\";
-import { IntWithAggregatesFilter } from \\"../inputs/IntWithAggregatesFilter\\";
-import { StringWithAggregatesFilter } from \\"../inputs/StringWithAggregatesFilter\\";
-
-@TypeGraphQL.InputType(\\"UserScalarWhereWithAggregatesInput\\", {})
-export class UserScalarWhereWithAggregatesInput {
-    @TypeGraphQL.Field(_type => [UserScalarWhereWithAggregatesInput], { nullable: true })
-    AND?: UserScalarWhereWithAggregatesInput[] | undefined;
-
-    @TypeGraphQL.Field(_type => [UserScalarWhereWithAggregatesInput], { nullable: true })
-    OR?: UserScalarWhereWithAggregatesInput[] | undefined;
-
-    @TypeGraphQL.Field(_type => [UserScalarWhereWithAggregatesInput], { nullable: true })
-    NOT?: UserScalarWhereWithAggregatesInput[] | undefined;
-
-    @TypeGraphQL.Field(_type => DateTimeWithAggregatesFilter, { nullable: true })
-    dateOfBirth?: DateTimeWithAggregatesFilter | undefined;
-
-    @TypeGraphQL.Field(_type => StringWithAggregatesFilter, { nullable: true })
-    name?: StringWithAggregatesFilter | undefined;
-
-    @TypeGraphQL.Field(_type => FloatNullableWithAggregatesFilter, { nullable: true })
-    balance?: FloatNullableWithAggregatesFilter | undefined;
-}
+"\\"use strict\\";
+Object.defineProperty(exports, \\"__esModule\\", { value: true });
+exports.UserScalarWhereWithAggregatesInput = void 0;
+const tslib_1 = require(\\"tslib\\");
+const TypeGraphQL = tslib_1.__importStar(require(\\"type-graphql\\"));
+const DateTimeWithAggregatesFilter_1 = require(\\"../inputs/DateTimeWithAggregatesFilter\\");
+const FloatNullableWithAggregatesFilter_1 = require(\\"../inputs/FloatNullableWithAggregatesFilter\\");
+const StringWithAggregatesFilter_1 = require(\\"../inputs/StringWithAggregatesFilter\\");
+let UserScalarWhereWithAggregatesInput = class UserScalarWhereWithAggregatesInput {
+};
+exports.UserScalarWhereWithAggregatesInput = UserScalarWhereWithAggregatesInput;
+tslib_1.__decorate([
+    TypeGraphQL.Field(_type => [UserScalarWhereWithAggregatesInput], { nullable: true }),
+    tslib_1.__metadata(\\"design:type\\", Array)
+], UserScalarWhereWithAggregatesInput.prototype, \\"AND\\", void 0);
+tslib_1.__decorate([
+    TypeGraphQL.Field(_type => [UserScalarWhereWithAggregatesInput], { nullable: true }),
+    tslib_1.__metadata(\\"design:type\\", Array)
+], UserScalarWhereWithAggregatesInput.prototype, \\"OR\\", void 0);
+tslib_1.__decorate([
+    TypeGraphQL.Field(_type => [UserScalarWhereWithAggregatesInput], { nullable: true }),
+    tslib_1.__metadata(\\"design:type\\", Array)
+], UserScalarWhereWithAggregatesInput.prototype, \\"NOT\\", void 0);
+tslib_1.__decorate([
+    TypeGraphQL.Field(_type => DateTimeWithAggregatesFilter_1.DateTimeWithAggregatesFilter, { nullable: true }),
+    tslib_1.__metadata(\\"design:type\\", String)
+], UserScalarWhereWithAggregatesInput.prototype, \\"dateOfBirth\\", void 0);
+tslib_1.__decorate([
+    TypeGraphQL.Field(_type => StringWithAggregatesFilter_1.StringWithAggregatesFilter, { nullable: true }),
+    tslib_1.__metadata(\\"design:type\\", String)
+], UserScalarWhereWithAggregatesInput.prototype, \\"name\\", void 0);
+tslib_1.__decorate([
+    TypeGraphQL.Field(_type => FloatNullableWithAggregatesFilter_1.FloatNullableWithAggregatesFilter, { nullable: true }),
+    tslib_1.__metadata(\\"design:type\\", String)
+], UserScalarWhereWithAggregatesInput.prototype, \\"balance\\", void 0);
+exports.UserScalarWhereWithAggregatesInput = UserScalarWhereWithAggregatesInput = tslib_1.__decorate([
+    TypeGraphQL.InputType(\\"UserScalarWhereWithAggregatesInput\\", {})
+], UserScalarWhereWithAggregatesInput);
 "
 `;
 
 exports[`omit-fields when \`omitInputFieldsByDefault\` generator option is provided should properly generate input type class for prisma model without the omitted field: UserUpdateInput 1`] = `
-"import * as TypeGraphQL from \\"type-graphql\\";
-import * as GraphQLScalars from \\"graphql-scalars\\";
-import { Prisma } from \\"../../../../helpers/prisma-client-mock/client\\";
-import { DecimalJSScalar } from \\"../../scalars\\";
-import { DateTimeFieldUpdateOperationsInput } from \\"../inputs/DateTimeFieldUpdateOperationsInput\\";
-import { NullableFloatFieldUpdateOperationsInput } from \\"../inputs/NullableFloatFieldUpdateOperationsInput\\";
-import { StringFieldUpdateOperationsInput } from \\"../inputs/StringFieldUpdateOperationsInput\\";
-
-@TypeGraphQL.InputType(\\"UserUpdateInput\\", {})
-export class UserUpdateInput {
-    @TypeGraphQL.Field(_type => DateTimeFieldUpdateOperationsInput, { nullable: true })
-    dateOfBirth?: DateTimeFieldUpdateOperationsInput | undefined;
-
-    @TypeGraphQL.Field(_type => StringFieldUpdateOperationsInput, { nullable: true })
-    name?: StringFieldUpdateOperationsInput | undefined;
-
-    @TypeGraphQL.Field(_type => NullableFloatFieldUpdateOperationsInput, { nullable: true })
-    balance?: NullableFloatFieldUpdateOperationsInput | undefined;
-}
+"\\"use strict\\";
+Object.defineProperty(exports, \\"__esModule\\", { value: true });
+exports.UserUpdateInput = void 0;
+const tslib_1 = require(\\"tslib\\");
+const TypeGraphQL = tslib_1.__importStar(require(\\"type-graphql\\"));
+const DateTimeFieldUpdateOperationsInput_1 = require(\\"../inputs/DateTimeFieldUpdateOperationsInput\\");
+const NullableFloatFieldUpdateOperationsInput_1 = require(\\"../inputs/NullableFloatFieldUpdateOperationsInput\\");
+const StringFieldUpdateOperationsInput_1 = require(\\"../inputs/StringFieldUpdateOperationsInput\\");
+let UserUpdateInput = class UserUpdateInput {
+};
+exports.UserUpdateInput = UserUpdateInput;
+tslib_1.__decorate([
+    TypeGraphQL.Field(_type => DateTimeFieldUpdateOperationsInput_1.DateTimeFieldUpdateOperationsInput, { nullable: true }),
+    tslib_1.__metadata(\\"design:type\\", String)
+], UserUpdateInput.prototype, \\"dateOfBirth\\", void 0);
+tslib_1.__decorate([
+    TypeGraphQL.Field(_type => StringFieldUpdateOperationsInput_1.StringFieldUpdateOperationsInput, { nullable: true }),
+    tslib_1.__metadata(\\"design:type\\", String)
+], UserUpdateInput.prototype, \\"name\\", void 0);
+tslib_1.__decorate([
+    TypeGraphQL.Field(_type => NullableFloatFieldUpdateOperationsInput_1.NullableFloatFieldUpdateOperationsInput, { nullable: true }),
+    tslib_1.__metadata(\\"design:type\\", String)
+], UserUpdateInput.prototype, \\"balance\\", void 0);
+exports.UserUpdateInput = UserUpdateInput = tslib_1.__decorate([
+    TypeGraphQL.InputType(\\"UserUpdateInput\\", {})
+], UserUpdateInput);
 "
 `;
 
 exports[`omit-fields when \`omitInputFieldsByDefault\` generator option is provided should properly generate input type class for prisma model without the omitted field: UserUpdateManyMutationInput 1`] = `
-"import * as TypeGraphQL from \\"type-graphql\\";
-import * as GraphQLScalars from \\"graphql-scalars\\";
-import { Prisma } from \\"../../../../helpers/prisma-client-mock/client\\";
-import { DecimalJSScalar } from \\"../../scalars\\";
-import { DateTimeFieldUpdateOperationsInput } from \\"../inputs/DateTimeFieldUpdateOperationsInput\\";
-import { NullableFloatFieldUpdateOperationsInput } from \\"../inputs/NullableFloatFieldUpdateOperationsInput\\";
-import { StringFieldUpdateOperationsInput } from \\"../inputs/StringFieldUpdateOperationsInput\\";
-
-@TypeGraphQL.InputType(\\"UserUpdateManyMutationInput\\", {})
-export class UserUpdateManyMutationInput {
-    @TypeGraphQL.Field(_type => DateTimeFieldUpdateOperationsInput, { nullable: true })
-    dateOfBirth?: DateTimeFieldUpdateOperationsInput | undefined;
-
-    @TypeGraphQL.Field(_type => StringFieldUpdateOperationsInput, { nullable: true })
-    name?: StringFieldUpdateOperationsInput | undefined;
-
-    @TypeGraphQL.Field(_type => NullableFloatFieldUpdateOperationsInput, { nullable: true })
-    balance?: NullableFloatFieldUpdateOperationsInput | undefined;
-}
+"\\"use strict\\";
+Object.defineProperty(exports, \\"__esModule\\", { value: true });
+exports.UserUpdateManyMutationInput = void 0;
+const tslib_1 = require(\\"tslib\\");
+const TypeGraphQL = tslib_1.__importStar(require(\\"type-graphql\\"));
+const DateTimeFieldUpdateOperationsInput_1 = require(\\"../inputs/DateTimeFieldUpdateOperationsInput\\");
+const NullableFloatFieldUpdateOperationsInput_1 = require(\\"../inputs/NullableFloatFieldUpdateOperationsInput\\");
+const StringFieldUpdateOperationsInput_1 = require(\\"../inputs/StringFieldUpdateOperationsInput\\");
+let UserUpdateManyMutationInput = class UserUpdateManyMutationInput {
+};
+exports.UserUpdateManyMutationInput = UserUpdateManyMutationInput;
+tslib_1.__decorate([
+    TypeGraphQL.Field(_type => DateTimeFieldUpdateOperationsInput_1.DateTimeFieldUpdateOperationsInput, { nullable: true }),
+    tslib_1.__metadata(\\"design:type\\", String)
+], UserUpdateManyMutationInput.prototype, \\"dateOfBirth\\", void 0);
+tslib_1.__decorate([
+    TypeGraphQL.Field(_type => StringFieldUpdateOperationsInput_1.StringFieldUpdateOperationsInput, { nullable: true }),
+    tslib_1.__metadata(\\"design:type\\", String)
+], UserUpdateManyMutationInput.prototype, \\"name\\", void 0);
+tslib_1.__decorate([
+    TypeGraphQL.Field(_type => NullableFloatFieldUpdateOperationsInput_1.NullableFloatFieldUpdateOperationsInput, { nullable: true }),
+    tslib_1.__metadata(\\"design:type\\", String)
+], UserUpdateManyMutationInput.prototype, \\"balance\\", void 0);
+exports.UserUpdateManyMutationInput = UserUpdateManyMutationInput = tslib_1.__decorate([
+    TypeGraphQL.InputType(\\"UserUpdateManyMutationInput\\", {})
+], UserUpdateManyMutationInput);
 "
 `;
 
 exports[`omit-fields when \`omitInputFieldsByDefault\` generator option is provided should properly generate input type class for prisma model without the omitted field: UserWhereInput 1`] = `
-"import * as TypeGraphQL from \\"type-graphql\\";
-import * as GraphQLScalars from \\"graphql-scalars\\";
-import { Prisma } from \\"../../../../helpers/prisma-client-mock/client\\";
-import { DecimalJSScalar } from \\"../../scalars\\";
-import { DateTimeFilter } from \\"../inputs/DateTimeFilter\\";
-import { FloatNullableFilter } from \\"../inputs/FloatNullableFilter\\";
-import { IntFilter } from \\"../inputs/IntFilter\\";
-import { StringFilter } from \\"../inputs/StringFilter\\";
-
-@TypeGraphQL.InputType(\\"UserWhereInput\\", {})
-export class UserWhereInput {
-    @TypeGraphQL.Field(_type => [UserWhereInput], { nullable: true })
-    AND?: UserWhereInput[] | undefined;
-
-    @TypeGraphQL.Field(_type => [UserWhereInput], { nullable: true })
-    OR?: UserWhereInput[] | undefined;
-
-    @TypeGraphQL.Field(_type => [UserWhereInput], { nullable: true })
-    NOT?: UserWhereInput[] | undefined;
-
-    @TypeGraphQL.Field(_type => DateTimeFilter, { nullable: true })
-    dateOfBirth?: DateTimeFilter | undefined;
-
-    @TypeGraphQL.Field(_type => StringFilter, { nullable: true })
-    name?: StringFilter | undefined;
-
-    @TypeGraphQL.Field(_type => FloatNullableFilter, { nullable: true })
-    balance?: FloatNullableFilter | undefined;
-}
+"\\"use strict\\";
+Object.defineProperty(exports, \\"__esModule\\", { value: true });
+exports.UserWhereInput = void 0;
+const tslib_1 = require(\\"tslib\\");
+const TypeGraphQL = tslib_1.__importStar(require(\\"type-graphql\\"));
+const DateTimeFilter_1 = require(\\"../inputs/DateTimeFilter\\");
+const FloatNullableFilter_1 = require(\\"../inputs/FloatNullableFilter\\");
+const StringFilter_1 = require(\\"../inputs/StringFilter\\");
+let UserWhereInput = class UserWhereInput {
+};
+exports.UserWhereInput = UserWhereInput;
+tslib_1.__decorate([
+    TypeGraphQL.Field(_type => [UserWhereInput], { nullable: true }),
+    tslib_1.__metadata(\\"design:type\\", Array)
+], UserWhereInput.prototype, \\"AND\\", void 0);
+tslib_1.__decorate([
+    TypeGraphQL.Field(_type => [UserWhereInput], { nullable: true }),
+    tslib_1.__metadata(\\"design:type\\", Array)
+], UserWhereInput.prototype, \\"OR\\", void 0);
+tslib_1.__decorate([
+    TypeGraphQL.Field(_type => [UserWhereInput], { nullable: true }),
+    tslib_1.__metadata(\\"design:type\\", Array)
+], UserWhereInput.prototype, \\"NOT\\", void 0);
+tslib_1.__decorate([
+    TypeGraphQL.Field(_type => DateTimeFilter_1.DateTimeFilter, { nullable: true }),
+    tslib_1.__metadata(\\"design:type\\", String)
+], UserWhereInput.prototype, \\"dateOfBirth\\", void 0);
+tslib_1.__decorate([
+    TypeGraphQL.Field(_type => StringFilter_1.StringFilter, { nullable: true }),
+    tslib_1.__metadata(\\"design:type\\", String)
+], UserWhereInput.prototype, \\"name\\", void 0);
+tslib_1.__decorate([
+    TypeGraphQL.Field(_type => FloatNullableFilter_1.FloatNullableFilter, { nullable: true }),
+    tslib_1.__metadata(\\"design:type\\", String)
+], UserWhereInput.prototype, \\"balance\\", void 0);
+exports.UserWhereInput = UserWhereInput = tslib_1.__decorate([
+    TypeGraphQL.InputType(\\"UserWhereInput\\", {})
+], UserWhereInput);
 "
 `;
 
 exports[`omit-fields when \`omitInputFieldsByDefault\` generator option is provided should properly generate input type class for prisma model without the omitted field: UserWhereUniqueInput 1`] = `
-"import * as TypeGraphQL from \\"type-graphql\\";
-import * as GraphQLScalars from \\"graphql-scalars\\";
-import { Prisma } from \\"../../../../helpers/prisma-client-mock/client\\";
-import { DecimalJSScalar } from \\"../../scalars\\";
-import { DateTimeFilter } from \\"../inputs/DateTimeFilter\\";
-import { FloatNullableFilter } from \\"../inputs/FloatNullableFilter\\";
-import { StringFilter } from \\"../inputs/StringFilter\\";
-import { UserWhereInput } from \\"../inputs/UserWhereInput\\";
-
-@TypeGraphQL.InputType(\\"UserWhereUniqueInput\\", {})
-export class UserWhereUniqueInput {
-    @TypeGraphQL.Field(_type => [UserWhereInput], { nullable: true })
-    AND?: UserWhereInput[] | undefined;
-
-    @TypeGraphQL.Field(_type => [UserWhereInput], { nullable: true })
-    OR?: UserWhereInput[] | undefined;
-
-    @TypeGraphQL.Field(_type => [UserWhereInput], { nullable: true })
-    NOT?: UserWhereInput[] | undefined;
-
-    @TypeGraphQL.Field(_type => DateTimeFilter, { nullable: true })
-    dateOfBirth?: DateTimeFilter | undefined;
-
-    @TypeGraphQL.Field(_type => StringFilter, { nullable: true })
-    name?: StringFilter | undefined;
-
-    @TypeGraphQL.Field(_type => FloatNullableFilter, { nullable: true })
-    balance?: FloatNullableFilter | undefined;
-}
+"\\"use strict\\";
+Object.defineProperty(exports, \\"__esModule\\", { value: true });
+exports.UserWhereUniqueInput = void 0;
+const tslib_1 = require(\\"tslib\\");
+const TypeGraphQL = tslib_1.__importStar(require(\\"type-graphql\\"));
+const DateTimeFilter_1 = require(\\"../inputs/DateTimeFilter\\");
+const FloatNullableFilter_1 = require(\\"../inputs/FloatNullableFilter\\");
+const StringFilter_1 = require(\\"../inputs/StringFilter\\");
+const UserWhereInput_1 = require(\\"../inputs/UserWhereInput\\");
+let UserWhereUniqueInput = class UserWhereUniqueInput {
+};
+exports.UserWhereUniqueInput = UserWhereUniqueInput;
+tslib_1.__decorate([
+    TypeGraphQL.Field(_type => [UserWhereInput_1.UserWhereInput], { nullable: true }),
+    tslib_1.__metadata(\\"design:type\\", Array)
+], UserWhereUniqueInput.prototype, \\"AND\\", void 0);
+tslib_1.__decorate([
+    TypeGraphQL.Field(_type => [UserWhereInput_1.UserWhereInput], { nullable: true }),
+    tslib_1.__metadata(\\"design:type\\", Array)
+], UserWhereUniqueInput.prototype, \\"OR\\", void 0);
+tslib_1.__decorate([
+    TypeGraphQL.Field(_type => [UserWhereInput_1.UserWhereInput], { nullable: true }),
+    tslib_1.__metadata(\\"design:type\\", Array)
+], UserWhereUniqueInput.prototype, \\"NOT\\", void 0);
+tslib_1.__decorate([
+    TypeGraphQL.Field(_type => DateTimeFilter_1.DateTimeFilter, { nullable: true }),
+    tslib_1.__metadata(\\"design:type\\", String)
+], UserWhereUniqueInput.prototype, \\"dateOfBirth\\", void 0);
+tslib_1.__decorate([
+    TypeGraphQL.Field(_type => StringFilter_1.StringFilter, { nullable: true }),
+    tslib_1.__metadata(\\"design:type\\", String)
+], UserWhereUniqueInput.prototype, \\"name\\", void 0);
+tslib_1.__decorate([
+    TypeGraphQL.Field(_type => FloatNullableFilter_1.FloatNullableFilter, { nullable: true }),
+    tslib_1.__metadata(\\"design:type\\", String)
+], UserWhereUniqueInput.prototype, \\"balance\\", void 0);
+exports.UserWhereUniqueInput = UserWhereUniqueInput = tslib_1.__decorate([
+    TypeGraphQL.InputType(\\"UserWhereUniqueInput\\", {})
+], UserWhereUniqueInput);
 "
 `;
 
 exports[`omit-fields when \`omitInputFieldsByDefault\` generator option is provided should properly generate model type class for prisma model without the omitted field: User 1`] = `
-"import * as TypeGraphQL from \\"type-graphql\\";
-import * as GraphQLScalars from \\"graphql-scalars\\";
-import { Prisma } from \\"../../../helpers/prisma-client-mock/client\\";
-import { DecimalJSScalar } from \\"../scalars\\";
-
-@TypeGraphQL.ObjectType(\\"User\\", {})
-export class User {
-    id?: number;
-
-    @TypeGraphQL.Field(_type => Date, { nullable: false })
-    dateOfBirth!: Date;
-
-    @TypeGraphQL.Field(_type => String, { nullable: false })
-    name!: string;
-
-    @TypeGraphQL.Field(_type => TypeGraphQL.Float, { nullable: true })
-    balance?: number | null;
+"\\"use strict\\";
+Object.defineProperty(exports, \\"__esModule\\", { value: true });
+exports.User = void 0;
+const tslib_1 = require(\\"tslib\\");
+const TypeGraphQL = tslib_1.__importStar(require(\\"type-graphql\\"));
+class User {
 }
+exports.User = User;
+tslib_1.__decorate([
+    TypeGraphQL.Field(_type => Date, { nullable: false }),
+    tslib_1.__metadata(\\"design:type\\", Date)
+], User.prototype, \\"dateOfBirth\\", void 0);
+tslib_1.__decorate([
+    TypeGraphQL.Field(_type => String, { nullable: false }),
+    tslib_1.__metadata(\\"design:type\\", String)
+], User.prototype, \\"name\\", void 0);
+tslib_1.__decorate([
+    TypeGraphQL.Field(_type => TypeGraphQL.Float, { nullable: true }),
+    tslib_1.__metadata(\\"design:type\\", Number)
+], User.prototype, \\"balance\\", void 0);
+tslib_1.__decorate([
+    TypeGraphQL.ObjectType(\\"User\\", {})
+], User);
 "
 `;
 
 exports[`omit-fields when \`omitInputFieldsByDefault\` generator option is provided when model field has \`omit(input: false)\` set should properly generate input type class for prisma model with the field defined: UserCreateInput 1`] = `
-"import * as TypeGraphQL from \\"type-graphql\\";
-import * as GraphQLScalars from \\"graphql-scalars\\";
-import { Prisma } from \\"../../../../helpers/prisma-client-mock/client\\";
-import { DecimalJSScalar } from \\"../../scalars\\";
-
-@TypeGraphQL.InputType(\\"UserCreateInput\\", {})
-export class UserCreateInput {
-    @TypeGraphQL.Field(_type => Date, { nullable: false })
-    dateOfBirth!: Date;
-
-    @TypeGraphQL.Field(_type => String, { nullable: false })
-    name!: string;
-
-    @TypeGraphQL.Field(_type => TypeGraphQL.Float, { nullable: true })
-    balance?: number | undefined;
-}
+"\\"use strict\\";
+Object.defineProperty(exports, \\"__esModule\\", { value: true });
+exports.UserCreateInput = void 0;
+const tslib_1 = require(\\"tslib\\");
+const TypeGraphQL = tslib_1.__importStar(require(\\"type-graphql\\"));
+let UserCreateInput = class UserCreateInput {
+};
+exports.UserCreateInput = UserCreateInput;
+tslib_1.__decorate([
+    TypeGraphQL.Field(_type => Date, { nullable: false }),
+    tslib_1.__metadata(\\"design:type\\", Date)
+], UserCreateInput.prototype, \\"dateOfBirth\\", void 0);
+tslib_1.__decorate([
+    TypeGraphQL.Field(_type => String, { nullable: false }),
+    tslib_1.__metadata(\\"design:type\\", String)
+], UserCreateInput.prototype, \\"name\\", void 0);
+tslib_1.__decorate([
+    TypeGraphQL.Field(_type => TypeGraphQL.Float, { nullable: true }),
+    tslib_1.__metadata(\\"design:type\\", Number)
+], UserCreateInput.prototype, \\"balance\\", void 0);
+exports.UserCreateInput = UserCreateInput = tslib_1.__decorate([
+    TypeGraphQL.InputType(\\"UserCreateInput\\", {})
+], UserCreateInput);
 "
 `;
 
 exports[`omit-fields when \`omitInputFieldsByDefault\` generator option is provided when model field has \`omit(input: false)\` set should properly generate input type class for prisma model with the field defined: UserCreateManyInput 1`] = `
-"import * as TypeGraphQL from \\"type-graphql\\";
-import * as GraphQLScalars from \\"graphql-scalars\\";
-import { Prisma } from \\"../../../../helpers/prisma-client-mock/client\\";
-import { DecimalJSScalar } from \\"../../scalars\\";
-
-@TypeGraphQL.InputType(\\"UserCreateManyInput\\", {})
-export class UserCreateManyInput {
-    @TypeGraphQL.Field(_type => TypeGraphQL.Int, { nullable: true })
-    id?: number | undefined;
-
-    @TypeGraphQL.Field(_type => Date, { nullable: false })
-    dateOfBirth!: Date;
-
-    @TypeGraphQL.Field(_type => String, { nullable: false })
-    name!: string;
-
-    @TypeGraphQL.Field(_type => TypeGraphQL.Float, { nullable: true })
-    balance?: number | undefined;
-}
+"\\"use strict\\";
+Object.defineProperty(exports, \\"__esModule\\", { value: true });
+exports.UserCreateManyInput = void 0;
+const tslib_1 = require(\\"tslib\\");
+const TypeGraphQL = tslib_1.__importStar(require(\\"type-graphql\\"));
+let UserCreateManyInput = class UserCreateManyInput {
+};
+exports.UserCreateManyInput = UserCreateManyInput;
+tslib_1.__decorate([
+    TypeGraphQL.Field(_type => TypeGraphQL.Int, { nullable: true }),
+    tslib_1.__metadata(\\"design:type\\", Number)
+], UserCreateManyInput.prototype, \\"id\\", void 0);
+tslib_1.__decorate([
+    TypeGraphQL.Field(_type => Date, { nullable: false }),
+    tslib_1.__metadata(\\"design:type\\", Date)
+], UserCreateManyInput.prototype, \\"dateOfBirth\\", void 0);
+tslib_1.__decorate([
+    TypeGraphQL.Field(_type => String, { nullable: false }),
+    tslib_1.__metadata(\\"design:type\\", String)
+], UserCreateManyInput.prototype, \\"name\\", void 0);
+tslib_1.__decorate([
+    TypeGraphQL.Field(_type => TypeGraphQL.Float, { nullable: true }),
+    tslib_1.__metadata(\\"design:type\\", Number)
+], UserCreateManyInput.prototype, \\"balance\\", void 0);
+exports.UserCreateManyInput = UserCreateManyInput = tslib_1.__decorate([
+    TypeGraphQL.InputType(\\"UserCreateManyInput\\", {})
+], UserCreateManyInput);
 "
 `;
 
 exports[`omit-fields when \`omitInputFieldsByDefault\` generator option is provided when model field has \`omit(input: false)\` set should properly generate input type class for prisma model with the field defined: UserOrderByWithRelationInput 1`] = `
-"import * as TypeGraphQL from \\"type-graphql\\";
-import * as GraphQLScalars from \\"graphql-scalars\\";
-import { Prisma } from \\"../../../../helpers/prisma-client-mock/client\\";
-import { DecimalJSScalar } from \\"../../scalars\\";
-import { SortOrderInput } from \\"../inputs/SortOrderInput\\";
-import { SortOrder } from \\"../../enums/SortOrder\\";
-
-@TypeGraphQL.InputType(\\"UserOrderByWithRelationInput\\", {})
-export class UserOrderByWithRelationInput {
-    @TypeGraphQL.Field(_type => SortOrder, { nullable: true })
-    id?: \\"asc\\" | \\"desc\\" | undefined;
-
-    @TypeGraphQL.Field(_type => SortOrder, { nullable: true })
-    dateOfBirth?: \\"asc\\" | \\"desc\\" | undefined;
-
-    @TypeGraphQL.Field(_type => SortOrder, { nullable: true })
-    name?: \\"asc\\" | \\"desc\\" | undefined;
-
-    @TypeGraphQL.Field(_type => SortOrderInput, { nullable: true })
-    balance?: SortOrderInput | undefined;
-}
+"\\"use strict\\";
+Object.defineProperty(exports, \\"__esModule\\", { value: true });
+exports.UserOrderByWithRelationInput = void 0;
+const tslib_1 = require(\\"tslib\\");
+const TypeGraphQL = tslib_1.__importStar(require(\\"type-graphql\\"));
+const SortOrderInput_1 = require(\\"../inputs/SortOrderInput\\");
+const SortOrder_1 = require(\\"../../enums/SortOrder\\");
+let UserOrderByWithRelationInput = class UserOrderByWithRelationInput {
+};
+exports.UserOrderByWithRelationInput = UserOrderByWithRelationInput;
+tslib_1.__decorate([
+    TypeGraphQL.Field(_type => SortOrder_1.SortOrder, { nullable: true }),
+    tslib_1.__metadata(\\"design:type\\", String)
+], UserOrderByWithRelationInput.prototype, \\"id\\", void 0);
+tslib_1.__decorate([
+    TypeGraphQL.Field(_type => SortOrder_1.SortOrder, { nullable: true }),
+    tslib_1.__metadata(\\"design:type\\", String)
+], UserOrderByWithRelationInput.prototype, \\"dateOfBirth\\", void 0);
+tslib_1.__decorate([
+    TypeGraphQL.Field(_type => SortOrder_1.SortOrder, { nullable: true }),
+    tslib_1.__metadata(\\"design:type\\", String)
+], UserOrderByWithRelationInput.prototype, \\"name\\", void 0);
+tslib_1.__decorate([
+    TypeGraphQL.Field(_type => SortOrderInput_1.SortOrderInput, { nullable: true }),
+    tslib_1.__metadata(\\"design:type\\", String)
+], UserOrderByWithRelationInput.prototype, \\"balance\\", void 0);
+exports.UserOrderByWithRelationInput = UserOrderByWithRelationInput = tslib_1.__decorate([
+    TypeGraphQL.InputType(\\"UserOrderByWithRelationInput\\", {})
+], UserOrderByWithRelationInput);
 "
 `;
 
 exports[`omit-fields when \`omitInputFieldsByDefault\` generator option is provided when model field has \`omit(input: false)\` set should properly generate input type class for prisma model with the field defined: UserScalarWhereWithAggregatesInput 1`] = `
-"import * as TypeGraphQL from \\"type-graphql\\";
-import * as GraphQLScalars from \\"graphql-scalars\\";
-import { Prisma } from \\"../../../../helpers/prisma-client-mock/client\\";
-import { DecimalJSScalar } from \\"../../scalars\\";
-import { DateTimeWithAggregatesFilter } from \\"../inputs/DateTimeWithAggregatesFilter\\";
-import { FloatNullableWithAggregatesFilter } from \\"../inputs/FloatNullableWithAggregatesFilter\\";
-import { IntWithAggregatesFilter } from \\"../inputs/IntWithAggregatesFilter\\";
-import { StringWithAggregatesFilter } from \\"../inputs/StringWithAggregatesFilter\\";
-
-@TypeGraphQL.InputType(\\"UserScalarWhereWithAggregatesInput\\", {})
-export class UserScalarWhereWithAggregatesInput {
-    @TypeGraphQL.Field(_type => [UserScalarWhereWithAggregatesInput], { nullable: true })
-    AND?: UserScalarWhereWithAggregatesInput[] | undefined;
-
-    @TypeGraphQL.Field(_type => [UserScalarWhereWithAggregatesInput], { nullable: true })
-    OR?: UserScalarWhereWithAggregatesInput[] | undefined;
-
-    @TypeGraphQL.Field(_type => [UserScalarWhereWithAggregatesInput], { nullable: true })
-    NOT?: UserScalarWhereWithAggregatesInput[] | undefined;
-
-    @TypeGraphQL.Field(_type => IntWithAggregatesFilter, { nullable: true })
-    id?: IntWithAggregatesFilter | undefined;
-
-    @TypeGraphQL.Field(_type => DateTimeWithAggregatesFilter, { nullable: true })
-    dateOfBirth?: DateTimeWithAggregatesFilter | undefined;
-
-    @TypeGraphQL.Field(_type => StringWithAggregatesFilter, { nullable: true })
-    name?: StringWithAggregatesFilter | undefined;
-
-    @TypeGraphQL.Field(_type => FloatNullableWithAggregatesFilter, { nullable: true })
-    balance?: FloatNullableWithAggregatesFilter | undefined;
-}
+"\\"use strict\\";
+Object.defineProperty(exports, \\"__esModule\\", { value: true });
+exports.UserScalarWhereWithAggregatesInput = void 0;
+const tslib_1 = require(\\"tslib\\");
+const TypeGraphQL = tslib_1.__importStar(require(\\"type-graphql\\"));
+const DateTimeWithAggregatesFilter_1 = require(\\"../inputs/DateTimeWithAggregatesFilter\\");
+const FloatNullableWithAggregatesFilter_1 = require(\\"../inputs/FloatNullableWithAggregatesFilter\\");
+const IntWithAggregatesFilter_1 = require(\\"../inputs/IntWithAggregatesFilter\\");
+const StringWithAggregatesFilter_1 = require(\\"../inputs/StringWithAggregatesFilter\\");
+let UserScalarWhereWithAggregatesInput = class UserScalarWhereWithAggregatesInput {
+};
+exports.UserScalarWhereWithAggregatesInput = UserScalarWhereWithAggregatesInput;
+tslib_1.__decorate([
+    TypeGraphQL.Field(_type => [UserScalarWhereWithAggregatesInput], { nullable: true }),
+    tslib_1.__metadata(\\"design:type\\", Array)
+], UserScalarWhereWithAggregatesInput.prototype, \\"AND\\", void 0);
+tslib_1.__decorate([
+    TypeGraphQL.Field(_type => [UserScalarWhereWithAggregatesInput], { nullable: true }),
+    tslib_1.__metadata(\\"design:type\\", Array)
+], UserScalarWhereWithAggregatesInput.prototype, \\"OR\\", void 0);
+tslib_1.__decorate([
+    TypeGraphQL.Field(_type => [UserScalarWhereWithAggregatesInput], { nullable: true }),
+    tslib_1.__metadata(\\"design:type\\", Array)
+], UserScalarWhereWithAggregatesInput.prototype, \\"NOT\\", void 0);
+tslib_1.__decorate([
+    TypeGraphQL.Field(_type => IntWithAggregatesFilter_1.IntWithAggregatesFilter, { nullable: true }),
+    tslib_1.__metadata(\\"design:type\\", String)
+], UserScalarWhereWithAggregatesInput.prototype, \\"id\\", void 0);
+tslib_1.__decorate([
+    TypeGraphQL.Field(_type => DateTimeWithAggregatesFilter_1.DateTimeWithAggregatesFilter, { nullable: true }),
+    tslib_1.__metadata(\\"design:type\\", String)
+], UserScalarWhereWithAggregatesInput.prototype, \\"dateOfBirth\\", void 0);
+tslib_1.__decorate([
+    TypeGraphQL.Field(_type => StringWithAggregatesFilter_1.StringWithAggregatesFilter, { nullable: true }),
+    tslib_1.__metadata(\\"design:type\\", String)
+], UserScalarWhereWithAggregatesInput.prototype, \\"name\\", void 0);
+tslib_1.__decorate([
+    TypeGraphQL.Field(_type => FloatNullableWithAggregatesFilter_1.FloatNullableWithAggregatesFilter, { nullable: true }),
+    tslib_1.__metadata(\\"design:type\\", String)
+], UserScalarWhereWithAggregatesInput.prototype, \\"balance\\", void 0);
+exports.UserScalarWhereWithAggregatesInput = UserScalarWhereWithAggregatesInput = tslib_1.__decorate([
+    TypeGraphQL.InputType(\\"UserScalarWhereWithAggregatesInput\\", {})
+], UserScalarWhereWithAggregatesInput);
 "
 `;
 
 exports[`omit-fields when \`omitInputFieldsByDefault\` generator option is provided when model field has \`omit(input: false)\` set should properly generate input type class for prisma model with the field defined: UserUpdateInput 1`] = `
-"import * as TypeGraphQL from \\"type-graphql\\";
-import * as GraphQLScalars from \\"graphql-scalars\\";
-import { Prisma } from \\"../../../../helpers/prisma-client-mock/client\\";
-import { DecimalJSScalar } from \\"../../scalars\\";
-import { DateTimeFieldUpdateOperationsInput } from \\"../inputs/DateTimeFieldUpdateOperationsInput\\";
-import { NullableFloatFieldUpdateOperationsInput } from \\"../inputs/NullableFloatFieldUpdateOperationsInput\\";
-import { StringFieldUpdateOperationsInput } from \\"../inputs/StringFieldUpdateOperationsInput\\";
-
-@TypeGraphQL.InputType(\\"UserUpdateInput\\", {})
-export class UserUpdateInput {
-    @TypeGraphQL.Field(_type => DateTimeFieldUpdateOperationsInput, { nullable: true })
-    dateOfBirth?: DateTimeFieldUpdateOperationsInput | undefined;
-
-    @TypeGraphQL.Field(_type => StringFieldUpdateOperationsInput, { nullable: true })
-    name?: StringFieldUpdateOperationsInput | undefined;
-
-    @TypeGraphQL.Field(_type => NullableFloatFieldUpdateOperationsInput, { nullable: true })
-    balance?: NullableFloatFieldUpdateOperationsInput | undefined;
-}
+"\\"use strict\\";
+Object.defineProperty(exports, \\"__esModule\\", { value: true });
+exports.UserUpdateInput = void 0;
+const tslib_1 = require(\\"tslib\\");
+const TypeGraphQL = tslib_1.__importStar(require(\\"type-graphql\\"));
+const DateTimeFieldUpdateOperationsInput_1 = require(\\"../inputs/DateTimeFieldUpdateOperationsInput\\");
+const NullableFloatFieldUpdateOperationsInput_1 = require(\\"../inputs/NullableFloatFieldUpdateOperationsInput\\");
+const StringFieldUpdateOperationsInput_1 = require(\\"../inputs/StringFieldUpdateOperationsInput\\");
+let UserUpdateInput = class UserUpdateInput {
+};
+exports.UserUpdateInput = UserUpdateInput;
+tslib_1.__decorate([
+    TypeGraphQL.Field(_type => DateTimeFieldUpdateOperationsInput_1.DateTimeFieldUpdateOperationsInput, { nullable: true }),
+    tslib_1.__metadata(\\"design:type\\", String)
+], UserUpdateInput.prototype, \\"dateOfBirth\\", void 0);
+tslib_1.__decorate([
+    TypeGraphQL.Field(_type => StringFieldUpdateOperationsInput_1.StringFieldUpdateOperationsInput, { nullable: true }),
+    tslib_1.__metadata(\\"design:type\\", String)
+], UserUpdateInput.prototype, \\"name\\", void 0);
+tslib_1.__decorate([
+    TypeGraphQL.Field(_type => NullableFloatFieldUpdateOperationsInput_1.NullableFloatFieldUpdateOperationsInput, { nullable: true }),
+    tslib_1.__metadata(\\"design:type\\", String)
+], UserUpdateInput.prototype, \\"balance\\", void 0);
+exports.UserUpdateInput = UserUpdateInput = tslib_1.__decorate([
+    TypeGraphQL.InputType(\\"UserUpdateInput\\", {})
+], UserUpdateInput);
 "
 `;
 
 exports[`omit-fields when \`omitInputFieldsByDefault\` generator option is provided when model field has \`omit(input: false)\` set should properly generate input type class for prisma model with the field defined: UserUpdateManyMutationInput 1`] = `
-"import * as TypeGraphQL from \\"type-graphql\\";
-import * as GraphQLScalars from \\"graphql-scalars\\";
-import { Prisma } from \\"../../../../helpers/prisma-client-mock/client\\";
-import { DecimalJSScalar } from \\"../../scalars\\";
-import { DateTimeFieldUpdateOperationsInput } from \\"../inputs/DateTimeFieldUpdateOperationsInput\\";
-import { NullableFloatFieldUpdateOperationsInput } from \\"../inputs/NullableFloatFieldUpdateOperationsInput\\";
-import { StringFieldUpdateOperationsInput } from \\"../inputs/StringFieldUpdateOperationsInput\\";
-
-@TypeGraphQL.InputType(\\"UserUpdateManyMutationInput\\", {})
-export class UserUpdateManyMutationInput {
-    @TypeGraphQL.Field(_type => DateTimeFieldUpdateOperationsInput, { nullable: true })
-    dateOfBirth?: DateTimeFieldUpdateOperationsInput | undefined;
-
-    @TypeGraphQL.Field(_type => StringFieldUpdateOperationsInput, { nullable: true })
-    name?: StringFieldUpdateOperationsInput | undefined;
-
-    @TypeGraphQL.Field(_type => NullableFloatFieldUpdateOperationsInput, { nullable: true })
-    balance?: NullableFloatFieldUpdateOperationsInput | undefined;
-}
+"\\"use strict\\";
+Object.defineProperty(exports, \\"__esModule\\", { value: true });
+exports.UserUpdateManyMutationInput = void 0;
+const tslib_1 = require(\\"tslib\\");
+const TypeGraphQL = tslib_1.__importStar(require(\\"type-graphql\\"));
+const DateTimeFieldUpdateOperationsInput_1 = require(\\"../inputs/DateTimeFieldUpdateOperationsInput\\");
+const NullableFloatFieldUpdateOperationsInput_1 = require(\\"../inputs/NullableFloatFieldUpdateOperationsInput\\");
+const StringFieldUpdateOperationsInput_1 = require(\\"../inputs/StringFieldUpdateOperationsInput\\");
+let UserUpdateManyMutationInput = class UserUpdateManyMutationInput {
+};
+exports.UserUpdateManyMutationInput = UserUpdateManyMutationInput;
+tslib_1.__decorate([
+    TypeGraphQL.Field(_type => DateTimeFieldUpdateOperationsInput_1.DateTimeFieldUpdateOperationsInput, { nullable: true }),
+    tslib_1.__metadata(\\"design:type\\", String)
+], UserUpdateManyMutationInput.prototype, \\"dateOfBirth\\", void 0);
+tslib_1.__decorate([
+    TypeGraphQL.Field(_type => StringFieldUpdateOperationsInput_1.StringFieldUpdateOperationsInput, { nullable: true }),
+    tslib_1.__metadata(\\"design:type\\", String)
+], UserUpdateManyMutationInput.prototype, \\"name\\", void 0);
+tslib_1.__decorate([
+    TypeGraphQL.Field(_type => NullableFloatFieldUpdateOperationsInput_1.NullableFloatFieldUpdateOperationsInput, { nullable: true }),
+    tslib_1.__metadata(\\"design:type\\", String)
+], UserUpdateManyMutationInput.prototype, \\"balance\\", void 0);
+exports.UserUpdateManyMutationInput = UserUpdateManyMutationInput = tslib_1.__decorate([
+    TypeGraphQL.InputType(\\"UserUpdateManyMutationInput\\", {})
+], UserUpdateManyMutationInput);
 "
 `;
 
 exports[`omit-fields when \`omitInputFieldsByDefault\` generator option is provided when model field has \`omit(input: false)\` set should properly generate input type class for prisma model with the field defined: UserWhereInput 1`] = `
-"import * as TypeGraphQL from \\"type-graphql\\";
-import * as GraphQLScalars from \\"graphql-scalars\\";
-import { Prisma } from \\"../../../../helpers/prisma-client-mock/client\\";
-import { DecimalJSScalar } from \\"../../scalars\\";
-import { DateTimeFilter } from \\"../inputs/DateTimeFilter\\";
-import { FloatNullableFilter } from \\"../inputs/FloatNullableFilter\\";
-import { IntFilter } from \\"../inputs/IntFilter\\";
-import { StringFilter } from \\"../inputs/StringFilter\\";
-
-@TypeGraphQL.InputType(\\"UserWhereInput\\", {})
-export class UserWhereInput {
-    @TypeGraphQL.Field(_type => [UserWhereInput], { nullable: true })
-    AND?: UserWhereInput[] | undefined;
-
-    @TypeGraphQL.Field(_type => [UserWhereInput], { nullable: true })
-    OR?: UserWhereInput[] | undefined;
-
-    @TypeGraphQL.Field(_type => [UserWhereInput], { nullable: true })
-    NOT?: UserWhereInput[] | undefined;
-
-    @TypeGraphQL.Field(_type => IntFilter, { nullable: true })
-    id?: IntFilter | undefined;
-
-    @TypeGraphQL.Field(_type => DateTimeFilter, { nullable: true })
-    dateOfBirth?: DateTimeFilter | undefined;
-
-    @TypeGraphQL.Field(_type => StringFilter, { nullable: true })
-    name?: StringFilter | undefined;
-
-    @TypeGraphQL.Field(_type => FloatNullableFilter, { nullable: true })
-    balance?: FloatNullableFilter | undefined;
-}
+"\\"use strict\\";
+Object.defineProperty(exports, \\"__esModule\\", { value: true });
+exports.UserWhereInput = void 0;
+const tslib_1 = require(\\"tslib\\");
+const TypeGraphQL = tslib_1.__importStar(require(\\"type-graphql\\"));
+const DateTimeFilter_1 = require(\\"../inputs/DateTimeFilter\\");
+const FloatNullableFilter_1 = require(\\"../inputs/FloatNullableFilter\\");
+const IntFilter_1 = require(\\"../inputs/IntFilter\\");
+const StringFilter_1 = require(\\"../inputs/StringFilter\\");
+let UserWhereInput = class UserWhereInput {
+};
+exports.UserWhereInput = UserWhereInput;
+tslib_1.__decorate([
+    TypeGraphQL.Field(_type => [UserWhereInput], { nullable: true }),
+    tslib_1.__metadata(\\"design:type\\", Array)
+], UserWhereInput.prototype, \\"AND\\", void 0);
+tslib_1.__decorate([
+    TypeGraphQL.Field(_type => [UserWhereInput], { nullable: true }),
+    tslib_1.__metadata(\\"design:type\\", Array)
+], UserWhereInput.prototype, \\"OR\\", void 0);
+tslib_1.__decorate([
+    TypeGraphQL.Field(_type => [UserWhereInput], { nullable: true }),
+    tslib_1.__metadata(\\"design:type\\", Array)
+], UserWhereInput.prototype, \\"NOT\\", void 0);
+tslib_1.__decorate([
+    TypeGraphQL.Field(_type => IntFilter_1.IntFilter, { nullable: true }),
+    tslib_1.__metadata(\\"design:type\\", String)
+], UserWhereInput.prototype, \\"id\\", void 0);
+tslib_1.__decorate([
+    TypeGraphQL.Field(_type => DateTimeFilter_1.DateTimeFilter, { nullable: true }),
+    tslib_1.__metadata(\\"design:type\\", String)
+], UserWhereInput.prototype, \\"dateOfBirth\\", void 0);
+tslib_1.__decorate([
+    TypeGraphQL.Field(_type => StringFilter_1.StringFilter, { nullable: true }),
+    tslib_1.__metadata(\\"design:type\\", String)
+], UserWhereInput.prototype, \\"name\\", void 0);
+tslib_1.__decorate([
+    TypeGraphQL.Field(_type => FloatNullableFilter_1.FloatNullableFilter, { nullable: true }),
+    tslib_1.__metadata(\\"design:type\\", String)
+], UserWhereInput.prototype, \\"balance\\", void 0);
+exports.UserWhereInput = UserWhereInput = tslib_1.__decorate([
+    TypeGraphQL.InputType(\\"UserWhereInput\\", {})
+], UserWhereInput);
 "
 `;
 
 exports[`omit-fields when \`omitInputFieldsByDefault\` generator option is provided when model field has \`omit(input: false)\` set should properly generate input type class for prisma model with the field defined: UserWhereUniqueInput 1`] = `
-"import * as TypeGraphQL from \\"type-graphql\\";
-import * as GraphQLScalars from \\"graphql-scalars\\";
-import { Prisma } from \\"../../../../helpers/prisma-client-mock/client\\";
-import { DecimalJSScalar } from \\"../../scalars\\";
-import { DateTimeFilter } from \\"../inputs/DateTimeFilter\\";
-import { FloatNullableFilter } from \\"../inputs/FloatNullableFilter\\";
-import { StringFilter } from \\"../inputs/StringFilter\\";
-import { UserWhereInput } from \\"../inputs/UserWhereInput\\";
-
-@TypeGraphQL.InputType(\\"UserWhereUniqueInput\\", {})
-export class UserWhereUniqueInput {
-    @TypeGraphQL.Field(_type => TypeGraphQL.Int, { nullable: true })
-    id?: number | undefined;
-
-    @TypeGraphQL.Field(_type => [UserWhereInput], { nullable: true })
-    AND?: UserWhereInput[] | undefined;
-
-    @TypeGraphQL.Field(_type => [UserWhereInput], { nullable: true })
-    OR?: UserWhereInput[] | undefined;
-
-    @TypeGraphQL.Field(_type => [UserWhereInput], { nullable: true })
-    NOT?: UserWhereInput[] | undefined;
-
-    @TypeGraphQL.Field(_type => DateTimeFilter, { nullable: true })
-    dateOfBirth?: DateTimeFilter | undefined;
-
-    @TypeGraphQL.Field(_type => StringFilter, { nullable: true })
-    name?: StringFilter | undefined;
-
-    @TypeGraphQL.Field(_type => FloatNullableFilter, { nullable: true })
-    balance?: FloatNullableFilter | undefined;
-}
+"\\"use strict\\";
+Object.defineProperty(exports, \\"__esModule\\", { value: true });
+exports.UserWhereUniqueInput = void 0;
+const tslib_1 = require(\\"tslib\\");
+const TypeGraphQL = tslib_1.__importStar(require(\\"type-graphql\\"));
+const DateTimeFilter_1 = require(\\"../inputs/DateTimeFilter\\");
+const FloatNullableFilter_1 = require(\\"../inputs/FloatNullableFilter\\");
+const StringFilter_1 = require(\\"../inputs/StringFilter\\");
+const UserWhereInput_1 = require(\\"../inputs/UserWhereInput\\");
+let UserWhereUniqueInput = class UserWhereUniqueInput {
+};
+exports.UserWhereUniqueInput = UserWhereUniqueInput;
+tslib_1.__decorate([
+    TypeGraphQL.Field(_type => TypeGraphQL.Int, { nullable: true }),
+    tslib_1.__metadata(\\"design:type\\", Number)
+], UserWhereUniqueInput.prototype, \\"id\\", void 0);
+tslib_1.__decorate([
+    TypeGraphQL.Field(_type => [UserWhereInput_1.UserWhereInput], { nullable: true }),
+    tslib_1.__metadata(\\"design:type\\", Array)
+], UserWhereUniqueInput.prototype, \\"AND\\", void 0);
+tslib_1.__decorate([
+    TypeGraphQL.Field(_type => [UserWhereInput_1.UserWhereInput], { nullable: true }),
+    tslib_1.__metadata(\\"design:type\\", Array)
+], UserWhereUniqueInput.prototype, \\"OR\\", void 0);
+tslib_1.__decorate([
+    TypeGraphQL.Field(_type => [UserWhereInput_1.UserWhereInput], { nullable: true }),
+    tslib_1.__metadata(\\"design:type\\", Array)
+], UserWhereUniqueInput.prototype, \\"NOT\\", void 0);
+tslib_1.__decorate([
+    TypeGraphQL.Field(_type => DateTimeFilter_1.DateTimeFilter, { nullable: true }),
+    tslib_1.__metadata(\\"design:type\\", String)
+], UserWhereUniqueInput.prototype, \\"dateOfBirth\\", void 0);
+tslib_1.__decorate([
+    TypeGraphQL.Field(_type => StringFilter_1.StringFilter, { nullable: true }),
+    tslib_1.__metadata(\\"design:type\\", String)
+], UserWhereUniqueInput.prototype, \\"name\\", void 0);
+tslib_1.__decorate([
+    TypeGraphQL.Field(_type => FloatNullableFilter_1.FloatNullableFilter, { nullable: true }),
+    tslib_1.__metadata(\\"design:type\\", String)
+], UserWhereUniqueInput.prototype, \\"balance\\", void 0);
+exports.UserWhereUniqueInput = UserWhereUniqueInput = tslib_1.__decorate([
+    TypeGraphQL.InputType(\\"UserWhereUniqueInput\\", {})
+], UserWhereUniqueInput);
 "
 `;
 
 exports[`omit-fields when \`omitInputFieldsByDefault\` generator option is provided when model field has \`omit(output: false)\` set should properly generate model type class for prisma model with the field defined: User 1`] = `
-"import * as TypeGraphQL from \\"type-graphql\\";
-import * as GraphQLScalars from \\"graphql-scalars\\";
-import { Prisma } from \\"../../../helpers/prisma-client-mock/client\\";
-import { DecimalJSScalar } from \\"../scalars\\";
-
-@TypeGraphQL.ObjectType(\\"User\\", {})
-export class User {
-    @TypeGraphQL.Field(_type => TypeGraphQL.Int, { nullable: false })
-    id!: number;
-
-    @TypeGraphQL.Field(_type => Date, { nullable: false })
-    dateOfBirth!: Date;
-
-    @TypeGraphQL.Field(_type => String, { nullable: false })
-    name!: string;
-
-    @TypeGraphQL.Field(_type => TypeGraphQL.Float, { nullable: true })
-    balance?: number | null;
+"\\"use strict\\";
+Object.defineProperty(exports, \\"__esModule\\", { value: true });
+exports.User = void 0;
+const tslib_1 = require(\\"tslib\\");
+const TypeGraphQL = tslib_1.__importStar(require(\\"type-graphql\\"));
+class User {
 }
+exports.User = User;
+tslib_1.__decorate([
+    TypeGraphQL.Field(_type => TypeGraphQL.Int, { nullable: false }),
+    tslib_1.__metadata(\\"design:type\\", Number)
+], User.prototype, \\"id\\", void 0);
+tslib_1.__decorate([
+    TypeGraphQL.Field(_type => Date, { nullable: false }),
+    tslib_1.__metadata(\\"design:type\\", Date)
+], User.prototype, \\"dateOfBirth\\", void 0);
+tslib_1.__decorate([
+    TypeGraphQL.Field(_type => String, { nullable: false }),
+    tslib_1.__metadata(\\"design:type\\", String)
+], User.prototype, \\"name\\", void 0);
+tslib_1.__decorate([
+    TypeGraphQL.Field(_type => TypeGraphQL.Float, { nullable: true }),
+    tslib_1.__metadata(\\"design:type\\", Number)
+], User.prototype, \\"balance\\", void 0);
+tslib_1.__decorate([
+    TypeGraphQL.ObjectType(\\"User\\", {})
+], User);
 "
 `;
 
 exports[`omit-fields when model field has \`omit(input: true)\` set should properly generate input type class for prisma model without the omitted field: UserCreateInput 1`] = `
-"import * as TypeGraphQL from \\"type-graphql\\";
-import * as GraphQLScalars from \\"graphql-scalars\\";
-import { Prisma } from \\"../../../../helpers/prisma-client-mock/client\\";
-import { DecimalJSScalar } from \\"../../scalars\\";
-
-@TypeGraphQL.InputType(\\"UserCreateInput\\", {})
-export class UserCreateInput {
-    @TypeGraphQL.Field(_type => Date, { nullable: false })
-    dateOfBirth!: Date;
-
-    @TypeGraphQL.Field(_type => String, { nullable: false })
-    name!: string;
-}
+"\\"use strict\\";
+Object.defineProperty(exports, \\"__esModule\\", { value: true });
+exports.UserCreateInput = void 0;
+const tslib_1 = require(\\"tslib\\");
+const TypeGraphQL = tslib_1.__importStar(require(\\"type-graphql\\"));
+let UserCreateInput = class UserCreateInput {
+};
+exports.UserCreateInput = UserCreateInput;
+tslib_1.__decorate([
+    TypeGraphQL.Field(_type => Date, { nullable: false }),
+    tslib_1.__metadata(\\"design:type\\", Date)
+], UserCreateInput.prototype, \\"dateOfBirth\\", void 0);
+tslib_1.__decorate([
+    TypeGraphQL.Field(_type => String, { nullable: false }),
+    tslib_1.__metadata(\\"design:type\\", String)
+], UserCreateInput.prototype, \\"name\\", void 0);
+exports.UserCreateInput = UserCreateInput = tslib_1.__decorate([
+    TypeGraphQL.InputType(\\"UserCreateInput\\", {})
+], UserCreateInput);
 "
 `;
 
 exports[`omit-fields when model field has \`omit(input: true)\` set should properly generate input type class for prisma model without the omitted field: UserCreateManyInput 1`] = `
-"import * as TypeGraphQL from \\"type-graphql\\";
-import * as GraphQLScalars from \\"graphql-scalars\\";
-import { Prisma } from \\"../../../../helpers/prisma-client-mock/client\\";
-import { DecimalJSScalar } from \\"../../scalars\\";
-
-@TypeGraphQL.InputType(\\"UserCreateManyInput\\", {})
-export class UserCreateManyInput {
-    @TypeGraphQL.Field(_type => TypeGraphQL.Int, { nullable: true })
-    id?: number | undefined;
-
-    @TypeGraphQL.Field(_type => Date, { nullable: false })
-    dateOfBirth!: Date;
-
-    @TypeGraphQL.Field(_type => String, { nullable: false })
-    name!: string;
-}
+"\\"use strict\\";
+Object.defineProperty(exports, \\"__esModule\\", { value: true });
+exports.UserCreateManyInput = void 0;
+const tslib_1 = require(\\"tslib\\");
+const TypeGraphQL = tslib_1.__importStar(require(\\"type-graphql\\"));
+let UserCreateManyInput = class UserCreateManyInput {
+};
+exports.UserCreateManyInput = UserCreateManyInput;
+tslib_1.__decorate([
+    TypeGraphQL.Field(_type => TypeGraphQL.Int, { nullable: true }),
+    tslib_1.__metadata(\\"design:type\\", Number)
+], UserCreateManyInput.prototype, \\"id\\", void 0);
+tslib_1.__decorate([
+    TypeGraphQL.Field(_type => Date, { nullable: false }),
+    tslib_1.__metadata(\\"design:type\\", Date)
+], UserCreateManyInput.prototype, \\"dateOfBirth\\", void 0);
+tslib_1.__decorate([
+    TypeGraphQL.Field(_type => String, { nullable: false }),
+    tslib_1.__metadata(\\"design:type\\", String)
+], UserCreateManyInput.prototype, \\"name\\", void 0);
+exports.UserCreateManyInput = UserCreateManyInput = tslib_1.__decorate([
+    TypeGraphQL.InputType(\\"UserCreateManyInput\\", {})
+], UserCreateManyInput);
 "
 `;
 
 exports[`omit-fields when model field has \`omit(input: true)\` set should properly generate input type class for prisma model without the omitted field: UserOrderByWithRelationInput 1`] = `
-"import * as TypeGraphQL from \\"type-graphql\\";
-import * as GraphQLScalars from \\"graphql-scalars\\";
-import { Prisma } from \\"../../../../helpers/prisma-client-mock/client\\";
-import { DecimalJSScalar } from \\"../../scalars\\";
-import { SortOrderInput } from \\"../inputs/SortOrderInput\\";
-import { SortOrder } from \\"../../enums/SortOrder\\";
-
-@TypeGraphQL.InputType(\\"UserOrderByWithRelationInput\\", {})
-export class UserOrderByWithRelationInput {
-    @TypeGraphQL.Field(_type => SortOrder, { nullable: true })
-    id?: \\"asc\\" | \\"desc\\" | undefined;
-
-    @TypeGraphQL.Field(_type => SortOrder, { nullable: true })
-    dateOfBirth?: \\"asc\\" | \\"desc\\" | undefined;
-
-    @TypeGraphQL.Field(_type => SortOrder, { nullable: true })
-    name?: \\"asc\\" | \\"desc\\" | undefined;
-}
+"\\"use strict\\";
+Object.defineProperty(exports, \\"__esModule\\", { value: true });
+exports.UserOrderByWithRelationInput = void 0;
+const tslib_1 = require(\\"tslib\\");
+const TypeGraphQL = tslib_1.__importStar(require(\\"type-graphql\\"));
+const SortOrder_1 = require(\\"../../enums/SortOrder\\");
+let UserOrderByWithRelationInput = class UserOrderByWithRelationInput {
+};
+exports.UserOrderByWithRelationInput = UserOrderByWithRelationInput;
+tslib_1.__decorate([
+    TypeGraphQL.Field(_type => SortOrder_1.SortOrder, { nullable: true }),
+    tslib_1.__metadata(\\"design:type\\", String)
+], UserOrderByWithRelationInput.prototype, \\"id\\", void 0);
+tslib_1.__decorate([
+    TypeGraphQL.Field(_type => SortOrder_1.SortOrder, { nullable: true }),
+    tslib_1.__metadata(\\"design:type\\", String)
+], UserOrderByWithRelationInput.prototype, \\"dateOfBirth\\", void 0);
+tslib_1.__decorate([
+    TypeGraphQL.Field(_type => SortOrder_1.SortOrder, { nullable: true }),
+    tslib_1.__metadata(\\"design:type\\", String)
+], UserOrderByWithRelationInput.prototype, \\"name\\", void 0);
+exports.UserOrderByWithRelationInput = UserOrderByWithRelationInput = tslib_1.__decorate([
+    TypeGraphQL.InputType(\\"UserOrderByWithRelationInput\\", {})
+], UserOrderByWithRelationInput);
 "
 `;
 
 exports[`omit-fields when model field has \`omit(input: true)\` set should properly generate input type class for prisma model without the omitted field: UserScalarWhereWithAggregatesInput 1`] = `
-"import * as TypeGraphQL from \\"type-graphql\\";
-import * as GraphQLScalars from \\"graphql-scalars\\";
-import { Prisma } from \\"../../../../helpers/prisma-client-mock/client\\";
-import { DecimalJSScalar } from \\"../../scalars\\";
-import { DateTimeWithAggregatesFilter } from \\"../inputs/DateTimeWithAggregatesFilter\\";
-import { FloatNullableWithAggregatesFilter } from \\"../inputs/FloatNullableWithAggregatesFilter\\";
-import { IntWithAggregatesFilter } from \\"../inputs/IntWithAggregatesFilter\\";
-import { StringWithAggregatesFilter } from \\"../inputs/StringWithAggregatesFilter\\";
-
-@TypeGraphQL.InputType(\\"UserScalarWhereWithAggregatesInput\\", {})
-export class UserScalarWhereWithAggregatesInput {
-    @TypeGraphQL.Field(_type => [UserScalarWhereWithAggregatesInput], { nullable: true })
-    AND?: UserScalarWhereWithAggregatesInput[] | undefined;
-
-    @TypeGraphQL.Field(_type => [UserScalarWhereWithAggregatesInput], { nullable: true })
-    OR?: UserScalarWhereWithAggregatesInput[] | undefined;
-
-    @TypeGraphQL.Field(_type => [UserScalarWhereWithAggregatesInput], { nullable: true })
-    NOT?: UserScalarWhereWithAggregatesInput[] | undefined;
-
-    @TypeGraphQL.Field(_type => IntWithAggregatesFilter, { nullable: true })
-    id?: IntWithAggregatesFilter | undefined;
-
-    @TypeGraphQL.Field(_type => DateTimeWithAggregatesFilter, { nullable: true })
-    dateOfBirth?: DateTimeWithAggregatesFilter | undefined;
-
-    @TypeGraphQL.Field(_type => StringWithAggregatesFilter, { nullable: true })
-    name?: StringWithAggregatesFilter | undefined;
-}
+"\\"use strict\\";
+Object.defineProperty(exports, \\"__esModule\\", { value: true });
+exports.UserScalarWhereWithAggregatesInput = void 0;
+const tslib_1 = require(\\"tslib\\");
+const TypeGraphQL = tslib_1.__importStar(require(\\"type-graphql\\"));
+const DateTimeWithAggregatesFilter_1 = require(\\"../inputs/DateTimeWithAggregatesFilter\\");
+const IntWithAggregatesFilter_1 = require(\\"../inputs/IntWithAggregatesFilter\\");
+const StringWithAggregatesFilter_1 = require(\\"../inputs/StringWithAggregatesFilter\\");
+let UserScalarWhereWithAggregatesInput = class UserScalarWhereWithAggregatesInput {
+};
+exports.UserScalarWhereWithAggregatesInput = UserScalarWhereWithAggregatesInput;
+tslib_1.__decorate([
+    TypeGraphQL.Field(_type => [UserScalarWhereWithAggregatesInput], { nullable: true }),
+    tslib_1.__metadata(\\"design:type\\", Array)
+], UserScalarWhereWithAggregatesInput.prototype, \\"AND\\", void 0);
+tslib_1.__decorate([
+    TypeGraphQL.Field(_type => [UserScalarWhereWithAggregatesInput], { nullable: true }),
+    tslib_1.__metadata(\\"design:type\\", Array)
+], UserScalarWhereWithAggregatesInput.prototype, \\"OR\\", void 0);
+tslib_1.__decorate([
+    TypeGraphQL.Field(_type => [UserScalarWhereWithAggregatesInput], { nullable: true }),
+    tslib_1.__metadata(\\"design:type\\", Array)
+], UserScalarWhereWithAggregatesInput.prototype, \\"NOT\\", void 0);
+tslib_1.__decorate([
+    TypeGraphQL.Field(_type => IntWithAggregatesFilter_1.IntWithAggregatesFilter, { nullable: true }),
+    tslib_1.__metadata(\\"design:type\\", String)
+], UserScalarWhereWithAggregatesInput.prototype, \\"id\\", void 0);
+tslib_1.__decorate([
+    TypeGraphQL.Field(_type => DateTimeWithAggregatesFilter_1.DateTimeWithAggregatesFilter, { nullable: true }),
+    tslib_1.__metadata(\\"design:type\\", String)
+], UserScalarWhereWithAggregatesInput.prototype, \\"dateOfBirth\\", void 0);
+tslib_1.__decorate([
+    TypeGraphQL.Field(_type => StringWithAggregatesFilter_1.StringWithAggregatesFilter, { nullable: true }),
+    tslib_1.__metadata(\\"design:type\\", String)
+], UserScalarWhereWithAggregatesInput.prototype, \\"name\\", void 0);
+exports.UserScalarWhereWithAggregatesInput = UserScalarWhereWithAggregatesInput = tslib_1.__decorate([
+    TypeGraphQL.InputType(\\"UserScalarWhereWithAggregatesInput\\", {})
+], UserScalarWhereWithAggregatesInput);
 "
 `;
 
 exports[`omit-fields when model field has \`omit(input: true)\` set should properly generate input type class for prisma model without the omitted field: UserUpdateInput 1`] = `
-"import * as TypeGraphQL from \\"type-graphql\\";
-import * as GraphQLScalars from \\"graphql-scalars\\";
-import { Prisma } from \\"../../../../helpers/prisma-client-mock/client\\";
-import { DecimalJSScalar } from \\"../../scalars\\";
-import { DateTimeFieldUpdateOperationsInput } from \\"../inputs/DateTimeFieldUpdateOperationsInput\\";
-import { NullableFloatFieldUpdateOperationsInput } from \\"../inputs/NullableFloatFieldUpdateOperationsInput\\";
-import { StringFieldUpdateOperationsInput } from \\"../inputs/StringFieldUpdateOperationsInput\\";
-
-@TypeGraphQL.InputType(\\"UserUpdateInput\\", {})
-export class UserUpdateInput {
-    @TypeGraphQL.Field(_type => DateTimeFieldUpdateOperationsInput, { nullable: true })
-    dateOfBirth?: DateTimeFieldUpdateOperationsInput | undefined;
-
-    @TypeGraphQL.Field(_type => StringFieldUpdateOperationsInput, { nullable: true })
-    name?: StringFieldUpdateOperationsInput | undefined;
-}
+"\\"use strict\\";
+Object.defineProperty(exports, \\"__esModule\\", { value: true });
+exports.UserUpdateInput = void 0;
+const tslib_1 = require(\\"tslib\\");
+const TypeGraphQL = tslib_1.__importStar(require(\\"type-graphql\\"));
+const DateTimeFieldUpdateOperationsInput_1 = require(\\"../inputs/DateTimeFieldUpdateOperationsInput\\");
+const StringFieldUpdateOperationsInput_1 = require(\\"../inputs/StringFieldUpdateOperationsInput\\");
+let UserUpdateInput = class UserUpdateInput {
+};
+exports.UserUpdateInput = UserUpdateInput;
+tslib_1.__decorate([
+    TypeGraphQL.Field(_type => DateTimeFieldUpdateOperationsInput_1.DateTimeFieldUpdateOperationsInput, { nullable: true }),
+    tslib_1.__metadata(\\"design:type\\", String)
+], UserUpdateInput.prototype, \\"dateOfBirth\\", void 0);
+tslib_1.__decorate([
+    TypeGraphQL.Field(_type => StringFieldUpdateOperationsInput_1.StringFieldUpdateOperationsInput, { nullable: true }),
+    tslib_1.__metadata(\\"design:type\\", String)
+], UserUpdateInput.prototype, \\"name\\", void 0);
+exports.UserUpdateInput = UserUpdateInput = tslib_1.__decorate([
+    TypeGraphQL.InputType(\\"UserUpdateInput\\", {})
+], UserUpdateInput);
 "
 `;
 
 exports[`omit-fields when model field has \`omit(input: true)\` set should properly generate input type class for prisma model without the omitted field: UserUpdateManyMutationInput 1`] = `
-"import * as TypeGraphQL from \\"type-graphql\\";
-import * as GraphQLScalars from \\"graphql-scalars\\";
-import { Prisma } from \\"../../../../helpers/prisma-client-mock/client\\";
-import { DecimalJSScalar } from \\"../../scalars\\";
-import { DateTimeFieldUpdateOperationsInput } from \\"../inputs/DateTimeFieldUpdateOperationsInput\\";
-import { NullableFloatFieldUpdateOperationsInput } from \\"../inputs/NullableFloatFieldUpdateOperationsInput\\";
-import { StringFieldUpdateOperationsInput } from \\"../inputs/StringFieldUpdateOperationsInput\\";
-
-@TypeGraphQL.InputType(\\"UserUpdateManyMutationInput\\", {})
-export class UserUpdateManyMutationInput {
-    @TypeGraphQL.Field(_type => DateTimeFieldUpdateOperationsInput, { nullable: true })
-    dateOfBirth?: DateTimeFieldUpdateOperationsInput | undefined;
-
-    @TypeGraphQL.Field(_type => StringFieldUpdateOperationsInput, { nullable: true })
-    name?: StringFieldUpdateOperationsInput | undefined;
-}
+"\\"use strict\\";
+Object.defineProperty(exports, \\"__esModule\\", { value: true });
+exports.UserUpdateManyMutationInput = void 0;
+const tslib_1 = require(\\"tslib\\");
+const TypeGraphQL = tslib_1.__importStar(require(\\"type-graphql\\"));
+const DateTimeFieldUpdateOperationsInput_1 = require(\\"../inputs/DateTimeFieldUpdateOperationsInput\\");
+const StringFieldUpdateOperationsInput_1 = require(\\"../inputs/StringFieldUpdateOperationsInput\\");
+let UserUpdateManyMutationInput = class UserUpdateManyMutationInput {
+};
+exports.UserUpdateManyMutationInput = UserUpdateManyMutationInput;
+tslib_1.__decorate([
+    TypeGraphQL.Field(_type => DateTimeFieldUpdateOperationsInput_1.DateTimeFieldUpdateOperationsInput, { nullable: true }),
+    tslib_1.__metadata(\\"design:type\\", String)
+], UserUpdateManyMutationInput.prototype, \\"dateOfBirth\\", void 0);
+tslib_1.__decorate([
+    TypeGraphQL.Field(_type => StringFieldUpdateOperationsInput_1.StringFieldUpdateOperationsInput, { nullable: true }),
+    tslib_1.__metadata(\\"design:type\\", String)
+], UserUpdateManyMutationInput.prototype, \\"name\\", void 0);
+exports.UserUpdateManyMutationInput = UserUpdateManyMutationInput = tslib_1.__decorate([
+    TypeGraphQL.InputType(\\"UserUpdateManyMutationInput\\", {})
+], UserUpdateManyMutationInput);
 "
 `;
 
 exports[`omit-fields when model field has \`omit(input: true)\` set should properly generate input type class for prisma model without the omitted field: UserWhereInput 1`] = `
-"import * as TypeGraphQL from \\"type-graphql\\";
-import * as GraphQLScalars from \\"graphql-scalars\\";
-import { Prisma } from \\"../../../../helpers/prisma-client-mock/client\\";
-import { DecimalJSScalar } from \\"../../scalars\\";
-import { DateTimeFilter } from \\"../inputs/DateTimeFilter\\";
-import { FloatNullableFilter } from \\"../inputs/FloatNullableFilter\\";
-import { IntFilter } from \\"../inputs/IntFilter\\";
-import { StringFilter } from \\"../inputs/StringFilter\\";
-
-@TypeGraphQL.InputType(\\"UserWhereInput\\", {})
-export class UserWhereInput {
-    @TypeGraphQL.Field(_type => [UserWhereInput], { nullable: true })
-    AND?: UserWhereInput[] | undefined;
-
-    @TypeGraphQL.Field(_type => [UserWhereInput], { nullable: true })
-    OR?: UserWhereInput[] | undefined;
-
-    @TypeGraphQL.Field(_type => [UserWhereInput], { nullable: true })
-    NOT?: UserWhereInput[] | undefined;
-
-    @TypeGraphQL.Field(_type => IntFilter, { nullable: true })
-    id?: IntFilter | undefined;
-
-    @TypeGraphQL.Field(_type => DateTimeFilter, { nullable: true })
-    dateOfBirth?: DateTimeFilter | undefined;
-
-    @TypeGraphQL.Field(_type => StringFilter, { nullable: true })
-    name?: StringFilter | undefined;
-}
+"\\"use strict\\";
+Object.defineProperty(exports, \\"__esModule\\", { value: true });
+exports.UserWhereInput = void 0;
+const tslib_1 = require(\\"tslib\\");
+const TypeGraphQL = tslib_1.__importStar(require(\\"type-graphql\\"));
+const DateTimeFilter_1 = require(\\"../inputs/DateTimeFilter\\");
+const IntFilter_1 = require(\\"../inputs/IntFilter\\");
+const StringFilter_1 = require(\\"../inputs/StringFilter\\");
+let UserWhereInput = class UserWhereInput {
+};
+exports.UserWhereInput = UserWhereInput;
+tslib_1.__decorate([
+    TypeGraphQL.Field(_type => [UserWhereInput], { nullable: true }),
+    tslib_1.__metadata(\\"design:type\\", Array)
+], UserWhereInput.prototype, \\"AND\\", void 0);
+tslib_1.__decorate([
+    TypeGraphQL.Field(_type => [UserWhereInput], { nullable: true }),
+    tslib_1.__metadata(\\"design:type\\", Array)
+], UserWhereInput.prototype, \\"OR\\", void 0);
+tslib_1.__decorate([
+    TypeGraphQL.Field(_type => [UserWhereInput], { nullable: true }),
+    tslib_1.__metadata(\\"design:type\\", Array)
+], UserWhereInput.prototype, \\"NOT\\", void 0);
+tslib_1.__decorate([
+    TypeGraphQL.Field(_type => IntFilter_1.IntFilter, { nullable: true }),
+    tslib_1.__metadata(\\"design:type\\", String)
+], UserWhereInput.prototype, \\"id\\", void 0);
+tslib_1.__decorate([
+    TypeGraphQL.Field(_type => DateTimeFilter_1.DateTimeFilter, { nullable: true }),
+    tslib_1.__metadata(\\"design:type\\", String)
+], UserWhereInput.prototype, \\"dateOfBirth\\", void 0);
+tslib_1.__decorate([
+    TypeGraphQL.Field(_type => StringFilter_1.StringFilter, { nullable: true }),
+    tslib_1.__metadata(\\"design:type\\", String)
+], UserWhereInput.prototype, \\"name\\", void 0);
+exports.UserWhereInput = UserWhereInput = tslib_1.__decorate([
+    TypeGraphQL.InputType(\\"UserWhereInput\\", {})
+], UserWhereInput);
 "
 `;
 
 exports[`omit-fields when model field has \`omit(input: true)\` set should properly generate input type class for prisma model without the omitted field: UserWhereUniqueInput 1`] = `
-"import * as TypeGraphQL from \\"type-graphql\\";
-import * as GraphQLScalars from \\"graphql-scalars\\";
-import { Prisma } from \\"../../../../helpers/prisma-client-mock/client\\";
-import { DecimalJSScalar } from \\"../../scalars\\";
-import { DateTimeFilter } from \\"../inputs/DateTimeFilter\\";
-import { FloatNullableFilter } from \\"../inputs/FloatNullableFilter\\";
-import { StringFilter } from \\"../inputs/StringFilter\\";
-import { UserWhereInput } from \\"../inputs/UserWhereInput\\";
-
-@TypeGraphQL.InputType(\\"UserWhereUniqueInput\\", {})
-export class UserWhereUniqueInput {
-    @TypeGraphQL.Field(_type => TypeGraphQL.Int, { nullable: true })
-    id?: number | undefined;
-
-    @TypeGraphQL.Field(_type => [UserWhereInput], { nullable: true })
-    AND?: UserWhereInput[] | undefined;
-
-    @TypeGraphQL.Field(_type => [UserWhereInput], { nullable: true })
-    OR?: UserWhereInput[] | undefined;
-
-    @TypeGraphQL.Field(_type => [UserWhereInput], { nullable: true })
-    NOT?: UserWhereInput[] | undefined;
-
-    @TypeGraphQL.Field(_type => DateTimeFilter, { nullable: true })
-    dateOfBirth?: DateTimeFilter | undefined;
-
-    @TypeGraphQL.Field(_type => StringFilter, { nullable: true })
-    name?: StringFilter | undefined;
-}
+"\\"use strict\\";
+Object.defineProperty(exports, \\"__esModule\\", { value: true });
+exports.UserWhereUniqueInput = void 0;
+const tslib_1 = require(\\"tslib\\");
+const TypeGraphQL = tslib_1.__importStar(require(\\"type-graphql\\"));
+const DateTimeFilter_1 = require(\\"../inputs/DateTimeFilter\\");
+const StringFilter_1 = require(\\"../inputs/StringFilter\\");
+const UserWhereInput_1 = require(\\"../inputs/UserWhereInput\\");
+let UserWhereUniqueInput = class UserWhereUniqueInput {
+};
+exports.UserWhereUniqueInput = UserWhereUniqueInput;
+tslib_1.__decorate([
+    TypeGraphQL.Field(_type => TypeGraphQL.Int, { nullable: true }),
+    tslib_1.__metadata(\\"design:type\\", Number)
+], UserWhereUniqueInput.prototype, \\"id\\", void 0);
+tslib_1.__decorate([
+    TypeGraphQL.Field(_type => [UserWhereInput_1.UserWhereInput], { nullable: true }),
+    tslib_1.__metadata(\\"design:type\\", Array)
+], UserWhereUniqueInput.prototype, \\"AND\\", void 0);
+tslib_1.__decorate([
+    TypeGraphQL.Field(_type => [UserWhereInput_1.UserWhereInput], { nullable: true }),
+    tslib_1.__metadata(\\"design:type\\", Array)
+], UserWhereUniqueInput.prototype, \\"OR\\", void 0);
+tslib_1.__decorate([
+    TypeGraphQL.Field(_type => [UserWhereInput_1.UserWhereInput], { nullable: true }),
+    tslib_1.__metadata(\\"design:type\\", Array)
+], UserWhereUniqueInput.prototype, \\"NOT\\", void 0);
+tslib_1.__decorate([
+    TypeGraphQL.Field(_type => DateTimeFilter_1.DateTimeFilter, { nullable: true }),
+    tslib_1.__metadata(\\"design:type\\", String)
+], UserWhereUniqueInput.prototype, \\"dateOfBirth\\", void 0);
+tslib_1.__decorate([
+    TypeGraphQL.Field(_type => StringFilter_1.StringFilter, { nullable: true }),
+    tslib_1.__metadata(\\"design:type\\", String)
+], UserWhereUniqueInput.prototype, \\"name\\", void 0);
+exports.UserWhereUniqueInput = UserWhereUniqueInput = tslib_1.__decorate([
+    TypeGraphQL.InputType(\\"UserWhereUniqueInput\\", {})
+], UserWhereUniqueInput);
 "
 `;
 
 exports[`omit-fields when model field has \`omit(output: true)\` set should properly generate input type class for prisma model with the omitted field: UserCreateInput 1`] = `
-"import * as TypeGraphQL from \\"type-graphql\\";
-import * as GraphQLScalars from \\"graphql-scalars\\";
-import { Prisma } from \\"../../../../helpers/prisma-client-mock/client\\";
-import { DecimalJSScalar } from \\"../../scalars\\";
-
-@TypeGraphQL.InputType(\\"UserCreateInput\\", {})
-export class UserCreateInput {
-    @TypeGraphQL.Field(_type => Date, { nullable: false })
-    dateOfBirth!: Date;
-
-    @TypeGraphQL.Field(_type => String, { nullable: false })
-    name!: string;
-
-    @TypeGraphQL.Field(_type => TypeGraphQL.Float, { nullable: true })
-    balance?: number | undefined;
-}
+"\\"use strict\\";
+Object.defineProperty(exports, \\"__esModule\\", { value: true });
+exports.UserCreateInput = void 0;
+const tslib_1 = require(\\"tslib\\");
+const TypeGraphQL = tslib_1.__importStar(require(\\"type-graphql\\"));
+let UserCreateInput = class UserCreateInput {
+};
+exports.UserCreateInput = UserCreateInput;
+tslib_1.__decorate([
+    TypeGraphQL.Field(_type => Date, { nullable: false }),
+    tslib_1.__metadata(\\"design:type\\", Date)
+], UserCreateInput.prototype, \\"dateOfBirth\\", void 0);
+tslib_1.__decorate([
+    TypeGraphQL.Field(_type => String, { nullable: false }),
+    tslib_1.__metadata(\\"design:type\\", String)
+], UserCreateInput.prototype, \\"name\\", void 0);
+tslib_1.__decorate([
+    TypeGraphQL.Field(_type => TypeGraphQL.Float, { nullable: true }),
+    tslib_1.__metadata(\\"design:type\\", Number)
+], UserCreateInput.prototype, \\"balance\\", void 0);
+exports.UserCreateInput = UserCreateInput = tslib_1.__decorate([
+    TypeGraphQL.InputType(\\"UserCreateInput\\", {})
+], UserCreateInput);
 "
 `;
 
 exports[`omit-fields when model field has \`omit(output: true)\` set should properly generate input type class for prisma model with the omitted field: UserCreateManyInput 1`] = `
-"import * as TypeGraphQL from \\"type-graphql\\";
-import * as GraphQLScalars from \\"graphql-scalars\\";
-import { Prisma } from \\"../../../../helpers/prisma-client-mock/client\\";
-import { DecimalJSScalar } from \\"../../scalars\\";
-
-@TypeGraphQL.InputType(\\"UserCreateManyInput\\", {})
-export class UserCreateManyInput {
-    @TypeGraphQL.Field(_type => TypeGraphQL.Int, { nullable: true })
-    id?: number | undefined;
-
-    @TypeGraphQL.Field(_type => Date, { nullable: false })
-    dateOfBirth!: Date;
-
-    @TypeGraphQL.Field(_type => String, { nullable: false })
-    name!: string;
-
-    @TypeGraphQL.Field(_type => TypeGraphQL.Float, { nullable: true })
-    balance?: number | undefined;
-}
+"\\"use strict\\";
+Object.defineProperty(exports, \\"__esModule\\", { value: true });
+exports.UserCreateManyInput = void 0;
+const tslib_1 = require(\\"tslib\\");
+const TypeGraphQL = tslib_1.__importStar(require(\\"type-graphql\\"));
+let UserCreateManyInput = class UserCreateManyInput {
+};
+exports.UserCreateManyInput = UserCreateManyInput;
+tslib_1.__decorate([
+    TypeGraphQL.Field(_type => TypeGraphQL.Int, { nullable: true }),
+    tslib_1.__metadata(\\"design:type\\", Number)
+], UserCreateManyInput.prototype, \\"id\\", void 0);
+tslib_1.__decorate([
+    TypeGraphQL.Field(_type => Date, { nullable: false }),
+    tslib_1.__metadata(\\"design:type\\", Date)
+], UserCreateManyInput.prototype, \\"dateOfBirth\\", void 0);
+tslib_1.__decorate([
+    TypeGraphQL.Field(_type => String, { nullable: false }),
+    tslib_1.__metadata(\\"design:type\\", String)
+], UserCreateManyInput.prototype, \\"name\\", void 0);
+tslib_1.__decorate([
+    TypeGraphQL.Field(_type => TypeGraphQL.Float, { nullable: true }),
+    tslib_1.__metadata(\\"design:type\\", Number)
+], UserCreateManyInput.prototype, \\"balance\\", void 0);
+exports.UserCreateManyInput = UserCreateManyInput = tslib_1.__decorate([
+    TypeGraphQL.InputType(\\"UserCreateManyInput\\", {})
+], UserCreateManyInput);
 "
 `;
 
 exports[`omit-fields when model field has \`omit(output: true)\` set should properly generate input type class for prisma model with the omitted field: UserOrderByWithRelationInput 1`] = `
-"import * as TypeGraphQL from \\"type-graphql\\";
-import * as GraphQLScalars from \\"graphql-scalars\\";
-import { Prisma } from \\"../../../../helpers/prisma-client-mock/client\\";
-import { DecimalJSScalar } from \\"../../scalars\\";
-import { SortOrderInput } from \\"../inputs/SortOrderInput\\";
-import { SortOrder } from \\"../../enums/SortOrder\\";
-
-@TypeGraphQL.InputType(\\"UserOrderByWithRelationInput\\", {})
-export class UserOrderByWithRelationInput {
-    @TypeGraphQL.Field(_type => SortOrder, { nullable: true })
-    id?: \\"asc\\" | \\"desc\\" | undefined;
-
-    @TypeGraphQL.Field(_type => SortOrder, { nullable: true })
-    dateOfBirth?: \\"asc\\" | \\"desc\\" | undefined;
-
-    @TypeGraphQL.Field(_type => SortOrder, { nullable: true })
-    name?: \\"asc\\" | \\"desc\\" | undefined;
-
-    @TypeGraphQL.Field(_type => SortOrderInput, { nullable: true })
-    balance?: SortOrderInput | undefined;
-}
+"\\"use strict\\";
+Object.defineProperty(exports, \\"__esModule\\", { value: true });
+exports.UserOrderByWithRelationInput = void 0;
+const tslib_1 = require(\\"tslib\\");
+const TypeGraphQL = tslib_1.__importStar(require(\\"type-graphql\\"));
+const SortOrderInput_1 = require(\\"../inputs/SortOrderInput\\");
+const SortOrder_1 = require(\\"../../enums/SortOrder\\");
+let UserOrderByWithRelationInput = class UserOrderByWithRelationInput {
+};
+exports.UserOrderByWithRelationInput = UserOrderByWithRelationInput;
+tslib_1.__decorate([
+    TypeGraphQL.Field(_type => SortOrder_1.SortOrder, { nullable: true }),
+    tslib_1.__metadata(\\"design:type\\", String)
+], UserOrderByWithRelationInput.prototype, \\"id\\", void 0);
+tslib_1.__decorate([
+    TypeGraphQL.Field(_type => SortOrder_1.SortOrder, { nullable: true }),
+    tslib_1.__metadata(\\"design:type\\", String)
+], UserOrderByWithRelationInput.prototype, \\"dateOfBirth\\", void 0);
+tslib_1.__decorate([
+    TypeGraphQL.Field(_type => SortOrder_1.SortOrder, { nullable: true }),
+    tslib_1.__metadata(\\"design:type\\", String)
+], UserOrderByWithRelationInput.prototype, \\"name\\", void 0);
+tslib_1.__decorate([
+    TypeGraphQL.Field(_type => SortOrderInput_1.SortOrderInput, { nullable: true }),
+    tslib_1.__metadata(\\"design:type\\", String)
+], UserOrderByWithRelationInput.prototype, \\"balance\\", void 0);
+exports.UserOrderByWithRelationInput = UserOrderByWithRelationInput = tslib_1.__decorate([
+    TypeGraphQL.InputType(\\"UserOrderByWithRelationInput\\", {})
+], UserOrderByWithRelationInput);
 "
 `;
 
 exports[`omit-fields when model field has \`omit(output: true)\` set should properly generate input type class for prisma model with the omitted field: UserScalarWhereWithAggregatesInput 1`] = `
-"import * as TypeGraphQL from \\"type-graphql\\";
-import * as GraphQLScalars from \\"graphql-scalars\\";
-import { Prisma } from \\"../../../../helpers/prisma-client-mock/client\\";
-import { DecimalJSScalar } from \\"../../scalars\\";
-import { DateTimeWithAggregatesFilter } from \\"../inputs/DateTimeWithAggregatesFilter\\";
-import { FloatNullableWithAggregatesFilter } from \\"../inputs/FloatNullableWithAggregatesFilter\\";
-import { IntWithAggregatesFilter } from \\"../inputs/IntWithAggregatesFilter\\";
-import { StringWithAggregatesFilter } from \\"../inputs/StringWithAggregatesFilter\\";
-
-@TypeGraphQL.InputType(\\"UserScalarWhereWithAggregatesInput\\", {})
-export class UserScalarWhereWithAggregatesInput {
-    @TypeGraphQL.Field(_type => [UserScalarWhereWithAggregatesInput], { nullable: true })
-    AND?: UserScalarWhereWithAggregatesInput[] | undefined;
-
-    @TypeGraphQL.Field(_type => [UserScalarWhereWithAggregatesInput], { nullable: true })
-    OR?: UserScalarWhereWithAggregatesInput[] | undefined;
-
-    @TypeGraphQL.Field(_type => [UserScalarWhereWithAggregatesInput], { nullable: true })
-    NOT?: UserScalarWhereWithAggregatesInput[] | undefined;
-
-    @TypeGraphQL.Field(_type => IntWithAggregatesFilter, { nullable: true })
-    id?: IntWithAggregatesFilter | undefined;
-
-    @TypeGraphQL.Field(_type => DateTimeWithAggregatesFilter, { nullable: true })
-    dateOfBirth?: DateTimeWithAggregatesFilter | undefined;
-
-    @TypeGraphQL.Field(_type => StringWithAggregatesFilter, { nullable: true })
-    name?: StringWithAggregatesFilter | undefined;
-
-    @TypeGraphQL.Field(_type => FloatNullableWithAggregatesFilter, { nullable: true })
-    balance?: FloatNullableWithAggregatesFilter | undefined;
-}
+"\\"use strict\\";
+Object.defineProperty(exports, \\"__esModule\\", { value: true });
+exports.UserScalarWhereWithAggregatesInput = void 0;
+const tslib_1 = require(\\"tslib\\");
+const TypeGraphQL = tslib_1.__importStar(require(\\"type-graphql\\"));
+const DateTimeWithAggregatesFilter_1 = require(\\"../inputs/DateTimeWithAggregatesFilter\\");
+const FloatNullableWithAggregatesFilter_1 = require(\\"../inputs/FloatNullableWithAggregatesFilter\\");
+const IntWithAggregatesFilter_1 = require(\\"../inputs/IntWithAggregatesFilter\\");
+const StringWithAggregatesFilter_1 = require(\\"../inputs/StringWithAggregatesFilter\\");
+let UserScalarWhereWithAggregatesInput = class UserScalarWhereWithAggregatesInput {
+};
+exports.UserScalarWhereWithAggregatesInput = UserScalarWhereWithAggregatesInput;
+tslib_1.__decorate([
+    TypeGraphQL.Field(_type => [UserScalarWhereWithAggregatesInput], { nullable: true }),
+    tslib_1.__metadata(\\"design:type\\", Array)
+], UserScalarWhereWithAggregatesInput.prototype, \\"AND\\", void 0);
+tslib_1.__decorate([
+    TypeGraphQL.Field(_type => [UserScalarWhereWithAggregatesInput], { nullable: true }),
+    tslib_1.__metadata(\\"design:type\\", Array)
+], UserScalarWhereWithAggregatesInput.prototype, \\"OR\\", void 0);
+tslib_1.__decorate([
+    TypeGraphQL.Field(_type => [UserScalarWhereWithAggregatesInput], { nullable: true }),
+    tslib_1.__metadata(\\"design:type\\", Array)
+], UserScalarWhereWithAggregatesInput.prototype, \\"NOT\\", void 0);
+tslib_1.__decorate([
+    TypeGraphQL.Field(_type => IntWithAggregatesFilter_1.IntWithAggregatesFilter, { nullable: true }),
+    tslib_1.__metadata(\\"design:type\\", String)
+], UserScalarWhereWithAggregatesInput.prototype, \\"id\\", void 0);
+tslib_1.__decorate([
+    TypeGraphQL.Field(_type => DateTimeWithAggregatesFilter_1.DateTimeWithAggregatesFilter, { nullable: true }),
+    tslib_1.__metadata(\\"design:type\\", String)
+], UserScalarWhereWithAggregatesInput.prototype, \\"dateOfBirth\\", void 0);
+tslib_1.__decorate([
+    TypeGraphQL.Field(_type => StringWithAggregatesFilter_1.StringWithAggregatesFilter, { nullable: true }),
+    tslib_1.__metadata(\\"design:type\\", String)
+], UserScalarWhereWithAggregatesInput.prototype, \\"name\\", void 0);
+tslib_1.__decorate([
+    TypeGraphQL.Field(_type => FloatNullableWithAggregatesFilter_1.FloatNullableWithAggregatesFilter, { nullable: true }),
+    tslib_1.__metadata(\\"design:type\\", String)
+], UserScalarWhereWithAggregatesInput.prototype, \\"balance\\", void 0);
+exports.UserScalarWhereWithAggregatesInput = UserScalarWhereWithAggregatesInput = tslib_1.__decorate([
+    TypeGraphQL.InputType(\\"UserScalarWhereWithAggregatesInput\\", {})
+], UserScalarWhereWithAggregatesInput);
 "
 `;
 
 exports[`omit-fields when model field has \`omit(output: true)\` set should properly generate input type class for prisma model with the omitted field: UserUpdateInput 1`] = `
-"import * as TypeGraphQL from \\"type-graphql\\";
-import * as GraphQLScalars from \\"graphql-scalars\\";
-import { Prisma } from \\"../../../../helpers/prisma-client-mock/client\\";
-import { DecimalJSScalar } from \\"../../scalars\\";
-import { DateTimeFieldUpdateOperationsInput } from \\"../inputs/DateTimeFieldUpdateOperationsInput\\";
-import { NullableFloatFieldUpdateOperationsInput } from \\"../inputs/NullableFloatFieldUpdateOperationsInput\\";
-import { StringFieldUpdateOperationsInput } from \\"../inputs/StringFieldUpdateOperationsInput\\";
-
-@TypeGraphQL.InputType(\\"UserUpdateInput\\", {})
-export class UserUpdateInput {
-    @TypeGraphQL.Field(_type => DateTimeFieldUpdateOperationsInput, { nullable: true })
-    dateOfBirth?: DateTimeFieldUpdateOperationsInput | undefined;
-
-    @TypeGraphQL.Field(_type => StringFieldUpdateOperationsInput, { nullable: true })
-    name?: StringFieldUpdateOperationsInput | undefined;
-
-    @TypeGraphQL.Field(_type => NullableFloatFieldUpdateOperationsInput, { nullable: true })
-    balance?: NullableFloatFieldUpdateOperationsInput | undefined;
-}
+"\\"use strict\\";
+Object.defineProperty(exports, \\"__esModule\\", { value: true });
+exports.UserUpdateInput = void 0;
+const tslib_1 = require(\\"tslib\\");
+const TypeGraphQL = tslib_1.__importStar(require(\\"type-graphql\\"));
+const DateTimeFieldUpdateOperationsInput_1 = require(\\"../inputs/DateTimeFieldUpdateOperationsInput\\");
+const NullableFloatFieldUpdateOperationsInput_1 = require(\\"../inputs/NullableFloatFieldUpdateOperationsInput\\");
+const StringFieldUpdateOperationsInput_1 = require(\\"../inputs/StringFieldUpdateOperationsInput\\");
+let UserUpdateInput = class UserUpdateInput {
+};
+exports.UserUpdateInput = UserUpdateInput;
+tslib_1.__decorate([
+    TypeGraphQL.Field(_type => DateTimeFieldUpdateOperationsInput_1.DateTimeFieldUpdateOperationsInput, { nullable: true }),
+    tslib_1.__metadata(\\"design:type\\", String)
+], UserUpdateInput.prototype, \\"dateOfBirth\\", void 0);
+tslib_1.__decorate([
+    TypeGraphQL.Field(_type => StringFieldUpdateOperationsInput_1.StringFieldUpdateOperationsInput, { nullable: true }),
+    tslib_1.__metadata(\\"design:type\\", String)
+], UserUpdateInput.prototype, \\"name\\", void 0);
+tslib_1.__decorate([
+    TypeGraphQL.Field(_type => NullableFloatFieldUpdateOperationsInput_1.NullableFloatFieldUpdateOperationsInput, { nullable: true }),
+    tslib_1.__metadata(\\"design:type\\", String)
+], UserUpdateInput.prototype, \\"balance\\", void 0);
+exports.UserUpdateInput = UserUpdateInput = tslib_1.__decorate([
+    TypeGraphQL.InputType(\\"UserUpdateInput\\", {})
+], UserUpdateInput);
 "
 `;
 
 exports[`omit-fields when model field has \`omit(output: true)\` set should properly generate input type class for prisma model with the omitted field: UserUpdateManyMutationInput 1`] = `
-"import * as TypeGraphQL from \\"type-graphql\\";
-import * as GraphQLScalars from \\"graphql-scalars\\";
-import { Prisma } from \\"../../../../helpers/prisma-client-mock/client\\";
-import { DecimalJSScalar } from \\"../../scalars\\";
-import { DateTimeFieldUpdateOperationsInput } from \\"../inputs/DateTimeFieldUpdateOperationsInput\\";
-import { NullableFloatFieldUpdateOperationsInput } from \\"../inputs/NullableFloatFieldUpdateOperationsInput\\";
-import { StringFieldUpdateOperationsInput } from \\"../inputs/StringFieldUpdateOperationsInput\\";
-
-@TypeGraphQL.InputType(\\"UserUpdateManyMutationInput\\", {})
-export class UserUpdateManyMutationInput {
-    @TypeGraphQL.Field(_type => DateTimeFieldUpdateOperationsInput, { nullable: true })
-    dateOfBirth?: DateTimeFieldUpdateOperationsInput | undefined;
-
-    @TypeGraphQL.Field(_type => StringFieldUpdateOperationsInput, { nullable: true })
-    name?: StringFieldUpdateOperationsInput | undefined;
-
-    @TypeGraphQL.Field(_type => NullableFloatFieldUpdateOperationsInput, { nullable: true })
-    balance?: NullableFloatFieldUpdateOperationsInput | undefined;
-}
+"\\"use strict\\";
+Object.defineProperty(exports, \\"__esModule\\", { value: true });
+exports.UserUpdateManyMutationInput = void 0;
+const tslib_1 = require(\\"tslib\\");
+const TypeGraphQL = tslib_1.__importStar(require(\\"type-graphql\\"));
+const DateTimeFieldUpdateOperationsInput_1 = require(\\"../inputs/DateTimeFieldUpdateOperationsInput\\");
+const NullableFloatFieldUpdateOperationsInput_1 = require(\\"../inputs/NullableFloatFieldUpdateOperationsInput\\");
+const StringFieldUpdateOperationsInput_1 = require(\\"../inputs/StringFieldUpdateOperationsInput\\");
+let UserUpdateManyMutationInput = class UserUpdateManyMutationInput {
+};
+exports.UserUpdateManyMutationInput = UserUpdateManyMutationInput;
+tslib_1.__decorate([
+    TypeGraphQL.Field(_type => DateTimeFieldUpdateOperationsInput_1.DateTimeFieldUpdateOperationsInput, { nullable: true }),
+    tslib_1.__metadata(\\"design:type\\", String)
+], UserUpdateManyMutationInput.prototype, \\"dateOfBirth\\", void 0);
+tslib_1.__decorate([
+    TypeGraphQL.Field(_type => StringFieldUpdateOperationsInput_1.StringFieldUpdateOperationsInput, { nullable: true }),
+    tslib_1.__metadata(\\"design:type\\", String)
+], UserUpdateManyMutationInput.prototype, \\"name\\", void 0);
+tslib_1.__decorate([
+    TypeGraphQL.Field(_type => NullableFloatFieldUpdateOperationsInput_1.NullableFloatFieldUpdateOperationsInput, { nullable: true }),
+    tslib_1.__metadata(\\"design:type\\", String)
+], UserUpdateManyMutationInput.prototype, \\"balance\\", void 0);
+exports.UserUpdateManyMutationInput = UserUpdateManyMutationInput = tslib_1.__decorate([
+    TypeGraphQL.InputType(\\"UserUpdateManyMutationInput\\", {})
+], UserUpdateManyMutationInput);
 "
 `;
 
 exports[`omit-fields when model field has \`omit(output: true)\` set should properly generate input type class for prisma model with the omitted field: UserWhereInput 1`] = `
-"import * as TypeGraphQL from \\"type-graphql\\";
-import * as GraphQLScalars from \\"graphql-scalars\\";
-import { Prisma } from \\"../../../../helpers/prisma-client-mock/client\\";
-import { DecimalJSScalar } from \\"../../scalars\\";
-import { DateTimeFilter } from \\"../inputs/DateTimeFilter\\";
-import { FloatNullableFilter } from \\"../inputs/FloatNullableFilter\\";
-import { IntFilter } from \\"../inputs/IntFilter\\";
-import { StringFilter } from \\"../inputs/StringFilter\\";
-
-@TypeGraphQL.InputType(\\"UserWhereInput\\", {})
-export class UserWhereInput {
-    @TypeGraphQL.Field(_type => [UserWhereInput], { nullable: true })
-    AND?: UserWhereInput[] | undefined;
-
-    @TypeGraphQL.Field(_type => [UserWhereInput], { nullable: true })
-    OR?: UserWhereInput[] | undefined;
-
-    @TypeGraphQL.Field(_type => [UserWhereInput], { nullable: true })
-    NOT?: UserWhereInput[] | undefined;
-
-    @TypeGraphQL.Field(_type => IntFilter, { nullable: true })
-    id?: IntFilter | undefined;
-
-    @TypeGraphQL.Field(_type => DateTimeFilter, { nullable: true })
-    dateOfBirth?: DateTimeFilter | undefined;
-
-    @TypeGraphQL.Field(_type => StringFilter, { nullable: true })
-    name?: StringFilter | undefined;
-
-    @TypeGraphQL.Field(_type => FloatNullableFilter, { nullable: true })
-    balance?: FloatNullableFilter | undefined;
-}
+"\\"use strict\\";
+Object.defineProperty(exports, \\"__esModule\\", { value: true });
+exports.UserWhereInput = void 0;
+const tslib_1 = require(\\"tslib\\");
+const TypeGraphQL = tslib_1.__importStar(require(\\"type-graphql\\"));
+const DateTimeFilter_1 = require(\\"../inputs/DateTimeFilter\\");
+const FloatNullableFilter_1 = require(\\"../inputs/FloatNullableFilter\\");
+const IntFilter_1 = require(\\"../inputs/IntFilter\\");
+const StringFilter_1 = require(\\"../inputs/StringFilter\\");
+let UserWhereInput = class UserWhereInput {
+};
+exports.UserWhereInput = UserWhereInput;
+tslib_1.__decorate([
+    TypeGraphQL.Field(_type => [UserWhereInput], { nullable: true }),
+    tslib_1.__metadata(\\"design:type\\", Array)
+], UserWhereInput.prototype, \\"AND\\", void 0);
+tslib_1.__decorate([
+    TypeGraphQL.Field(_type => [UserWhereInput], { nullable: true }),
+    tslib_1.__metadata(\\"design:type\\", Array)
+], UserWhereInput.prototype, \\"OR\\", void 0);
+tslib_1.__decorate([
+    TypeGraphQL.Field(_type => [UserWhereInput], { nullable: true }),
+    tslib_1.__metadata(\\"design:type\\", Array)
+], UserWhereInput.prototype, \\"NOT\\", void 0);
+tslib_1.__decorate([
+    TypeGraphQL.Field(_type => IntFilter_1.IntFilter, { nullable: true }),
+    tslib_1.__metadata(\\"design:type\\", String)
+], UserWhereInput.prototype, \\"id\\", void 0);
+tslib_1.__decorate([
+    TypeGraphQL.Field(_type => DateTimeFilter_1.DateTimeFilter, { nullable: true }),
+    tslib_1.__metadata(\\"design:type\\", String)
+], UserWhereInput.prototype, \\"dateOfBirth\\", void 0);
+tslib_1.__decorate([
+    TypeGraphQL.Field(_type => StringFilter_1.StringFilter, { nullable: true }),
+    tslib_1.__metadata(\\"design:type\\", String)
+], UserWhereInput.prototype, \\"name\\", void 0);
+tslib_1.__decorate([
+    TypeGraphQL.Field(_type => FloatNullableFilter_1.FloatNullableFilter, { nullable: true }),
+    tslib_1.__metadata(\\"design:type\\", String)
+], UserWhereInput.prototype, \\"balance\\", void 0);
+exports.UserWhereInput = UserWhereInput = tslib_1.__decorate([
+    TypeGraphQL.InputType(\\"UserWhereInput\\", {})
+], UserWhereInput);
 "
 `;
 
 exports[`omit-fields when model field has \`omit(output: true)\` set should properly generate input type class for prisma model with the omitted field: UserWhereUniqueInput 1`] = `
-"import * as TypeGraphQL from \\"type-graphql\\";
-import * as GraphQLScalars from \\"graphql-scalars\\";
-import { Prisma } from \\"../../../../helpers/prisma-client-mock/client\\";
-import { DecimalJSScalar } from \\"../../scalars\\";
-import { DateTimeFilter } from \\"../inputs/DateTimeFilter\\";
-import { FloatNullableFilter } from \\"../inputs/FloatNullableFilter\\";
-import { StringFilter } from \\"../inputs/StringFilter\\";
-import { UserWhereInput } from \\"../inputs/UserWhereInput\\";
-
-@TypeGraphQL.InputType(\\"UserWhereUniqueInput\\", {})
-export class UserWhereUniqueInput {
-    @TypeGraphQL.Field(_type => TypeGraphQL.Int, { nullable: true })
-    id?: number | undefined;
-
-    @TypeGraphQL.Field(_type => [UserWhereInput], { nullable: true })
-    AND?: UserWhereInput[] | undefined;
-
-    @TypeGraphQL.Field(_type => [UserWhereInput], { nullable: true })
-    OR?: UserWhereInput[] | undefined;
-
-    @TypeGraphQL.Field(_type => [UserWhereInput], { nullable: true })
-    NOT?: UserWhereInput[] | undefined;
-
-    @TypeGraphQL.Field(_type => DateTimeFilter, { nullable: true })
-    dateOfBirth?: DateTimeFilter | undefined;
-
-    @TypeGraphQL.Field(_type => StringFilter, { nullable: true })
-    name?: StringFilter | undefined;
-
-    @TypeGraphQL.Field(_type => FloatNullableFilter, { nullable: true })
-    balance?: FloatNullableFilter | undefined;
-}
+"\\"use strict\\";
+Object.defineProperty(exports, \\"__esModule\\", { value: true });
+exports.UserWhereUniqueInput = void 0;
+const tslib_1 = require(\\"tslib\\");
+const TypeGraphQL = tslib_1.__importStar(require(\\"type-graphql\\"));
+const DateTimeFilter_1 = require(\\"../inputs/DateTimeFilter\\");
+const FloatNullableFilter_1 = require(\\"../inputs/FloatNullableFilter\\");
+const StringFilter_1 = require(\\"../inputs/StringFilter\\");
+const UserWhereInput_1 = require(\\"../inputs/UserWhereInput\\");
+let UserWhereUniqueInput = class UserWhereUniqueInput {
+};
+exports.UserWhereUniqueInput = UserWhereUniqueInput;
+tslib_1.__decorate([
+    TypeGraphQL.Field(_type => TypeGraphQL.Int, { nullable: true }),
+    tslib_1.__metadata(\\"design:type\\", Number)
+], UserWhereUniqueInput.prototype, \\"id\\", void 0);
+tslib_1.__decorate([
+    TypeGraphQL.Field(_type => [UserWhereInput_1.UserWhereInput], { nullable: true }),
+    tslib_1.__metadata(\\"design:type\\", Array)
+], UserWhereUniqueInput.prototype, \\"AND\\", void 0);
+tslib_1.__decorate([
+    TypeGraphQL.Field(_type => [UserWhereInput_1.UserWhereInput], { nullable: true }),
+    tslib_1.__metadata(\\"design:type\\", Array)
+], UserWhereUniqueInput.prototype, \\"OR\\", void 0);
+tslib_1.__decorate([
+    TypeGraphQL.Field(_type => [UserWhereInput_1.UserWhereInput], { nullable: true }),
+    tslib_1.__metadata(\\"design:type\\", Array)
+], UserWhereUniqueInput.prototype, \\"NOT\\", void 0);
+tslib_1.__decorate([
+    TypeGraphQL.Field(_type => DateTimeFilter_1.DateTimeFilter, { nullable: true }),
+    tslib_1.__metadata(\\"design:type\\", String)
+], UserWhereUniqueInput.prototype, \\"dateOfBirth\\", void 0);
+tslib_1.__decorate([
+    TypeGraphQL.Field(_type => StringFilter_1.StringFilter, { nullable: true }),
+    tslib_1.__metadata(\\"design:type\\", String)
+], UserWhereUniqueInput.prototype, \\"name\\", void 0);
+tslib_1.__decorate([
+    TypeGraphQL.Field(_type => FloatNullableFilter_1.FloatNullableFilter, { nullable: true }),
+    tslib_1.__metadata(\\"design:type\\", String)
+], UserWhereUniqueInput.prototype, \\"balance\\", void 0);
+exports.UserWhereUniqueInput = UserWhereUniqueInput = tslib_1.__decorate([
+    TypeGraphQL.InputType(\\"UserWhereUniqueInput\\", {})
+], UserWhereUniqueInput);
 "
 `;
 
 exports[`omit-fields when model field has both create and update omit input set should properly generate create and update input type classes without that field: SampleModelCreateInput 1`] = `
-"import * as TypeGraphQL from \\"type-graphql\\";
-import * as GraphQLScalars from \\"graphql-scalars\\";
-import { Prisma } from \\"../../../../helpers/prisma-client-mock/client\\";
-import { DecimalJSScalar } from \\"../../scalars\\";
-
-@TypeGraphQL.InputType(\\"SampleModelCreateInput\\", {})
-export class SampleModelCreateInput {
-    @TypeGraphQL.Field(_type => String, { nullable: false })
-    normalField!: string;
-}
+"\\"use strict\\";
+Object.defineProperty(exports, \\"__esModule\\", { value: true });
+exports.SampleModelCreateInput = void 0;
+const tslib_1 = require(\\"tslib\\");
+const TypeGraphQL = tslib_1.__importStar(require(\\"type-graphql\\"));
+let SampleModelCreateInput = class SampleModelCreateInput {
+};
+exports.SampleModelCreateInput = SampleModelCreateInput;
+tslib_1.__decorate([
+    TypeGraphQL.Field(_type => String, { nullable: false }),
+    tslib_1.__metadata(\\"design:type\\", String)
+], SampleModelCreateInput.prototype, \\"normalField\\", void 0);
+exports.SampleModelCreateInput = SampleModelCreateInput = tslib_1.__decorate([
+    TypeGraphQL.InputType(\\"SampleModelCreateInput\\", {})
+], SampleModelCreateInput);
 "
 `;
 
 exports[`omit-fields when model field has both create and update omit input set should properly generate create and update input type classes without that field: SampleModelCreateManyInput 1`] = `
-"import * as TypeGraphQL from \\"type-graphql\\";
-import * as GraphQLScalars from \\"graphql-scalars\\";
-import { Prisma } from \\"../../../../helpers/prisma-client-mock/client\\";
-import { DecimalJSScalar } from \\"../../scalars\\";
-
-@TypeGraphQL.InputType(\\"SampleModelCreateManyInput\\", {})
-export class SampleModelCreateManyInput {
-    @TypeGraphQL.Field(_type => TypeGraphQL.Int, { nullable: true })
-    id?: number | undefined;
-
-    @TypeGraphQL.Field(_type => String, { nullable: false })
-    normalField!: string;
-}
+"\\"use strict\\";
+Object.defineProperty(exports, \\"__esModule\\", { value: true });
+exports.SampleModelCreateManyInput = void 0;
+const tslib_1 = require(\\"tslib\\");
+const TypeGraphQL = tslib_1.__importStar(require(\\"type-graphql\\"));
+let SampleModelCreateManyInput = class SampleModelCreateManyInput {
+};
+exports.SampleModelCreateManyInput = SampleModelCreateManyInput;
+tslib_1.__decorate([
+    TypeGraphQL.Field(_type => TypeGraphQL.Int, { nullable: true }),
+    tslib_1.__metadata(\\"design:type\\", Number)
+], SampleModelCreateManyInput.prototype, \\"id\\", void 0);
+tslib_1.__decorate([
+    TypeGraphQL.Field(_type => String, { nullable: false }),
+    tslib_1.__metadata(\\"design:type\\", String)
+], SampleModelCreateManyInput.prototype, \\"normalField\\", void 0);
+exports.SampleModelCreateManyInput = SampleModelCreateManyInput = tslib_1.__decorate([
+    TypeGraphQL.InputType(\\"SampleModelCreateManyInput\\", {})
+], SampleModelCreateManyInput);
 "
 `;
 
 exports[`omit-fields when model field has both create and update omit input set should properly generate create and update input type classes without that field: SampleModelUpdateInput 1`] = `
-"import * as TypeGraphQL from \\"type-graphql\\";
-import * as GraphQLScalars from \\"graphql-scalars\\";
-import { Prisma } from \\"../../../../helpers/prisma-client-mock/client\\";
-import { DecimalJSScalar } from \\"../../scalars\\";
-import { StringFieldUpdateOperationsInput } from \\"../inputs/StringFieldUpdateOperationsInput\\";
-
-@TypeGraphQL.InputType(\\"SampleModelUpdateInput\\", {})
-export class SampleModelUpdateInput {
-    @TypeGraphQL.Field(_type => StringFieldUpdateOperationsInput, { nullable: true })
-    normalField?: StringFieldUpdateOperationsInput | undefined;
-}
+"\\"use strict\\";
+Object.defineProperty(exports, \\"__esModule\\", { value: true });
+exports.SampleModelUpdateInput = void 0;
+const tslib_1 = require(\\"tslib\\");
+const TypeGraphQL = tslib_1.__importStar(require(\\"type-graphql\\"));
+const StringFieldUpdateOperationsInput_1 = require(\\"../inputs/StringFieldUpdateOperationsInput\\");
+let SampleModelUpdateInput = class SampleModelUpdateInput {
+};
+exports.SampleModelUpdateInput = SampleModelUpdateInput;
+tslib_1.__decorate([
+    TypeGraphQL.Field(_type => StringFieldUpdateOperationsInput_1.StringFieldUpdateOperationsInput, { nullable: true }),
+    tslib_1.__metadata(\\"design:type\\", String)
+], SampleModelUpdateInput.prototype, \\"normalField\\", void 0);
+exports.SampleModelUpdateInput = SampleModelUpdateInput = tslib_1.__decorate([
+    TypeGraphQL.InputType(\\"SampleModelUpdateInput\\", {})
+], SampleModelUpdateInput);
 "
 `;
 
 exports[`omit-fields when model field has both create and update omit input set should properly generate other input type classes with that field: SampleModelOrderByWithAggregationInput 1`] = `
-"import * as TypeGraphQL from \\"type-graphql\\";
-import * as GraphQLScalars from \\"graphql-scalars\\";
-import { Prisma } from \\"../../../../helpers/prisma-client-mock/client\\";
-import { DecimalJSScalar } from \\"../../scalars\\";
-import { SampleModelAvgOrderByAggregateInput } from \\"../inputs/SampleModelAvgOrderByAggregateInput\\";
-import { SampleModelCountOrderByAggregateInput } from \\"../inputs/SampleModelCountOrderByAggregateInput\\";
-import { SampleModelMaxOrderByAggregateInput } from \\"../inputs/SampleModelMaxOrderByAggregateInput\\";
-import { SampleModelMinOrderByAggregateInput } from \\"../inputs/SampleModelMinOrderByAggregateInput\\";
-import { SampleModelSumOrderByAggregateInput } from \\"../inputs/SampleModelSumOrderByAggregateInput\\";
-import { SortOrder } from \\"../../enums/SortOrder\\";
-
-@TypeGraphQL.InputType(\\"SampleModelOrderByWithAggregationInput\\", {})
-export class SampleModelOrderByWithAggregationInput {
-    @TypeGraphQL.Field(_type => SortOrder, { nullable: true })
-    id?: \\"asc\\" | \\"desc\\" | undefined;
-
-    @TypeGraphQL.Field(_type => SortOrder, { nullable: true })
-    omittedField?: \\"asc\\" | \\"desc\\" | undefined;
-
-    @TypeGraphQL.Field(_type => SortOrder, { nullable: true })
-    normalField?: \\"asc\\" | \\"desc\\" | undefined;
-
-    @TypeGraphQL.Field(_type => SampleModelCountOrderByAggregateInput, { nullable: true })
-    _count?: SampleModelCountOrderByAggregateInput | undefined;
-
-    @TypeGraphQL.Field(_type => SampleModelAvgOrderByAggregateInput, { nullable: true })
-    _avg?: SampleModelAvgOrderByAggregateInput | undefined;
-
-    @TypeGraphQL.Field(_type => SampleModelMaxOrderByAggregateInput, { nullable: true })
-    _max?: SampleModelMaxOrderByAggregateInput | undefined;
-
-    @TypeGraphQL.Field(_type => SampleModelMinOrderByAggregateInput, { nullable: true })
-    _min?: SampleModelMinOrderByAggregateInput | undefined;
-
-    @TypeGraphQL.Field(_type => SampleModelSumOrderByAggregateInput, { nullable: true })
-    _sum?: SampleModelSumOrderByAggregateInput | undefined;
-}
+"\\"use strict\\";
+Object.defineProperty(exports, \\"__esModule\\", { value: true });
+exports.SampleModelOrderByWithAggregationInput = void 0;
+const tslib_1 = require(\\"tslib\\");
+const TypeGraphQL = tslib_1.__importStar(require(\\"type-graphql\\"));
+const SampleModelAvgOrderByAggregateInput_1 = require(\\"../inputs/SampleModelAvgOrderByAggregateInput\\");
+const SampleModelCountOrderByAggregateInput_1 = require(\\"../inputs/SampleModelCountOrderByAggregateInput\\");
+const SampleModelMaxOrderByAggregateInput_1 = require(\\"../inputs/SampleModelMaxOrderByAggregateInput\\");
+const SampleModelMinOrderByAggregateInput_1 = require(\\"../inputs/SampleModelMinOrderByAggregateInput\\");
+const SampleModelSumOrderByAggregateInput_1 = require(\\"../inputs/SampleModelSumOrderByAggregateInput\\");
+const SortOrder_1 = require(\\"../../enums/SortOrder\\");
+let SampleModelOrderByWithAggregationInput = class SampleModelOrderByWithAggregationInput {
+};
+exports.SampleModelOrderByWithAggregationInput = SampleModelOrderByWithAggregationInput;
+tslib_1.__decorate([
+    TypeGraphQL.Field(_type => SortOrder_1.SortOrder, { nullable: true }),
+    tslib_1.__metadata(\\"design:type\\", String)
+], SampleModelOrderByWithAggregationInput.prototype, \\"id\\", void 0);
+tslib_1.__decorate([
+    TypeGraphQL.Field(_type => SortOrder_1.SortOrder, { nullable: true }),
+    tslib_1.__metadata(\\"design:type\\", String)
+], SampleModelOrderByWithAggregationInput.prototype, \\"omittedField\\", void 0);
+tslib_1.__decorate([
+    TypeGraphQL.Field(_type => SortOrder_1.SortOrder, { nullable: true }),
+    tslib_1.__metadata(\\"design:type\\", String)
+], SampleModelOrderByWithAggregationInput.prototype, \\"normalField\\", void 0);
+tslib_1.__decorate([
+    TypeGraphQL.Field(_type => SampleModelCountOrderByAggregateInput_1.SampleModelCountOrderByAggregateInput, { nullable: true }),
+    tslib_1.__metadata(\\"design:type\\", String)
+], SampleModelOrderByWithAggregationInput.prototype, \\"_count\\", void 0);
+tslib_1.__decorate([
+    TypeGraphQL.Field(_type => SampleModelAvgOrderByAggregateInput_1.SampleModelAvgOrderByAggregateInput, { nullable: true }),
+    tslib_1.__metadata(\\"design:type\\", String)
+], SampleModelOrderByWithAggregationInput.prototype, \\"_avg\\", void 0);
+tslib_1.__decorate([
+    TypeGraphQL.Field(_type => SampleModelMaxOrderByAggregateInput_1.SampleModelMaxOrderByAggregateInput, { nullable: true }),
+    tslib_1.__metadata(\\"design:type\\", String)
+], SampleModelOrderByWithAggregationInput.prototype, \\"_max\\", void 0);
+tslib_1.__decorate([
+    TypeGraphQL.Field(_type => SampleModelMinOrderByAggregateInput_1.SampleModelMinOrderByAggregateInput, { nullable: true }),
+    tslib_1.__metadata(\\"design:type\\", String)
+], SampleModelOrderByWithAggregationInput.prototype, \\"_min\\", void 0);
+tslib_1.__decorate([
+    TypeGraphQL.Field(_type => SampleModelSumOrderByAggregateInput_1.SampleModelSumOrderByAggregateInput, { nullable: true }),
+    tslib_1.__metadata(\\"design:type\\", String)
+], SampleModelOrderByWithAggregationInput.prototype, \\"_sum\\", void 0);
+exports.SampleModelOrderByWithAggregationInput = SampleModelOrderByWithAggregationInput = tslib_1.__decorate([
+    TypeGraphQL.InputType(\\"SampleModelOrderByWithAggregationInput\\", {})
+], SampleModelOrderByWithAggregationInput);
 "
 `;
 
 exports[`omit-fields when model field has both create and update omit input set should properly generate other input type classes with that field: SampleModelWhereInput 1`] = `
-"import * as TypeGraphQL from \\"type-graphql\\";
-import * as GraphQLScalars from \\"graphql-scalars\\";
-import { Prisma } from \\"../../../../helpers/prisma-client-mock/client\\";
-import { DecimalJSScalar } from \\"../../scalars\\";
-import { IntFilter } from \\"../inputs/IntFilter\\";
-import { StringFilter } from \\"../inputs/StringFilter\\";
-
-@TypeGraphQL.InputType(\\"SampleModelWhereInput\\", {})
-export class SampleModelWhereInput {
-    @TypeGraphQL.Field(_type => [SampleModelWhereInput], { nullable: true })
-    AND?: SampleModelWhereInput[] | undefined;
-
-    @TypeGraphQL.Field(_type => [SampleModelWhereInput], { nullable: true })
-    OR?: SampleModelWhereInput[] | undefined;
-
-    @TypeGraphQL.Field(_type => [SampleModelWhereInput], { nullable: true })
-    NOT?: SampleModelWhereInput[] | undefined;
-
-    @TypeGraphQL.Field(_type => IntFilter, { nullable: true })
-    id?: IntFilter | undefined;
-
-    @TypeGraphQL.Field(_type => StringFilter, { nullable: true })
-    omittedField?: StringFilter | undefined;
-
-    @TypeGraphQL.Field(_type => StringFilter, { nullable: true })
-    normalField?: StringFilter | undefined;
-}
+"\\"use strict\\";
+Object.defineProperty(exports, \\"__esModule\\", { value: true });
+exports.SampleModelWhereInput = void 0;
+const tslib_1 = require(\\"tslib\\");
+const TypeGraphQL = tslib_1.__importStar(require(\\"type-graphql\\"));
+const IntFilter_1 = require(\\"../inputs/IntFilter\\");
+const StringFilter_1 = require(\\"../inputs/StringFilter\\");
+let SampleModelWhereInput = class SampleModelWhereInput {
+};
+exports.SampleModelWhereInput = SampleModelWhereInput;
+tslib_1.__decorate([
+    TypeGraphQL.Field(_type => [SampleModelWhereInput], { nullable: true }),
+    tslib_1.__metadata(\\"design:type\\", Array)
+], SampleModelWhereInput.prototype, \\"AND\\", void 0);
+tslib_1.__decorate([
+    TypeGraphQL.Field(_type => [SampleModelWhereInput], { nullable: true }),
+    tslib_1.__metadata(\\"design:type\\", Array)
+], SampleModelWhereInput.prototype, \\"OR\\", void 0);
+tslib_1.__decorate([
+    TypeGraphQL.Field(_type => [SampleModelWhereInput], { nullable: true }),
+    tslib_1.__metadata(\\"design:type\\", Array)
+], SampleModelWhereInput.prototype, \\"NOT\\", void 0);
+tslib_1.__decorate([
+    TypeGraphQL.Field(_type => IntFilter_1.IntFilter, { nullable: true }),
+    tslib_1.__metadata(\\"design:type\\", String)
+], SampleModelWhereInput.prototype, \\"id\\", void 0);
+tslib_1.__decorate([
+    TypeGraphQL.Field(_type => StringFilter_1.StringFilter, { nullable: true }),
+    tslib_1.__metadata(\\"design:type\\", String)
+], SampleModelWhereInput.prototype, \\"omittedField\\", void 0);
+tslib_1.__decorate([
+    TypeGraphQL.Field(_type => StringFilter_1.StringFilter, { nullable: true }),
+    tslib_1.__metadata(\\"design:type\\", String)
+], SampleModelWhereInput.prototype, \\"normalField\\", void 0);
+exports.SampleModelWhereInput = SampleModelWhereInput = tslib_1.__decorate([
+    TypeGraphQL.InputType(\\"SampleModelWhereInput\\", {})
+], SampleModelWhereInput);
 "
 `;
 
 exports[`omit-fields when model field has omit input create set should properly generate create input type classes without that field: SampleModelCreateInput 1`] = `
-"import * as TypeGraphQL from \\"type-graphql\\";
-import * as GraphQLScalars from \\"graphql-scalars\\";
-import { Prisma } from \\"../../../../helpers/prisma-client-mock/client\\";
-import { DecimalJSScalar } from \\"../../scalars\\";
-
-@TypeGraphQL.InputType(\\"SampleModelCreateInput\\", {})
-export class SampleModelCreateInput {
-    @TypeGraphQL.Field(_type => String, { nullable: false })
-    normalField!: string;
-}
+"\\"use strict\\";
+Object.defineProperty(exports, \\"__esModule\\", { value: true });
+exports.SampleModelCreateInput = void 0;
+const tslib_1 = require(\\"tslib\\");
+const TypeGraphQL = tslib_1.__importStar(require(\\"type-graphql\\"));
+let SampleModelCreateInput = class SampleModelCreateInput {
+};
+exports.SampleModelCreateInput = SampleModelCreateInput;
+tslib_1.__decorate([
+    TypeGraphQL.Field(_type => String, { nullable: false }),
+    tslib_1.__metadata(\\"design:type\\", String)
+], SampleModelCreateInput.prototype, \\"normalField\\", void 0);
+exports.SampleModelCreateInput = SampleModelCreateInput = tslib_1.__decorate([
+    TypeGraphQL.InputType(\\"SampleModelCreateInput\\", {})
+], SampleModelCreateInput);
 "
 `;
 
 exports[`omit-fields when model field has omit input create set should properly generate create input type classes without that field: SampleModelCreateManyInput 1`] = `
-"import * as TypeGraphQL from \\"type-graphql\\";
-import * as GraphQLScalars from \\"graphql-scalars\\";
-import { Prisma } from \\"../../../../helpers/prisma-client-mock/client\\";
-import { DecimalJSScalar } from \\"../../scalars\\";
-
-@TypeGraphQL.InputType(\\"SampleModelCreateManyInput\\", {})
-export class SampleModelCreateManyInput {
-    @TypeGraphQL.Field(_type => TypeGraphQL.Int, { nullable: true })
-    id?: number | undefined;
-
-    @TypeGraphQL.Field(_type => String, { nullable: false })
-    normalField!: string;
-}
+"\\"use strict\\";
+Object.defineProperty(exports, \\"__esModule\\", { value: true });
+exports.SampleModelCreateManyInput = void 0;
+const tslib_1 = require(\\"tslib\\");
+const TypeGraphQL = tslib_1.__importStar(require(\\"type-graphql\\"));
+let SampleModelCreateManyInput = class SampleModelCreateManyInput {
+};
+exports.SampleModelCreateManyInput = SampleModelCreateManyInput;
+tslib_1.__decorate([
+    TypeGraphQL.Field(_type => TypeGraphQL.Int, { nullable: true }),
+    tslib_1.__metadata(\\"design:type\\", Number)
+], SampleModelCreateManyInput.prototype, \\"id\\", void 0);
+tslib_1.__decorate([
+    TypeGraphQL.Field(_type => String, { nullable: false }),
+    tslib_1.__metadata(\\"design:type\\", String)
+], SampleModelCreateManyInput.prototype, \\"normalField\\", void 0);
+exports.SampleModelCreateManyInput = SampleModelCreateManyInput = tslib_1.__decorate([
+    TypeGraphQL.InputType(\\"SampleModelCreateManyInput\\", {})
+], SampleModelCreateManyInput);
 "
 `;
 
 exports[`omit-fields when model field has omit input create set should properly generate other input type classes with that field: SampleModelOrderByWithAggregationInput 1`] = `
-"import * as TypeGraphQL from \\"type-graphql\\";
-import * as GraphQLScalars from \\"graphql-scalars\\";
-import { Prisma } from \\"../../../../helpers/prisma-client-mock/client\\";
-import { DecimalJSScalar } from \\"../../scalars\\";
-import { SampleModelAvgOrderByAggregateInput } from \\"../inputs/SampleModelAvgOrderByAggregateInput\\";
-import { SampleModelCountOrderByAggregateInput } from \\"../inputs/SampleModelCountOrderByAggregateInput\\";
-import { SampleModelMaxOrderByAggregateInput } from \\"../inputs/SampleModelMaxOrderByAggregateInput\\";
-import { SampleModelMinOrderByAggregateInput } from \\"../inputs/SampleModelMinOrderByAggregateInput\\";
-import { SampleModelSumOrderByAggregateInput } from \\"../inputs/SampleModelSumOrderByAggregateInput\\";
-import { SortOrder } from \\"../../enums/SortOrder\\";
-
-@TypeGraphQL.InputType(\\"SampleModelOrderByWithAggregationInput\\", {})
-export class SampleModelOrderByWithAggregationInput {
-    @TypeGraphQL.Field(_type => SortOrder, { nullable: true })
-    id?: \\"asc\\" | \\"desc\\" | undefined;
-
-    @TypeGraphQL.Field(_type => SortOrder, { nullable: true })
-    omittedField?: \\"asc\\" | \\"desc\\" | undefined;
-
-    @TypeGraphQL.Field(_type => SortOrder, { nullable: true })
-    normalField?: \\"asc\\" | \\"desc\\" | undefined;
-
-    @TypeGraphQL.Field(_type => SampleModelCountOrderByAggregateInput, { nullable: true })
-    _count?: SampleModelCountOrderByAggregateInput | undefined;
-
-    @TypeGraphQL.Field(_type => SampleModelAvgOrderByAggregateInput, { nullable: true })
-    _avg?: SampleModelAvgOrderByAggregateInput | undefined;
-
-    @TypeGraphQL.Field(_type => SampleModelMaxOrderByAggregateInput, { nullable: true })
-    _max?: SampleModelMaxOrderByAggregateInput | undefined;
-
-    @TypeGraphQL.Field(_type => SampleModelMinOrderByAggregateInput, { nullable: true })
-    _min?: SampleModelMinOrderByAggregateInput | undefined;
-
-    @TypeGraphQL.Field(_type => SampleModelSumOrderByAggregateInput, { nullable: true })
-    _sum?: SampleModelSumOrderByAggregateInput | undefined;
-}
+"\\"use strict\\";
+Object.defineProperty(exports, \\"__esModule\\", { value: true });
+exports.SampleModelOrderByWithAggregationInput = void 0;
+const tslib_1 = require(\\"tslib\\");
+const TypeGraphQL = tslib_1.__importStar(require(\\"type-graphql\\"));
+const SampleModelAvgOrderByAggregateInput_1 = require(\\"../inputs/SampleModelAvgOrderByAggregateInput\\");
+const SampleModelCountOrderByAggregateInput_1 = require(\\"../inputs/SampleModelCountOrderByAggregateInput\\");
+const SampleModelMaxOrderByAggregateInput_1 = require(\\"../inputs/SampleModelMaxOrderByAggregateInput\\");
+const SampleModelMinOrderByAggregateInput_1 = require(\\"../inputs/SampleModelMinOrderByAggregateInput\\");
+const SampleModelSumOrderByAggregateInput_1 = require(\\"../inputs/SampleModelSumOrderByAggregateInput\\");
+const SortOrder_1 = require(\\"../../enums/SortOrder\\");
+let SampleModelOrderByWithAggregationInput = class SampleModelOrderByWithAggregationInput {
+};
+exports.SampleModelOrderByWithAggregationInput = SampleModelOrderByWithAggregationInput;
+tslib_1.__decorate([
+    TypeGraphQL.Field(_type => SortOrder_1.SortOrder, { nullable: true }),
+    tslib_1.__metadata(\\"design:type\\", String)
+], SampleModelOrderByWithAggregationInput.prototype, \\"id\\", void 0);
+tslib_1.__decorate([
+    TypeGraphQL.Field(_type => SortOrder_1.SortOrder, { nullable: true }),
+    tslib_1.__metadata(\\"design:type\\", String)
+], SampleModelOrderByWithAggregationInput.prototype, \\"omittedField\\", void 0);
+tslib_1.__decorate([
+    TypeGraphQL.Field(_type => SortOrder_1.SortOrder, { nullable: true }),
+    tslib_1.__metadata(\\"design:type\\", String)
+], SampleModelOrderByWithAggregationInput.prototype, \\"normalField\\", void 0);
+tslib_1.__decorate([
+    TypeGraphQL.Field(_type => SampleModelCountOrderByAggregateInput_1.SampleModelCountOrderByAggregateInput, { nullable: true }),
+    tslib_1.__metadata(\\"design:type\\", String)
+], SampleModelOrderByWithAggregationInput.prototype, \\"_count\\", void 0);
+tslib_1.__decorate([
+    TypeGraphQL.Field(_type => SampleModelAvgOrderByAggregateInput_1.SampleModelAvgOrderByAggregateInput, { nullable: true }),
+    tslib_1.__metadata(\\"design:type\\", String)
+], SampleModelOrderByWithAggregationInput.prototype, \\"_avg\\", void 0);
+tslib_1.__decorate([
+    TypeGraphQL.Field(_type => SampleModelMaxOrderByAggregateInput_1.SampleModelMaxOrderByAggregateInput, { nullable: true }),
+    tslib_1.__metadata(\\"design:type\\", String)
+], SampleModelOrderByWithAggregationInput.prototype, \\"_max\\", void 0);
+tslib_1.__decorate([
+    TypeGraphQL.Field(_type => SampleModelMinOrderByAggregateInput_1.SampleModelMinOrderByAggregateInput, { nullable: true }),
+    tslib_1.__metadata(\\"design:type\\", String)
+], SampleModelOrderByWithAggregationInput.prototype, \\"_min\\", void 0);
+tslib_1.__decorate([
+    TypeGraphQL.Field(_type => SampleModelSumOrderByAggregateInput_1.SampleModelSumOrderByAggregateInput, { nullable: true }),
+    tslib_1.__metadata(\\"design:type\\", String)
+], SampleModelOrderByWithAggregationInput.prototype, \\"_sum\\", void 0);
+exports.SampleModelOrderByWithAggregationInput = SampleModelOrderByWithAggregationInput = tslib_1.__decorate([
+    TypeGraphQL.InputType(\\"SampleModelOrderByWithAggregationInput\\", {})
+], SampleModelOrderByWithAggregationInput);
 "
 `;
 
 exports[`omit-fields when model field has omit input create set should properly generate other input type classes with that field: SampleModelUpdateInput 1`] = `
-"import * as TypeGraphQL from \\"type-graphql\\";
-import * as GraphQLScalars from \\"graphql-scalars\\";
-import { Prisma } from \\"../../../../helpers/prisma-client-mock/client\\";
-import { DecimalJSScalar } from \\"../../scalars\\";
-import { StringFieldUpdateOperationsInput } from \\"../inputs/StringFieldUpdateOperationsInput\\";
-
-@TypeGraphQL.InputType(\\"SampleModelUpdateInput\\", {})
-export class SampleModelUpdateInput {
-    @TypeGraphQL.Field(_type => StringFieldUpdateOperationsInput, { nullable: true })
-    omittedField?: StringFieldUpdateOperationsInput | undefined;
-
-    @TypeGraphQL.Field(_type => StringFieldUpdateOperationsInput, { nullable: true })
-    normalField?: StringFieldUpdateOperationsInput | undefined;
-}
+"\\"use strict\\";
+Object.defineProperty(exports, \\"__esModule\\", { value: true });
+exports.SampleModelUpdateInput = void 0;
+const tslib_1 = require(\\"tslib\\");
+const TypeGraphQL = tslib_1.__importStar(require(\\"type-graphql\\"));
+const StringFieldUpdateOperationsInput_1 = require(\\"../inputs/StringFieldUpdateOperationsInput\\");
+let SampleModelUpdateInput = class SampleModelUpdateInput {
+};
+exports.SampleModelUpdateInput = SampleModelUpdateInput;
+tslib_1.__decorate([
+    TypeGraphQL.Field(_type => StringFieldUpdateOperationsInput_1.StringFieldUpdateOperationsInput, { nullable: true }),
+    tslib_1.__metadata(\\"design:type\\", String)
+], SampleModelUpdateInput.prototype, \\"omittedField\\", void 0);
+tslib_1.__decorate([
+    TypeGraphQL.Field(_type => StringFieldUpdateOperationsInput_1.StringFieldUpdateOperationsInput, { nullable: true }),
+    tslib_1.__metadata(\\"design:type\\", String)
+], SampleModelUpdateInput.prototype, \\"normalField\\", void 0);
+exports.SampleModelUpdateInput = SampleModelUpdateInput = tslib_1.__decorate([
+    TypeGraphQL.InputType(\\"SampleModelUpdateInput\\", {})
+], SampleModelUpdateInput);
 "
 `;
 
 exports[`omit-fields when model field has omit input create set should properly generate other input type classes with that field: SampleModelWhereInput 1`] = `
-"import * as TypeGraphQL from \\"type-graphql\\";
-import * as GraphQLScalars from \\"graphql-scalars\\";
-import { Prisma } from \\"../../../../helpers/prisma-client-mock/client\\";
-import { DecimalJSScalar } from \\"../../scalars\\";
-import { IntFilter } from \\"../inputs/IntFilter\\";
-import { StringFilter } from \\"../inputs/StringFilter\\";
-
-@TypeGraphQL.InputType(\\"SampleModelWhereInput\\", {})
-export class SampleModelWhereInput {
-    @TypeGraphQL.Field(_type => [SampleModelWhereInput], { nullable: true })
-    AND?: SampleModelWhereInput[] | undefined;
-
-    @TypeGraphQL.Field(_type => [SampleModelWhereInput], { nullable: true })
-    OR?: SampleModelWhereInput[] | undefined;
-
-    @TypeGraphQL.Field(_type => [SampleModelWhereInput], { nullable: true })
-    NOT?: SampleModelWhereInput[] | undefined;
-
-    @TypeGraphQL.Field(_type => IntFilter, { nullable: true })
-    id?: IntFilter | undefined;
-
-    @TypeGraphQL.Field(_type => StringFilter, { nullable: true })
-    omittedField?: StringFilter | undefined;
-
-    @TypeGraphQL.Field(_type => StringFilter, { nullable: true })
-    normalField?: StringFilter | undefined;
-}
+"\\"use strict\\";
+Object.defineProperty(exports, \\"__esModule\\", { value: true });
+exports.SampleModelWhereInput = void 0;
+const tslib_1 = require(\\"tslib\\");
+const TypeGraphQL = tslib_1.__importStar(require(\\"type-graphql\\"));
+const IntFilter_1 = require(\\"../inputs/IntFilter\\");
+const StringFilter_1 = require(\\"../inputs/StringFilter\\");
+let SampleModelWhereInput = class SampleModelWhereInput {
+};
+exports.SampleModelWhereInput = SampleModelWhereInput;
+tslib_1.__decorate([
+    TypeGraphQL.Field(_type => [SampleModelWhereInput], { nullable: true }),
+    tslib_1.__metadata(\\"design:type\\", Array)
+], SampleModelWhereInput.prototype, \\"AND\\", void 0);
+tslib_1.__decorate([
+    TypeGraphQL.Field(_type => [SampleModelWhereInput], { nullable: true }),
+    tslib_1.__metadata(\\"design:type\\", Array)
+], SampleModelWhereInput.prototype, \\"OR\\", void 0);
+tslib_1.__decorate([
+    TypeGraphQL.Field(_type => [SampleModelWhereInput], { nullable: true }),
+    tslib_1.__metadata(\\"design:type\\", Array)
+], SampleModelWhereInput.prototype, \\"NOT\\", void 0);
+tslib_1.__decorate([
+    TypeGraphQL.Field(_type => IntFilter_1.IntFilter, { nullable: true }),
+    tslib_1.__metadata(\\"design:type\\", String)
+], SampleModelWhereInput.prototype, \\"id\\", void 0);
+tslib_1.__decorate([
+    TypeGraphQL.Field(_type => StringFilter_1.StringFilter, { nullable: true }),
+    tslib_1.__metadata(\\"design:type\\", String)
+], SampleModelWhereInput.prototype, \\"omittedField\\", void 0);
+tslib_1.__decorate([
+    TypeGraphQL.Field(_type => StringFilter_1.StringFilter, { nullable: true }),
+    tslib_1.__metadata(\\"design:type\\", String)
+], SampleModelWhereInput.prototype, \\"normalField\\", void 0);
+exports.SampleModelWhereInput = SampleModelWhereInput = tslib_1.__decorate([
+    TypeGraphQL.InputType(\\"SampleModelWhereInput\\", {})
+], SampleModelWhereInput);
 "
 `;
 
 exports[`omit-fields when model field has omit input orderBy set should properly generate orderBy input type classes without that field: SampleModelOrderByWithAggregationInput 1`] = `
-"import * as TypeGraphQL from \\"type-graphql\\";
-import * as GraphQLScalars from \\"graphql-scalars\\";
-import { Prisma } from \\"../../../../helpers/prisma-client-mock/client\\";
-import { DecimalJSScalar } from \\"../../scalars\\";
-import { SampleModelAvgOrderByAggregateInput } from \\"../inputs/SampleModelAvgOrderByAggregateInput\\";
-import { SampleModelCountOrderByAggregateInput } from \\"../inputs/SampleModelCountOrderByAggregateInput\\";
-import { SampleModelMaxOrderByAggregateInput } from \\"../inputs/SampleModelMaxOrderByAggregateInput\\";
-import { SampleModelMinOrderByAggregateInput } from \\"../inputs/SampleModelMinOrderByAggregateInput\\";
-import { SampleModelSumOrderByAggregateInput } from \\"../inputs/SampleModelSumOrderByAggregateInput\\";
-import { SortOrder } from \\"../../enums/SortOrder\\";
-
-@TypeGraphQL.InputType(\\"SampleModelOrderByWithAggregationInput\\", {})
-export class SampleModelOrderByWithAggregationInput {
-    @TypeGraphQL.Field(_type => SortOrder, { nullable: true })
-    id?: \\"asc\\" | \\"desc\\" | undefined;
-
-    @TypeGraphQL.Field(_type => SortOrder, { nullable: true })
-    normalField?: \\"asc\\" | \\"desc\\" | undefined;
-
-    @TypeGraphQL.Field(_type => SampleModelCountOrderByAggregateInput, { nullable: true })
-    _count?: SampleModelCountOrderByAggregateInput | undefined;
-
-    @TypeGraphQL.Field(_type => SampleModelAvgOrderByAggregateInput, { nullable: true })
-    _avg?: SampleModelAvgOrderByAggregateInput | undefined;
-
-    @TypeGraphQL.Field(_type => SampleModelMaxOrderByAggregateInput, { nullable: true })
-    _max?: SampleModelMaxOrderByAggregateInput | undefined;
-
-    @TypeGraphQL.Field(_type => SampleModelMinOrderByAggregateInput, { nullable: true })
-    _min?: SampleModelMinOrderByAggregateInput | undefined;
-
-    @TypeGraphQL.Field(_type => SampleModelSumOrderByAggregateInput, { nullable: true })
-    _sum?: SampleModelSumOrderByAggregateInput | undefined;
-}
+"\\"use strict\\";
+Object.defineProperty(exports, \\"__esModule\\", { value: true });
+exports.SampleModelOrderByWithAggregationInput = void 0;
+const tslib_1 = require(\\"tslib\\");
+const TypeGraphQL = tslib_1.__importStar(require(\\"type-graphql\\"));
+const SampleModelAvgOrderByAggregateInput_1 = require(\\"../inputs/SampleModelAvgOrderByAggregateInput\\");
+const SampleModelCountOrderByAggregateInput_1 = require(\\"../inputs/SampleModelCountOrderByAggregateInput\\");
+const SampleModelMaxOrderByAggregateInput_1 = require(\\"../inputs/SampleModelMaxOrderByAggregateInput\\");
+const SampleModelMinOrderByAggregateInput_1 = require(\\"../inputs/SampleModelMinOrderByAggregateInput\\");
+const SampleModelSumOrderByAggregateInput_1 = require(\\"../inputs/SampleModelSumOrderByAggregateInput\\");
+const SortOrder_1 = require(\\"../../enums/SortOrder\\");
+let SampleModelOrderByWithAggregationInput = class SampleModelOrderByWithAggregationInput {
+};
+exports.SampleModelOrderByWithAggregationInput = SampleModelOrderByWithAggregationInput;
+tslib_1.__decorate([
+    TypeGraphQL.Field(_type => SortOrder_1.SortOrder, { nullable: true }),
+    tslib_1.__metadata(\\"design:type\\", String)
+], SampleModelOrderByWithAggregationInput.prototype, \\"id\\", void 0);
+tslib_1.__decorate([
+    TypeGraphQL.Field(_type => SortOrder_1.SortOrder, { nullable: true }),
+    tslib_1.__metadata(\\"design:type\\", String)
+], SampleModelOrderByWithAggregationInput.prototype, \\"normalField\\", void 0);
+tslib_1.__decorate([
+    TypeGraphQL.Field(_type => SampleModelCountOrderByAggregateInput_1.SampleModelCountOrderByAggregateInput, { nullable: true }),
+    tslib_1.__metadata(\\"design:type\\", String)
+], SampleModelOrderByWithAggregationInput.prototype, \\"_count\\", void 0);
+tslib_1.__decorate([
+    TypeGraphQL.Field(_type => SampleModelAvgOrderByAggregateInput_1.SampleModelAvgOrderByAggregateInput, { nullable: true }),
+    tslib_1.__metadata(\\"design:type\\", String)
+], SampleModelOrderByWithAggregationInput.prototype, \\"_avg\\", void 0);
+tslib_1.__decorate([
+    TypeGraphQL.Field(_type => SampleModelMaxOrderByAggregateInput_1.SampleModelMaxOrderByAggregateInput, { nullable: true }),
+    tslib_1.__metadata(\\"design:type\\", String)
+], SampleModelOrderByWithAggregationInput.prototype, \\"_max\\", void 0);
+tslib_1.__decorate([
+    TypeGraphQL.Field(_type => SampleModelMinOrderByAggregateInput_1.SampleModelMinOrderByAggregateInput, { nullable: true }),
+    tslib_1.__metadata(\\"design:type\\", String)
+], SampleModelOrderByWithAggregationInput.prototype, \\"_min\\", void 0);
+tslib_1.__decorate([
+    TypeGraphQL.Field(_type => SampleModelSumOrderByAggregateInput_1.SampleModelSumOrderByAggregateInput, { nullable: true }),
+    tslib_1.__metadata(\\"design:type\\", String)
+], SampleModelOrderByWithAggregationInput.prototype, \\"_sum\\", void 0);
+exports.SampleModelOrderByWithAggregationInput = SampleModelOrderByWithAggregationInput = tslib_1.__decorate([
+    TypeGraphQL.InputType(\\"SampleModelOrderByWithAggregationInput\\", {})
+], SampleModelOrderByWithAggregationInput);
 "
 `;
 
 exports[`omit-fields when model field has omit input orderBy set should properly generate other input type classes with that field: SampleModelCreateInput 1`] = `
-"import * as TypeGraphQL from \\"type-graphql\\";
-import * as GraphQLScalars from \\"graphql-scalars\\";
-import { Prisma } from \\"../../../../helpers/prisma-client-mock/client\\";
-import { DecimalJSScalar } from \\"../../scalars\\";
-
-@TypeGraphQL.InputType(\\"SampleModelCreateInput\\", {})
-export class SampleModelCreateInput {
-    @TypeGraphQL.Field(_type => String, { nullable: false })
-    omittedField!: string;
-
-    @TypeGraphQL.Field(_type => String, { nullable: false })
-    normalField!: string;
-}
+"\\"use strict\\";
+Object.defineProperty(exports, \\"__esModule\\", { value: true });
+exports.SampleModelCreateInput = void 0;
+const tslib_1 = require(\\"tslib\\");
+const TypeGraphQL = tslib_1.__importStar(require(\\"type-graphql\\"));
+let SampleModelCreateInput = class SampleModelCreateInput {
+};
+exports.SampleModelCreateInput = SampleModelCreateInput;
+tslib_1.__decorate([
+    TypeGraphQL.Field(_type => String, { nullable: false }),
+    tslib_1.__metadata(\\"design:type\\", String)
+], SampleModelCreateInput.prototype, \\"omittedField\\", void 0);
+tslib_1.__decorate([
+    TypeGraphQL.Field(_type => String, { nullable: false }),
+    tslib_1.__metadata(\\"design:type\\", String)
+], SampleModelCreateInput.prototype, \\"normalField\\", void 0);
+exports.SampleModelCreateInput = SampleModelCreateInput = tslib_1.__decorate([
+    TypeGraphQL.InputType(\\"SampleModelCreateInput\\", {})
+], SampleModelCreateInput);
 "
 `;
 
 exports[`omit-fields when model field has omit input orderBy set should properly generate other input type classes with that field: SampleModelCreateManyInput 1`] = `
-"import * as TypeGraphQL from \\"type-graphql\\";
-import * as GraphQLScalars from \\"graphql-scalars\\";
-import { Prisma } from \\"../../../../helpers/prisma-client-mock/client\\";
-import { DecimalJSScalar } from \\"../../scalars\\";
-
-@TypeGraphQL.InputType(\\"SampleModelCreateManyInput\\", {})
-export class SampleModelCreateManyInput {
-    @TypeGraphQL.Field(_type => TypeGraphQL.Int, { nullable: true })
-    id?: number | undefined;
-
-    @TypeGraphQL.Field(_type => String, { nullable: false })
-    omittedField!: string;
-
-    @TypeGraphQL.Field(_type => String, { nullable: false })
-    normalField!: string;
-}
+"\\"use strict\\";
+Object.defineProperty(exports, \\"__esModule\\", { value: true });
+exports.SampleModelCreateManyInput = void 0;
+const tslib_1 = require(\\"tslib\\");
+const TypeGraphQL = tslib_1.__importStar(require(\\"type-graphql\\"));
+let SampleModelCreateManyInput = class SampleModelCreateManyInput {
+};
+exports.SampleModelCreateManyInput = SampleModelCreateManyInput;
+tslib_1.__decorate([
+    TypeGraphQL.Field(_type => TypeGraphQL.Int, { nullable: true }),
+    tslib_1.__metadata(\\"design:type\\", Number)
+], SampleModelCreateManyInput.prototype, \\"id\\", void 0);
+tslib_1.__decorate([
+    TypeGraphQL.Field(_type => String, { nullable: false }),
+    tslib_1.__metadata(\\"design:type\\", String)
+], SampleModelCreateManyInput.prototype, \\"omittedField\\", void 0);
+tslib_1.__decorate([
+    TypeGraphQL.Field(_type => String, { nullable: false }),
+    tslib_1.__metadata(\\"design:type\\", String)
+], SampleModelCreateManyInput.prototype, \\"normalField\\", void 0);
+exports.SampleModelCreateManyInput = SampleModelCreateManyInput = tslib_1.__decorate([
+    TypeGraphQL.InputType(\\"SampleModelCreateManyInput\\", {})
+], SampleModelCreateManyInput);
 "
 `;
 
 exports[`omit-fields when model field has omit input orderBy set should properly generate other input type classes with that field: SampleModelUpdateInput 1`] = `
-"import * as TypeGraphQL from \\"type-graphql\\";
-import * as GraphQLScalars from \\"graphql-scalars\\";
-import { Prisma } from \\"../../../../helpers/prisma-client-mock/client\\";
-import { DecimalJSScalar } from \\"../../scalars\\";
-import { StringFieldUpdateOperationsInput } from \\"../inputs/StringFieldUpdateOperationsInput\\";
-
-@TypeGraphQL.InputType(\\"SampleModelUpdateInput\\", {})
-export class SampleModelUpdateInput {
-    @TypeGraphQL.Field(_type => StringFieldUpdateOperationsInput, { nullable: true })
-    omittedField?: StringFieldUpdateOperationsInput | undefined;
-
-    @TypeGraphQL.Field(_type => StringFieldUpdateOperationsInput, { nullable: true })
-    normalField?: StringFieldUpdateOperationsInput | undefined;
-}
+"\\"use strict\\";
+Object.defineProperty(exports, \\"__esModule\\", { value: true });
+exports.SampleModelUpdateInput = void 0;
+const tslib_1 = require(\\"tslib\\");
+const TypeGraphQL = tslib_1.__importStar(require(\\"type-graphql\\"));
+const StringFieldUpdateOperationsInput_1 = require(\\"../inputs/StringFieldUpdateOperationsInput\\");
+let SampleModelUpdateInput = class SampleModelUpdateInput {
+};
+exports.SampleModelUpdateInput = SampleModelUpdateInput;
+tslib_1.__decorate([
+    TypeGraphQL.Field(_type => StringFieldUpdateOperationsInput_1.StringFieldUpdateOperationsInput, { nullable: true }),
+    tslib_1.__metadata(\\"design:type\\", String)
+], SampleModelUpdateInput.prototype, \\"omittedField\\", void 0);
+tslib_1.__decorate([
+    TypeGraphQL.Field(_type => StringFieldUpdateOperationsInput_1.StringFieldUpdateOperationsInput, { nullable: true }),
+    tslib_1.__metadata(\\"design:type\\", String)
+], SampleModelUpdateInput.prototype, \\"normalField\\", void 0);
+exports.SampleModelUpdateInput = SampleModelUpdateInput = tslib_1.__decorate([
+    TypeGraphQL.InputType(\\"SampleModelUpdateInput\\", {})
+], SampleModelUpdateInput);
 "
 `;
 
 exports[`omit-fields when model field has omit input orderBy set should properly generate other input type classes with that field: SampleModelWhereInput 1`] = `
-"import * as TypeGraphQL from \\"type-graphql\\";
-import * as GraphQLScalars from \\"graphql-scalars\\";
-import { Prisma } from \\"../../../../helpers/prisma-client-mock/client\\";
-import { DecimalJSScalar } from \\"../../scalars\\";
-import { IntFilter } from \\"../inputs/IntFilter\\";
-import { StringFilter } from \\"../inputs/StringFilter\\";
-
-@TypeGraphQL.InputType(\\"SampleModelWhereInput\\", {})
-export class SampleModelWhereInput {
-    @TypeGraphQL.Field(_type => [SampleModelWhereInput], { nullable: true })
-    AND?: SampleModelWhereInput[] | undefined;
-
-    @TypeGraphQL.Field(_type => [SampleModelWhereInput], { nullable: true })
-    OR?: SampleModelWhereInput[] | undefined;
-
-    @TypeGraphQL.Field(_type => [SampleModelWhereInput], { nullable: true })
-    NOT?: SampleModelWhereInput[] | undefined;
-
-    @TypeGraphQL.Field(_type => IntFilter, { nullable: true })
-    id?: IntFilter | undefined;
-
-    @TypeGraphQL.Field(_type => StringFilter, { nullable: true })
-    omittedField?: StringFilter | undefined;
-
-    @TypeGraphQL.Field(_type => StringFilter, { nullable: true })
-    normalField?: StringFilter | undefined;
-}
+"\\"use strict\\";
+Object.defineProperty(exports, \\"__esModule\\", { value: true });
+exports.SampleModelWhereInput = void 0;
+const tslib_1 = require(\\"tslib\\");
+const TypeGraphQL = tslib_1.__importStar(require(\\"type-graphql\\"));
+const IntFilter_1 = require(\\"../inputs/IntFilter\\");
+const StringFilter_1 = require(\\"../inputs/StringFilter\\");
+let SampleModelWhereInput = class SampleModelWhereInput {
+};
+exports.SampleModelWhereInput = SampleModelWhereInput;
+tslib_1.__decorate([
+    TypeGraphQL.Field(_type => [SampleModelWhereInput], { nullable: true }),
+    tslib_1.__metadata(\\"design:type\\", Array)
+], SampleModelWhereInput.prototype, \\"AND\\", void 0);
+tslib_1.__decorate([
+    TypeGraphQL.Field(_type => [SampleModelWhereInput], { nullable: true }),
+    tslib_1.__metadata(\\"design:type\\", Array)
+], SampleModelWhereInput.prototype, \\"OR\\", void 0);
+tslib_1.__decorate([
+    TypeGraphQL.Field(_type => [SampleModelWhereInput], { nullable: true }),
+    tslib_1.__metadata(\\"design:type\\", Array)
+], SampleModelWhereInput.prototype, \\"NOT\\", void 0);
+tslib_1.__decorate([
+    TypeGraphQL.Field(_type => IntFilter_1.IntFilter, { nullable: true }),
+    tslib_1.__metadata(\\"design:type\\", String)
+], SampleModelWhereInput.prototype, \\"id\\", void 0);
+tslib_1.__decorate([
+    TypeGraphQL.Field(_type => StringFilter_1.StringFilter, { nullable: true }),
+    tslib_1.__metadata(\\"design:type\\", String)
+], SampleModelWhereInput.prototype, \\"omittedField\\", void 0);
+tslib_1.__decorate([
+    TypeGraphQL.Field(_type => StringFilter_1.StringFilter, { nullable: true }),
+    tslib_1.__metadata(\\"design:type\\", String)
+], SampleModelWhereInput.prototype, \\"normalField\\", void 0);
+exports.SampleModelWhereInput = SampleModelWhereInput = tslib_1.__decorate([
+    TypeGraphQL.InputType(\\"SampleModelWhereInput\\", {})
+], SampleModelWhereInput);
 "
 `;
 
 exports[`omit-fields when model field has omit input update set should properly generate other input type classes with that field: SampleModelCreateInput 1`] = `
-"import * as TypeGraphQL from \\"type-graphql\\";
-import * as GraphQLScalars from \\"graphql-scalars\\";
-import { Prisma } from \\"../../../../helpers/prisma-client-mock/client\\";
-import { DecimalJSScalar } from \\"../../scalars\\";
-
-@TypeGraphQL.InputType(\\"SampleModelCreateInput\\", {})
-export class SampleModelCreateInput {
-    @TypeGraphQL.Field(_type => String, { nullable: false })
-    omittedField!: string;
-
-    @TypeGraphQL.Field(_type => String, { nullable: false })
-    normalField!: string;
-}
+"\\"use strict\\";
+Object.defineProperty(exports, \\"__esModule\\", { value: true });
+exports.SampleModelCreateInput = void 0;
+const tslib_1 = require(\\"tslib\\");
+const TypeGraphQL = tslib_1.__importStar(require(\\"type-graphql\\"));
+let SampleModelCreateInput = class SampleModelCreateInput {
+};
+exports.SampleModelCreateInput = SampleModelCreateInput;
+tslib_1.__decorate([
+    TypeGraphQL.Field(_type => String, { nullable: false }),
+    tslib_1.__metadata(\\"design:type\\", String)
+], SampleModelCreateInput.prototype, \\"omittedField\\", void 0);
+tslib_1.__decorate([
+    TypeGraphQL.Field(_type => String, { nullable: false }),
+    tslib_1.__metadata(\\"design:type\\", String)
+], SampleModelCreateInput.prototype, \\"normalField\\", void 0);
+exports.SampleModelCreateInput = SampleModelCreateInput = tslib_1.__decorate([
+    TypeGraphQL.InputType(\\"SampleModelCreateInput\\", {})
+], SampleModelCreateInput);
 "
 `;
 
 exports[`omit-fields when model field has omit input update set should properly generate other input type classes with that field: SampleModelCreateManyInput 1`] = `
-"import * as TypeGraphQL from \\"type-graphql\\";
-import * as GraphQLScalars from \\"graphql-scalars\\";
-import { Prisma } from \\"../../../../helpers/prisma-client-mock/client\\";
-import { DecimalJSScalar } from \\"../../scalars\\";
-
-@TypeGraphQL.InputType(\\"SampleModelCreateManyInput\\", {})
-export class SampleModelCreateManyInput {
-    @TypeGraphQL.Field(_type => TypeGraphQL.Int, { nullable: true })
-    id?: number | undefined;
-
-    @TypeGraphQL.Field(_type => String, { nullable: false })
-    omittedField!: string;
-
-    @TypeGraphQL.Field(_type => String, { nullable: false })
-    normalField!: string;
-}
+"\\"use strict\\";
+Object.defineProperty(exports, \\"__esModule\\", { value: true });
+exports.SampleModelCreateManyInput = void 0;
+const tslib_1 = require(\\"tslib\\");
+const TypeGraphQL = tslib_1.__importStar(require(\\"type-graphql\\"));
+let SampleModelCreateManyInput = class SampleModelCreateManyInput {
+};
+exports.SampleModelCreateManyInput = SampleModelCreateManyInput;
+tslib_1.__decorate([
+    TypeGraphQL.Field(_type => TypeGraphQL.Int, { nullable: true }),
+    tslib_1.__metadata(\\"design:type\\", Number)
+], SampleModelCreateManyInput.prototype, \\"id\\", void 0);
+tslib_1.__decorate([
+    TypeGraphQL.Field(_type => String, { nullable: false }),
+    tslib_1.__metadata(\\"design:type\\", String)
+], SampleModelCreateManyInput.prototype, \\"omittedField\\", void 0);
+tslib_1.__decorate([
+    TypeGraphQL.Field(_type => String, { nullable: false }),
+    tslib_1.__metadata(\\"design:type\\", String)
+], SampleModelCreateManyInput.prototype, \\"normalField\\", void 0);
+exports.SampleModelCreateManyInput = SampleModelCreateManyInput = tslib_1.__decorate([
+    TypeGraphQL.InputType(\\"SampleModelCreateManyInput\\", {})
+], SampleModelCreateManyInput);
 "
 `;
 
 exports[`omit-fields when model field has omit input update set should properly generate other input type classes with that field: SampleModelOrderByWithAggregationInput 1`] = `
-"import * as TypeGraphQL from \\"type-graphql\\";
-import * as GraphQLScalars from \\"graphql-scalars\\";
-import { Prisma } from \\"../../../../helpers/prisma-client-mock/client\\";
-import { DecimalJSScalar } from \\"../../scalars\\";
-import { SampleModelAvgOrderByAggregateInput } from \\"../inputs/SampleModelAvgOrderByAggregateInput\\";
-import { SampleModelCountOrderByAggregateInput } from \\"../inputs/SampleModelCountOrderByAggregateInput\\";
-import { SampleModelMaxOrderByAggregateInput } from \\"../inputs/SampleModelMaxOrderByAggregateInput\\";
-import { SampleModelMinOrderByAggregateInput } from \\"../inputs/SampleModelMinOrderByAggregateInput\\";
-import { SampleModelSumOrderByAggregateInput } from \\"../inputs/SampleModelSumOrderByAggregateInput\\";
-import { SortOrder } from \\"../../enums/SortOrder\\";
-
-@TypeGraphQL.InputType(\\"SampleModelOrderByWithAggregationInput\\", {})
-export class SampleModelOrderByWithAggregationInput {
-    @TypeGraphQL.Field(_type => SortOrder, { nullable: true })
-    id?: \\"asc\\" | \\"desc\\" | undefined;
-
-    @TypeGraphQL.Field(_type => SortOrder, { nullable: true })
-    omittedField?: \\"asc\\" | \\"desc\\" | undefined;
-
-    @TypeGraphQL.Field(_type => SortOrder, { nullable: true })
-    normalField?: \\"asc\\" | \\"desc\\" | undefined;
-
-    @TypeGraphQL.Field(_type => SampleModelCountOrderByAggregateInput, { nullable: true })
-    _count?: SampleModelCountOrderByAggregateInput | undefined;
-
-    @TypeGraphQL.Field(_type => SampleModelAvgOrderByAggregateInput, { nullable: true })
-    _avg?: SampleModelAvgOrderByAggregateInput | undefined;
-
-    @TypeGraphQL.Field(_type => SampleModelMaxOrderByAggregateInput, { nullable: true })
-    _max?: SampleModelMaxOrderByAggregateInput | undefined;
-
-    @TypeGraphQL.Field(_type => SampleModelMinOrderByAggregateInput, { nullable: true })
-    _min?: SampleModelMinOrderByAggregateInput | undefined;
-
-    @TypeGraphQL.Field(_type => SampleModelSumOrderByAggregateInput, { nullable: true })
-    _sum?: SampleModelSumOrderByAggregateInput | undefined;
-}
+"\\"use strict\\";
+Object.defineProperty(exports, \\"__esModule\\", { value: true });
+exports.SampleModelOrderByWithAggregationInput = void 0;
+const tslib_1 = require(\\"tslib\\");
+const TypeGraphQL = tslib_1.__importStar(require(\\"type-graphql\\"));
+const SampleModelAvgOrderByAggregateInput_1 = require(\\"../inputs/SampleModelAvgOrderByAggregateInput\\");
+const SampleModelCountOrderByAggregateInput_1 = require(\\"../inputs/SampleModelCountOrderByAggregateInput\\");
+const SampleModelMaxOrderByAggregateInput_1 = require(\\"../inputs/SampleModelMaxOrderByAggregateInput\\");
+const SampleModelMinOrderByAggregateInput_1 = require(\\"../inputs/SampleModelMinOrderByAggregateInput\\");
+const SampleModelSumOrderByAggregateInput_1 = require(\\"../inputs/SampleModelSumOrderByAggregateInput\\");
+const SortOrder_1 = require(\\"../../enums/SortOrder\\");
+let SampleModelOrderByWithAggregationInput = class SampleModelOrderByWithAggregationInput {
+};
+exports.SampleModelOrderByWithAggregationInput = SampleModelOrderByWithAggregationInput;
+tslib_1.__decorate([
+    TypeGraphQL.Field(_type => SortOrder_1.SortOrder, { nullable: true }),
+    tslib_1.__metadata(\\"design:type\\", String)
+], SampleModelOrderByWithAggregationInput.prototype, \\"id\\", void 0);
+tslib_1.__decorate([
+    TypeGraphQL.Field(_type => SortOrder_1.SortOrder, { nullable: true }),
+    tslib_1.__metadata(\\"design:type\\", String)
+], SampleModelOrderByWithAggregationInput.prototype, \\"omittedField\\", void 0);
+tslib_1.__decorate([
+    TypeGraphQL.Field(_type => SortOrder_1.SortOrder, { nullable: true }),
+    tslib_1.__metadata(\\"design:type\\", String)
+], SampleModelOrderByWithAggregationInput.prototype, \\"normalField\\", void 0);
+tslib_1.__decorate([
+    TypeGraphQL.Field(_type => SampleModelCountOrderByAggregateInput_1.SampleModelCountOrderByAggregateInput, { nullable: true }),
+    tslib_1.__metadata(\\"design:type\\", String)
+], SampleModelOrderByWithAggregationInput.prototype, \\"_count\\", void 0);
+tslib_1.__decorate([
+    TypeGraphQL.Field(_type => SampleModelAvgOrderByAggregateInput_1.SampleModelAvgOrderByAggregateInput, { nullable: true }),
+    tslib_1.__metadata(\\"design:type\\", String)
+], SampleModelOrderByWithAggregationInput.prototype, \\"_avg\\", void 0);
+tslib_1.__decorate([
+    TypeGraphQL.Field(_type => SampleModelMaxOrderByAggregateInput_1.SampleModelMaxOrderByAggregateInput, { nullable: true }),
+    tslib_1.__metadata(\\"design:type\\", String)
+], SampleModelOrderByWithAggregationInput.prototype, \\"_max\\", void 0);
+tslib_1.__decorate([
+    TypeGraphQL.Field(_type => SampleModelMinOrderByAggregateInput_1.SampleModelMinOrderByAggregateInput, { nullable: true }),
+    tslib_1.__metadata(\\"design:type\\", String)
+], SampleModelOrderByWithAggregationInput.prototype, \\"_min\\", void 0);
+tslib_1.__decorate([
+    TypeGraphQL.Field(_type => SampleModelSumOrderByAggregateInput_1.SampleModelSumOrderByAggregateInput, { nullable: true }),
+    tslib_1.__metadata(\\"design:type\\", String)
+], SampleModelOrderByWithAggregationInput.prototype, \\"_sum\\", void 0);
+exports.SampleModelOrderByWithAggregationInput = SampleModelOrderByWithAggregationInput = tslib_1.__decorate([
+    TypeGraphQL.InputType(\\"SampleModelOrderByWithAggregationInput\\", {})
+], SampleModelOrderByWithAggregationInput);
 "
 `;
 
 exports[`omit-fields when model field has omit input update set should properly generate other input type classes with that field: SampleModelWhereInput 1`] = `
-"import * as TypeGraphQL from \\"type-graphql\\";
-import * as GraphQLScalars from \\"graphql-scalars\\";
-import { Prisma } from \\"../../../../helpers/prisma-client-mock/client\\";
-import { DecimalJSScalar } from \\"../../scalars\\";
-import { IntFilter } from \\"../inputs/IntFilter\\";
-import { StringFilter } from \\"../inputs/StringFilter\\";
-
-@TypeGraphQL.InputType(\\"SampleModelWhereInput\\", {})
-export class SampleModelWhereInput {
-    @TypeGraphQL.Field(_type => [SampleModelWhereInput], { nullable: true })
-    AND?: SampleModelWhereInput[] | undefined;
-
-    @TypeGraphQL.Field(_type => [SampleModelWhereInput], { nullable: true })
-    OR?: SampleModelWhereInput[] | undefined;
-
-    @TypeGraphQL.Field(_type => [SampleModelWhereInput], { nullable: true })
-    NOT?: SampleModelWhereInput[] | undefined;
-
-    @TypeGraphQL.Field(_type => IntFilter, { nullable: true })
-    id?: IntFilter | undefined;
-
-    @TypeGraphQL.Field(_type => StringFilter, { nullable: true })
-    omittedField?: StringFilter | undefined;
-
-    @TypeGraphQL.Field(_type => StringFilter, { nullable: true })
-    normalField?: StringFilter | undefined;
-}
+"\\"use strict\\";
+Object.defineProperty(exports, \\"__esModule\\", { value: true });
+exports.SampleModelWhereInput = void 0;
+const tslib_1 = require(\\"tslib\\");
+const TypeGraphQL = tslib_1.__importStar(require(\\"type-graphql\\"));
+const IntFilter_1 = require(\\"../inputs/IntFilter\\");
+const StringFilter_1 = require(\\"../inputs/StringFilter\\");
+let SampleModelWhereInput = class SampleModelWhereInput {
+};
+exports.SampleModelWhereInput = SampleModelWhereInput;
+tslib_1.__decorate([
+    TypeGraphQL.Field(_type => [SampleModelWhereInput], { nullable: true }),
+    tslib_1.__metadata(\\"design:type\\", Array)
+], SampleModelWhereInput.prototype, \\"AND\\", void 0);
+tslib_1.__decorate([
+    TypeGraphQL.Field(_type => [SampleModelWhereInput], { nullable: true }),
+    tslib_1.__metadata(\\"design:type\\", Array)
+], SampleModelWhereInput.prototype, \\"OR\\", void 0);
+tslib_1.__decorate([
+    TypeGraphQL.Field(_type => [SampleModelWhereInput], { nullable: true }),
+    tslib_1.__metadata(\\"design:type\\", Array)
+], SampleModelWhereInput.prototype, \\"NOT\\", void 0);
+tslib_1.__decorate([
+    TypeGraphQL.Field(_type => IntFilter_1.IntFilter, { nullable: true }),
+    tslib_1.__metadata(\\"design:type\\", String)
+], SampleModelWhereInput.prototype, \\"id\\", void 0);
+tslib_1.__decorate([
+    TypeGraphQL.Field(_type => StringFilter_1.StringFilter, { nullable: true }),
+    tslib_1.__metadata(\\"design:type\\", String)
+], SampleModelWhereInput.prototype, \\"omittedField\\", void 0);
+tslib_1.__decorate([
+    TypeGraphQL.Field(_type => StringFilter_1.StringFilter, { nullable: true }),
+    tslib_1.__metadata(\\"design:type\\", String)
+], SampleModelWhereInput.prototype, \\"normalField\\", void 0);
+exports.SampleModelWhereInput = SampleModelWhereInput = tslib_1.__decorate([
+    TypeGraphQL.InputType(\\"SampleModelWhereInput\\", {})
+], SampleModelWhereInput);
 "
 `;
 
 exports[`omit-fields when model field has omit input update set should properly generate update input type classes without that field: SampleModelUpdateInput 1`] = `
-"import * as TypeGraphQL from \\"type-graphql\\";
-import * as GraphQLScalars from \\"graphql-scalars\\";
-import { Prisma } from \\"../../../../helpers/prisma-client-mock/client\\";
-import { DecimalJSScalar } from \\"../../scalars\\";
-import { StringFieldUpdateOperationsInput } from \\"../inputs/StringFieldUpdateOperationsInput\\";
-
-@TypeGraphQL.InputType(\\"SampleModelUpdateInput\\", {})
-export class SampleModelUpdateInput {
-    @TypeGraphQL.Field(_type => StringFieldUpdateOperationsInput, { nullable: true })
-    normalField?: StringFieldUpdateOperationsInput | undefined;
-}
+"\\"use strict\\";
+Object.defineProperty(exports, \\"__esModule\\", { value: true });
+exports.SampleModelUpdateInput = void 0;
+const tslib_1 = require(\\"tslib\\");
+const TypeGraphQL = tslib_1.__importStar(require(\\"type-graphql\\"));
+const StringFieldUpdateOperationsInput_1 = require(\\"../inputs/StringFieldUpdateOperationsInput\\");
+let SampleModelUpdateInput = class SampleModelUpdateInput {
+};
+exports.SampleModelUpdateInput = SampleModelUpdateInput;
+tslib_1.__decorate([
+    TypeGraphQL.Field(_type => StringFieldUpdateOperationsInput_1.StringFieldUpdateOperationsInput, { nullable: true }),
+    tslib_1.__metadata(\\"design:type\\", String)
+], SampleModelUpdateInput.prototype, \\"normalField\\", void 0);
+exports.SampleModelUpdateInput = SampleModelUpdateInput = tslib_1.__decorate([
+    TypeGraphQL.InputType(\\"SampleModelUpdateInput\\", {})
+], SampleModelUpdateInput);
 "
 `;
 
 exports[`omit-fields when model field has omit input update set should properly generate update input type classes without that field: SampleModelUpdateManyMutationInput 1`] = `
-"import * as TypeGraphQL from \\"type-graphql\\";
-import * as GraphQLScalars from \\"graphql-scalars\\";
-import { Prisma } from \\"../../../../helpers/prisma-client-mock/client\\";
-import { DecimalJSScalar } from \\"../../scalars\\";
-import { StringFieldUpdateOperationsInput } from \\"../inputs/StringFieldUpdateOperationsInput\\";
-
-@TypeGraphQL.InputType(\\"SampleModelUpdateManyMutationInput\\", {})
-export class SampleModelUpdateManyMutationInput {
-    @TypeGraphQL.Field(_type => StringFieldUpdateOperationsInput, { nullable: true })
-    normalField?: StringFieldUpdateOperationsInput | undefined;
-}
+"\\"use strict\\";
+Object.defineProperty(exports, \\"__esModule\\", { value: true });
+exports.SampleModelUpdateManyMutationInput = void 0;
+const tslib_1 = require(\\"tslib\\");
+const TypeGraphQL = tslib_1.__importStar(require(\\"type-graphql\\"));
+const StringFieldUpdateOperationsInput_1 = require(\\"../inputs/StringFieldUpdateOperationsInput\\");
+let SampleModelUpdateManyMutationInput = class SampleModelUpdateManyMutationInput {
+};
+exports.SampleModelUpdateManyMutationInput = SampleModelUpdateManyMutationInput;
+tslib_1.__decorate([
+    TypeGraphQL.Field(_type => StringFieldUpdateOperationsInput_1.StringFieldUpdateOperationsInput, { nullable: true }),
+    tslib_1.__metadata(\\"design:type\\", String)
+], SampleModelUpdateManyMutationInput.prototype, \\"normalField\\", void 0);
+exports.SampleModelUpdateManyMutationInput = SampleModelUpdateManyMutationInput = tslib_1.__decorate([
+    TypeGraphQL.InputType(\\"SampleModelUpdateManyMutationInput\\", {})
+], SampleModelUpdateManyMutationInput);
 "
 `;
 
 exports[`omit-fields when model field has omit input where set should properly generate other input type classes with that field: SampleModelCreateInput 1`] = `
-"import * as TypeGraphQL from \\"type-graphql\\";
-import * as GraphQLScalars from \\"graphql-scalars\\";
-import { Prisma } from \\"../../../../helpers/prisma-client-mock/client\\";
-import { DecimalJSScalar } from \\"../../scalars\\";
-
-@TypeGraphQL.InputType(\\"SampleModelCreateInput\\", {})
-export class SampleModelCreateInput {
-    @TypeGraphQL.Field(_type => String, { nullable: false })
-    omittedField!: string;
-
-    @TypeGraphQL.Field(_type => String, { nullable: false })
-    normalField!: string;
-}
+"\\"use strict\\";
+Object.defineProperty(exports, \\"__esModule\\", { value: true });
+exports.SampleModelCreateInput = void 0;
+const tslib_1 = require(\\"tslib\\");
+const TypeGraphQL = tslib_1.__importStar(require(\\"type-graphql\\"));
+let SampleModelCreateInput = class SampleModelCreateInput {
+};
+exports.SampleModelCreateInput = SampleModelCreateInput;
+tslib_1.__decorate([
+    TypeGraphQL.Field(_type => String, { nullable: false }),
+    tslib_1.__metadata(\\"design:type\\", String)
+], SampleModelCreateInput.prototype, \\"omittedField\\", void 0);
+tslib_1.__decorate([
+    TypeGraphQL.Field(_type => String, { nullable: false }),
+    tslib_1.__metadata(\\"design:type\\", String)
+], SampleModelCreateInput.prototype, \\"normalField\\", void 0);
+exports.SampleModelCreateInput = SampleModelCreateInput = tslib_1.__decorate([
+    TypeGraphQL.InputType(\\"SampleModelCreateInput\\", {})
+], SampleModelCreateInput);
 "
 `;
 
 exports[`omit-fields when model field has omit input where set should properly generate other input type classes with that field: SampleModelCreateManyInput 1`] = `
-"import * as TypeGraphQL from \\"type-graphql\\";
-import * as GraphQLScalars from \\"graphql-scalars\\";
-import { Prisma } from \\"../../../../helpers/prisma-client-mock/client\\";
-import { DecimalJSScalar } from \\"../../scalars\\";
-
-@TypeGraphQL.InputType(\\"SampleModelCreateManyInput\\", {})
-export class SampleModelCreateManyInput {
-    @TypeGraphQL.Field(_type => TypeGraphQL.Int, { nullable: true })
-    id?: number | undefined;
-
-    @TypeGraphQL.Field(_type => String, { nullable: false })
-    omittedField!: string;
-
-    @TypeGraphQL.Field(_type => String, { nullable: false })
-    normalField!: string;
-}
+"\\"use strict\\";
+Object.defineProperty(exports, \\"__esModule\\", { value: true });
+exports.SampleModelCreateManyInput = void 0;
+const tslib_1 = require(\\"tslib\\");
+const TypeGraphQL = tslib_1.__importStar(require(\\"type-graphql\\"));
+let SampleModelCreateManyInput = class SampleModelCreateManyInput {
+};
+exports.SampleModelCreateManyInput = SampleModelCreateManyInput;
+tslib_1.__decorate([
+    TypeGraphQL.Field(_type => TypeGraphQL.Int, { nullable: true }),
+    tslib_1.__metadata(\\"design:type\\", Number)
+], SampleModelCreateManyInput.prototype, \\"id\\", void 0);
+tslib_1.__decorate([
+    TypeGraphQL.Field(_type => String, { nullable: false }),
+    tslib_1.__metadata(\\"design:type\\", String)
+], SampleModelCreateManyInput.prototype, \\"omittedField\\", void 0);
+tslib_1.__decorate([
+    TypeGraphQL.Field(_type => String, { nullable: false }),
+    tslib_1.__metadata(\\"design:type\\", String)
+], SampleModelCreateManyInput.prototype, \\"normalField\\", void 0);
+exports.SampleModelCreateManyInput = SampleModelCreateManyInput = tslib_1.__decorate([
+    TypeGraphQL.InputType(\\"SampleModelCreateManyInput\\", {})
+], SampleModelCreateManyInput);
 "
 `;
 
 exports[`omit-fields when model field has omit input where set should properly generate other input type classes with that field: SampleModelOrderByWithAggregationInput 1`] = `
-"import * as TypeGraphQL from \\"type-graphql\\";
-import * as GraphQLScalars from \\"graphql-scalars\\";
-import { Prisma } from \\"../../../../helpers/prisma-client-mock/client\\";
-import { DecimalJSScalar } from \\"../../scalars\\";
-import { SampleModelAvgOrderByAggregateInput } from \\"../inputs/SampleModelAvgOrderByAggregateInput\\";
-import { SampleModelCountOrderByAggregateInput } from \\"../inputs/SampleModelCountOrderByAggregateInput\\";
-import { SampleModelMaxOrderByAggregateInput } from \\"../inputs/SampleModelMaxOrderByAggregateInput\\";
-import { SampleModelMinOrderByAggregateInput } from \\"../inputs/SampleModelMinOrderByAggregateInput\\";
-import { SampleModelSumOrderByAggregateInput } from \\"../inputs/SampleModelSumOrderByAggregateInput\\";
-import { SortOrder } from \\"../../enums/SortOrder\\";
-
-@TypeGraphQL.InputType(\\"SampleModelOrderByWithAggregationInput\\", {})
-export class SampleModelOrderByWithAggregationInput {
-    @TypeGraphQL.Field(_type => SortOrder, { nullable: true })
-    id?: \\"asc\\" | \\"desc\\" | undefined;
-
-    @TypeGraphQL.Field(_type => SortOrder, { nullable: true })
-    omittedField?: \\"asc\\" | \\"desc\\" | undefined;
-
-    @TypeGraphQL.Field(_type => SortOrder, { nullable: true })
-    normalField?: \\"asc\\" | \\"desc\\" | undefined;
-
-    @TypeGraphQL.Field(_type => SampleModelCountOrderByAggregateInput, { nullable: true })
-    _count?: SampleModelCountOrderByAggregateInput | undefined;
-
-    @TypeGraphQL.Field(_type => SampleModelAvgOrderByAggregateInput, { nullable: true })
-    _avg?: SampleModelAvgOrderByAggregateInput | undefined;
-
-    @TypeGraphQL.Field(_type => SampleModelMaxOrderByAggregateInput, { nullable: true })
-    _max?: SampleModelMaxOrderByAggregateInput | undefined;
-
-    @TypeGraphQL.Field(_type => SampleModelMinOrderByAggregateInput, { nullable: true })
-    _min?: SampleModelMinOrderByAggregateInput | undefined;
-
-    @TypeGraphQL.Field(_type => SampleModelSumOrderByAggregateInput, { nullable: true })
-    _sum?: SampleModelSumOrderByAggregateInput | undefined;
-}
+"\\"use strict\\";
+Object.defineProperty(exports, \\"__esModule\\", { value: true });
+exports.SampleModelOrderByWithAggregationInput = void 0;
+const tslib_1 = require(\\"tslib\\");
+const TypeGraphQL = tslib_1.__importStar(require(\\"type-graphql\\"));
+const SampleModelAvgOrderByAggregateInput_1 = require(\\"../inputs/SampleModelAvgOrderByAggregateInput\\");
+const SampleModelCountOrderByAggregateInput_1 = require(\\"../inputs/SampleModelCountOrderByAggregateInput\\");
+const SampleModelMaxOrderByAggregateInput_1 = require(\\"../inputs/SampleModelMaxOrderByAggregateInput\\");
+const SampleModelMinOrderByAggregateInput_1 = require(\\"../inputs/SampleModelMinOrderByAggregateInput\\");
+const SampleModelSumOrderByAggregateInput_1 = require(\\"../inputs/SampleModelSumOrderByAggregateInput\\");
+const SortOrder_1 = require(\\"../../enums/SortOrder\\");
+let SampleModelOrderByWithAggregationInput = class SampleModelOrderByWithAggregationInput {
+};
+exports.SampleModelOrderByWithAggregationInput = SampleModelOrderByWithAggregationInput;
+tslib_1.__decorate([
+    TypeGraphQL.Field(_type => SortOrder_1.SortOrder, { nullable: true }),
+    tslib_1.__metadata(\\"design:type\\", String)
+], SampleModelOrderByWithAggregationInput.prototype, \\"id\\", void 0);
+tslib_1.__decorate([
+    TypeGraphQL.Field(_type => SortOrder_1.SortOrder, { nullable: true }),
+    tslib_1.__metadata(\\"design:type\\", String)
+], SampleModelOrderByWithAggregationInput.prototype, \\"omittedField\\", void 0);
+tslib_1.__decorate([
+    TypeGraphQL.Field(_type => SortOrder_1.SortOrder, { nullable: true }),
+    tslib_1.__metadata(\\"design:type\\", String)
+], SampleModelOrderByWithAggregationInput.prototype, \\"normalField\\", void 0);
+tslib_1.__decorate([
+    TypeGraphQL.Field(_type => SampleModelCountOrderByAggregateInput_1.SampleModelCountOrderByAggregateInput, { nullable: true }),
+    tslib_1.__metadata(\\"design:type\\", String)
+], SampleModelOrderByWithAggregationInput.prototype, \\"_count\\", void 0);
+tslib_1.__decorate([
+    TypeGraphQL.Field(_type => SampleModelAvgOrderByAggregateInput_1.SampleModelAvgOrderByAggregateInput, { nullable: true }),
+    tslib_1.__metadata(\\"design:type\\", String)
+], SampleModelOrderByWithAggregationInput.prototype, \\"_avg\\", void 0);
+tslib_1.__decorate([
+    TypeGraphQL.Field(_type => SampleModelMaxOrderByAggregateInput_1.SampleModelMaxOrderByAggregateInput, { nullable: true }),
+    tslib_1.__metadata(\\"design:type\\", String)
+], SampleModelOrderByWithAggregationInput.prototype, \\"_max\\", void 0);
+tslib_1.__decorate([
+    TypeGraphQL.Field(_type => SampleModelMinOrderByAggregateInput_1.SampleModelMinOrderByAggregateInput, { nullable: true }),
+    tslib_1.__metadata(\\"design:type\\", String)
+], SampleModelOrderByWithAggregationInput.prototype, \\"_min\\", void 0);
+tslib_1.__decorate([
+    TypeGraphQL.Field(_type => SampleModelSumOrderByAggregateInput_1.SampleModelSumOrderByAggregateInput, { nullable: true }),
+    tslib_1.__metadata(\\"design:type\\", String)
+], SampleModelOrderByWithAggregationInput.prototype, \\"_sum\\", void 0);
+exports.SampleModelOrderByWithAggregationInput = SampleModelOrderByWithAggregationInput = tslib_1.__decorate([
+    TypeGraphQL.InputType(\\"SampleModelOrderByWithAggregationInput\\", {})
+], SampleModelOrderByWithAggregationInput);
 "
 `;
 
 exports[`omit-fields when model field has omit input where set should properly generate other input type classes with that field: SampleModelUpdateInput 1`] = `
-"import * as TypeGraphQL from \\"type-graphql\\";
-import * as GraphQLScalars from \\"graphql-scalars\\";
-import { Prisma } from \\"../../../../helpers/prisma-client-mock/client\\";
-import { DecimalJSScalar } from \\"../../scalars\\";
-import { StringFieldUpdateOperationsInput } from \\"../inputs/StringFieldUpdateOperationsInput\\";
-
-@TypeGraphQL.InputType(\\"SampleModelUpdateInput\\", {})
-export class SampleModelUpdateInput {
-    @TypeGraphQL.Field(_type => StringFieldUpdateOperationsInput, { nullable: true })
-    omittedField?: StringFieldUpdateOperationsInput | undefined;
-
-    @TypeGraphQL.Field(_type => StringFieldUpdateOperationsInput, { nullable: true })
-    normalField?: StringFieldUpdateOperationsInput | undefined;
-}
+"\\"use strict\\";
+Object.defineProperty(exports, \\"__esModule\\", { value: true });
+exports.SampleModelUpdateInput = void 0;
+const tslib_1 = require(\\"tslib\\");
+const TypeGraphQL = tslib_1.__importStar(require(\\"type-graphql\\"));
+const StringFieldUpdateOperationsInput_1 = require(\\"../inputs/StringFieldUpdateOperationsInput\\");
+let SampleModelUpdateInput = class SampleModelUpdateInput {
+};
+exports.SampleModelUpdateInput = SampleModelUpdateInput;
+tslib_1.__decorate([
+    TypeGraphQL.Field(_type => StringFieldUpdateOperationsInput_1.StringFieldUpdateOperationsInput, { nullable: true }),
+    tslib_1.__metadata(\\"design:type\\", String)
+], SampleModelUpdateInput.prototype, \\"omittedField\\", void 0);
+tslib_1.__decorate([
+    TypeGraphQL.Field(_type => StringFieldUpdateOperationsInput_1.StringFieldUpdateOperationsInput, { nullable: true }),
+    tslib_1.__metadata(\\"design:type\\", String)
+], SampleModelUpdateInput.prototype, \\"normalField\\", void 0);
+exports.SampleModelUpdateInput = SampleModelUpdateInput = tslib_1.__decorate([
+    TypeGraphQL.InputType(\\"SampleModelUpdateInput\\", {})
+], SampleModelUpdateInput);
 "
 `;
 
 exports[`omit-fields when model field has omit input where set should properly generate where input type classes without that field: SampleModelWhereInput 1`] = `
-"import * as TypeGraphQL from \\"type-graphql\\";
-import * as GraphQLScalars from \\"graphql-scalars\\";
-import { Prisma } from \\"../../../../helpers/prisma-client-mock/client\\";
-import { DecimalJSScalar } from \\"../../scalars\\";
-import { IntFilter } from \\"../inputs/IntFilter\\";
-import { StringFilter } from \\"../inputs/StringFilter\\";
-
-@TypeGraphQL.InputType(\\"SampleModelWhereInput\\", {})
-export class SampleModelWhereInput {
-    @TypeGraphQL.Field(_type => [SampleModelWhereInput], { nullable: true })
-    AND?: SampleModelWhereInput[] | undefined;
-
-    @TypeGraphQL.Field(_type => [SampleModelWhereInput], { nullable: true })
-    OR?: SampleModelWhereInput[] | undefined;
-
-    @TypeGraphQL.Field(_type => [SampleModelWhereInput], { nullable: true })
-    NOT?: SampleModelWhereInput[] | undefined;
-
-    @TypeGraphQL.Field(_type => IntFilter, { nullable: true })
-    id?: IntFilter | undefined;
-
-    @TypeGraphQL.Field(_type => StringFilter, { nullable: true })
-    normalField?: StringFilter | undefined;
-}
+"\\"use strict\\";
+Object.defineProperty(exports, \\"__esModule\\", { value: true });
+exports.SampleModelWhereInput = void 0;
+const tslib_1 = require(\\"tslib\\");
+const TypeGraphQL = tslib_1.__importStar(require(\\"type-graphql\\"));
+const IntFilter_1 = require(\\"../inputs/IntFilter\\");
+const StringFilter_1 = require(\\"../inputs/StringFilter\\");
+let SampleModelWhereInput = class SampleModelWhereInput {
+};
+exports.SampleModelWhereInput = SampleModelWhereInput;
+tslib_1.__decorate([
+    TypeGraphQL.Field(_type => [SampleModelWhereInput], { nullable: true }),
+    tslib_1.__metadata(\\"design:type\\", Array)
+], SampleModelWhereInput.prototype, \\"AND\\", void 0);
+tslib_1.__decorate([
+    TypeGraphQL.Field(_type => [SampleModelWhereInput], { nullable: true }),
+    tslib_1.__metadata(\\"design:type\\", Array)
+], SampleModelWhereInput.prototype, \\"OR\\", void 0);
+tslib_1.__decorate([
+    TypeGraphQL.Field(_type => [SampleModelWhereInput], { nullable: true }),
+    tslib_1.__metadata(\\"design:type\\", Array)
+], SampleModelWhereInput.prototype, \\"NOT\\", void 0);
+tslib_1.__decorate([
+    TypeGraphQL.Field(_type => IntFilter_1.IntFilter, { nullable: true }),
+    tslib_1.__metadata(\\"design:type\\", String)
+], SampleModelWhereInput.prototype, \\"id\\", void 0);
+tslib_1.__decorate([
+    TypeGraphQL.Field(_type => StringFilter_1.StringFilter, { nullable: true }),
+    tslib_1.__metadata(\\"design:type\\", String)
+], SampleModelWhereInput.prototype, \\"normalField\\", void 0);
+exports.SampleModelWhereInput = SampleModelWhereInput = tslib_1.__decorate([
+    TypeGraphQL.InputType(\\"SampleModelWhereInput\\", {})
+], SampleModelWhereInput);
 "
 `;

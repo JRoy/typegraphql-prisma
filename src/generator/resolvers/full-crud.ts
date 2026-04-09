@@ -114,6 +114,7 @@ export default function generateCrudResolverClassFromMapping(
   const module = renderResolverModule({
     className: mapping.resolverName,
     modelTypeName: model.typeName,
+    modelRuntimeRef: runtimeRefs.get(model.typeName),
     jsImports,
     dtsImports,
     methods: mapping.actions.map(action =>

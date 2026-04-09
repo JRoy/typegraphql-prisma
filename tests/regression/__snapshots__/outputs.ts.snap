@@ -1,834 +1,1100 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`outputs should properly generate aggregate classes for model with lowercase name: AggregateExample 1`] = `
-"import * as TypeGraphQL from \\"type-graphql\\";
-import * as GraphQLScalars from \\"graphql-scalars\\";
-import { Prisma } from \\"../../../../helpers/prisma-client-mock/client\\";
-import { DecimalJSScalar } from \\"../../scalars\\";
-import { ExampleAvgAggregate } from \\"../outputs/ExampleAvgAggregate\\";
-import { ExampleCountAggregate } from \\"../outputs/ExampleCountAggregate\\";
-import { ExampleMaxAggregate } from \\"../outputs/ExampleMaxAggregate\\";
-import { ExampleMinAggregate } from \\"../outputs/ExampleMinAggregate\\";
-import { ExampleSumAggregate } from \\"../outputs/ExampleSumAggregate\\";
-
-@TypeGraphQL.ObjectType(\\"AggregateExample\\", {})
-export class AggregateExample {
-    @TypeGraphQL.Field(_type => ExampleCountAggregate, { nullable: true })
-    _count!: ExampleCountAggregate | null;
-
-    @TypeGraphQL.Field(_type => ExampleAvgAggregate, { nullable: true })
-    _avg!: ExampleAvgAggregate | null;
-
-    @TypeGraphQL.Field(_type => ExampleSumAggregate, { nullable: true })
-    _sum!: ExampleSumAggregate | null;
-
-    @TypeGraphQL.Field(_type => ExampleMinAggregate, { nullable: true })
-    _min!: ExampleMinAggregate | null;
-
-    @TypeGraphQL.Field(_type => ExampleMaxAggregate, { nullable: true })
-    _max!: ExampleMaxAggregate | null;
-}
+"\\"use strict\\";
+Object.defineProperty(exports, \\"__esModule\\", { value: true });
+exports.AggregateExample = void 0;
+const tslib_1 = require(\\"tslib\\");
+const TypeGraphQL = tslib_1.__importStar(require(\\"type-graphql\\"));
+const ExampleAvgAggregate_1 = require(\\"../outputs/ExampleAvgAggregate\\");
+const ExampleCountAggregate_1 = require(\\"../outputs/ExampleCountAggregate\\");
+const ExampleMaxAggregate_1 = require(\\"../outputs/ExampleMaxAggregate\\");
+const ExampleMinAggregate_1 = require(\\"../outputs/ExampleMinAggregate\\");
+const ExampleSumAggregate_1 = require(\\"../outputs/ExampleSumAggregate\\");
+let AggregateExample = class AggregateExample {
+};
+exports.AggregateExample = AggregateExample;
+tslib_1.__decorate([
+    TypeGraphQL.Field(_type => ExampleCountAggregate_1.ExampleCountAggregate, { nullable: true }),
+    tslib_1.__metadata(\\"design:type\\", String)
+], AggregateExample.prototype, \\"_count\\", void 0);
+tslib_1.__decorate([
+    TypeGraphQL.Field(_type => ExampleAvgAggregate_1.ExampleAvgAggregate, { nullable: true }),
+    tslib_1.__metadata(\\"design:type\\", String)
+], AggregateExample.prototype, \\"_avg\\", void 0);
+tslib_1.__decorate([
+    TypeGraphQL.Field(_type => ExampleSumAggregate_1.ExampleSumAggregate, { nullable: true }),
+    tslib_1.__metadata(\\"design:type\\", String)
+], AggregateExample.prototype, \\"_sum\\", void 0);
+tslib_1.__decorate([
+    TypeGraphQL.Field(_type => ExampleMinAggregate_1.ExampleMinAggregate, { nullable: true }),
+    tslib_1.__metadata(\\"design:type\\", String)
+], AggregateExample.prototype, \\"_min\\", void 0);
+tslib_1.__decorate([
+    TypeGraphQL.Field(_type => ExampleMaxAggregate_1.ExampleMaxAggregate, { nullable: true }),
+    tslib_1.__metadata(\\"design:type\\", String)
+], AggregateExample.prototype, \\"_max\\", void 0);
+exports.AggregateExample = AggregateExample = tslib_1.__decorate([
+    TypeGraphQL.ObjectType(\\"AggregateExample\\", {})
+], AggregateExample);
 "
 `;
 
 exports[`outputs should properly generate aggregate classes for model with lowercase name: CreateManyAndReturnExample 1`] = `
-"import * as TypeGraphQL from \\"type-graphql\\";
-import * as GraphQLScalars from \\"graphql-scalars\\";
-import { Prisma } from \\"../../../../helpers/prisma-client-mock/client\\";
-import { DecimalJSScalar } from \\"../../scalars\\";
-
-@TypeGraphQL.ObjectType(\\"CreateManyAndReturnExample\\", {})
-export class CreateManyAndReturnExample {
-    @TypeGraphQL.Field(_type => TypeGraphQL.Int, { nullable: false })
-    intIdField!: number;
-
-    @TypeGraphQL.Field(_type => String, { nullable: false })
-    stringField!: string;
-
-    @TypeGraphQL.Field(_type => TypeGraphQL.Float, { nullable: false })
-    floatField!: number;
-
-    @TypeGraphQL.Field(_type => Boolean, { nullable: false })
-    booleanField!: boolean;
-
-    @TypeGraphQL.Field(_type => Date, { nullable: false })
-    dateField!: Date;
-}
+"\\"use strict\\";
+Object.defineProperty(exports, \\"__esModule\\", { value: true });
+exports.CreateManyAndReturnExample = void 0;
+const tslib_1 = require(\\"tslib\\");
+const TypeGraphQL = tslib_1.__importStar(require(\\"type-graphql\\"));
+let CreateManyAndReturnExample = class CreateManyAndReturnExample {
+};
+exports.CreateManyAndReturnExample = CreateManyAndReturnExample;
+tslib_1.__decorate([
+    TypeGraphQL.Field(_type => TypeGraphQL.Int, { nullable: false }),
+    tslib_1.__metadata(\\"design:type\\", Number)
+], CreateManyAndReturnExample.prototype, \\"intIdField\\", void 0);
+tslib_1.__decorate([
+    TypeGraphQL.Field(_type => String, { nullable: false }),
+    tslib_1.__metadata(\\"design:type\\", String)
+], CreateManyAndReturnExample.prototype, \\"stringField\\", void 0);
+tslib_1.__decorate([
+    TypeGraphQL.Field(_type => TypeGraphQL.Float, { nullable: false }),
+    tslib_1.__metadata(\\"design:type\\", Number)
+], CreateManyAndReturnExample.prototype, \\"floatField\\", void 0);
+tslib_1.__decorate([
+    TypeGraphQL.Field(_type => Boolean, { nullable: false }),
+    tslib_1.__metadata(\\"design:type\\", Boolean)
+], CreateManyAndReturnExample.prototype, \\"booleanField\\", void 0);
+tslib_1.__decorate([
+    TypeGraphQL.Field(_type => Date, { nullable: false }),
+    tslib_1.__metadata(\\"design:type\\", Date)
+], CreateManyAndReturnExample.prototype, \\"dateField\\", void 0);
+exports.CreateManyAndReturnExample = CreateManyAndReturnExample = tslib_1.__decorate([
+    TypeGraphQL.ObjectType(\\"CreateManyAndReturnExample\\", {})
+], CreateManyAndReturnExample);
 "
 `;
 
 exports[`outputs should properly generate aggregate classes for model with lowercase name: ExampleAvgAggregate 1`] = `
-"import * as TypeGraphQL from \\"type-graphql\\";
-import * as GraphQLScalars from \\"graphql-scalars\\";
-import { Prisma } from \\"../../../../helpers/prisma-client-mock/client\\";
-import { DecimalJSScalar } from \\"../../scalars\\";
-
-@TypeGraphQL.ObjectType(\\"ExampleAvgAggregate\\", {})
-export class ExampleAvgAggregate {
-    @TypeGraphQL.Field(_type => TypeGraphQL.Float, { nullable: true })
-    intIdField!: number | null;
-
-    @TypeGraphQL.Field(_type => TypeGraphQL.Float, { nullable: true })
-    floatField!: number | null;
-}
+"\\"use strict\\";
+Object.defineProperty(exports, \\"__esModule\\", { value: true });
+exports.ExampleAvgAggregate = void 0;
+const tslib_1 = require(\\"tslib\\");
+const TypeGraphQL = tslib_1.__importStar(require(\\"type-graphql\\"));
+let ExampleAvgAggregate = class ExampleAvgAggregate {
+};
+exports.ExampleAvgAggregate = ExampleAvgAggregate;
+tslib_1.__decorate([
+    TypeGraphQL.Field(_type => TypeGraphQL.Float, { nullable: true }),
+    tslib_1.__metadata(\\"design:type\\", Number)
+], ExampleAvgAggregate.prototype, \\"intIdField\\", void 0);
+tslib_1.__decorate([
+    TypeGraphQL.Field(_type => TypeGraphQL.Float, { nullable: true }),
+    tslib_1.__metadata(\\"design:type\\", Number)
+], ExampleAvgAggregate.prototype, \\"floatField\\", void 0);
+exports.ExampleAvgAggregate = ExampleAvgAggregate = tslib_1.__decorate([
+    TypeGraphQL.ObjectType(\\"ExampleAvgAggregate\\", {})
+], ExampleAvgAggregate);
 "
 `;
 
 exports[`outputs should properly generate aggregate classes for model with lowercase name: ExampleCountAggregate 1`] = `
-"import * as TypeGraphQL from \\"type-graphql\\";
-import * as GraphQLScalars from \\"graphql-scalars\\";
-import { Prisma } from \\"../../../../helpers/prisma-client-mock/client\\";
-import { DecimalJSScalar } from \\"../../scalars\\";
-
-@TypeGraphQL.ObjectType(\\"ExampleCountAggregate\\", {})
-export class ExampleCountAggregate {
-    @TypeGraphQL.Field(_type => TypeGraphQL.Int, { nullable: false })
-    intIdField!: number;
-
-    @TypeGraphQL.Field(_type => TypeGraphQL.Int, { nullable: false })
-    stringField!: number;
-
-    @TypeGraphQL.Field(_type => TypeGraphQL.Int, { nullable: false })
-    floatField!: number;
-
-    @TypeGraphQL.Field(_type => TypeGraphQL.Int, { nullable: false })
-    booleanField!: number;
-
-    @TypeGraphQL.Field(_type => TypeGraphQL.Int, { nullable: false })
-    dateField!: number;
-
-    @TypeGraphQL.Field(_type => TypeGraphQL.Int, { nullable: false })
-    _all!: number;
-}
+"\\"use strict\\";
+Object.defineProperty(exports, \\"__esModule\\", { value: true });
+exports.ExampleCountAggregate = void 0;
+const tslib_1 = require(\\"tslib\\");
+const TypeGraphQL = tslib_1.__importStar(require(\\"type-graphql\\"));
+let ExampleCountAggregate = class ExampleCountAggregate {
+};
+exports.ExampleCountAggregate = ExampleCountAggregate;
+tslib_1.__decorate([
+    TypeGraphQL.Field(_type => TypeGraphQL.Int, { nullable: false }),
+    tslib_1.__metadata(\\"design:type\\", Number)
+], ExampleCountAggregate.prototype, \\"intIdField\\", void 0);
+tslib_1.__decorate([
+    TypeGraphQL.Field(_type => TypeGraphQL.Int, { nullable: false }),
+    tslib_1.__metadata(\\"design:type\\", Number)
+], ExampleCountAggregate.prototype, \\"stringField\\", void 0);
+tslib_1.__decorate([
+    TypeGraphQL.Field(_type => TypeGraphQL.Int, { nullable: false }),
+    tslib_1.__metadata(\\"design:type\\", Number)
+], ExampleCountAggregate.prototype, \\"floatField\\", void 0);
+tslib_1.__decorate([
+    TypeGraphQL.Field(_type => TypeGraphQL.Int, { nullable: false }),
+    tslib_1.__metadata(\\"design:type\\", Number)
+], ExampleCountAggregate.prototype, \\"booleanField\\", void 0);
+tslib_1.__decorate([
+    TypeGraphQL.Field(_type => TypeGraphQL.Int, { nullable: false }),
+    tslib_1.__metadata(\\"design:type\\", Number)
+], ExampleCountAggregate.prototype, \\"dateField\\", void 0);
+tslib_1.__decorate([
+    TypeGraphQL.Field(_type => TypeGraphQL.Int, { nullable: false }),
+    tslib_1.__metadata(\\"design:type\\", Number)
+], ExampleCountAggregate.prototype, \\"_all\\", void 0);
+exports.ExampleCountAggregate = ExampleCountAggregate = tslib_1.__decorate([
+    TypeGraphQL.ObjectType(\\"ExampleCountAggregate\\", {})
+], ExampleCountAggregate);
 "
 `;
 
 exports[`outputs should properly generate aggregate classes for model with lowercase name: ExampleMaxAggregate 1`] = `
-"import * as TypeGraphQL from \\"type-graphql\\";
-import * as GraphQLScalars from \\"graphql-scalars\\";
-import { Prisma } from \\"../../../../helpers/prisma-client-mock/client\\";
-import { DecimalJSScalar } from \\"../../scalars\\";
-
-@TypeGraphQL.ObjectType(\\"ExampleMaxAggregate\\", {})
-export class ExampleMaxAggregate {
-    @TypeGraphQL.Field(_type => TypeGraphQL.Int, { nullable: true })
-    intIdField!: number | null;
-
-    @TypeGraphQL.Field(_type => String, { nullable: true })
-    stringField!: string | null;
-
-    @TypeGraphQL.Field(_type => TypeGraphQL.Float, { nullable: true })
-    floatField!: number | null;
-
-    @TypeGraphQL.Field(_type => Boolean, { nullable: true })
-    booleanField!: boolean | null;
-
-    @TypeGraphQL.Field(_type => Date, { nullable: true })
-    dateField!: Date | null;
-}
+"\\"use strict\\";
+Object.defineProperty(exports, \\"__esModule\\", { value: true });
+exports.ExampleMaxAggregate = void 0;
+const tslib_1 = require(\\"tslib\\");
+const TypeGraphQL = tslib_1.__importStar(require(\\"type-graphql\\"));
+let ExampleMaxAggregate = class ExampleMaxAggregate {
+};
+exports.ExampleMaxAggregate = ExampleMaxAggregate;
+tslib_1.__decorate([
+    TypeGraphQL.Field(_type => TypeGraphQL.Int, { nullable: true }),
+    tslib_1.__metadata(\\"design:type\\", Number)
+], ExampleMaxAggregate.prototype, \\"intIdField\\", void 0);
+tslib_1.__decorate([
+    TypeGraphQL.Field(_type => String, { nullable: true }),
+    tslib_1.__metadata(\\"design:type\\", String)
+], ExampleMaxAggregate.prototype, \\"stringField\\", void 0);
+tslib_1.__decorate([
+    TypeGraphQL.Field(_type => TypeGraphQL.Float, { nullable: true }),
+    tslib_1.__metadata(\\"design:type\\", Number)
+], ExampleMaxAggregate.prototype, \\"floatField\\", void 0);
+tslib_1.__decorate([
+    TypeGraphQL.Field(_type => Boolean, { nullable: true }),
+    tslib_1.__metadata(\\"design:type\\", Boolean)
+], ExampleMaxAggregate.prototype, \\"booleanField\\", void 0);
+tslib_1.__decorate([
+    TypeGraphQL.Field(_type => Date, { nullable: true }),
+    tslib_1.__metadata(\\"design:type\\", Date)
+], ExampleMaxAggregate.prototype, \\"dateField\\", void 0);
+exports.ExampleMaxAggregate = ExampleMaxAggregate = tslib_1.__decorate([
+    TypeGraphQL.ObjectType(\\"ExampleMaxAggregate\\", {})
+], ExampleMaxAggregate);
 "
 `;
 
 exports[`outputs should properly generate aggregate classes for model with lowercase name: ExampleMinAggregate 1`] = `
-"import * as TypeGraphQL from \\"type-graphql\\";
-import * as GraphQLScalars from \\"graphql-scalars\\";
-import { Prisma } from \\"../../../../helpers/prisma-client-mock/client\\";
-import { DecimalJSScalar } from \\"../../scalars\\";
-
-@TypeGraphQL.ObjectType(\\"ExampleMinAggregate\\", {})
-export class ExampleMinAggregate {
-    @TypeGraphQL.Field(_type => TypeGraphQL.Int, { nullable: true })
-    intIdField!: number | null;
-
-    @TypeGraphQL.Field(_type => String, { nullable: true })
-    stringField!: string | null;
-
-    @TypeGraphQL.Field(_type => TypeGraphQL.Float, { nullable: true })
-    floatField!: number | null;
-
-    @TypeGraphQL.Field(_type => Boolean, { nullable: true })
-    booleanField!: boolean | null;
-
-    @TypeGraphQL.Field(_type => Date, { nullable: true })
-    dateField!: Date | null;
-}
+"\\"use strict\\";
+Object.defineProperty(exports, \\"__esModule\\", { value: true });
+exports.ExampleMinAggregate = void 0;
+const tslib_1 = require(\\"tslib\\");
+const TypeGraphQL = tslib_1.__importStar(require(\\"type-graphql\\"));
+let ExampleMinAggregate = class ExampleMinAggregate {
+};
+exports.ExampleMinAggregate = ExampleMinAggregate;
+tslib_1.__decorate([
+    TypeGraphQL.Field(_type => TypeGraphQL.Int, { nullable: true }),
+    tslib_1.__metadata(\\"design:type\\", Number)
+], ExampleMinAggregate.prototype, \\"intIdField\\", void 0);
+tslib_1.__decorate([
+    TypeGraphQL.Field(_type => String, { nullable: true }),
+    tslib_1.__metadata(\\"design:type\\", String)
+], ExampleMinAggregate.prototype, \\"stringField\\", void 0);
+tslib_1.__decorate([
+    TypeGraphQL.Field(_type => TypeGraphQL.Float, { nullable: true }),
+    tslib_1.__metadata(\\"design:type\\", Number)
+], ExampleMinAggregate.prototype, \\"floatField\\", void 0);
+tslib_1.__decorate([
+    TypeGraphQL.Field(_type => Boolean, { nullable: true }),
+    tslib_1.__metadata(\\"design:type\\", Boolean)
+], ExampleMinAggregate.prototype, \\"booleanField\\", void 0);
+tslib_1.__decorate([
+    TypeGraphQL.Field(_type => Date, { nullable: true }),
+    tslib_1.__metadata(\\"design:type\\", Date)
+], ExampleMinAggregate.prototype, \\"dateField\\", void 0);
+exports.ExampleMinAggregate = ExampleMinAggregate = tslib_1.__decorate([
+    TypeGraphQL.ObjectType(\\"ExampleMinAggregate\\", {})
+], ExampleMinAggregate);
 "
 `;
 
 exports[`outputs should properly generate aggregate classes for model with lowercase name: ExampleSumAggregate 1`] = `
-"import * as TypeGraphQL from \\"type-graphql\\";
-import * as GraphQLScalars from \\"graphql-scalars\\";
-import { Prisma } from \\"../../../../helpers/prisma-client-mock/client\\";
-import { DecimalJSScalar } from \\"../../scalars\\";
-
-@TypeGraphQL.ObjectType(\\"ExampleSumAggregate\\", {})
-export class ExampleSumAggregate {
-    @TypeGraphQL.Field(_type => TypeGraphQL.Int, { nullable: true })
-    intIdField!: number | null;
-
-    @TypeGraphQL.Field(_type => TypeGraphQL.Float, { nullable: true })
-    floatField!: number | null;
-}
+"\\"use strict\\";
+Object.defineProperty(exports, \\"__esModule\\", { value: true });
+exports.ExampleSumAggregate = void 0;
+const tslib_1 = require(\\"tslib\\");
+const TypeGraphQL = tslib_1.__importStar(require(\\"type-graphql\\"));
+let ExampleSumAggregate = class ExampleSumAggregate {
+};
+exports.ExampleSumAggregate = ExampleSumAggregate;
+tslib_1.__decorate([
+    TypeGraphQL.Field(_type => TypeGraphQL.Int, { nullable: true }),
+    tslib_1.__metadata(\\"design:type\\", Number)
+], ExampleSumAggregate.prototype, \\"intIdField\\", void 0);
+tslib_1.__decorate([
+    TypeGraphQL.Field(_type => TypeGraphQL.Float, { nullable: true }),
+    tslib_1.__metadata(\\"design:type\\", Number)
+], ExampleSumAggregate.prototype, \\"floatField\\", void 0);
+exports.ExampleSumAggregate = ExampleSumAggregate = tslib_1.__decorate([
+    TypeGraphQL.ObjectType(\\"ExampleSumAggregate\\", {})
+], ExampleSumAggregate);
 "
 `;
 
 exports[`outputs should properly generate aggregate classes for model with lowercase name: outputs index 1`] = `
-"export { AffectedRowsOutput } from \\"./AffectedRowsOutput\\";
-export { AggregateExample } from \\"./AggregateExample\\";
-export { CreateManyAndReturnExample } from \\"./CreateManyAndReturnExample\\";
-export { ExampleAvgAggregate } from \\"./ExampleAvgAggregate\\";
-export { ExampleCountAggregate } from \\"./ExampleCountAggregate\\";
-export { ExampleGroupBy } from \\"./ExampleGroupBy\\";
-export { ExampleMaxAggregate } from \\"./ExampleMaxAggregate\\";
-export { ExampleMinAggregate } from \\"./ExampleMinAggregate\\";
-export { ExampleSumAggregate } from \\"./ExampleSumAggregate\\";
-export { UpdateManyexampleAndReturnOutputType } from \\"./UpdateManyexampleAndReturnOutputType\\";
+"\\"use strict\\";
+Object.defineProperty(exports, \\"__esModule\\", { value: true });
+const tslib_1 = require(\\"tslib\\");
+tslib_1.__exportStar(require(\\"./AffectedRowsOutput\\"), exports);
+tslib_1.__exportStar(require(\\"./AggregateExample\\"), exports);
+tslib_1.__exportStar(require(\\"./CreateManyAndReturnExample\\"), exports);
+tslib_1.__exportStar(require(\\"./ExampleAvgAggregate\\"), exports);
+tslib_1.__exportStar(require(\\"./ExampleCountAggregate\\"), exports);
+tslib_1.__exportStar(require(\\"./ExampleGroupBy\\"), exports);
+tslib_1.__exportStar(require(\\"./ExampleMaxAggregate\\"), exports);
+tslib_1.__exportStar(require(\\"./ExampleMinAggregate\\"), exports);
+tslib_1.__exportStar(require(\\"./ExampleSumAggregate\\"), exports);
+tslib_1.__exportStar(require(\\"./UpdateManyexampleAndReturnOutputType\\"), exports);
 "
 `;
 
 exports[`outputs should properly generate aggregate classes for renamed model: AggregateExample 1`] = `
-"import * as TypeGraphQL from \\"type-graphql\\";
-import * as GraphQLScalars from \\"graphql-scalars\\";
-import { Prisma } from \\"../../../../helpers/prisma-client-mock/client\\";
-import { DecimalJSScalar } from \\"../../scalars\\";
-import { ExampleAvgAggregate } from \\"../outputs/ExampleAvgAggregate\\";
-import { ExampleCountAggregate } from \\"../outputs/ExampleCountAggregate\\";
-import { ExampleMaxAggregate } from \\"../outputs/ExampleMaxAggregate\\";
-import { ExampleMinAggregate } from \\"../outputs/ExampleMinAggregate\\";
-import { ExampleSumAggregate } from \\"../outputs/ExampleSumAggregate\\";
-
-@TypeGraphQL.ObjectType(\\"AggregateExample\\", {})
-export class AggregateExample {
-    @TypeGraphQL.Field(_type => ExampleCountAggregate, { nullable: true })
-    _count!: ExampleCountAggregate | null;
-
-    @TypeGraphQL.Field(_type => ExampleAvgAggregate, { nullable: true })
-    _avg!: ExampleAvgAggregate | null;
-
-    @TypeGraphQL.Field(_type => ExampleSumAggregate, { nullable: true })
-    _sum!: ExampleSumAggregate | null;
-
-    @TypeGraphQL.Field(_type => ExampleMinAggregate, { nullable: true })
-    _min!: ExampleMinAggregate | null;
-
-    @TypeGraphQL.Field(_type => ExampleMaxAggregate, { nullable: true })
-    _max!: ExampleMaxAggregate | null;
-}
+"\\"use strict\\";
+Object.defineProperty(exports, \\"__esModule\\", { value: true });
+exports.AggregateExample = void 0;
+const tslib_1 = require(\\"tslib\\");
+const TypeGraphQL = tslib_1.__importStar(require(\\"type-graphql\\"));
+const ExampleAvgAggregate_1 = require(\\"../outputs/ExampleAvgAggregate\\");
+const ExampleCountAggregate_1 = require(\\"../outputs/ExampleCountAggregate\\");
+const ExampleMaxAggregate_1 = require(\\"../outputs/ExampleMaxAggregate\\");
+const ExampleMinAggregate_1 = require(\\"../outputs/ExampleMinAggregate\\");
+const ExampleSumAggregate_1 = require(\\"../outputs/ExampleSumAggregate\\");
+let AggregateExample = class AggregateExample {
+};
+exports.AggregateExample = AggregateExample;
+tslib_1.__decorate([
+    TypeGraphQL.Field(_type => ExampleCountAggregate_1.ExampleCountAggregate, { nullable: true }),
+    tslib_1.__metadata(\\"design:type\\", String)
+], AggregateExample.prototype, \\"_count\\", void 0);
+tslib_1.__decorate([
+    TypeGraphQL.Field(_type => ExampleAvgAggregate_1.ExampleAvgAggregate, { nullable: true }),
+    tslib_1.__metadata(\\"design:type\\", String)
+], AggregateExample.prototype, \\"_avg\\", void 0);
+tslib_1.__decorate([
+    TypeGraphQL.Field(_type => ExampleSumAggregate_1.ExampleSumAggregate, { nullable: true }),
+    tslib_1.__metadata(\\"design:type\\", String)
+], AggregateExample.prototype, \\"_sum\\", void 0);
+tslib_1.__decorate([
+    TypeGraphQL.Field(_type => ExampleMinAggregate_1.ExampleMinAggregate, { nullable: true }),
+    tslib_1.__metadata(\\"design:type\\", String)
+], AggregateExample.prototype, \\"_min\\", void 0);
+tslib_1.__decorate([
+    TypeGraphQL.Field(_type => ExampleMaxAggregate_1.ExampleMaxAggregate, { nullable: true }),
+    tslib_1.__metadata(\\"design:type\\", String)
+], AggregateExample.prototype, \\"_max\\", void 0);
+exports.AggregateExample = AggregateExample = tslib_1.__decorate([
+    TypeGraphQL.ObjectType(\\"AggregateExample\\", {})
+], AggregateExample);
 "
 `;
 
 exports[`outputs should properly generate aggregate classes for renamed model: CreateManyAndReturnExample 1`] = `
-"import * as TypeGraphQL from \\"type-graphql\\";
-import * as GraphQLScalars from \\"graphql-scalars\\";
-import { Prisma } from \\"../../../../helpers/prisma-client-mock/client\\";
-import { DecimalJSScalar } from \\"../../scalars\\";
-
-@TypeGraphQL.ObjectType(\\"CreateManyAndReturnExample\\", {})
-export class CreateManyAndReturnExample {
-    @TypeGraphQL.Field(_type => TypeGraphQL.Int, { nullable: false })
-    intIdField!: number;
-
-    @TypeGraphQL.Field(_type => String, { nullable: false })
-    stringField!: string;
-
-    @TypeGraphQL.Field(_type => TypeGraphQL.Float, { nullable: false })
-    floatField!: number;
-
-    @TypeGraphQL.Field(_type => Boolean, { nullable: false })
-    booleanField!: boolean;
-
-    @TypeGraphQL.Field(_type => Date, { nullable: false })
-    dateField!: Date;
-}
+"\\"use strict\\";
+Object.defineProperty(exports, \\"__esModule\\", { value: true });
+exports.CreateManyAndReturnExample = void 0;
+const tslib_1 = require(\\"tslib\\");
+const TypeGraphQL = tslib_1.__importStar(require(\\"type-graphql\\"));
+let CreateManyAndReturnExample = class CreateManyAndReturnExample {
+};
+exports.CreateManyAndReturnExample = CreateManyAndReturnExample;
+tslib_1.__decorate([
+    TypeGraphQL.Field(_type => TypeGraphQL.Int, { nullable: false }),
+    tslib_1.__metadata(\\"design:type\\", Number)
+], CreateManyAndReturnExample.prototype, \\"intIdField\\", void 0);
+tslib_1.__decorate([
+    TypeGraphQL.Field(_type => String, { nullable: false }),
+    tslib_1.__metadata(\\"design:type\\", String)
+], CreateManyAndReturnExample.prototype, \\"stringField\\", void 0);
+tslib_1.__decorate([
+    TypeGraphQL.Field(_type => TypeGraphQL.Float, { nullable: false }),
+    tslib_1.__metadata(\\"design:type\\", Number)
+], CreateManyAndReturnExample.prototype, \\"floatField\\", void 0);
+tslib_1.__decorate([
+    TypeGraphQL.Field(_type => Boolean, { nullable: false }),
+    tslib_1.__metadata(\\"design:type\\", Boolean)
+], CreateManyAndReturnExample.prototype, \\"booleanField\\", void 0);
+tslib_1.__decorate([
+    TypeGraphQL.Field(_type => Date, { nullable: false }),
+    tslib_1.__metadata(\\"design:type\\", Date)
+], CreateManyAndReturnExample.prototype, \\"dateField\\", void 0);
+exports.CreateManyAndReturnExample = CreateManyAndReturnExample = tslib_1.__decorate([
+    TypeGraphQL.ObjectType(\\"CreateManyAndReturnExample\\", {})
+], CreateManyAndReturnExample);
 "
 `;
 
 exports[`outputs should properly generate aggregate classes for renamed model: ExampleAvgAggregate 1`] = `
-"import * as TypeGraphQL from \\"type-graphql\\";
-import * as GraphQLScalars from \\"graphql-scalars\\";
-import { Prisma } from \\"../../../../helpers/prisma-client-mock/client\\";
-import { DecimalJSScalar } from \\"../../scalars\\";
-
-@TypeGraphQL.ObjectType(\\"ExampleAvgAggregate\\", {})
-export class ExampleAvgAggregate {
-    @TypeGraphQL.Field(_type => TypeGraphQL.Float, { nullable: true })
-    intIdField!: number | null;
-
-    @TypeGraphQL.Field(_type => TypeGraphQL.Float, { nullable: true })
-    floatField!: number | null;
-}
+"\\"use strict\\";
+Object.defineProperty(exports, \\"__esModule\\", { value: true });
+exports.ExampleAvgAggregate = void 0;
+const tslib_1 = require(\\"tslib\\");
+const TypeGraphQL = tslib_1.__importStar(require(\\"type-graphql\\"));
+let ExampleAvgAggregate = class ExampleAvgAggregate {
+};
+exports.ExampleAvgAggregate = ExampleAvgAggregate;
+tslib_1.__decorate([
+    TypeGraphQL.Field(_type => TypeGraphQL.Float, { nullable: true }),
+    tslib_1.__metadata(\\"design:type\\", Number)
+], ExampleAvgAggregate.prototype, \\"intIdField\\", void 0);
+tslib_1.__decorate([
+    TypeGraphQL.Field(_type => TypeGraphQL.Float, { nullable: true }),
+    tslib_1.__metadata(\\"design:type\\", Number)
+], ExampleAvgAggregate.prototype, \\"floatField\\", void 0);
+exports.ExampleAvgAggregate = ExampleAvgAggregate = tslib_1.__decorate([
+    TypeGraphQL.ObjectType(\\"ExampleAvgAggregate\\", {})
+], ExampleAvgAggregate);
 "
 `;
 
 exports[`outputs should properly generate aggregate classes for renamed model: ExampleCountAggregate 1`] = `
-"import * as TypeGraphQL from \\"type-graphql\\";
-import * as GraphQLScalars from \\"graphql-scalars\\";
-import { Prisma } from \\"../../../../helpers/prisma-client-mock/client\\";
-import { DecimalJSScalar } from \\"../../scalars\\";
-
-@TypeGraphQL.ObjectType(\\"ExampleCountAggregate\\", {})
-export class ExampleCountAggregate {
-    @TypeGraphQL.Field(_type => TypeGraphQL.Int, { nullable: false })
-    intIdField!: number;
-
-    @TypeGraphQL.Field(_type => TypeGraphQL.Int, { nullable: false })
-    stringField!: number;
-
-    @TypeGraphQL.Field(_type => TypeGraphQL.Int, { nullable: false })
-    floatField!: number;
-
-    @TypeGraphQL.Field(_type => TypeGraphQL.Int, { nullable: false })
-    booleanField!: number;
-
-    @TypeGraphQL.Field(_type => TypeGraphQL.Int, { nullable: false })
-    dateField!: number;
-
-    @TypeGraphQL.Field(_type => TypeGraphQL.Int, { nullable: false })
-    _all!: number;
-}
+"\\"use strict\\";
+Object.defineProperty(exports, \\"__esModule\\", { value: true });
+exports.ExampleCountAggregate = void 0;
+const tslib_1 = require(\\"tslib\\");
+const TypeGraphQL = tslib_1.__importStar(require(\\"type-graphql\\"));
+let ExampleCountAggregate = class ExampleCountAggregate {
+};
+exports.ExampleCountAggregate = ExampleCountAggregate;
+tslib_1.__decorate([
+    TypeGraphQL.Field(_type => TypeGraphQL.Int, { nullable: false }),
+    tslib_1.__metadata(\\"design:type\\", Number)
+], ExampleCountAggregate.prototype, \\"intIdField\\", void 0);
+tslib_1.__decorate([
+    TypeGraphQL.Field(_type => TypeGraphQL.Int, { nullable: false }),
+    tslib_1.__metadata(\\"design:type\\", Number)
+], ExampleCountAggregate.prototype, \\"stringField\\", void 0);
+tslib_1.__decorate([
+    TypeGraphQL.Field(_type => TypeGraphQL.Int, { nullable: false }),
+    tslib_1.__metadata(\\"design:type\\", Number)
+], ExampleCountAggregate.prototype, \\"floatField\\", void 0);
+tslib_1.__decorate([
+    TypeGraphQL.Field(_type => TypeGraphQL.Int, { nullable: false }),
+    tslib_1.__metadata(\\"design:type\\", Number)
+], ExampleCountAggregate.prototype, \\"booleanField\\", void 0);
+tslib_1.__decorate([
+    TypeGraphQL.Field(_type => TypeGraphQL.Int, { nullable: false }),
+    tslib_1.__metadata(\\"design:type\\", Number)
+], ExampleCountAggregate.prototype, \\"dateField\\", void 0);
+tslib_1.__decorate([
+    TypeGraphQL.Field(_type => TypeGraphQL.Int, { nullable: false }),
+    tslib_1.__metadata(\\"design:type\\", Number)
+], ExampleCountAggregate.prototype, \\"_all\\", void 0);
+exports.ExampleCountAggregate = ExampleCountAggregate = tslib_1.__decorate([
+    TypeGraphQL.ObjectType(\\"ExampleCountAggregate\\", {})
+], ExampleCountAggregate);
 "
 `;
 
 exports[`outputs should properly generate aggregate classes for renamed model: ExampleMaxAggregate 1`] = `
-"import * as TypeGraphQL from \\"type-graphql\\";
-import * as GraphQLScalars from \\"graphql-scalars\\";
-import { Prisma } from \\"../../../../helpers/prisma-client-mock/client\\";
-import { DecimalJSScalar } from \\"../../scalars\\";
-
-@TypeGraphQL.ObjectType(\\"ExampleMaxAggregate\\", {})
-export class ExampleMaxAggregate {
-    @TypeGraphQL.Field(_type => TypeGraphQL.Int, { nullable: true })
-    intIdField!: number | null;
-
-    @TypeGraphQL.Field(_type => String, { nullable: true })
-    stringField!: string | null;
-
-    @TypeGraphQL.Field(_type => TypeGraphQL.Float, { nullable: true })
-    floatField!: number | null;
-
-    @TypeGraphQL.Field(_type => Boolean, { nullable: true })
-    booleanField!: boolean | null;
-
-    @TypeGraphQL.Field(_type => Date, { nullable: true })
-    dateField!: Date | null;
-}
+"\\"use strict\\";
+Object.defineProperty(exports, \\"__esModule\\", { value: true });
+exports.ExampleMaxAggregate = void 0;
+const tslib_1 = require(\\"tslib\\");
+const TypeGraphQL = tslib_1.__importStar(require(\\"type-graphql\\"));
+let ExampleMaxAggregate = class ExampleMaxAggregate {
+};
+exports.ExampleMaxAggregate = ExampleMaxAggregate;
+tslib_1.__decorate([
+    TypeGraphQL.Field(_type => TypeGraphQL.Int, { nullable: true }),
+    tslib_1.__metadata(\\"design:type\\", Number)
+], ExampleMaxAggregate.prototype, \\"intIdField\\", void 0);
+tslib_1.__decorate([
+    TypeGraphQL.Field(_type => String, { nullable: true }),
+    tslib_1.__metadata(\\"design:type\\", String)
+], ExampleMaxAggregate.prototype, \\"stringField\\", void 0);
+tslib_1.__decorate([
+    TypeGraphQL.Field(_type => TypeGraphQL.Float, { nullable: true }),
+    tslib_1.__metadata(\\"design:type\\", Number)
+], ExampleMaxAggregate.prototype, \\"floatField\\", void 0);
+tslib_1.__decorate([
+    TypeGraphQL.Field(_type => Boolean, { nullable: true }),
+    tslib_1.__metadata(\\"design:type\\", Boolean)
+], ExampleMaxAggregate.prototype, \\"booleanField\\", void 0);
+tslib_1.__decorate([
+    TypeGraphQL.Field(_type => Date, { nullable: true }),
+    tslib_1.__metadata(\\"design:type\\", Date)
+], ExampleMaxAggregate.prototype, \\"dateField\\", void 0);
+exports.ExampleMaxAggregate = ExampleMaxAggregate = tslib_1.__decorate([
+    TypeGraphQL.ObjectType(\\"ExampleMaxAggregate\\", {})
+], ExampleMaxAggregate);
 "
 `;
 
 exports[`outputs should properly generate aggregate classes for renamed model: ExampleMinAggregate 1`] = `
-"import * as TypeGraphQL from \\"type-graphql\\";
-import * as GraphQLScalars from \\"graphql-scalars\\";
-import { Prisma } from \\"../../../../helpers/prisma-client-mock/client\\";
-import { DecimalJSScalar } from \\"../../scalars\\";
-
-@TypeGraphQL.ObjectType(\\"ExampleMinAggregate\\", {})
-export class ExampleMinAggregate {
-    @TypeGraphQL.Field(_type => TypeGraphQL.Int, { nullable: true })
-    intIdField!: number | null;
-
-    @TypeGraphQL.Field(_type => String, { nullable: true })
-    stringField!: string | null;
-
-    @TypeGraphQL.Field(_type => TypeGraphQL.Float, { nullable: true })
-    floatField!: number | null;
-
-    @TypeGraphQL.Field(_type => Boolean, { nullable: true })
-    booleanField!: boolean | null;
-
-    @TypeGraphQL.Field(_type => Date, { nullable: true })
-    dateField!: Date | null;
-}
+"\\"use strict\\";
+Object.defineProperty(exports, \\"__esModule\\", { value: true });
+exports.ExampleMinAggregate = void 0;
+const tslib_1 = require(\\"tslib\\");
+const TypeGraphQL = tslib_1.__importStar(require(\\"type-graphql\\"));
+let ExampleMinAggregate = class ExampleMinAggregate {
+};
+exports.ExampleMinAggregate = ExampleMinAggregate;
+tslib_1.__decorate([
+    TypeGraphQL.Field(_type => TypeGraphQL.Int, { nullable: true }),
+    tslib_1.__metadata(\\"design:type\\", Number)
+], ExampleMinAggregate.prototype, \\"intIdField\\", void 0);
+tslib_1.__decorate([
+    TypeGraphQL.Field(_type => String, { nullable: true }),
+    tslib_1.__metadata(\\"design:type\\", String)
+], ExampleMinAggregate.prototype, \\"stringField\\", void 0);
+tslib_1.__decorate([
+    TypeGraphQL.Field(_type => TypeGraphQL.Float, { nullable: true }),
+    tslib_1.__metadata(\\"design:type\\", Number)
+], ExampleMinAggregate.prototype, \\"floatField\\", void 0);
+tslib_1.__decorate([
+    TypeGraphQL.Field(_type => Boolean, { nullable: true }),
+    tslib_1.__metadata(\\"design:type\\", Boolean)
+], ExampleMinAggregate.prototype, \\"booleanField\\", void 0);
+tslib_1.__decorate([
+    TypeGraphQL.Field(_type => Date, { nullable: true }),
+    tslib_1.__metadata(\\"design:type\\", Date)
+], ExampleMinAggregate.prototype, \\"dateField\\", void 0);
+exports.ExampleMinAggregate = ExampleMinAggregate = tslib_1.__decorate([
+    TypeGraphQL.ObjectType(\\"ExampleMinAggregate\\", {})
+], ExampleMinAggregate);
 "
 `;
 
 exports[`outputs should properly generate aggregate classes for renamed model: ExampleSumAggregate 1`] = `
-"import * as TypeGraphQL from \\"type-graphql\\";
-import * as GraphQLScalars from \\"graphql-scalars\\";
-import { Prisma } from \\"../../../../helpers/prisma-client-mock/client\\";
-import { DecimalJSScalar } from \\"../../scalars\\";
-
-@TypeGraphQL.ObjectType(\\"ExampleSumAggregate\\", {})
-export class ExampleSumAggregate {
-    @TypeGraphQL.Field(_type => TypeGraphQL.Int, { nullable: true })
-    intIdField!: number | null;
-
-    @TypeGraphQL.Field(_type => TypeGraphQL.Float, { nullable: true })
-    floatField!: number | null;
-}
+"\\"use strict\\";
+Object.defineProperty(exports, \\"__esModule\\", { value: true });
+exports.ExampleSumAggregate = void 0;
+const tslib_1 = require(\\"tslib\\");
+const TypeGraphQL = tslib_1.__importStar(require(\\"type-graphql\\"));
+let ExampleSumAggregate = class ExampleSumAggregate {
+};
+exports.ExampleSumAggregate = ExampleSumAggregate;
+tslib_1.__decorate([
+    TypeGraphQL.Field(_type => TypeGraphQL.Int, { nullable: true }),
+    tslib_1.__metadata(\\"design:type\\", Number)
+], ExampleSumAggregate.prototype, \\"intIdField\\", void 0);
+tslib_1.__decorate([
+    TypeGraphQL.Field(_type => TypeGraphQL.Float, { nullable: true }),
+    tslib_1.__metadata(\\"design:type\\", Number)
+], ExampleSumAggregate.prototype, \\"floatField\\", void 0);
+exports.ExampleSumAggregate = ExampleSumAggregate = tslib_1.__decorate([
+    TypeGraphQL.ObjectType(\\"ExampleSumAggregate\\", {})
+], ExampleSumAggregate);
 "
 `;
 
 exports[`outputs should properly generate aggregate classes for renamed model: outputs index 1`] = `
-"export { AffectedRowsOutput } from \\"./AffectedRowsOutput\\";
-export { AggregateExample } from \\"./AggregateExample\\";
-export { CreateManyAndReturnExample } from \\"./CreateManyAndReturnExample\\";
-export { ExampleAvgAggregate } from \\"./ExampleAvgAggregate\\";
-export { ExampleCountAggregate } from \\"./ExampleCountAggregate\\";
-export { ExampleGroupBy } from \\"./ExampleGroupBy\\";
-export { ExampleMaxAggregate } from \\"./ExampleMaxAggregate\\";
-export { ExampleMinAggregate } from \\"./ExampleMinAggregate\\";
-export { ExampleSumAggregate } from \\"./ExampleSumAggregate\\";
-export { UpdateManySampleAndReturnOutputType } from \\"./UpdateManySampleAndReturnOutputType\\";
+"\\"use strict\\";
+Object.defineProperty(exports, \\"__esModule\\", { value: true });
+const tslib_1 = require(\\"tslib\\");
+tslib_1.__exportStar(require(\\"./AffectedRowsOutput\\"), exports);
+tslib_1.__exportStar(require(\\"./AggregateExample\\"), exports);
+tslib_1.__exportStar(require(\\"./CreateManyAndReturnExample\\"), exports);
+tslib_1.__exportStar(require(\\"./ExampleAvgAggregate\\"), exports);
+tslib_1.__exportStar(require(\\"./ExampleCountAggregate\\"), exports);
+tslib_1.__exportStar(require(\\"./ExampleGroupBy\\"), exports);
+tslib_1.__exportStar(require(\\"./ExampleMaxAggregate\\"), exports);
+tslib_1.__exportStar(require(\\"./ExampleMinAggregate\\"), exports);
+tslib_1.__exportStar(require(\\"./ExampleSumAggregate\\"), exports);
+tslib_1.__exportStar(require(\\"./UpdateManySampleAndReturnOutputType\\"), exports);
 "
 `;
 
 exports[`outputs should properly generate count classes for relation fields with args: FirstModelCount 1`] = `
-"import * as TypeGraphQL from \\"type-graphql\\";
-import * as GraphQLScalars from \\"graphql-scalars\\";
-import { Prisma } from \\"../../../../helpers/prisma-client-mock/client\\";
-import { DecimalJSScalar } from \\"../../scalars\\";
-import { FirstModelCountSecondModelsFieldArgs } from \\"./args/FirstModelCountSecondModelsFieldArgs\\";
-
-@TypeGraphQL.ObjectType(\\"FirstModelCount\\", {})
-export class FirstModelCount {
-    secondModelsField!: number;
-
-    @TypeGraphQL.Field(_type => TypeGraphQL.Int, { name: \\"secondModelsField\\", nullable: false })
-    getSecondModelsField(@TypeGraphQL.Root() root: FirstModelCount, @TypeGraphQL.Args() args: FirstModelCountSecondModelsFieldArgs): number {
-        return root.secondModelsField;
-    }
-}
+"\\"use strict\\";
+Object.defineProperty(exports, \\"__esModule\\", { value: true });
+exports.FirstModelCount = void 0;
+const tslib_1 = require(\\"tslib\\");
+const TypeGraphQL = tslib_1.__importStar(require(\\"type-graphql\\"));
+const FirstModelCountSecondModelsFieldArgs_1 = require(\\"./args/FirstModelCountSecondModelsFieldArgs\\");
+let FirstModelCount = class FirstModelCount {
+  getSecondModelsField(root, args) {
+    return root.secondModelsField;
+  }
+};
+exports.FirstModelCount = FirstModelCount;
+tslib_1.__decorate([
+    TypeGraphQL.Field(_type => TypeGraphQL.Int, { name: \\"secondModelsField\\", nullable: false }),
+    tslib_1.__param(0, TypeGraphQL.Root()),
+    tslib_1.__param(1, TypeGraphQL.Args()),
+    tslib_1.__metadata(\\"design:type\\", Function),
+    tslib_1.__metadata(\\"design:paramtypes\\", [FirstModelCount, FirstModelCountSecondModelsFieldArgs_1.FirstModelCountSecondModelsFieldArgs]),
+    tslib_1.__metadata(\\"design:returntype\\", Number)
+], FirstModelCount.prototype, \\"getSecondModelsField\\", null);
+exports.FirstModelCount = FirstModelCount = tslib_1.__decorate([
+    TypeGraphQL.ObjectType(\\"FirstModelCount\\", {})
+], FirstModelCount);
 "
 `;
 
 exports[`outputs should properly generate count classes for relation fields with args: outputs index 1`] = `
-"export { AffectedRowsOutput } from \\"./AffectedRowsOutput\\";
-export { AggregateFirstModel } from \\"./AggregateFirstModel\\";
-export { AggregateSecondModel } from \\"./AggregateSecondModel\\";
-export { CreateManyAndReturnFirstModel } from \\"./CreateManyAndReturnFirstModel\\";
-export { CreateManyAndReturnSecondModel } from \\"./CreateManyAndReturnSecondModel\\";
-export { FirstModelAvgAggregate } from \\"./FirstModelAvgAggregate\\";
-export { FirstModelCount } from \\"./FirstModelCount\\";
-export { FirstModelCountAggregate } from \\"./FirstModelCountAggregate\\";
-export { FirstModelGroupBy } from \\"./FirstModelGroupBy\\";
-export { FirstModelMaxAggregate } from \\"./FirstModelMaxAggregate\\";
-export { FirstModelMinAggregate } from \\"./FirstModelMinAggregate\\";
-export { FirstModelSumAggregate } from \\"./FirstModelSumAggregate\\";
-export { SecondModelAvgAggregate } from \\"./SecondModelAvgAggregate\\";
-export { SecondModelCountAggregate } from \\"./SecondModelCountAggregate\\";
-export { SecondModelGroupBy } from \\"./SecondModelGroupBy\\";
-export { SecondModelMaxAggregate } from \\"./SecondModelMaxAggregate\\";
-export { SecondModelMinAggregate } from \\"./SecondModelMinAggregate\\";
-export { SecondModelSumAggregate } from \\"./SecondModelSumAggregate\\";
-export { UpdateManyFirstModelAndReturnOutputType } from \\"./UpdateManyFirstModelAndReturnOutputType\\";
-export { UpdateManySecondModelAndReturnOutputType } from \\"./UpdateManySecondModelAndReturnOutputType\\";
-export * from \\"./args\\";
+"\\"use strict\\";
+Object.defineProperty(exports, \\"__esModule\\", { value: true });
+const tslib_1 = require(\\"tslib\\");
+tslib_1.__exportStar(require(\\"./AffectedRowsOutput\\"), exports);
+tslib_1.__exportStar(require(\\"./AggregateFirstModel\\"), exports);
+tslib_1.__exportStar(require(\\"./AggregateSecondModel\\"), exports);
+tslib_1.__exportStar(require(\\"./CreateManyAndReturnFirstModel\\"), exports);
+tslib_1.__exportStar(require(\\"./CreateManyAndReturnSecondModel\\"), exports);
+tslib_1.__exportStar(require(\\"./FirstModelAvgAggregate\\"), exports);
+tslib_1.__exportStar(require(\\"./FirstModelCount\\"), exports);
+tslib_1.__exportStar(require(\\"./FirstModelCountAggregate\\"), exports);
+tslib_1.__exportStar(require(\\"./FirstModelGroupBy\\"), exports);
+tslib_1.__exportStar(require(\\"./FirstModelMaxAggregate\\"), exports);
+tslib_1.__exportStar(require(\\"./FirstModelMinAggregate\\"), exports);
+tslib_1.__exportStar(require(\\"./FirstModelSumAggregate\\"), exports);
+tslib_1.__exportStar(require(\\"./SecondModelAvgAggregate\\"), exports);
+tslib_1.__exportStar(require(\\"./SecondModelCountAggregate\\"), exports);
+tslib_1.__exportStar(require(\\"./SecondModelGroupBy\\"), exports);
+tslib_1.__exportStar(require(\\"./SecondModelMaxAggregate\\"), exports);
+tslib_1.__exportStar(require(\\"./SecondModelMinAggregate\\"), exports);
+tslib_1.__exportStar(require(\\"./SecondModelSumAggregate\\"), exports);
+tslib_1.__exportStar(require(\\"./UpdateManyFirstModelAndReturnOutputType\\"), exports);
+tslib_1.__exportStar(require(\\"./UpdateManySecondModelAndReturnOutputType\\"), exports);
+tslib_1.__exportStar(require(\\"./args\\"), exports);
 "
 `;
 
 exports[`outputs should properly generate count classes for relation fields: FirstModelCount 1`] = `
-"import * as TypeGraphQL from \\"type-graphql\\";
-import * as GraphQLScalars from \\"graphql-scalars\\";
-import { Prisma } from \\"../../../../helpers/prisma-client-mock/client\\";
-import { DecimalJSScalar } from \\"../../scalars\\";
-import { FirstModelCountSecondModelsFieldArgs } from \\"./args/FirstModelCountSecondModelsFieldArgs\\";
-
-@TypeGraphQL.ObjectType(\\"FirstModelCount\\", {})
-export class FirstModelCount {
-    secondModelsField!: number;
-
-    @TypeGraphQL.Field(_type => TypeGraphQL.Int, { name: \\"secondModelsField\\", nullable: false })
-    getSecondModelsField(@TypeGraphQL.Root() root: FirstModelCount, @TypeGraphQL.Args() args: FirstModelCountSecondModelsFieldArgs): number {
-        return root.secondModelsField;
-    }
-}
+"\\"use strict\\";
+Object.defineProperty(exports, \\"__esModule\\", { value: true });
+exports.FirstModelCount = void 0;
+const tslib_1 = require(\\"tslib\\");
+const TypeGraphQL = tslib_1.__importStar(require(\\"type-graphql\\"));
+const FirstModelCountSecondModelsFieldArgs_1 = require(\\"./args/FirstModelCountSecondModelsFieldArgs\\");
+let FirstModelCount = class FirstModelCount {
+  getSecondModelsField(root, args) {
+    return root.secondModelsField;
+  }
+};
+exports.FirstModelCount = FirstModelCount;
+tslib_1.__decorate([
+    TypeGraphQL.Field(_type => TypeGraphQL.Int, { name: \\"secondModelsField\\", nullable: false }),
+    tslib_1.__param(0, TypeGraphQL.Root()),
+    tslib_1.__param(1, TypeGraphQL.Args()),
+    tslib_1.__metadata(\\"design:type\\", Function),
+    tslib_1.__metadata(\\"design:paramtypes\\", [FirstModelCount, FirstModelCountSecondModelsFieldArgs_1.FirstModelCountSecondModelsFieldArgs]),
+    tslib_1.__metadata(\\"design:returntype\\", Number)
+], FirstModelCount.prototype, \\"getSecondModelsField\\", null);
+exports.FirstModelCount = FirstModelCount = tslib_1.__decorate([
+    TypeGraphQL.ObjectType(\\"FirstModelCount\\", {})
+], FirstModelCount);
 "
 `;
 
 exports[`outputs should properly generate count classes for relation fields: outputs index 1`] = `
-"export { AffectedRowsOutput } from \\"./AffectedRowsOutput\\";
-export { AggregateFirstModel } from \\"./AggregateFirstModel\\";
-export { AggregateSecondModel } from \\"./AggregateSecondModel\\";
-export { CreateManyAndReturnFirstModel } from \\"./CreateManyAndReturnFirstModel\\";
-export { CreateManyAndReturnSecondModel } from \\"./CreateManyAndReturnSecondModel\\";
-export { FirstModelAvgAggregate } from \\"./FirstModelAvgAggregate\\";
-export { FirstModelCount } from \\"./FirstModelCount\\";
-export { FirstModelCountAggregate } from \\"./FirstModelCountAggregate\\";
-export { FirstModelGroupBy } from \\"./FirstModelGroupBy\\";
-export { FirstModelMaxAggregate } from \\"./FirstModelMaxAggregate\\";
-export { FirstModelMinAggregate } from \\"./FirstModelMinAggregate\\";
-export { FirstModelSumAggregate } from \\"./FirstModelSumAggregate\\";
-export { SecondModelAvgAggregate } from \\"./SecondModelAvgAggregate\\";
-export { SecondModelCountAggregate } from \\"./SecondModelCountAggregate\\";
-export { SecondModelGroupBy } from \\"./SecondModelGroupBy\\";
-export { SecondModelMaxAggregate } from \\"./SecondModelMaxAggregate\\";
-export { SecondModelMinAggregate } from \\"./SecondModelMinAggregate\\";
-export { SecondModelSumAggregate } from \\"./SecondModelSumAggregate\\";
-export { UpdateManyFirstModelAndReturnOutputType } from \\"./UpdateManyFirstModelAndReturnOutputType\\";
-export { UpdateManySecondModelAndReturnOutputType } from \\"./UpdateManySecondModelAndReturnOutputType\\";
-export * from \\"./args\\";
+"\\"use strict\\";
+Object.defineProperty(exports, \\"__esModule\\", { value: true });
+const tslib_1 = require(\\"tslib\\");
+tslib_1.__exportStar(require(\\"./AffectedRowsOutput\\"), exports);
+tslib_1.__exportStar(require(\\"./AggregateFirstModel\\"), exports);
+tslib_1.__exportStar(require(\\"./AggregateSecondModel\\"), exports);
+tslib_1.__exportStar(require(\\"./CreateManyAndReturnFirstModel\\"), exports);
+tslib_1.__exportStar(require(\\"./CreateManyAndReturnSecondModel\\"), exports);
+tslib_1.__exportStar(require(\\"./FirstModelAvgAggregate\\"), exports);
+tslib_1.__exportStar(require(\\"./FirstModelCount\\"), exports);
+tslib_1.__exportStar(require(\\"./FirstModelCountAggregate\\"), exports);
+tslib_1.__exportStar(require(\\"./FirstModelGroupBy\\"), exports);
+tslib_1.__exportStar(require(\\"./FirstModelMaxAggregate\\"), exports);
+tslib_1.__exportStar(require(\\"./FirstModelMinAggregate\\"), exports);
+tslib_1.__exportStar(require(\\"./FirstModelSumAggregate\\"), exports);
+tslib_1.__exportStar(require(\\"./SecondModelAvgAggregate\\"), exports);
+tslib_1.__exportStar(require(\\"./SecondModelCountAggregate\\"), exports);
+tslib_1.__exportStar(require(\\"./SecondModelGroupBy\\"), exports);
+tslib_1.__exportStar(require(\\"./SecondModelMaxAggregate\\"), exports);
+tslib_1.__exportStar(require(\\"./SecondModelMinAggregate\\"), exports);
+tslib_1.__exportStar(require(\\"./SecondModelSumAggregate\\"), exports);
+tslib_1.__exportStar(require(\\"./UpdateManyFirstModelAndReturnOutputType\\"), exports);
+tslib_1.__exportStar(require(\\"./UpdateManySecondModelAndReturnOutputType\\"), exports);
+tslib_1.__exportStar(require(\\"./args\\"), exports);
 "
 `;
 
 exports[`outputs should properly generate output type classes: AffectedRowsOutput 1`] = `
-"import * as TypeGraphQL from \\"type-graphql\\";
-import * as GraphQLScalars from \\"graphql-scalars\\";
-import { Prisma } from \\"../../../../helpers/prisma-client-mock/client\\";
-import { DecimalJSScalar } from \\"../../scalars\\";
-
-@TypeGraphQL.ObjectType(\\"AffectedRowsOutput\\", {})
-export class AffectedRowsOutput {
-    @TypeGraphQL.Field(_type => TypeGraphQL.Int, { nullable: false })
-    count!: number;
-}
+"\\"use strict\\";
+Object.defineProperty(exports, \\"__esModule\\", { value: true });
+exports.AffectedRowsOutput = void 0;
+const tslib_1 = require(\\"tslib\\");
+const TypeGraphQL = tslib_1.__importStar(require(\\"type-graphql\\"));
+let AffectedRowsOutput = class AffectedRowsOutput {
+};
+exports.AffectedRowsOutput = AffectedRowsOutput;
+tslib_1.__decorate([
+    TypeGraphQL.Field(_type => TypeGraphQL.Int, { nullable: false }),
+    tslib_1.__metadata(\\"design:type\\", Number)
+], AffectedRowsOutput.prototype, \\"count\\", void 0);
+exports.AffectedRowsOutput = AffectedRowsOutput = tslib_1.__decorate([
+    TypeGraphQL.ObjectType(\\"AffectedRowsOutput\\", {})
+], AffectedRowsOutput);
 "
 `;
 
 exports[`outputs should properly generate output type classes: AggregateSample 1`] = `
-"import * as TypeGraphQL from \\"type-graphql\\";
-import * as GraphQLScalars from \\"graphql-scalars\\";
-import { Prisma } from \\"../../../../helpers/prisma-client-mock/client\\";
-import { DecimalJSScalar } from \\"../../scalars\\";
-import { SampleAvgAggregate } from \\"../outputs/SampleAvgAggregate\\";
-import { SampleCountAggregate } from \\"../outputs/SampleCountAggregate\\";
-import { SampleMaxAggregate } from \\"../outputs/SampleMaxAggregate\\";
-import { SampleMinAggregate } from \\"../outputs/SampleMinAggregate\\";
-import { SampleSumAggregate } from \\"../outputs/SampleSumAggregate\\";
-
-@TypeGraphQL.ObjectType(\\"AggregateSample\\", {})
-export class AggregateSample {
-    @TypeGraphQL.Field(_type => SampleCountAggregate, { nullable: true })
-    _count!: SampleCountAggregate | null;
-
-    @TypeGraphQL.Field(_type => SampleAvgAggregate, { nullable: true })
-    _avg!: SampleAvgAggregate | null;
-
-    @TypeGraphQL.Field(_type => SampleSumAggregate, { nullable: true })
-    _sum!: SampleSumAggregate | null;
-
-    @TypeGraphQL.Field(_type => SampleMinAggregate, { nullable: true })
-    _min!: SampleMinAggregate | null;
-
-    @TypeGraphQL.Field(_type => SampleMaxAggregate, { nullable: true })
-    _max!: SampleMaxAggregate | null;
-}
+"\\"use strict\\";
+Object.defineProperty(exports, \\"__esModule\\", { value: true });
+exports.AggregateSample = void 0;
+const tslib_1 = require(\\"tslib\\");
+const TypeGraphQL = tslib_1.__importStar(require(\\"type-graphql\\"));
+const SampleAvgAggregate_1 = require(\\"../outputs/SampleAvgAggregate\\");
+const SampleCountAggregate_1 = require(\\"../outputs/SampleCountAggregate\\");
+const SampleMaxAggregate_1 = require(\\"../outputs/SampleMaxAggregate\\");
+const SampleMinAggregate_1 = require(\\"../outputs/SampleMinAggregate\\");
+const SampleSumAggregate_1 = require(\\"../outputs/SampleSumAggregate\\");
+let AggregateSample = class AggregateSample {
+};
+exports.AggregateSample = AggregateSample;
+tslib_1.__decorate([
+    TypeGraphQL.Field(_type => SampleCountAggregate_1.SampleCountAggregate, { nullable: true }),
+    tslib_1.__metadata(\\"design:type\\", String)
+], AggregateSample.prototype, \\"_count\\", void 0);
+tslib_1.__decorate([
+    TypeGraphQL.Field(_type => SampleAvgAggregate_1.SampleAvgAggregate, { nullable: true }),
+    tslib_1.__metadata(\\"design:type\\", String)
+], AggregateSample.prototype, \\"_avg\\", void 0);
+tslib_1.__decorate([
+    TypeGraphQL.Field(_type => SampleSumAggregate_1.SampleSumAggregate, { nullable: true }),
+    tslib_1.__metadata(\\"design:type\\", String)
+], AggregateSample.prototype, \\"_sum\\", void 0);
+tslib_1.__decorate([
+    TypeGraphQL.Field(_type => SampleMinAggregate_1.SampleMinAggregate, { nullable: true }),
+    tslib_1.__metadata(\\"design:type\\", String)
+], AggregateSample.prototype, \\"_min\\", void 0);
+tslib_1.__decorate([
+    TypeGraphQL.Field(_type => SampleMaxAggregate_1.SampleMaxAggregate, { nullable: true }),
+    tslib_1.__metadata(\\"design:type\\", String)
+], AggregateSample.prototype, \\"_max\\", void 0);
+exports.AggregateSample = AggregateSample = tslib_1.__decorate([
+    TypeGraphQL.ObjectType(\\"AggregateSample\\", {})
+], AggregateSample);
 "
 `;
 
 exports[`outputs should properly generate output type classes: CreateManyAndReturnSample 1`] = `
-"import * as TypeGraphQL from \\"type-graphql\\";
-import * as GraphQLScalars from \\"graphql-scalars\\";
-import { Prisma } from \\"../../../../helpers/prisma-client-mock/client\\";
-import { DecimalJSScalar } from \\"../../scalars\\";
-
-@TypeGraphQL.ObjectType(\\"CreateManyAndReturnSample\\", {})
-export class CreateManyAndReturnSample {
-    @TypeGraphQL.Field(_type => TypeGraphQL.Int, { nullable: false })
-    intIdField!: number;
-
-    @TypeGraphQL.Field(_type => String, { nullable: false })
-    stringField!: string;
-
-    @TypeGraphQL.Field(_type => TypeGraphQL.Float, { nullable: false })
-    floatField!: number;
-
-    @TypeGraphQL.Field(_type => Boolean, { nullable: false })
-    booleanField!: boolean;
-
-    @TypeGraphQL.Field(_type => Date, { nullable: false })
-    dateField!: Date;
-
-    @TypeGraphQL.Field(_type => [TypeGraphQL.Int], { nullable: true })
-    intArrayField!: number[] | null;
-}
+"\\"use strict\\";
+Object.defineProperty(exports, \\"__esModule\\", { value: true });
+exports.CreateManyAndReturnSample = void 0;
+const tslib_1 = require(\\"tslib\\");
+const TypeGraphQL = tslib_1.__importStar(require(\\"type-graphql\\"));
+let CreateManyAndReturnSample = class CreateManyAndReturnSample {
+};
+exports.CreateManyAndReturnSample = CreateManyAndReturnSample;
+tslib_1.__decorate([
+    TypeGraphQL.Field(_type => TypeGraphQL.Int, { nullable: false }),
+    tslib_1.__metadata(\\"design:type\\", Number)
+], CreateManyAndReturnSample.prototype, \\"intIdField\\", void 0);
+tslib_1.__decorate([
+    TypeGraphQL.Field(_type => String, { nullable: false }),
+    tslib_1.__metadata(\\"design:type\\", String)
+], CreateManyAndReturnSample.prototype, \\"stringField\\", void 0);
+tslib_1.__decorate([
+    TypeGraphQL.Field(_type => TypeGraphQL.Float, { nullable: false }),
+    tslib_1.__metadata(\\"design:type\\", Number)
+], CreateManyAndReturnSample.prototype, \\"floatField\\", void 0);
+tslib_1.__decorate([
+    TypeGraphQL.Field(_type => Boolean, { nullable: false }),
+    tslib_1.__metadata(\\"design:type\\", Boolean)
+], CreateManyAndReturnSample.prototype, \\"booleanField\\", void 0);
+tslib_1.__decorate([
+    TypeGraphQL.Field(_type => Date, { nullable: false }),
+    tslib_1.__metadata(\\"design:type\\", Date)
+], CreateManyAndReturnSample.prototype, \\"dateField\\", void 0);
+tslib_1.__decorate([
+    TypeGraphQL.Field(_type => [TypeGraphQL.Int], { nullable: true }),
+    tslib_1.__metadata(\\"design:type\\", Array)
+], CreateManyAndReturnSample.prototype, \\"intArrayField\\", void 0);
+exports.CreateManyAndReturnSample = CreateManyAndReturnSample = tslib_1.__decorate([
+    TypeGraphQL.ObjectType(\\"CreateManyAndReturnSample\\", {})
+], CreateManyAndReturnSample);
 "
 `;
 
 exports[`outputs should properly generate output type classes: SampleAvgAggregate 1`] = `
-"import * as TypeGraphQL from \\"type-graphql\\";
-import * as GraphQLScalars from \\"graphql-scalars\\";
-import { Prisma } from \\"../../../../helpers/prisma-client-mock/client\\";
-import { DecimalJSScalar } from \\"../../scalars\\";
-
-@TypeGraphQL.ObjectType(\\"SampleAvgAggregate\\", {})
-export class SampleAvgAggregate {
-    @TypeGraphQL.Field(_type => TypeGraphQL.Float, { nullable: true })
-    intIdField!: number | null;
-
-    @TypeGraphQL.Field(_type => TypeGraphQL.Float, { nullable: true })
-    floatField!: number | null;
-
-    @TypeGraphQL.Field(_type => TypeGraphQL.Float, { nullable: true })
-    intArrayField!: number | null;
-}
+"\\"use strict\\";
+Object.defineProperty(exports, \\"__esModule\\", { value: true });
+exports.SampleAvgAggregate = void 0;
+const tslib_1 = require(\\"tslib\\");
+const TypeGraphQL = tslib_1.__importStar(require(\\"type-graphql\\"));
+let SampleAvgAggregate = class SampleAvgAggregate {
+};
+exports.SampleAvgAggregate = SampleAvgAggregate;
+tslib_1.__decorate([
+    TypeGraphQL.Field(_type => TypeGraphQL.Float, { nullable: true }),
+    tslib_1.__metadata(\\"design:type\\", Number)
+], SampleAvgAggregate.prototype, \\"intIdField\\", void 0);
+tslib_1.__decorate([
+    TypeGraphQL.Field(_type => TypeGraphQL.Float, { nullable: true }),
+    tslib_1.__metadata(\\"design:type\\", Number)
+], SampleAvgAggregate.prototype, \\"floatField\\", void 0);
+tslib_1.__decorate([
+    TypeGraphQL.Field(_type => TypeGraphQL.Float, { nullable: true }),
+    tslib_1.__metadata(\\"design:type\\", Number)
+], SampleAvgAggregate.prototype, \\"intArrayField\\", void 0);
+exports.SampleAvgAggregate = SampleAvgAggregate = tslib_1.__decorate([
+    TypeGraphQL.ObjectType(\\"SampleAvgAggregate\\", {})
+], SampleAvgAggregate);
 "
 `;
 
 exports[`outputs should properly generate output type classes: SampleCountAggregate 1`] = `
-"import * as TypeGraphQL from \\"type-graphql\\";
-import * as GraphQLScalars from \\"graphql-scalars\\";
-import { Prisma } from \\"../../../../helpers/prisma-client-mock/client\\";
-import { DecimalJSScalar } from \\"../../scalars\\";
-
-@TypeGraphQL.ObjectType(\\"SampleCountAggregate\\", {})
-export class SampleCountAggregate {
-    @TypeGraphQL.Field(_type => TypeGraphQL.Int, { nullable: false })
-    intIdField!: number;
-
-    @TypeGraphQL.Field(_type => TypeGraphQL.Int, { nullable: false })
-    stringField!: number;
-
-    @TypeGraphQL.Field(_type => TypeGraphQL.Int, { nullable: false })
-    floatField!: number;
-
-    @TypeGraphQL.Field(_type => TypeGraphQL.Int, { nullable: false })
-    booleanField!: number;
-
-    @TypeGraphQL.Field(_type => TypeGraphQL.Int, { nullable: false })
-    dateField!: number;
-
-    @TypeGraphQL.Field(_type => TypeGraphQL.Int, { nullable: false })
-    intArrayField!: number;
-
-    @TypeGraphQL.Field(_type => TypeGraphQL.Int, { nullable: false })
-    _all!: number;
-}
+"\\"use strict\\";
+Object.defineProperty(exports, \\"__esModule\\", { value: true });
+exports.SampleCountAggregate = void 0;
+const tslib_1 = require(\\"tslib\\");
+const TypeGraphQL = tslib_1.__importStar(require(\\"type-graphql\\"));
+let SampleCountAggregate = class SampleCountAggregate {
+};
+exports.SampleCountAggregate = SampleCountAggregate;
+tslib_1.__decorate([
+    TypeGraphQL.Field(_type => TypeGraphQL.Int, { nullable: false }),
+    tslib_1.__metadata(\\"design:type\\", Number)
+], SampleCountAggregate.prototype, \\"intIdField\\", void 0);
+tslib_1.__decorate([
+    TypeGraphQL.Field(_type => TypeGraphQL.Int, { nullable: false }),
+    tslib_1.__metadata(\\"design:type\\", Number)
+], SampleCountAggregate.prototype, \\"stringField\\", void 0);
+tslib_1.__decorate([
+    TypeGraphQL.Field(_type => TypeGraphQL.Int, { nullable: false }),
+    tslib_1.__metadata(\\"design:type\\", Number)
+], SampleCountAggregate.prototype, \\"floatField\\", void 0);
+tslib_1.__decorate([
+    TypeGraphQL.Field(_type => TypeGraphQL.Int, { nullable: false }),
+    tslib_1.__metadata(\\"design:type\\", Number)
+], SampleCountAggregate.prototype, \\"booleanField\\", void 0);
+tslib_1.__decorate([
+    TypeGraphQL.Field(_type => TypeGraphQL.Int, { nullable: false }),
+    tslib_1.__metadata(\\"design:type\\", Number)
+], SampleCountAggregate.prototype, \\"dateField\\", void 0);
+tslib_1.__decorate([
+    TypeGraphQL.Field(_type => TypeGraphQL.Int, { nullable: false }),
+    tslib_1.__metadata(\\"design:type\\", Number)
+], SampleCountAggregate.prototype, \\"intArrayField\\", void 0);
+tslib_1.__decorate([
+    TypeGraphQL.Field(_type => TypeGraphQL.Int, { nullable: false }),
+    tslib_1.__metadata(\\"design:type\\", Number)
+], SampleCountAggregate.prototype, \\"_all\\", void 0);
+exports.SampleCountAggregate = SampleCountAggregate = tslib_1.__decorate([
+    TypeGraphQL.ObjectType(\\"SampleCountAggregate\\", {})
+], SampleCountAggregate);
 "
 `;
 
 exports[`outputs should properly generate output type classes: SampleGroupBy 1`] = `
-"import * as TypeGraphQL from \\"type-graphql\\";
-import * as GraphQLScalars from \\"graphql-scalars\\";
-import { Prisma } from \\"../../../../helpers/prisma-client-mock/client\\";
-import { DecimalJSScalar } from \\"../../scalars\\";
-import { SampleAvgAggregate } from \\"../outputs/SampleAvgAggregate\\";
-import { SampleCountAggregate } from \\"../outputs/SampleCountAggregate\\";
-import { SampleMaxAggregate } from \\"../outputs/SampleMaxAggregate\\";
-import { SampleMinAggregate } from \\"../outputs/SampleMinAggregate\\";
-import { SampleSumAggregate } from \\"../outputs/SampleSumAggregate\\";
-
-@TypeGraphQL.ObjectType(\\"SampleGroupBy\\", {})
-export class SampleGroupBy {
-    @TypeGraphQL.Field(_type => TypeGraphQL.Int, { nullable: false })
-    intIdField!: number;
-
-    @TypeGraphQL.Field(_type => String, { nullable: false })
-    stringField!: string;
-
-    @TypeGraphQL.Field(_type => TypeGraphQL.Float, { nullable: false })
-    floatField!: number;
-
-    @TypeGraphQL.Field(_type => Boolean, { nullable: false })
-    booleanField!: boolean;
-
-    @TypeGraphQL.Field(_type => Date, { nullable: false })
-    dateField!: Date;
-
-    @TypeGraphQL.Field(_type => [TypeGraphQL.Int], { nullable: true })
-    intArrayField!: number[] | null;
-
-    @TypeGraphQL.Field(_type => SampleCountAggregate, { nullable: true })
-    _count!: SampleCountAggregate | null;
-
-    @TypeGraphQL.Field(_type => SampleAvgAggregate, { nullable: true })
-    _avg!: SampleAvgAggregate | null;
-
-    @TypeGraphQL.Field(_type => SampleSumAggregate, { nullable: true })
-    _sum!: SampleSumAggregate | null;
-
-    @TypeGraphQL.Field(_type => SampleMinAggregate, { nullable: true })
-    _min!: SampleMinAggregate | null;
-
-    @TypeGraphQL.Field(_type => SampleMaxAggregate, { nullable: true })
-    _max!: SampleMaxAggregate | null;
-}
+"\\"use strict\\";
+Object.defineProperty(exports, \\"__esModule\\", { value: true });
+exports.SampleGroupBy = void 0;
+const tslib_1 = require(\\"tslib\\");
+const TypeGraphQL = tslib_1.__importStar(require(\\"type-graphql\\"));
+const SampleAvgAggregate_1 = require(\\"../outputs/SampleAvgAggregate\\");
+const SampleCountAggregate_1 = require(\\"../outputs/SampleCountAggregate\\");
+const SampleMaxAggregate_1 = require(\\"../outputs/SampleMaxAggregate\\");
+const SampleMinAggregate_1 = require(\\"../outputs/SampleMinAggregate\\");
+const SampleSumAggregate_1 = require(\\"../outputs/SampleSumAggregate\\");
+let SampleGroupBy = class SampleGroupBy {
+};
+exports.SampleGroupBy = SampleGroupBy;
+tslib_1.__decorate([
+    TypeGraphQL.Field(_type => TypeGraphQL.Int, { nullable: false }),
+    tslib_1.__metadata(\\"design:type\\", Number)
+], SampleGroupBy.prototype, \\"intIdField\\", void 0);
+tslib_1.__decorate([
+    TypeGraphQL.Field(_type => String, { nullable: false }),
+    tslib_1.__metadata(\\"design:type\\", String)
+], SampleGroupBy.prototype, \\"stringField\\", void 0);
+tslib_1.__decorate([
+    TypeGraphQL.Field(_type => TypeGraphQL.Float, { nullable: false }),
+    tslib_1.__metadata(\\"design:type\\", Number)
+], SampleGroupBy.prototype, \\"floatField\\", void 0);
+tslib_1.__decorate([
+    TypeGraphQL.Field(_type => Boolean, { nullable: false }),
+    tslib_1.__metadata(\\"design:type\\", Boolean)
+], SampleGroupBy.prototype, \\"booleanField\\", void 0);
+tslib_1.__decorate([
+    TypeGraphQL.Field(_type => Date, { nullable: false }),
+    tslib_1.__metadata(\\"design:type\\", Date)
+], SampleGroupBy.prototype, \\"dateField\\", void 0);
+tslib_1.__decorate([
+    TypeGraphQL.Field(_type => [TypeGraphQL.Int], { nullable: true }),
+    tslib_1.__metadata(\\"design:type\\", Array)
+], SampleGroupBy.prototype, \\"intArrayField\\", void 0);
+tslib_1.__decorate([
+    TypeGraphQL.Field(_type => SampleCountAggregate_1.SampleCountAggregate, { nullable: true }),
+    tslib_1.__metadata(\\"design:type\\", String)
+], SampleGroupBy.prototype, \\"_count\\", void 0);
+tslib_1.__decorate([
+    TypeGraphQL.Field(_type => SampleAvgAggregate_1.SampleAvgAggregate, { nullable: true }),
+    tslib_1.__metadata(\\"design:type\\", String)
+], SampleGroupBy.prototype, \\"_avg\\", void 0);
+tslib_1.__decorate([
+    TypeGraphQL.Field(_type => SampleSumAggregate_1.SampleSumAggregate, { nullable: true }),
+    tslib_1.__metadata(\\"design:type\\", String)
+], SampleGroupBy.prototype, \\"_sum\\", void 0);
+tslib_1.__decorate([
+    TypeGraphQL.Field(_type => SampleMinAggregate_1.SampleMinAggregate, { nullable: true }),
+    tslib_1.__metadata(\\"design:type\\", String)
+], SampleGroupBy.prototype, \\"_min\\", void 0);
+tslib_1.__decorate([
+    TypeGraphQL.Field(_type => SampleMaxAggregate_1.SampleMaxAggregate, { nullable: true }),
+    tslib_1.__metadata(\\"design:type\\", String)
+], SampleGroupBy.prototype, \\"_max\\", void 0);
+exports.SampleGroupBy = SampleGroupBy = tslib_1.__decorate([
+    TypeGraphQL.ObjectType(\\"SampleGroupBy\\", {})
+], SampleGroupBy);
 "
 `;
 
 exports[`outputs should properly generate output type classes: SampleMaxAggregate 1`] = `
-"import * as TypeGraphQL from \\"type-graphql\\";
-import * as GraphQLScalars from \\"graphql-scalars\\";
-import { Prisma } from \\"../../../../helpers/prisma-client-mock/client\\";
-import { DecimalJSScalar } from \\"../../scalars\\";
-
-@TypeGraphQL.ObjectType(\\"SampleMaxAggregate\\", {})
-export class SampleMaxAggregate {
-    @TypeGraphQL.Field(_type => TypeGraphQL.Int, { nullable: true })
-    intIdField!: number | null;
-
-    @TypeGraphQL.Field(_type => String, { nullable: true })
-    stringField!: string | null;
-
-    @TypeGraphQL.Field(_type => TypeGraphQL.Float, { nullable: true })
-    floatField!: number | null;
-
-    @TypeGraphQL.Field(_type => Boolean, { nullable: true })
-    booleanField!: boolean | null;
-
-    @TypeGraphQL.Field(_type => Date, { nullable: true })
-    dateField!: Date | null;
-}
+"\\"use strict\\";
+Object.defineProperty(exports, \\"__esModule\\", { value: true });
+exports.SampleMaxAggregate = void 0;
+const tslib_1 = require(\\"tslib\\");
+const TypeGraphQL = tslib_1.__importStar(require(\\"type-graphql\\"));
+let SampleMaxAggregate = class SampleMaxAggregate {
+};
+exports.SampleMaxAggregate = SampleMaxAggregate;
+tslib_1.__decorate([
+    TypeGraphQL.Field(_type => TypeGraphQL.Int, { nullable: true }),
+    tslib_1.__metadata(\\"design:type\\", Number)
+], SampleMaxAggregate.prototype, \\"intIdField\\", void 0);
+tslib_1.__decorate([
+    TypeGraphQL.Field(_type => String, { nullable: true }),
+    tslib_1.__metadata(\\"design:type\\", String)
+], SampleMaxAggregate.prototype, \\"stringField\\", void 0);
+tslib_1.__decorate([
+    TypeGraphQL.Field(_type => TypeGraphQL.Float, { nullable: true }),
+    tslib_1.__metadata(\\"design:type\\", Number)
+], SampleMaxAggregate.prototype, \\"floatField\\", void 0);
+tslib_1.__decorate([
+    TypeGraphQL.Field(_type => Boolean, { nullable: true }),
+    tslib_1.__metadata(\\"design:type\\", Boolean)
+], SampleMaxAggregate.prototype, \\"booleanField\\", void 0);
+tslib_1.__decorate([
+    TypeGraphQL.Field(_type => Date, { nullable: true }),
+    tslib_1.__metadata(\\"design:type\\", Date)
+], SampleMaxAggregate.prototype, \\"dateField\\", void 0);
+exports.SampleMaxAggregate = SampleMaxAggregate = tslib_1.__decorate([
+    TypeGraphQL.ObjectType(\\"SampleMaxAggregate\\", {})
+], SampleMaxAggregate);
 "
 `;
 
 exports[`outputs should properly generate output type classes: SampleMinAggregate 1`] = `
-"import * as TypeGraphQL from \\"type-graphql\\";
-import * as GraphQLScalars from \\"graphql-scalars\\";
-import { Prisma } from \\"../../../../helpers/prisma-client-mock/client\\";
-import { DecimalJSScalar } from \\"../../scalars\\";
-
-@TypeGraphQL.ObjectType(\\"SampleMinAggregate\\", {})
-export class SampleMinAggregate {
-    @TypeGraphQL.Field(_type => TypeGraphQL.Int, { nullable: true })
-    intIdField!: number | null;
-
-    @TypeGraphQL.Field(_type => String, { nullable: true })
-    stringField!: string | null;
-
-    @TypeGraphQL.Field(_type => TypeGraphQL.Float, { nullable: true })
-    floatField!: number | null;
-
-    @TypeGraphQL.Field(_type => Boolean, { nullable: true })
-    booleanField!: boolean | null;
-
-    @TypeGraphQL.Field(_type => Date, { nullable: true })
-    dateField!: Date | null;
-}
+"\\"use strict\\";
+Object.defineProperty(exports, \\"__esModule\\", { value: true });
+exports.SampleMinAggregate = void 0;
+const tslib_1 = require(\\"tslib\\");
+const TypeGraphQL = tslib_1.__importStar(require(\\"type-graphql\\"));
+let SampleMinAggregate = class SampleMinAggregate {
+};
+exports.SampleMinAggregate = SampleMinAggregate;
+tslib_1.__decorate([
+    TypeGraphQL.Field(_type => TypeGraphQL.Int, { nullable: true }),
+    tslib_1.__metadata(\\"design:type\\", Number)
+], SampleMinAggregate.prototype, \\"intIdField\\", void 0);
+tslib_1.__decorate([
+    TypeGraphQL.Field(_type => String, { nullable: true }),
+    tslib_1.__metadata(\\"design:type\\", String)
+], SampleMinAggregate.prototype, \\"stringField\\", void 0);
+tslib_1.__decorate([
+    TypeGraphQL.Field(_type => TypeGraphQL.Float, { nullable: true }),
+    tslib_1.__metadata(\\"design:type\\", Number)
+], SampleMinAggregate.prototype, \\"floatField\\", void 0);
+tslib_1.__decorate([
+    TypeGraphQL.Field(_type => Boolean, { nullable: true }),
+    tslib_1.__metadata(\\"design:type\\", Boolean)
+], SampleMinAggregate.prototype, \\"booleanField\\", void 0);
+tslib_1.__decorate([
+    TypeGraphQL.Field(_type => Date, { nullable: true }),
+    tslib_1.__metadata(\\"design:type\\", Date)
+], SampleMinAggregate.prototype, \\"dateField\\", void 0);
+exports.SampleMinAggregate = SampleMinAggregate = tslib_1.__decorate([
+    TypeGraphQL.ObjectType(\\"SampleMinAggregate\\", {})
+], SampleMinAggregate);
 "
 `;
 
 exports[`outputs should properly generate output type classes: SampleSumAggregate 1`] = `
-"import * as TypeGraphQL from \\"type-graphql\\";
-import * as GraphQLScalars from \\"graphql-scalars\\";
-import { Prisma } from \\"../../../../helpers/prisma-client-mock/client\\";
-import { DecimalJSScalar } from \\"../../scalars\\";
-
-@TypeGraphQL.ObjectType(\\"SampleSumAggregate\\", {})
-export class SampleSumAggregate {
-    @TypeGraphQL.Field(_type => TypeGraphQL.Int, { nullable: true })
-    intIdField!: number | null;
-
-    @TypeGraphQL.Field(_type => TypeGraphQL.Float, { nullable: true })
-    floatField!: number | null;
-
-    @TypeGraphQL.Field(_type => [TypeGraphQL.Int], { nullable: true })
-    intArrayField!: number[] | null;
-}
+"\\"use strict\\";
+Object.defineProperty(exports, \\"__esModule\\", { value: true });
+exports.SampleSumAggregate = void 0;
+const tslib_1 = require(\\"tslib\\");
+const TypeGraphQL = tslib_1.__importStar(require(\\"type-graphql\\"));
+let SampleSumAggregate = class SampleSumAggregate {
+};
+exports.SampleSumAggregate = SampleSumAggregate;
+tslib_1.__decorate([
+    TypeGraphQL.Field(_type => TypeGraphQL.Int, { nullable: true }),
+    tslib_1.__metadata(\\"design:type\\", Number)
+], SampleSumAggregate.prototype, \\"intIdField\\", void 0);
+tslib_1.__decorate([
+    TypeGraphQL.Field(_type => TypeGraphQL.Float, { nullable: true }),
+    tslib_1.__metadata(\\"design:type\\", Number)
+], SampleSumAggregate.prototype, \\"floatField\\", void 0);
+tslib_1.__decorate([
+    TypeGraphQL.Field(_type => [TypeGraphQL.Int], { nullable: true }),
+    tslib_1.__metadata(\\"design:type\\", Array)
+], SampleSumAggregate.prototype, \\"intArrayField\\", void 0);
+exports.SampleSumAggregate = SampleSumAggregate = tslib_1.__decorate([
+    TypeGraphQL.ObjectType(\\"SampleSumAggregate\\", {})
+], SampleSumAggregate);
 "
 `;
 
 exports[`outputs should properly generate output type classes: outputs index 1`] = `
-"export { AffectedRowsOutput } from \\"./AffectedRowsOutput\\";
-export { AggregateSample } from \\"./AggregateSample\\";
-export { CreateManyAndReturnSample } from \\"./CreateManyAndReturnSample\\";
-export { SampleAvgAggregate } from \\"./SampleAvgAggregate\\";
-export { SampleCountAggregate } from \\"./SampleCountAggregate\\";
-export { SampleGroupBy } from \\"./SampleGroupBy\\";
-export { SampleMaxAggregate } from \\"./SampleMaxAggregate\\";
-export { SampleMinAggregate } from \\"./SampleMinAggregate\\";
-export { SampleSumAggregate } from \\"./SampleSumAggregate\\";
-export { UpdateManySampleAndReturnOutputType } from \\"./UpdateManySampleAndReturnOutputType\\";
+"\\"use strict\\";
+Object.defineProperty(exports, \\"__esModule\\", { value: true });
+const tslib_1 = require(\\"tslib\\");
+tslib_1.__exportStar(require(\\"./AffectedRowsOutput\\"), exports);
+tslib_1.__exportStar(require(\\"./AggregateSample\\"), exports);
+tslib_1.__exportStar(require(\\"./CreateManyAndReturnSample\\"), exports);
+tslib_1.__exportStar(require(\\"./SampleAvgAggregate\\"), exports);
+tslib_1.__exportStar(require(\\"./SampleCountAggregate\\"), exports);
+tslib_1.__exportStar(require(\\"./SampleGroupBy\\"), exports);
+tslib_1.__exportStar(require(\\"./SampleMaxAggregate\\"), exports);
+tslib_1.__exportStar(require(\\"./SampleMinAggregate\\"), exports);
+tslib_1.__exportStar(require(\\"./SampleSumAggregate\\"), exports);
+tslib_1.__exportStar(require(\\"./UpdateManySampleAndReturnOutputType\\"), exports);
 "
 `;
 
 exports[`outputs when \`emitIsAbstract\` generator option is enabled should properly generate count object type class decorator options: FirstModelCount 1`] = `
-"import * as TypeGraphQL from \\"type-graphql\\";
-import * as GraphQLScalars from \\"graphql-scalars\\";
-import { Prisma } from \\"../../../../helpers/prisma-client-mock/client\\";
-import { DecimalJSScalar } from \\"../../scalars\\";
-import { FirstModelCountSecondModelsFieldArgs } from \\"./args/FirstModelCountSecondModelsFieldArgs\\";
-
-@TypeGraphQL.ObjectType(\\"FirstModelCount\\", { isAbstract: true })
-export class FirstModelCount {
-    secondModelsField!: number;
-
-    @TypeGraphQL.Field(_type => TypeGraphQL.Int, { name: \\"secondModelsField\\", nullable: false })
-    getSecondModelsField(@TypeGraphQL.Root() root: FirstModelCount, @TypeGraphQL.Args() args: FirstModelCountSecondModelsFieldArgs): number {
-        return root.secondModelsField;
-    }
-}
+"\\"use strict\\";
+Object.defineProperty(exports, \\"__esModule\\", { value: true });
+exports.FirstModelCount = void 0;
+const tslib_1 = require(\\"tslib\\");
+const TypeGraphQL = tslib_1.__importStar(require(\\"type-graphql\\"));
+const FirstModelCountSecondModelsFieldArgs_1 = require(\\"./args/FirstModelCountSecondModelsFieldArgs\\");
+let FirstModelCount = class FirstModelCount {
+  getSecondModelsField(root, args) {
+    return root.secondModelsField;
+  }
+};
+exports.FirstModelCount = FirstModelCount;
+tslib_1.__decorate([
+    TypeGraphQL.Field(_type => TypeGraphQL.Int, { name: \\"secondModelsField\\", nullable: false }),
+    tslib_1.__param(0, TypeGraphQL.Root()),
+    tslib_1.__param(1, TypeGraphQL.Args()),
+    tslib_1.__metadata(\\"design:type\\", Function),
+    tslib_1.__metadata(\\"design:paramtypes\\", [FirstModelCount, FirstModelCountSecondModelsFieldArgs_1.FirstModelCountSecondModelsFieldArgs]),
+    tslib_1.__metadata(\\"design:returntype\\", Number)
+], FirstModelCount.prototype, \\"getSecondModelsField\\", null);
+exports.FirstModelCount = FirstModelCount = tslib_1.__decorate([
+    TypeGraphQL.ObjectType(\\"FirstModelCount\\", { isAbstract: true })
+], FirstModelCount);
 "
 `;
 
 exports[`outputs when customPrismaImportPath option is set should properly generate output type classes: AggregateSample 1`] = `
-"import * as TypeGraphQL from \\"type-graphql\\";
-import * as GraphQLScalars from \\"graphql-scalars\\";
-import { Prisma } from \\"../../../test/import\\";
-import { DecimalJSScalar } from \\"../../scalars\\";
-import { SampleAvgAggregate } from \\"../outputs/SampleAvgAggregate\\";
-import { SampleCountAggregate } from \\"../outputs/SampleCountAggregate\\";
-import { SampleMaxAggregate } from \\"../outputs/SampleMaxAggregate\\";
-import { SampleMinAggregate } from \\"../outputs/SampleMinAggregate\\";
-import { SampleSumAggregate } from \\"../outputs/SampleSumAggregate\\";
-
-@TypeGraphQL.ObjectType(\\"AggregateSample\\", {})
-export class AggregateSample {
-    @TypeGraphQL.Field(_type => SampleCountAggregate, { nullable: true })
-    _count!: SampleCountAggregate | null;
-
-    @TypeGraphQL.Field(_type => SampleAvgAggregate, { nullable: true })
-    _avg!: SampleAvgAggregate | null;
-
-    @TypeGraphQL.Field(_type => SampleSumAggregate, { nullable: true })
-    _sum!: SampleSumAggregate | null;
-
-    @TypeGraphQL.Field(_type => SampleMinAggregate, { nullable: true })
-    _min!: SampleMinAggregate | null;
-
-    @TypeGraphQL.Field(_type => SampleMaxAggregate, { nullable: true })
-    _max!: SampleMaxAggregate | null;
-}
+"\\"use strict\\";
+Object.defineProperty(exports, \\"__esModule\\", { value: true });
+exports.AggregateSample = void 0;
+const tslib_1 = require(\\"tslib\\");
+const TypeGraphQL = tslib_1.__importStar(require(\\"type-graphql\\"));
+const SampleAvgAggregate_1 = require(\\"../outputs/SampleAvgAggregate\\");
+const SampleCountAggregate_1 = require(\\"../outputs/SampleCountAggregate\\");
+const SampleMaxAggregate_1 = require(\\"../outputs/SampleMaxAggregate\\");
+const SampleMinAggregate_1 = require(\\"../outputs/SampleMinAggregate\\");
+const SampleSumAggregate_1 = require(\\"../outputs/SampleSumAggregate\\");
+let AggregateSample = class AggregateSample {
+};
+exports.AggregateSample = AggregateSample;
+tslib_1.__decorate([
+    TypeGraphQL.Field(_type => SampleCountAggregate_1.SampleCountAggregate, { nullable: true }),
+    tslib_1.__metadata(\\"design:type\\", String)
+], AggregateSample.prototype, \\"_count\\", void 0);
+tslib_1.__decorate([
+    TypeGraphQL.Field(_type => SampleAvgAggregate_1.SampleAvgAggregate, { nullable: true }),
+    tslib_1.__metadata(\\"design:type\\", String)
+], AggregateSample.prototype, \\"_avg\\", void 0);
+tslib_1.__decorate([
+    TypeGraphQL.Field(_type => SampleSumAggregate_1.SampleSumAggregate, { nullable: true }),
+    tslib_1.__metadata(\\"design:type\\", String)
+], AggregateSample.prototype, \\"_sum\\", void 0);
+tslib_1.__decorate([
+    TypeGraphQL.Field(_type => SampleMinAggregate_1.SampleMinAggregate, { nullable: true }),
+    tslib_1.__metadata(\\"design:type\\", String)
+], AggregateSample.prototype, \\"_min\\", void 0);
+tslib_1.__decorate([
+    TypeGraphQL.Field(_type => SampleMaxAggregate_1.SampleMaxAggregate, { nullable: true }),
+    tslib_1.__metadata(\\"design:type\\", String)
+], AggregateSample.prototype, \\"_max\\", void 0);
+exports.AggregateSample = AggregateSample = tslib_1.__decorate([
+    TypeGraphQL.ObjectType(\\"AggregateSample\\", {})
+], AggregateSample);
 "
 `;
 
 exports[`outputs when simpleResolvers option is enabled should properly generate output type classes: AffectedRowsOutput 1`] = `
-"import * as TypeGraphQL from \\"type-graphql\\";
-import * as GraphQLScalars from \\"graphql-scalars\\";
-import { Prisma } from \\"../../../../helpers/prisma-client-mock/client\\";
-import { DecimalJSScalar } from \\"../../scalars\\";
-
-@TypeGraphQL.ObjectType(\\"AffectedRowsOutput\\", { simpleResolvers: true })
-export class AffectedRowsOutput {
-    @TypeGraphQL.Field(_type => TypeGraphQL.Int, { nullable: false })
-    count!: number;
-}
+"\\"use strict\\";
+Object.defineProperty(exports, \\"__esModule\\", { value: true });
+exports.AffectedRowsOutput = void 0;
+const tslib_1 = require(\\"tslib\\");
+const TypeGraphQL = tslib_1.__importStar(require(\\"type-graphql\\"));
+let AffectedRowsOutput = class AffectedRowsOutput {
+};
+exports.AffectedRowsOutput = AffectedRowsOutput;
+tslib_1.__decorate([
+    TypeGraphQL.Field(_type => TypeGraphQL.Int, { nullable: false }),
+    tslib_1.__metadata(\\"design:type\\", Number)
+], AffectedRowsOutput.prototype, \\"count\\", void 0);
+exports.AffectedRowsOutput = AffectedRowsOutput = tslib_1.__decorate([
+    TypeGraphQL.ObjectType(\\"AffectedRowsOutput\\", { simpleResolvers: true })
+], AffectedRowsOutput);
 "
 `;
 
 exports[`outputs when simpleResolvers option is enabled should properly generate output type classes: AggregateSample 1`] = `
-"import * as TypeGraphQL from \\"type-graphql\\";
-import * as GraphQLScalars from \\"graphql-scalars\\";
-import { Prisma } from \\"../../../../helpers/prisma-client-mock/client\\";
-import { DecimalJSScalar } from \\"../../scalars\\";
-import { SampleAvgAggregate } from \\"../outputs/SampleAvgAggregate\\";
-import { SampleCountAggregate } from \\"../outputs/SampleCountAggregate\\";
-import { SampleMaxAggregate } from \\"../outputs/SampleMaxAggregate\\";
-import { SampleMinAggregate } from \\"../outputs/SampleMinAggregate\\";
-import { SampleSumAggregate } from \\"../outputs/SampleSumAggregate\\";
-
-@TypeGraphQL.ObjectType(\\"AggregateSample\\", { simpleResolvers: true })
-export class AggregateSample {
-    @TypeGraphQL.Field(_type => SampleCountAggregate, { nullable: true })
-    _count!: SampleCountAggregate | null;
-
-    @TypeGraphQL.Field(_type => SampleAvgAggregate, { nullable: true })
-    _avg!: SampleAvgAggregate | null;
-
-    @TypeGraphQL.Field(_type => SampleSumAggregate, { nullable: true })
-    _sum!: SampleSumAggregate | null;
-
-    @TypeGraphQL.Field(_type => SampleMinAggregate, { nullable: true })
-    _min!: SampleMinAggregate | null;
-
-    @TypeGraphQL.Field(_type => SampleMaxAggregate, { nullable: true })
-    _max!: SampleMaxAggregate | null;
-}
+"\\"use strict\\";
+Object.defineProperty(exports, \\"__esModule\\", { value: true });
+exports.AggregateSample = void 0;
+const tslib_1 = require(\\"tslib\\");
+const TypeGraphQL = tslib_1.__importStar(require(\\"type-graphql\\"));
+const SampleAvgAggregate_1 = require(\\"../outputs/SampleAvgAggregate\\");
+const SampleCountAggregate_1 = require(\\"../outputs/SampleCountAggregate\\");
+const SampleMaxAggregate_1 = require(\\"../outputs/SampleMaxAggregate\\");
+const SampleMinAggregate_1 = require(\\"../outputs/SampleMinAggregate\\");
+const SampleSumAggregate_1 = require(\\"../outputs/SampleSumAggregate\\");
+let AggregateSample = class AggregateSample {
+};
+exports.AggregateSample = AggregateSample;
+tslib_1.__decorate([
+    TypeGraphQL.Field(_type => SampleCountAggregate_1.SampleCountAggregate, { nullable: true }),
+    tslib_1.__metadata(\\"design:type\\", String)
+], AggregateSample.prototype, \\"_count\\", void 0);
+tslib_1.__decorate([
+    TypeGraphQL.Field(_type => SampleAvgAggregate_1.SampleAvgAggregate, { nullable: true }),
+    tslib_1.__metadata(\\"design:type\\", String)
+], AggregateSample.prototype, \\"_avg\\", void 0);
+tslib_1.__decorate([
+    TypeGraphQL.Field(_type => SampleSumAggregate_1.SampleSumAggregate, { nullable: true }),
+    tslib_1.__metadata(\\"design:type\\", String)
+], AggregateSample.prototype, \\"_sum\\", void 0);
+tslib_1.__decorate([
+    TypeGraphQL.Field(_type => SampleMinAggregate_1.SampleMinAggregate, { nullable: true }),
+    tslib_1.__metadata(\\"design:type\\", String)
+], AggregateSample.prototype, \\"_min\\", void 0);
+tslib_1.__decorate([
+    TypeGraphQL.Field(_type => SampleMaxAggregate_1.SampleMaxAggregate, { nullable: true }),
+    tslib_1.__metadata(\\"design:type\\", String)
+], AggregateSample.prototype, \\"_max\\", void 0);
+exports.AggregateSample = AggregateSample = tslib_1.__decorate([
+    TypeGraphQL.ObjectType(\\"AggregateSample\\", { simpleResolvers: true })
+], AggregateSample);
 "
 `;
 
 exports[`outputs when simpleResolvers option is enabled should properly generate output type classes: SampleAvgAggregate 1`] = `
-"import * as TypeGraphQL from \\"type-graphql\\";
-import * as GraphQLScalars from \\"graphql-scalars\\";
-import { Prisma } from \\"../../../../helpers/prisma-client-mock/client\\";
-import { DecimalJSScalar } from \\"../../scalars\\";
-
-@TypeGraphQL.ObjectType(\\"SampleAvgAggregate\\", { simpleResolvers: true })
-export class SampleAvgAggregate {
-    @TypeGraphQL.Field(_type => TypeGraphQL.Float, { nullable: true })
-    intIdField!: number | null;
-
-    @TypeGraphQL.Field(_type => TypeGraphQL.Float, { nullable: true })
-    floatField!: number | null;
-}
+"\\"use strict\\";
+Object.defineProperty(exports, \\"__esModule\\", { value: true });
+exports.SampleAvgAggregate = void 0;
+const tslib_1 = require(\\"tslib\\");
+const TypeGraphQL = tslib_1.__importStar(require(\\"type-graphql\\"));
+let SampleAvgAggregate = class SampleAvgAggregate {
+};
+exports.SampleAvgAggregate = SampleAvgAggregate;
+tslib_1.__decorate([
+    TypeGraphQL.Field(_type => TypeGraphQL.Float, { nullable: true }),
+    tslib_1.__metadata(\\"design:type\\", Number)
+], SampleAvgAggregate.prototype, \\"intIdField\\", void 0);
+tslib_1.__decorate([
+    TypeGraphQL.Field(_type => TypeGraphQL.Float, { nullable: true }),
+    tslib_1.__metadata(\\"design:type\\", Number)
+], SampleAvgAggregate.prototype, \\"floatField\\", void 0);
+exports.SampleAvgAggregate = SampleAvgAggregate = tslib_1.__decorate([
+    TypeGraphQL.ObjectType(\\"SampleAvgAggregate\\", { simpleResolvers: true })
+], SampleAvgAggregate);
 "
 `;

@@ -132,6 +132,7 @@ export default function generateRelationsResolverClassesFromModel(
   const module = renderResolverModule({
     className: resolverName,
     modelTypeName: model.typeName,
+    modelRuntimeRef: runtimeRefs.get(model.typeName),
     jsImports,
     dtsImports,
     methods: relationFields.map(field => {
