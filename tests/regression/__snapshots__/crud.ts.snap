@@ -24,7 +24,7 @@ tslib_1.__decorate([
     TypeGraphQL.Mutation(_returns => [CreateManyAndReturnUser_1.CreateManyAndReturnUser], { nullable: false }),
     tslib_1.__param(0, TypeGraphQL.Ctx()),
     tslib_1.__param(1, TypeGraphQL.Info()),
-    tslib_1.__param(2, TypeGraphQL.Args()),
+    tslib_1.__param(2, TypeGraphQL.Args(_type => CreateManyAndReturnUserArgs_1.CreateManyAndReturnUserArgs)),
     tslib_1.__metadata(\\"design:type\\", Function),
     tslib_1.__metadata(\\"design:paramtypes\\", [Object, Object, CreateManyAndReturnUserArgs_1.CreateManyAndReturnUserArgs]),
     tslib_1.__metadata(\\"design:returntype\\", Promise)
@@ -59,7 +59,7 @@ tslib_1.__decorate([
     TypeGraphQL.Mutation(_returns => AffectedRowsOutput_1.AffectedRowsOutput, { nullable: false }),
     tslib_1.__param(0, TypeGraphQL.Ctx()),
     tslib_1.__param(1, TypeGraphQL.Info()),
-    tslib_1.__param(2, TypeGraphQL.Args()),
+    tslib_1.__param(2, TypeGraphQL.Args(_type => CreateManyUserArgs_1.CreateManyUserArgs)),
     tslib_1.__metadata(\\"design:type\\", Function),
     tslib_1.__metadata(\\"design:paramtypes\\", [Object, Object, CreateManyUserArgs_1.CreateManyUserArgs]),
     tslib_1.__metadata(\\"design:returntype\\", Promise)
@@ -93,7 +93,7 @@ tslib_1.__decorate([
     TypeGraphQL.Mutation(_returns => User_1.User, { nullable: false }),
     tslib_1.__param(0, TypeGraphQL.Ctx()),
     tslib_1.__param(1, TypeGraphQL.Info()),
-    tslib_1.__param(2, TypeGraphQL.Args()),
+    tslib_1.__param(2, TypeGraphQL.Args(_type => CreateOneUserArgs_1.CreateOneUserArgs)),
     tslib_1.__metadata(\\"design:type\\", Function),
     tslib_1.__metadata(\\"design:paramtypes\\", [Object, Object, CreateOneUserArgs_1.CreateOneUserArgs]),
     tslib_1.__metadata(\\"design:returntype\\", Promise)
@@ -128,7 +128,7 @@ tslib_1.__decorate([
     TypeGraphQL.Mutation(_returns => AffectedRowsOutput_1.AffectedRowsOutput, { nullable: false }),
     tslib_1.__param(0, TypeGraphQL.Ctx()),
     tslib_1.__param(1, TypeGraphQL.Info()),
-    tslib_1.__param(2, TypeGraphQL.Args()),
+    tslib_1.__param(2, TypeGraphQL.Args(_type => DeleteManyUserArgs_1.DeleteManyUserArgs)),
     tslib_1.__metadata(\\"design:type\\", Function),
     tslib_1.__metadata(\\"design:paramtypes\\", [Object, Object, DeleteManyUserArgs_1.DeleteManyUserArgs]),
     tslib_1.__metadata(\\"design:returntype\\", Promise)
@@ -162,7 +162,7 @@ tslib_1.__decorate([
     TypeGraphQL.Mutation(_returns => User_1.User, { nullable: true }),
     tslib_1.__param(0, TypeGraphQL.Ctx()),
     tslib_1.__param(1, TypeGraphQL.Info()),
-    tslib_1.__param(2, TypeGraphQL.Args()),
+    tslib_1.__param(2, TypeGraphQL.Args(_type => DeleteOneUserArgs_1.DeleteOneUserArgs)),
     tslib_1.__metadata(\\"design:type\\", Function),
     tslib_1.__metadata(\\"design:paramtypes\\", [Object, Object, DeleteOneUserArgs_1.DeleteOneUserArgs]),
     tslib_1.__metadata(\\"design:returntype\\", Promise)
@@ -196,7 +196,7 @@ tslib_1.__decorate([
     TypeGraphQL.Query(_returns => User_1.User, { nullable: true }),
     tslib_1.__param(0, TypeGraphQL.Ctx()),
     tslib_1.__param(1, TypeGraphQL.Info()),
-    tslib_1.__param(2, TypeGraphQL.Args()),
+    tslib_1.__param(2, TypeGraphQL.Args(_type => FindFirstUserOrThrowArgs_1.FindFirstUserOrThrowArgs)),
     tslib_1.__metadata(\\"design:type\\", Function),
     tslib_1.__metadata(\\"design:paramtypes\\", [Object, Object, FindFirstUserOrThrowArgs_1.FindFirstUserOrThrowArgs]),
     tslib_1.__metadata(\\"design:returntype\\", Promise)
@@ -230,7 +230,7 @@ tslib_1.__decorate([
     TypeGraphQL.Query(_returns => User_1.User, { nullable: true }),
     tslib_1.__param(0, TypeGraphQL.Ctx()),
     tslib_1.__param(1, TypeGraphQL.Info()),
-    tslib_1.__param(2, TypeGraphQL.Args()),
+    tslib_1.__param(2, TypeGraphQL.Args(_type => FindFirstUserArgs_1.FindFirstUserArgs)),
     tslib_1.__metadata(\\"design:type\\", Function),
     tslib_1.__metadata(\\"design:paramtypes\\", [Object, Object, FindFirstUserArgs_1.FindFirstUserArgs]),
     tslib_1.__metadata(\\"design:returntype\\", Promise)
@@ -264,7 +264,7 @@ tslib_1.__decorate([
     TypeGraphQL.Query(_returns => [User_1.User], { nullable: false }),
     tslib_1.__param(0, TypeGraphQL.Ctx()),
     tslib_1.__param(1, TypeGraphQL.Info()),
-    tslib_1.__param(2, TypeGraphQL.Args()),
+    tslib_1.__param(2, TypeGraphQL.Args(_type => FindManyUserArgs_1.FindManyUserArgs)),
     tslib_1.__metadata(\\"design:type\\", Function),
     tslib_1.__metadata(\\"design:paramtypes\\", [Object, Object, FindManyUserArgs_1.FindManyUserArgs]),
     tslib_1.__metadata(\\"design:returntype\\", Promise)
@@ -298,7 +298,7 @@ tslib_1.__decorate([
     TypeGraphQL.Query(_returns => User_1.User, { nullable: true }),
     tslib_1.__param(0, TypeGraphQL.Ctx()),
     tslib_1.__param(1, TypeGraphQL.Info()),
-    tslib_1.__param(2, TypeGraphQL.Args()),
+    tslib_1.__param(2, TypeGraphQL.Args(_type => FindUniqueUserOrThrowArgs_1.FindUniqueUserOrThrowArgs)),
     tslib_1.__metadata(\\"design:type\\", Function),
     tslib_1.__metadata(\\"design:paramtypes\\", [Object, Object, FindUniqueUserOrThrowArgs_1.FindUniqueUserOrThrowArgs]),
     tslib_1.__metadata(\\"design:returntype\\", Promise)
@@ -332,7 +332,7 @@ tslib_1.__decorate([
     TypeGraphQL.Query(_returns => User_1.User, { nullable: true }),
     tslib_1.__param(0, TypeGraphQL.Ctx()),
     tslib_1.__param(1, TypeGraphQL.Info()),
-    tslib_1.__param(2, TypeGraphQL.Args()),
+    tslib_1.__param(2, TypeGraphQL.Args(_type => FindUniqueUserArgs_1.FindUniqueUserArgs)),
     tslib_1.__metadata(\\"design:type\\", Function),
     tslib_1.__metadata(\\"design:paramtypes\\", [Object, Object, FindUniqueUserArgs_1.FindUniqueUserArgs]),
     tslib_1.__metadata(\\"design:returntype\\", Promise)
@@ -369,7 +369,7 @@ tslib_1.__decorate([
     TypeGraphQL.Query(_returns => [UserGroupBy_1.UserGroupBy], { nullable: false }),
     tslib_1.__param(0, TypeGraphQL.Ctx()),
     tslib_1.__param(1, TypeGraphQL.Info()),
-    tslib_1.__param(2, TypeGraphQL.Args()),
+    tslib_1.__param(2, TypeGraphQL.Args(_type => GroupByUserArgs_1.GroupByUserArgs)),
     tslib_1.__metadata(\\"design:type\\", Function),
     tslib_1.__metadata(\\"design:paramtypes\\", [Object, Object, GroupByUserArgs_1.GroupByUserArgs]),
     tslib_1.__metadata(\\"design:returntype\\", Promise)
@@ -414,7 +414,7 @@ tslib_1.__decorate([
     TypeGraphQL.Mutation(_returns => AffectedRowsOutput_1.AffectedRowsOutput, { nullable: false }),
     tslib_1.__param(0, TypeGraphQL.Ctx()),
     tslib_1.__param(1, TypeGraphQL.Info()),
-    tslib_1.__param(2, TypeGraphQL.Args()),
+    tslib_1.__param(2, TypeGraphQL.Args(_type => UpdateManyUserArgs_1.UpdateManyUserArgs)),
     tslib_1.__metadata(\\"design:type\\", Function),
     tslib_1.__metadata(\\"design:paramtypes\\", [Object, Object, UpdateManyUserArgs_1.UpdateManyUserArgs]),
     tslib_1.__metadata(\\"design:returntype\\", Promise)
@@ -448,7 +448,7 @@ tslib_1.__decorate([
     TypeGraphQL.Mutation(_returns => User_1.User, { nullable: true }),
     tslib_1.__param(0, TypeGraphQL.Ctx()),
     tslib_1.__param(1, TypeGraphQL.Info()),
-    tslib_1.__param(2, TypeGraphQL.Args()),
+    tslib_1.__param(2, TypeGraphQL.Args(_type => UpdateOneUserArgs_1.UpdateOneUserArgs)),
     tslib_1.__metadata(\\"design:type\\", Function),
     tslib_1.__metadata(\\"design:paramtypes\\", [Object, Object, UpdateOneUserArgs_1.UpdateOneUserArgs]),
     tslib_1.__metadata(\\"design:returntype\\", Promise)
@@ -482,7 +482,7 @@ tslib_1.__decorate([
     TypeGraphQL.Mutation(_returns => User_1.User, { nullable: false }),
     tslib_1.__param(0, TypeGraphQL.Ctx()),
     tslib_1.__param(1, TypeGraphQL.Info()),
-    tslib_1.__param(2, TypeGraphQL.Args()),
+    tslib_1.__param(2, TypeGraphQL.Args(_type => UpsertOneUserArgs_1.UpsertOneUserArgs)),
     tslib_1.__metadata(\\"design:type\\", Function),
     tslib_1.__metadata(\\"design:paramtypes\\", [Object, Object, UpsertOneUserArgs_1.UpsertOneUserArgs]),
     tslib_1.__metadata(\\"design:returntype\\", Promise)
@@ -1462,7 +1462,7 @@ tslib_1.__decorate([
     TypeGraphQL.Query(_returns => AggregateUser_1.AggregateUser, { nullable: false }),
     tslib_1.__param(0, TypeGraphQL.Ctx()),
     tslib_1.__param(1, TypeGraphQL.Info()),
-    tslib_1.__param(2, TypeGraphQL.Args()),
+    tslib_1.__param(2, TypeGraphQL.Args(_type => AggregateUserArgs_1.AggregateUserArgs)),
     tslib_1.__metadata(\\"design:type\\", Function),
     tslib_1.__metadata(\\"design:paramtypes\\", [Object, Object, AggregateUserArgs_1.AggregateUserArgs]),
     tslib_1.__metadata(\\"design:returntype\\", Promise)
@@ -1471,7 +1471,7 @@ tslib_1.__decorate([
     TypeGraphQL.Mutation(_returns => AffectedRowsOutput_1.AffectedRowsOutput, { nullable: false }),
     tslib_1.__param(0, TypeGraphQL.Ctx()),
     tslib_1.__param(1, TypeGraphQL.Info()),
-    tslib_1.__param(2, TypeGraphQL.Args()),
+    tslib_1.__param(2, TypeGraphQL.Args(_type => CreateManyUserArgs_1.CreateManyUserArgs)),
     tslib_1.__metadata(\\"design:type\\", Function),
     tslib_1.__metadata(\\"design:paramtypes\\", [Object, Object, CreateManyUserArgs_1.CreateManyUserArgs]),
     tslib_1.__metadata(\\"design:returntype\\", Promise)
@@ -1480,7 +1480,7 @@ tslib_1.__decorate([
     TypeGraphQL.Mutation(_returns => [CreateManyAndReturnUser_1.CreateManyAndReturnUser], { nullable: false }),
     tslib_1.__param(0, TypeGraphQL.Ctx()),
     tslib_1.__param(1, TypeGraphQL.Info()),
-    tslib_1.__param(2, TypeGraphQL.Args()),
+    tslib_1.__param(2, TypeGraphQL.Args(_type => CreateManyAndReturnUserArgs_1.CreateManyAndReturnUserArgs)),
     tslib_1.__metadata(\\"design:type\\", Function),
     tslib_1.__metadata(\\"design:paramtypes\\", [Object, Object, CreateManyAndReturnUserArgs_1.CreateManyAndReturnUserArgs]),
     tslib_1.__metadata(\\"design:returntype\\", Promise)
@@ -1489,7 +1489,7 @@ tslib_1.__decorate([
     TypeGraphQL.Mutation(_returns => User_1.User, { nullable: false }),
     tslib_1.__param(0, TypeGraphQL.Ctx()),
     tslib_1.__param(1, TypeGraphQL.Info()),
-    tslib_1.__param(2, TypeGraphQL.Args()),
+    tslib_1.__param(2, TypeGraphQL.Args(_type => CreateOneUserArgs_1.CreateOneUserArgs)),
     tslib_1.__metadata(\\"design:type\\", Function),
     tslib_1.__metadata(\\"design:paramtypes\\", [Object, Object, CreateOneUserArgs_1.CreateOneUserArgs]),
     tslib_1.__metadata(\\"design:returntype\\", Promise)
@@ -1498,7 +1498,7 @@ tslib_1.__decorate([
     TypeGraphQL.Mutation(_returns => AffectedRowsOutput_1.AffectedRowsOutput, { nullable: false }),
     tslib_1.__param(0, TypeGraphQL.Ctx()),
     tslib_1.__param(1, TypeGraphQL.Info()),
-    tslib_1.__param(2, TypeGraphQL.Args()),
+    tslib_1.__param(2, TypeGraphQL.Args(_type => DeleteManyUserArgs_1.DeleteManyUserArgs)),
     tslib_1.__metadata(\\"design:type\\", Function),
     tslib_1.__metadata(\\"design:paramtypes\\", [Object, Object, DeleteManyUserArgs_1.DeleteManyUserArgs]),
     tslib_1.__metadata(\\"design:returntype\\", Promise)
@@ -1507,7 +1507,7 @@ tslib_1.__decorate([
     TypeGraphQL.Mutation(_returns => User_1.User, { nullable: true }),
     tslib_1.__param(0, TypeGraphQL.Ctx()),
     tslib_1.__param(1, TypeGraphQL.Info()),
-    tslib_1.__param(2, TypeGraphQL.Args()),
+    tslib_1.__param(2, TypeGraphQL.Args(_type => DeleteOneUserArgs_1.DeleteOneUserArgs)),
     tslib_1.__metadata(\\"design:type\\", Function),
     tslib_1.__metadata(\\"design:paramtypes\\", [Object, Object, DeleteOneUserArgs_1.DeleteOneUserArgs]),
     tslib_1.__metadata(\\"design:returntype\\", Promise)
@@ -1516,7 +1516,7 @@ tslib_1.__decorate([
     TypeGraphQL.Query(_returns => User_1.User, { nullable: true }),
     tslib_1.__param(0, TypeGraphQL.Ctx()),
     tslib_1.__param(1, TypeGraphQL.Info()),
-    tslib_1.__param(2, TypeGraphQL.Args()),
+    tslib_1.__param(2, TypeGraphQL.Args(_type => FindFirstUserArgs_1.FindFirstUserArgs)),
     tslib_1.__metadata(\\"design:type\\", Function),
     tslib_1.__metadata(\\"design:paramtypes\\", [Object, Object, FindFirstUserArgs_1.FindFirstUserArgs]),
     tslib_1.__metadata(\\"design:returntype\\", Promise)
@@ -1525,7 +1525,7 @@ tslib_1.__decorate([
     TypeGraphQL.Query(_returns => User_1.User, { nullable: true }),
     tslib_1.__param(0, TypeGraphQL.Ctx()),
     tslib_1.__param(1, TypeGraphQL.Info()),
-    tslib_1.__param(2, TypeGraphQL.Args()),
+    tslib_1.__param(2, TypeGraphQL.Args(_type => FindFirstUserOrThrowArgs_1.FindFirstUserOrThrowArgs)),
     tslib_1.__metadata(\\"design:type\\", Function),
     tslib_1.__metadata(\\"design:paramtypes\\", [Object, Object, FindFirstUserOrThrowArgs_1.FindFirstUserOrThrowArgs]),
     tslib_1.__metadata(\\"design:returntype\\", Promise)
@@ -1534,7 +1534,7 @@ tslib_1.__decorate([
     TypeGraphQL.Query(_returns => [User_1.User], { nullable: false }),
     tslib_1.__param(0, TypeGraphQL.Ctx()),
     tslib_1.__param(1, TypeGraphQL.Info()),
-    tslib_1.__param(2, TypeGraphQL.Args()),
+    tslib_1.__param(2, TypeGraphQL.Args(_type => FindManyUserArgs_1.FindManyUserArgs)),
     tslib_1.__metadata(\\"design:type\\", Function),
     tslib_1.__metadata(\\"design:paramtypes\\", [Object, Object, FindManyUserArgs_1.FindManyUserArgs]),
     tslib_1.__metadata(\\"design:returntype\\", Promise)
@@ -1543,7 +1543,7 @@ tslib_1.__decorate([
     TypeGraphQL.Query(_returns => User_1.User, { nullable: true }),
     tslib_1.__param(0, TypeGraphQL.Ctx()),
     tslib_1.__param(1, TypeGraphQL.Info()),
-    tslib_1.__param(2, TypeGraphQL.Args()),
+    tslib_1.__param(2, TypeGraphQL.Args(_type => FindUniqueUserArgs_1.FindUniqueUserArgs)),
     tslib_1.__metadata(\\"design:type\\", Function),
     tslib_1.__metadata(\\"design:paramtypes\\", [Object, Object, FindUniqueUserArgs_1.FindUniqueUserArgs]),
     tslib_1.__metadata(\\"design:returntype\\", Promise)
@@ -1552,7 +1552,7 @@ tslib_1.__decorate([
     TypeGraphQL.Query(_returns => User_1.User, { nullable: true }),
     tslib_1.__param(0, TypeGraphQL.Ctx()),
     tslib_1.__param(1, TypeGraphQL.Info()),
-    tslib_1.__param(2, TypeGraphQL.Args()),
+    tslib_1.__param(2, TypeGraphQL.Args(_type => FindUniqueUserOrThrowArgs_1.FindUniqueUserOrThrowArgs)),
     tslib_1.__metadata(\\"design:type\\", Function),
     tslib_1.__metadata(\\"design:paramtypes\\", [Object, Object, FindUniqueUserOrThrowArgs_1.FindUniqueUserOrThrowArgs]),
     tslib_1.__metadata(\\"design:returntype\\", Promise)
@@ -1561,7 +1561,7 @@ tslib_1.__decorate([
     TypeGraphQL.Query(_returns => [UserGroupBy_1.UserGroupBy], { nullable: false }),
     tslib_1.__param(0, TypeGraphQL.Ctx()),
     tslib_1.__param(1, TypeGraphQL.Info()),
-    tslib_1.__param(2, TypeGraphQL.Args()),
+    tslib_1.__param(2, TypeGraphQL.Args(_type => GroupByUserArgs_1.GroupByUserArgs)),
     tslib_1.__metadata(\\"design:type\\", Function),
     tslib_1.__metadata(\\"design:paramtypes\\", [Object, Object, GroupByUserArgs_1.GroupByUserArgs]),
     tslib_1.__metadata(\\"design:returntype\\", Promise)
@@ -1570,7 +1570,7 @@ tslib_1.__decorate([
     TypeGraphQL.Mutation(_returns => AffectedRowsOutput_1.AffectedRowsOutput, { nullable: false }),
     tslib_1.__param(0, TypeGraphQL.Ctx()),
     tslib_1.__param(1, TypeGraphQL.Info()),
-    tslib_1.__param(2, TypeGraphQL.Args()),
+    tslib_1.__param(2, TypeGraphQL.Args(_type => UpdateManyUserArgs_1.UpdateManyUserArgs)),
     tslib_1.__metadata(\\"design:type\\", Function),
     tslib_1.__metadata(\\"design:paramtypes\\", [Object, Object, UpdateManyUserArgs_1.UpdateManyUserArgs]),
     tslib_1.__metadata(\\"design:returntype\\", Promise)
@@ -1579,7 +1579,7 @@ tslib_1.__decorate([
     TypeGraphQL.Mutation(_returns => User_1.User, { nullable: true }),
     tslib_1.__param(0, TypeGraphQL.Ctx()),
     tslib_1.__param(1, TypeGraphQL.Info()),
-    tslib_1.__param(2, TypeGraphQL.Args()),
+    tslib_1.__param(2, TypeGraphQL.Args(_type => UpdateOneUserArgs_1.UpdateOneUserArgs)),
     tslib_1.__metadata(\\"design:type\\", Function),
     tslib_1.__metadata(\\"design:paramtypes\\", [Object, Object, UpdateOneUserArgs_1.UpdateOneUserArgs]),
     tslib_1.__metadata(\\"design:returntype\\", Promise)
@@ -1588,7 +1588,7 @@ tslib_1.__decorate([
     TypeGraphQL.Mutation(_returns => User_1.User, { nullable: false }),
     tslib_1.__param(0, TypeGraphQL.Ctx()),
     tslib_1.__param(1, TypeGraphQL.Info()),
-    tslib_1.__param(2, TypeGraphQL.Args()),
+    tslib_1.__param(2, TypeGraphQL.Args(_type => UpsertOneUserArgs_1.UpsertOneUserArgs)),
     tslib_1.__metadata(\\"design:type\\", Function),
     tslib_1.__metadata(\\"design:paramtypes\\", [Object, Object, UpsertOneUserArgs_1.UpsertOneUserArgs]),
     tslib_1.__metadata(\\"design:returntype\\", Promise)
@@ -1796,7 +1796,7 @@ tslib_1.__decorate([
     TypeGraphQL.Query(_returns => AggregateStaff_1.AggregateStaff, { nullable: false }),
     tslib_1.__param(0, TypeGraphQL.Ctx()),
     tslib_1.__param(1, TypeGraphQL.Info()),
-    tslib_1.__param(2, TypeGraphQL.Args()),
+    tslib_1.__param(2, TypeGraphQL.Args(_type => AggregateStaffArgs_1.AggregateStaffArgs)),
     tslib_1.__metadata(\\"design:type\\", Function),
     tslib_1.__metadata(\\"design:paramtypes\\", [Object, Object, AggregateStaffArgs_1.AggregateStaffArgs]),
     tslib_1.__metadata(\\"design:returntype\\", Promise)
@@ -1805,7 +1805,7 @@ tslib_1.__decorate([
     TypeGraphQL.Mutation(_returns => AffectedRowsOutput_1.AffectedRowsOutput, { nullable: false }),
     tslib_1.__param(0, TypeGraphQL.Ctx()),
     tslib_1.__param(1, TypeGraphQL.Info()),
-    tslib_1.__param(2, TypeGraphQL.Args()),
+    tslib_1.__param(2, TypeGraphQL.Args(_type => CreateManyStaffArgs_1.CreateManyStaffArgs)),
     tslib_1.__metadata(\\"design:type\\", Function),
     tslib_1.__metadata(\\"design:paramtypes\\", [Object, Object, CreateManyStaffArgs_1.CreateManyStaffArgs]),
     tslib_1.__metadata(\\"design:returntype\\", Promise)
@@ -1814,7 +1814,7 @@ tslib_1.__decorate([
     TypeGraphQL.Mutation(_returns => [CreateManyAndReturnStaff_1.CreateManyAndReturnStaff], { nullable: false }),
     tslib_1.__param(0, TypeGraphQL.Ctx()),
     tslib_1.__param(1, TypeGraphQL.Info()),
-    tslib_1.__param(2, TypeGraphQL.Args()),
+    tslib_1.__param(2, TypeGraphQL.Args(_type => CreateManyAndReturnStaffArgs_1.CreateManyAndReturnStaffArgs)),
     tslib_1.__metadata(\\"design:type\\", Function),
     tslib_1.__metadata(\\"design:paramtypes\\", [Object, Object, CreateManyAndReturnStaffArgs_1.CreateManyAndReturnStaffArgs]),
     tslib_1.__metadata(\\"design:returntype\\", Promise)
@@ -1823,7 +1823,7 @@ tslib_1.__decorate([
     TypeGraphQL.Mutation(_returns => Staff_1.Staff, { nullable: false }),
     tslib_1.__param(0, TypeGraphQL.Ctx()),
     tslib_1.__param(1, TypeGraphQL.Info()),
-    tslib_1.__param(2, TypeGraphQL.Args()),
+    tslib_1.__param(2, TypeGraphQL.Args(_type => CreateOneStaffArgs_1.CreateOneStaffArgs)),
     tslib_1.__metadata(\\"design:type\\", Function),
     tslib_1.__metadata(\\"design:paramtypes\\", [Object, Object, CreateOneStaffArgs_1.CreateOneStaffArgs]),
     tslib_1.__metadata(\\"design:returntype\\", Promise)
@@ -1832,7 +1832,7 @@ tslib_1.__decorate([
     TypeGraphQL.Mutation(_returns => AffectedRowsOutput_1.AffectedRowsOutput, { nullable: false }),
     tslib_1.__param(0, TypeGraphQL.Ctx()),
     tslib_1.__param(1, TypeGraphQL.Info()),
-    tslib_1.__param(2, TypeGraphQL.Args()),
+    tslib_1.__param(2, TypeGraphQL.Args(_type => DeleteManyStaffArgs_1.DeleteManyStaffArgs)),
     tslib_1.__metadata(\\"design:type\\", Function),
     tslib_1.__metadata(\\"design:paramtypes\\", [Object, Object, DeleteManyStaffArgs_1.DeleteManyStaffArgs]),
     tslib_1.__metadata(\\"design:returntype\\", Promise)
@@ -1841,7 +1841,7 @@ tslib_1.__decorate([
     TypeGraphQL.Mutation(_returns => Staff_1.Staff, { nullable: true }),
     tslib_1.__param(0, TypeGraphQL.Ctx()),
     tslib_1.__param(1, TypeGraphQL.Info()),
-    tslib_1.__param(2, TypeGraphQL.Args()),
+    tslib_1.__param(2, TypeGraphQL.Args(_type => DeleteOneStaffArgs_1.DeleteOneStaffArgs)),
     tslib_1.__metadata(\\"design:type\\", Function),
     tslib_1.__metadata(\\"design:paramtypes\\", [Object, Object, DeleteOneStaffArgs_1.DeleteOneStaffArgs]),
     tslib_1.__metadata(\\"design:returntype\\", Promise)
@@ -1850,7 +1850,7 @@ tslib_1.__decorate([
     TypeGraphQL.Query(_returns => Staff_1.Staff, { nullable: true }),
     tslib_1.__param(0, TypeGraphQL.Ctx()),
     tslib_1.__param(1, TypeGraphQL.Info()),
-    tslib_1.__param(2, TypeGraphQL.Args()),
+    tslib_1.__param(2, TypeGraphQL.Args(_type => FindFirstStaffArgs_1.FindFirstStaffArgs)),
     tslib_1.__metadata(\\"design:type\\", Function),
     tslib_1.__metadata(\\"design:paramtypes\\", [Object, Object, FindFirstStaffArgs_1.FindFirstStaffArgs]),
     tslib_1.__metadata(\\"design:returntype\\", Promise)
@@ -1859,7 +1859,7 @@ tslib_1.__decorate([
     TypeGraphQL.Query(_returns => Staff_1.Staff, { nullable: true }),
     tslib_1.__param(0, TypeGraphQL.Ctx()),
     tslib_1.__param(1, TypeGraphQL.Info()),
-    tslib_1.__param(2, TypeGraphQL.Args()),
+    tslib_1.__param(2, TypeGraphQL.Args(_type => FindFirstStaffOrThrowArgs_1.FindFirstStaffOrThrowArgs)),
     tslib_1.__metadata(\\"design:type\\", Function),
     tslib_1.__metadata(\\"design:paramtypes\\", [Object, Object, FindFirstStaffOrThrowArgs_1.FindFirstStaffOrThrowArgs]),
     tslib_1.__metadata(\\"design:returntype\\", Promise)
@@ -1868,7 +1868,7 @@ tslib_1.__decorate([
     TypeGraphQL.Query(_returns => [Staff_1.Staff], { nullable: false }),
     tslib_1.__param(0, TypeGraphQL.Ctx()),
     tslib_1.__param(1, TypeGraphQL.Info()),
-    tslib_1.__param(2, TypeGraphQL.Args()),
+    tslib_1.__param(2, TypeGraphQL.Args(_type => FindManyStaffArgs_1.FindManyStaffArgs)),
     tslib_1.__metadata(\\"design:type\\", Function),
     tslib_1.__metadata(\\"design:paramtypes\\", [Object, Object, FindManyStaffArgs_1.FindManyStaffArgs]),
     tslib_1.__metadata(\\"design:returntype\\", Promise)
@@ -1877,7 +1877,7 @@ tslib_1.__decorate([
     TypeGraphQL.Query(_returns => Staff_1.Staff, { nullable: true }),
     tslib_1.__param(0, TypeGraphQL.Ctx()),
     tslib_1.__param(1, TypeGraphQL.Info()),
-    tslib_1.__param(2, TypeGraphQL.Args()),
+    tslib_1.__param(2, TypeGraphQL.Args(_type => FindUniqueStaffArgs_1.FindUniqueStaffArgs)),
     tslib_1.__metadata(\\"design:type\\", Function),
     tslib_1.__metadata(\\"design:paramtypes\\", [Object, Object, FindUniqueStaffArgs_1.FindUniqueStaffArgs]),
     tslib_1.__metadata(\\"design:returntype\\", Promise)
@@ -1886,7 +1886,7 @@ tslib_1.__decorate([
     TypeGraphQL.Query(_returns => Staff_1.Staff, { nullable: true }),
     tslib_1.__param(0, TypeGraphQL.Ctx()),
     tslib_1.__param(1, TypeGraphQL.Info()),
-    tslib_1.__param(2, TypeGraphQL.Args()),
+    tslib_1.__param(2, TypeGraphQL.Args(_type => FindUniqueStaffOrThrowArgs_1.FindUniqueStaffOrThrowArgs)),
     tslib_1.__metadata(\\"design:type\\", Function),
     tslib_1.__metadata(\\"design:paramtypes\\", [Object, Object, FindUniqueStaffOrThrowArgs_1.FindUniqueStaffOrThrowArgs]),
     tslib_1.__metadata(\\"design:returntype\\", Promise)
@@ -1895,7 +1895,7 @@ tslib_1.__decorate([
     TypeGraphQL.Query(_returns => [StaffGroupBy_1.StaffGroupBy], { nullable: false }),
     tslib_1.__param(0, TypeGraphQL.Ctx()),
     tslib_1.__param(1, TypeGraphQL.Info()),
-    tslib_1.__param(2, TypeGraphQL.Args()),
+    tslib_1.__param(2, TypeGraphQL.Args(_type => GroupByStaffArgs_1.GroupByStaffArgs)),
     tslib_1.__metadata(\\"design:type\\", Function),
     tslib_1.__metadata(\\"design:paramtypes\\", [Object, Object, GroupByStaffArgs_1.GroupByStaffArgs]),
     tslib_1.__metadata(\\"design:returntype\\", Promise)
@@ -1904,7 +1904,7 @@ tslib_1.__decorate([
     TypeGraphQL.Mutation(_returns => AffectedRowsOutput_1.AffectedRowsOutput, { nullable: false }),
     tslib_1.__param(0, TypeGraphQL.Ctx()),
     tslib_1.__param(1, TypeGraphQL.Info()),
-    tslib_1.__param(2, TypeGraphQL.Args()),
+    tslib_1.__param(2, TypeGraphQL.Args(_type => UpdateManyStaffArgs_1.UpdateManyStaffArgs)),
     tslib_1.__metadata(\\"design:type\\", Function),
     tslib_1.__metadata(\\"design:paramtypes\\", [Object, Object, UpdateManyStaffArgs_1.UpdateManyStaffArgs]),
     tslib_1.__metadata(\\"design:returntype\\", Promise)
@@ -1913,7 +1913,7 @@ tslib_1.__decorate([
     TypeGraphQL.Mutation(_returns => Staff_1.Staff, { nullable: true }),
     tslib_1.__param(0, TypeGraphQL.Ctx()),
     tslib_1.__param(1, TypeGraphQL.Info()),
-    tslib_1.__param(2, TypeGraphQL.Args()),
+    tslib_1.__param(2, TypeGraphQL.Args(_type => UpdateOneStaffArgs_1.UpdateOneStaffArgs)),
     tslib_1.__metadata(\\"design:type\\", Function),
     tslib_1.__metadata(\\"design:paramtypes\\", [Object, Object, UpdateOneStaffArgs_1.UpdateOneStaffArgs]),
     tslib_1.__metadata(\\"design:returntype\\", Promise)
@@ -1922,7 +1922,7 @@ tslib_1.__decorate([
     TypeGraphQL.Mutation(_returns => Staff_1.Staff, { nullable: false }),
     tslib_1.__param(0, TypeGraphQL.Ctx()),
     tslib_1.__param(1, TypeGraphQL.Info()),
-    tslib_1.__param(2, TypeGraphQL.Args()),
+    tslib_1.__param(2, TypeGraphQL.Args(_type => UpsertOneStaffArgs_1.UpsertOneStaffArgs)),
     tslib_1.__metadata(\\"design:type\\", Function),
     tslib_1.__metadata(\\"design:paramtypes\\", [Object, Object, UpsertOneStaffArgs_1.UpsertOneStaffArgs]),
     tslib_1.__metadata(\\"design:returntype\\", Promise)
@@ -2073,7 +2073,7 @@ tslib_1.__decorate([
     TypeGraphQL.Query(_returns => AggregateStaff_1.AggregateStaff, { nullable: false }),
     tslib_1.__param(0, TypeGraphQL.Ctx()),
     tslib_1.__param(1, TypeGraphQL.Info()),
-    tslib_1.__param(2, TypeGraphQL.Args()),
+    tslib_1.__param(2, TypeGraphQL.Args(_type => AggregateStaffArgs_1.AggregateStaffArgs)),
     tslib_1.__metadata(\\"design:type\\", Function),
     tslib_1.__metadata(\\"design:paramtypes\\", [Object, Object, AggregateStaffArgs_1.AggregateStaffArgs]),
     tslib_1.__metadata(\\"design:returntype\\", Promise)
@@ -2082,7 +2082,7 @@ tslib_1.__decorate([
     TypeGraphQL.Mutation(_returns => AffectedRowsOutput_1.AffectedRowsOutput, { nullable: false }),
     tslib_1.__param(0, TypeGraphQL.Ctx()),
     tslib_1.__param(1, TypeGraphQL.Info()),
-    tslib_1.__param(2, TypeGraphQL.Args()),
+    tslib_1.__param(2, TypeGraphQL.Args(_type => CreateManyStaffArgs_1.CreateManyStaffArgs)),
     tslib_1.__metadata(\\"design:type\\", Function),
     tslib_1.__metadata(\\"design:paramtypes\\", [Object, Object, CreateManyStaffArgs_1.CreateManyStaffArgs]),
     tslib_1.__metadata(\\"design:returntype\\", Promise)
@@ -2091,7 +2091,7 @@ tslib_1.__decorate([
     TypeGraphQL.Mutation(_returns => [CreateManyAndReturnStaff_1.CreateManyAndReturnStaff], { nullable: false }),
     tslib_1.__param(0, TypeGraphQL.Ctx()),
     tslib_1.__param(1, TypeGraphQL.Info()),
-    tslib_1.__param(2, TypeGraphQL.Args()),
+    tslib_1.__param(2, TypeGraphQL.Args(_type => CreateManyAndReturnStaffArgs_1.CreateManyAndReturnStaffArgs)),
     tslib_1.__metadata(\\"design:type\\", Function),
     tslib_1.__metadata(\\"design:paramtypes\\", [Object, Object, CreateManyAndReturnStaffArgs_1.CreateManyAndReturnStaffArgs]),
     tslib_1.__metadata(\\"design:returntype\\", Promise)
@@ -2100,7 +2100,7 @@ tslib_1.__decorate([
     TypeGraphQL.Mutation(_returns => Staff_1.Staff, { nullable: false }),
     tslib_1.__param(0, TypeGraphQL.Ctx()),
     tslib_1.__param(1, TypeGraphQL.Info()),
-    tslib_1.__param(2, TypeGraphQL.Args()),
+    tslib_1.__param(2, TypeGraphQL.Args(_type => CreateOneStaffArgs_1.CreateOneStaffArgs)),
     tslib_1.__metadata(\\"design:type\\", Function),
     tslib_1.__metadata(\\"design:paramtypes\\", [Object, Object, CreateOneStaffArgs_1.CreateOneStaffArgs]),
     tslib_1.__metadata(\\"design:returntype\\", Promise)
@@ -2109,7 +2109,7 @@ tslib_1.__decorate([
     TypeGraphQL.Mutation(_returns => AffectedRowsOutput_1.AffectedRowsOutput, { nullable: false }),
     tslib_1.__param(0, TypeGraphQL.Ctx()),
     tslib_1.__param(1, TypeGraphQL.Info()),
-    tslib_1.__param(2, TypeGraphQL.Args()),
+    tslib_1.__param(2, TypeGraphQL.Args(_type => DeleteManyStaffArgs_1.DeleteManyStaffArgs)),
     tslib_1.__metadata(\\"design:type\\", Function),
     tslib_1.__metadata(\\"design:paramtypes\\", [Object, Object, DeleteManyStaffArgs_1.DeleteManyStaffArgs]),
     tslib_1.__metadata(\\"design:returntype\\", Promise)
@@ -2118,7 +2118,7 @@ tslib_1.__decorate([
     TypeGraphQL.Mutation(_returns => Staff_1.Staff, { nullable: true }),
     tslib_1.__param(0, TypeGraphQL.Ctx()),
     tslib_1.__param(1, TypeGraphQL.Info()),
-    tslib_1.__param(2, TypeGraphQL.Args()),
+    tslib_1.__param(2, TypeGraphQL.Args(_type => DeleteOneStaffArgs_1.DeleteOneStaffArgs)),
     tslib_1.__metadata(\\"design:type\\", Function),
     tslib_1.__metadata(\\"design:paramtypes\\", [Object, Object, DeleteOneStaffArgs_1.DeleteOneStaffArgs]),
     tslib_1.__metadata(\\"design:returntype\\", Promise)
@@ -2127,7 +2127,7 @@ tslib_1.__decorate([
     TypeGraphQL.Query(_returns => Staff_1.Staff, { nullable: true }),
     tslib_1.__param(0, TypeGraphQL.Ctx()),
     tslib_1.__param(1, TypeGraphQL.Info()),
-    tslib_1.__param(2, TypeGraphQL.Args()),
+    tslib_1.__param(2, TypeGraphQL.Args(_type => FindFirstStaffArgs_1.FindFirstStaffArgs)),
     tslib_1.__metadata(\\"design:type\\", Function),
     tslib_1.__metadata(\\"design:paramtypes\\", [Object, Object, FindFirstStaffArgs_1.FindFirstStaffArgs]),
     tslib_1.__metadata(\\"design:returntype\\", Promise)
@@ -2136,7 +2136,7 @@ tslib_1.__decorate([
     TypeGraphQL.Query(_returns => Staff_1.Staff, { nullable: true }),
     tslib_1.__param(0, TypeGraphQL.Ctx()),
     tslib_1.__param(1, TypeGraphQL.Info()),
-    tslib_1.__param(2, TypeGraphQL.Args()),
+    tslib_1.__param(2, TypeGraphQL.Args(_type => FindFirstStaffOrThrowArgs_1.FindFirstStaffOrThrowArgs)),
     tslib_1.__metadata(\\"design:type\\", Function),
     tslib_1.__metadata(\\"design:paramtypes\\", [Object, Object, FindFirstStaffOrThrowArgs_1.FindFirstStaffOrThrowArgs]),
     tslib_1.__metadata(\\"design:returntype\\", Promise)
@@ -2145,7 +2145,7 @@ tslib_1.__decorate([
     TypeGraphQL.Query(_returns => [Staff_1.Staff], { nullable: false }),
     tslib_1.__param(0, TypeGraphQL.Ctx()),
     tslib_1.__param(1, TypeGraphQL.Info()),
-    tslib_1.__param(2, TypeGraphQL.Args()),
+    tslib_1.__param(2, TypeGraphQL.Args(_type => FindManyStaffArgs_1.FindManyStaffArgs)),
     tslib_1.__metadata(\\"design:type\\", Function),
     tslib_1.__metadata(\\"design:paramtypes\\", [Object, Object, FindManyStaffArgs_1.FindManyStaffArgs]),
     tslib_1.__metadata(\\"design:returntype\\", Promise)
@@ -2154,7 +2154,7 @@ tslib_1.__decorate([
     TypeGraphQL.Query(_returns => Staff_1.Staff, { nullable: true }),
     tslib_1.__param(0, TypeGraphQL.Ctx()),
     tslib_1.__param(1, TypeGraphQL.Info()),
-    tslib_1.__param(2, TypeGraphQL.Args()),
+    tslib_1.__param(2, TypeGraphQL.Args(_type => FindUniqueStaffArgs_1.FindUniqueStaffArgs)),
     tslib_1.__metadata(\\"design:type\\", Function),
     tslib_1.__metadata(\\"design:paramtypes\\", [Object, Object, FindUniqueStaffArgs_1.FindUniqueStaffArgs]),
     tslib_1.__metadata(\\"design:returntype\\", Promise)
@@ -2163,7 +2163,7 @@ tslib_1.__decorate([
     TypeGraphQL.Query(_returns => Staff_1.Staff, { nullable: true }),
     tslib_1.__param(0, TypeGraphQL.Ctx()),
     tslib_1.__param(1, TypeGraphQL.Info()),
-    tslib_1.__param(2, TypeGraphQL.Args()),
+    tslib_1.__param(2, TypeGraphQL.Args(_type => FindUniqueStaffOrThrowArgs_1.FindUniqueStaffOrThrowArgs)),
     tslib_1.__metadata(\\"design:type\\", Function),
     tslib_1.__metadata(\\"design:paramtypes\\", [Object, Object, FindUniqueStaffOrThrowArgs_1.FindUniqueStaffOrThrowArgs]),
     tslib_1.__metadata(\\"design:returntype\\", Promise)
@@ -2172,7 +2172,7 @@ tslib_1.__decorate([
     TypeGraphQL.Query(_returns => [StaffGroupBy_1.StaffGroupBy], { nullable: false }),
     tslib_1.__param(0, TypeGraphQL.Ctx()),
     tslib_1.__param(1, TypeGraphQL.Info()),
-    tslib_1.__param(2, TypeGraphQL.Args()),
+    tslib_1.__param(2, TypeGraphQL.Args(_type => GroupByStaffArgs_1.GroupByStaffArgs)),
     tslib_1.__metadata(\\"design:type\\", Function),
     tslib_1.__metadata(\\"design:paramtypes\\", [Object, Object, GroupByStaffArgs_1.GroupByStaffArgs]),
     tslib_1.__metadata(\\"design:returntype\\", Promise)
@@ -2181,7 +2181,7 @@ tslib_1.__decorate([
     TypeGraphQL.Mutation(_returns => AffectedRowsOutput_1.AffectedRowsOutput, { nullable: false }),
     tslib_1.__param(0, TypeGraphQL.Ctx()),
     tslib_1.__param(1, TypeGraphQL.Info()),
-    tslib_1.__param(2, TypeGraphQL.Args()),
+    tslib_1.__param(2, TypeGraphQL.Args(_type => UpdateManyStaffArgs_1.UpdateManyStaffArgs)),
     tslib_1.__metadata(\\"design:type\\", Function),
     tslib_1.__metadata(\\"design:paramtypes\\", [Object, Object, UpdateManyStaffArgs_1.UpdateManyStaffArgs]),
     tslib_1.__metadata(\\"design:returntype\\", Promise)
@@ -2190,7 +2190,7 @@ tslib_1.__decorate([
     TypeGraphQL.Mutation(_returns => Staff_1.Staff, { nullable: true }),
     tslib_1.__param(0, TypeGraphQL.Ctx()),
     tslib_1.__param(1, TypeGraphQL.Info()),
-    tslib_1.__param(2, TypeGraphQL.Args()),
+    tslib_1.__param(2, TypeGraphQL.Args(_type => UpdateOneStaffArgs_1.UpdateOneStaffArgs)),
     tslib_1.__metadata(\\"design:type\\", Function),
     tslib_1.__metadata(\\"design:paramtypes\\", [Object, Object, UpdateOneStaffArgs_1.UpdateOneStaffArgs]),
     tslib_1.__metadata(\\"design:returntype\\", Promise)
@@ -2199,7 +2199,7 @@ tslib_1.__decorate([
     TypeGraphQL.Mutation(_returns => Staff_1.Staff, { nullable: false }),
     tslib_1.__param(0, TypeGraphQL.Ctx()),
     tslib_1.__param(1, TypeGraphQL.Info()),
-    tslib_1.__param(2, TypeGraphQL.Args()),
+    tslib_1.__param(2, TypeGraphQL.Args(_type => UpsertOneStaffArgs_1.UpsertOneStaffArgs)),
     tslib_1.__metadata(\\"design:type\\", Function),
     tslib_1.__metadata(\\"design:paramtypes\\", [Object, Object, UpsertOneStaffArgs_1.UpsertOneStaffArgs]),
     tslib_1.__metadata(\\"design:returntype\\", Promise)
@@ -2233,7 +2233,7 @@ tslib_1.__decorate([
     TypeGraphQL.Query(_returns => User_1.User, { nullable: true }),
     tslib_1.__param(0, TypeGraphQL.Ctx()),
     tslib_1.__param(1, TypeGraphQL.Info()),
-    tslib_1.__param(2, TypeGraphQL.Args()),
+    tslib_1.__param(2, TypeGraphQL.Args(_type => FindUniqueUserOrThrowArgs_1.FindUniqueUserOrThrowArgs)),
     tslib_1.__metadata(\\"design:type\\", Function),
     tslib_1.__metadata(\\"design:paramtypes\\", [Object, Object, FindUniqueUserOrThrowArgs_1.FindUniqueUserOrThrowArgs]),
     tslib_1.__metadata(\\"design:returntype\\", Promise)
@@ -2267,7 +2267,7 @@ tslib_1.__decorate([
     TypeGraphQL.Query(_returns => User_1.User, { nullable: true }),
     tslib_1.__param(0, TypeGraphQL.Ctx()),
     tslib_1.__param(1, TypeGraphQL.Info()),
-    tslib_1.__param(2, TypeGraphQL.Args()),
+    tslib_1.__param(2, TypeGraphQL.Args(_type => FindUniqueUserArgs_1.FindUniqueUserArgs)),
     tslib_1.__metadata(\\"design:type\\", Function),
     tslib_1.__metadata(\\"design:paramtypes\\", [Object, Object, FindUniqueUserArgs_1.FindUniqueUserArgs]),
     tslib_1.__metadata(\\"design:returntype\\", Promise)
@@ -2418,7 +2418,7 @@ tslib_1.__decorate([
     TypeGraphQL.Query(_returns => AggregateUser_1.AggregateUser, { nullable: false }),
     tslib_1.__param(0, TypeGraphQL.Ctx()),
     tslib_1.__param(1, TypeGraphQL.Info()),
-    tslib_1.__param(2, TypeGraphQL.Args()),
+    tslib_1.__param(2, TypeGraphQL.Args(_type => AggregateUserArgs_1.AggregateUserArgs)),
     tslib_1.__metadata(\\"design:type\\", Function),
     tslib_1.__metadata(\\"design:paramtypes\\", [Object, Object, AggregateUserArgs_1.AggregateUserArgs]),
     tslib_1.__metadata(\\"design:returntype\\", Promise)
@@ -2427,7 +2427,7 @@ tslib_1.__decorate([
     TypeGraphQL.Mutation(_returns => AffectedRowsOutput_1.AffectedRowsOutput, { nullable: false }),
     tslib_1.__param(0, TypeGraphQL.Ctx()),
     tslib_1.__param(1, TypeGraphQL.Info()),
-    tslib_1.__param(2, TypeGraphQL.Args()),
+    tslib_1.__param(2, TypeGraphQL.Args(_type => CreateManyUserArgs_1.CreateManyUserArgs)),
     tslib_1.__metadata(\\"design:type\\", Function),
     tslib_1.__metadata(\\"design:paramtypes\\", [Object, Object, CreateManyUserArgs_1.CreateManyUserArgs]),
     tslib_1.__metadata(\\"design:returntype\\", Promise)
@@ -2436,7 +2436,7 @@ tslib_1.__decorate([
     TypeGraphQL.Mutation(_returns => [CreateManyAndReturnUser_1.CreateManyAndReturnUser], { nullable: false }),
     tslib_1.__param(0, TypeGraphQL.Ctx()),
     tslib_1.__param(1, TypeGraphQL.Info()),
-    tslib_1.__param(2, TypeGraphQL.Args()),
+    tslib_1.__param(2, TypeGraphQL.Args(_type => CreateManyAndReturnUserArgs_1.CreateManyAndReturnUserArgs)),
     tslib_1.__metadata(\\"design:type\\", Function),
     tslib_1.__metadata(\\"design:paramtypes\\", [Object, Object, CreateManyAndReturnUserArgs_1.CreateManyAndReturnUserArgs]),
     tslib_1.__metadata(\\"design:returntype\\", Promise)
@@ -2445,7 +2445,7 @@ tslib_1.__decorate([
     TypeGraphQL.Mutation(_returns => User_1.User, { nullable: false }),
     tslib_1.__param(0, TypeGraphQL.Ctx()),
     tslib_1.__param(1, TypeGraphQL.Info()),
-    tslib_1.__param(2, TypeGraphQL.Args()),
+    tslib_1.__param(2, TypeGraphQL.Args(_type => CreateOneUserArgs_1.CreateOneUserArgs)),
     tslib_1.__metadata(\\"design:type\\", Function),
     tslib_1.__metadata(\\"design:paramtypes\\", [Object, Object, CreateOneUserArgs_1.CreateOneUserArgs]),
     tslib_1.__metadata(\\"design:returntype\\", Promise)
@@ -2454,7 +2454,7 @@ tslib_1.__decorate([
     TypeGraphQL.Mutation(_returns => AffectedRowsOutput_1.AffectedRowsOutput, { nullable: false }),
     tslib_1.__param(0, TypeGraphQL.Ctx()),
     tslib_1.__param(1, TypeGraphQL.Info()),
-    tslib_1.__param(2, TypeGraphQL.Args()),
+    tslib_1.__param(2, TypeGraphQL.Args(_type => DeleteManyUserArgs_1.DeleteManyUserArgs)),
     tslib_1.__metadata(\\"design:type\\", Function),
     tslib_1.__metadata(\\"design:paramtypes\\", [Object, Object, DeleteManyUserArgs_1.DeleteManyUserArgs]),
     tslib_1.__metadata(\\"design:returntype\\", Promise)
@@ -2463,7 +2463,7 @@ tslib_1.__decorate([
     TypeGraphQL.Mutation(_returns => User_1.User, { nullable: true }),
     tslib_1.__param(0, TypeGraphQL.Ctx()),
     tslib_1.__param(1, TypeGraphQL.Info()),
-    tslib_1.__param(2, TypeGraphQL.Args()),
+    tslib_1.__param(2, TypeGraphQL.Args(_type => DeleteOneUserArgs_1.DeleteOneUserArgs)),
     tslib_1.__metadata(\\"design:type\\", Function),
     tslib_1.__metadata(\\"design:paramtypes\\", [Object, Object, DeleteOneUserArgs_1.DeleteOneUserArgs]),
     tslib_1.__metadata(\\"design:returntype\\", Promise)
@@ -2472,7 +2472,7 @@ tslib_1.__decorate([
     TypeGraphQL.Query(_returns => User_1.User, { nullable: true }),
     tslib_1.__param(0, TypeGraphQL.Ctx()),
     tslib_1.__param(1, TypeGraphQL.Info()),
-    tslib_1.__param(2, TypeGraphQL.Args()),
+    tslib_1.__param(2, TypeGraphQL.Args(_type => FindFirstUserArgs_1.FindFirstUserArgs)),
     tslib_1.__metadata(\\"design:type\\", Function),
     tslib_1.__metadata(\\"design:paramtypes\\", [Object, Object, FindFirstUserArgs_1.FindFirstUserArgs]),
     tslib_1.__metadata(\\"design:returntype\\", Promise)
@@ -2481,7 +2481,7 @@ tslib_1.__decorate([
     TypeGraphQL.Query(_returns => User_1.User, { nullable: true }),
     tslib_1.__param(0, TypeGraphQL.Ctx()),
     tslib_1.__param(1, TypeGraphQL.Info()),
-    tslib_1.__param(2, TypeGraphQL.Args()),
+    tslib_1.__param(2, TypeGraphQL.Args(_type => FindFirstUserOrThrowArgs_1.FindFirstUserOrThrowArgs)),
     tslib_1.__metadata(\\"design:type\\", Function),
     tslib_1.__metadata(\\"design:paramtypes\\", [Object, Object, FindFirstUserOrThrowArgs_1.FindFirstUserOrThrowArgs]),
     tslib_1.__metadata(\\"design:returntype\\", Promise)
@@ -2490,7 +2490,7 @@ tslib_1.__decorate([
     TypeGraphQL.Query(_returns => [User_1.User], { nullable: false }),
     tslib_1.__param(0, TypeGraphQL.Ctx()),
     tslib_1.__param(1, TypeGraphQL.Info()),
-    tslib_1.__param(2, TypeGraphQL.Args()),
+    tslib_1.__param(2, TypeGraphQL.Args(_type => FindManyUserArgs_1.FindManyUserArgs)),
     tslib_1.__metadata(\\"design:type\\", Function),
     tslib_1.__metadata(\\"design:paramtypes\\", [Object, Object, FindManyUserArgs_1.FindManyUserArgs]),
     tslib_1.__metadata(\\"design:returntype\\", Promise)
@@ -2499,7 +2499,7 @@ tslib_1.__decorate([
     TypeGraphQL.Query(_returns => User_1.User, { nullable: true }),
     tslib_1.__param(0, TypeGraphQL.Ctx()),
     tslib_1.__param(1, TypeGraphQL.Info()),
-    tslib_1.__param(2, TypeGraphQL.Args()),
+    tslib_1.__param(2, TypeGraphQL.Args(_type => FindUniqueUserArgs_1.FindUniqueUserArgs)),
     tslib_1.__metadata(\\"design:type\\", Function),
     tslib_1.__metadata(\\"design:paramtypes\\", [Object, Object, FindUniqueUserArgs_1.FindUniqueUserArgs]),
     tslib_1.__metadata(\\"design:returntype\\", Promise)
@@ -2508,7 +2508,7 @@ tslib_1.__decorate([
     TypeGraphQL.Query(_returns => User_1.User, { nullable: true }),
     tslib_1.__param(0, TypeGraphQL.Ctx()),
     tslib_1.__param(1, TypeGraphQL.Info()),
-    tslib_1.__param(2, TypeGraphQL.Args()),
+    tslib_1.__param(2, TypeGraphQL.Args(_type => FindUniqueUserOrThrowArgs_1.FindUniqueUserOrThrowArgs)),
     tslib_1.__metadata(\\"design:type\\", Function),
     tslib_1.__metadata(\\"design:paramtypes\\", [Object, Object, FindUniqueUserOrThrowArgs_1.FindUniqueUserOrThrowArgs]),
     tslib_1.__metadata(\\"design:returntype\\", Promise)
@@ -2517,7 +2517,7 @@ tslib_1.__decorate([
     TypeGraphQL.Query(_returns => [UserGroupBy_1.UserGroupBy], { nullable: false }),
     tslib_1.__param(0, TypeGraphQL.Ctx()),
     tslib_1.__param(1, TypeGraphQL.Info()),
-    tslib_1.__param(2, TypeGraphQL.Args()),
+    tslib_1.__param(2, TypeGraphQL.Args(_type => GroupByUserArgs_1.GroupByUserArgs)),
     tslib_1.__metadata(\\"design:type\\", Function),
     tslib_1.__metadata(\\"design:paramtypes\\", [Object, Object, GroupByUserArgs_1.GroupByUserArgs]),
     tslib_1.__metadata(\\"design:returntype\\", Promise)
@@ -2526,7 +2526,7 @@ tslib_1.__decorate([
     TypeGraphQL.Mutation(_returns => AffectedRowsOutput_1.AffectedRowsOutput, { nullable: false }),
     tslib_1.__param(0, TypeGraphQL.Ctx()),
     tslib_1.__param(1, TypeGraphQL.Info()),
-    tslib_1.__param(2, TypeGraphQL.Args()),
+    tslib_1.__param(2, TypeGraphQL.Args(_type => UpdateManyUserArgs_1.UpdateManyUserArgs)),
     tslib_1.__metadata(\\"design:type\\", Function),
     tslib_1.__metadata(\\"design:paramtypes\\", [Object, Object, UpdateManyUserArgs_1.UpdateManyUserArgs]),
     tslib_1.__metadata(\\"design:returntype\\", Promise)
@@ -2535,7 +2535,7 @@ tslib_1.__decorate([
     TypeGraphQL.Mutation(_returns => User_1.User, { nullable: true }),
     tslib_1.__param(0, TypeGraphQL.Ctx()),
     tslib_1.__param(1, TypeGraphQL.Info()),
-    tslib_1.__param(2, TypeGraphQL.Args()),
+    tslib_1.__param(2, TypeGraphQL.Args(_type => UpdateOneUserArgs_1.UpdateOneUserArgs)),
     tslib_1.__metadata(\\"design:type\\", Function),
     tslib_1.__metadata(\\"design:paramtypes\\", [Object, Object, UpdateOneUserArgs_1.UpdateOneUserArgs]),
     tslib_1.__metadata(\\"design:returntype\\", Promise)
@@ -2544,7 +2544,7 @@ tslib_1.__decorate([
     TypeGraphQL.Mutation(_returns => User_1.User, { nullable: false }),
     tslib_1.__param(0, TypeGraphQL.Ctx()),
     tslib_1.__param(1, TypeGraphQL.Info()),
-    tslib_1.__param(2, TypeGraphQL.Args()),
+    tslib_1.__param(2, TypeGraphQL.Args(_type => UpsertOneUserArgs_1.UpsertOneUserArgs)),
     tslib_1.__metadata(\\"design:type\\", Function),
     tslib_1.__metadata(\\"design:paramtypes\\", [Object, Object, UpsertOneUserArgs_1.UpsertOneUserArgs]),
     tslib_1.__metadata(\\"design:returntype\\", Promise)
@@ -2972,7 +2972,7 @@ tslib_1.__decorate([
     TypeGraphQL.Query(_returns => AggregateUser_1.AggregateUser, { nullable: false }),
     tslib_1.__param(0, TypeGraphQL.Ctx()),
     tslib_1.__param(1, TypeGraphQL.Info()),
-    tslib_1.__param(2, TypeGraphQL.Args()),
+    tslib_1.__param(2, TypeGraphQL.Args(_type => AggregateUserArgs_1.AggregateUserArgs)),
     tslib_1.__metadata(\\"design:type\\", Function),
     tslib_1.__metadata(\\"design:paramtypes\\", [Object, Object, AggregateUserArgs_1.AggregateUserArgs]),
     tslib_1.__metadata(\\"design:returntype\\", Promise)
@@ -2981,7 +2981,7 @@ tslib_1.__decorate([
     TypeGraphQL.Mutation(_returns => AffectedRowsOutput_1.AffectedRowsOutput, { nullable: false }),
     tslib_1.__param(0, TypeGraphQL.Ctx()),
     tslib_1.__param(1, TypeGraphQL.Info()),
-    tslib_1.__param(2, TypeGraphQL.Args()),
+    tslib_1.__param(2, TypeGraphQL.Args(_type => CreateManyUserArgs_1.CreateManyUserArgs)),
     tslib_1.__metadata(\\"design:type\\", Function),
     tslib_1.__metadata(\\"design:paramtypes\\", [Object, Object, CreateManyUserArgs_1.CreateManyUserArgs]),
     tslib_1.__metadata(\\"design:returntype\\", Promise)
@@ -2990,7 +2990,7 @@ tslib_1.__decorate([
     TypeGraphQL.Mutation(_returns => [CreateManyAndReturnUser_1.CreateManyAndReturnUser], { nullable: false }),
     tslib_1.__param(0, TypeGraphQL.Ctx()),
     tslib_1.__param(1, TypeGraphQL.Info()),
-    tslib_1.__param(2, TypeGraphQL.Args()),
+    tslib_1.__param(2, TypeGraphQL.Args(_type => CreateManyAndReturnUserArgs_1.CreateManyAndReturnUserArgs)),
     tslib_1.__metadata(\\"design:type\\", Function),
     tslib_1.__metadata(\\"design:paramtypes\\", [Object, Object, CreateManyAndReturnUserArgs_1.CreateManyAndReturnUserArgs]),
     tslib_1.__metadata(\\"design:returntype\\", Promise)
@@ -2999,7 +2999,7 @@ tslib_1.__decorate([
     TypeGraphQL.Mutation(_returns => User_1.User, { nullable: false }),
     tslib_1.__param(0, TypeGraphQL.Ctx()),
     tslib_1.__param(1, TypeGraphQL.Info()),
-    tslib_1.__param(2, TypeGraphQL.Args()),
+    tslib_1.__param(2, TypeGraphQL.Args(_type => CreateOneUserArgs_1.CreateOneUserArgs)),
     tslib_1.__metadata(\\"design:type\\", Function),
     tslib_1.__metadata(\\"design:paramtypes\\", [Object, Object, CreateOneUserArgs_1.CreateOneUserArgs]),
     tslib_1.__metadata(\\"design:returntype\\", Promise)
@@ -3008,7 +3008,7 @@ tslib_1.__decorate([
     TypeGraphQL.Mutation(_returns => AffectedRowsOutput_1.AffectedRowsOutput, { nullable: false }),
     tslib_1.__param(0, TypeGraphQL.Ctx()),
     tslib_1.__param(1, TypeGraphQL.Info()),
-    tslib_1.__param(2, TypeGraphQL.Args()),
+    tslib_1.__param(2, TypeGraphQL.Args(_type => DeleteManyUserArgs_1.DeleteManyUserArgs)),
     tslib_1.__metadata(\\"design:type\\", Function),
     tslib_1.__metadata(\\"design:paramtypes\\", [Object, Object, DeleteManyUserArgs_1.DeleteManyUserArgs]),
     tslib_1.__metadata(\\"design:returntype\\", Promise)
@@ -3017,7 +3017,7 @@ tslib_1.__decorate([
     TypeGraphQL.Mutation(_returns => User_1.User, { nullable: true }),
     tslib_1.__param(0, TypeGraphQL.Ctx()),
     tslib_1.__param(1, TypeGraphQL.Info()),
-    tslib_1.__param(2, TypeGraphQL.Args()),
+    tslib_1.__param(2, TypeGraphQL.Args(_type => DeleteOneUserArgs_1.DeleteOneUserArgs)),
     tslib_1.__metadata(\\"design:type\\", Function),
     tslib_1.__metadata(\\"design:paramtypes\\", [Object, Object, DeleteOneUserArgs_1.DeleteOneUserArgs]),
     tslib_1.__metadata(\\"design:returntype\\", Promise)
@@ -3026,7 +3026,7 @@ tslib_1.__decorate([
     TypeGraphQL.Query(_returns => User_1.User, { nullable: true }),
     tslib_1.__param(0, TypeGraphQL.Ctx()),
     tslib_1.__param(1, TypeGraphQL.Info()),
-    tslib_1.__param(2, TypeGraphQL.Args()),
+    tslib_1.__param(2, TypeGraphQL.Args(_type => FindFirstUserArgs_1.FindFirstUserArgs)),
     tslib_1.__metadata(\\"design:type\\", Function),
     tslib_1.__metadata(\\"design:paramtypes\\", [Object, Object, FindFirstUserArgs_1.FindFirstUserArgs]),
     tslib_1.__metadata(\\"design:returntype\\", Promise)
@@ -3035,7 +3035,7 @@ tslib_1.__decorate([
     TypeGraphQL.Query(_returns => User_1.User, { nullable: true }),
     tslib_1.__param(0, TypeGraphQL.Ctx()),
     tslib_1.__param(1, TypeGraphQL.Info()),
-    tslib_1.__param(2, TypeGraphQL.Args()),
+    tslib_1.__param(2, TypeGraphQL.Args(_type => FindFirstUserOrThrowArgs_1.FindFirstUserOrThrowArgs)),
     tslib_1.__metadata(\\"design:type\\", Function),
     tslib_1.__metadata(\\"design:paramtypes\\", [Object, Object, FindFirstUserOrThrowArgs_1.FindFirstUserOrThrowArgs]),
     tslib_1.__metadata(\\"design:returntype\\", Promise)
@@ -3044,7 +3044,7 @@ tslib_1.__decorate([
     TypeGraphQL.Query(_returns => [User_1.User], { nullable: false }),
     tslib_1.__param(0, TypeGraphQL.Ctx()),
     tslib_1.__param(1, TypeGraphQL.Info()),
-    tslib_1.__param(2, TypeGraphQL.Args()),
+    tslib_1.__param(2, TypeGraphQL.Args(_type => FindManyUserArgs_1.FindManyUserArgs)),
     tslib_1.__metadata(\\"design:type\\", Function),
     tslib_1.__metadata(\\"design:paramtypes\\", [Object, Object, FindManyUserArgs_1.FindManyUserArgs]),
     tslib_1.__metadata(\\"design:returntype\\", Promise)
@@ -3053,7 +3053,7 @@ tslib_1.__decorate([
     TypeGraphQL.Query(_returns => User_1.User, { nullable: true }),
     tslib_1.__param(0, TypeGraphQL.Ctx()),
     tslib_1.__param(1, TypeGraphQL.Info()),
-    tslib_1.__param(2, TypeGraphQL.Args()),
+    tslib_1.__param(2, TypeGraphQL.Args(_type => FindUniqueUserArgs_1.FindUniqueUserArgs)),
     tslib_1.__metadata(\\"design:type\\", Function),
     tslib_1.__metadata(\\"design:paramtypes\\", [Object, Object, FindUniqueUserArgs_1.FindUniqueUserArgs]),
     tslib_1.__metadata(\\"design:returntype\\", Promise)
@@ -3062,7 +3062,7 @@ tslib_1.__decorate([
     TypeGraphQL.Query(_returns => User_1.User, { nullable: true }),
     tslib_1.__param(0, TypeGraphQL.Ctx()),
     tslib_1.__param(1, TypeGraphQL.Info()),
-    tslib_1.__param(2, TypeGraphQL.Args()),
+    tslib_1.__param(2, TypeGraphQL.Args(_type => FindUniqueUserOrThrowArgs_1.FindUniqueUserOrThrowArgs)),
     tslib_1.__metadata(\\"design:type\\", Function),
     tslib_1.__metadata(\\"design:paramtypes\\", [Object, Object, FindUniqueUserOrThrowArgs_1.FindUniqueUserOrThrowArgs]),
     tslib_1.__metadata(\\"design:returntype\\", Promise)
@@ -3071,7 +3071,7 @@ tslib_1.__decorate([
     TypeGraphQL.Query(_returns => [UserGroupBy_1.UserGroupBy], { nullable: false }),
     tslib_1.__param(0, TypeGraphQL.Ctx()),
     tslib_1.__param(1, TypeGraphQL.Info()),
-    tslib_1.__param(2, TypeGraphQL.Args()),
+    tslib_1.__param(2, TypeGraphQL.Args(_type => GroupByUserArgs_1.GroupByUserArgs)),
     tslib_1.__metadata(\\"design:type\\", Function),
     tslib_1.__metadata(\\"design:paramtypes\\", [Object, Object, GroupByUserArgs_1.GroupByUserArgs]),
     tslib_1.__metadata(\\"design:returntype\\", Promise)
@@ -3080,7 +3080,7 @@ tslib_1.__decorate([
     TypeGraphQL.Mutation(_returns => AffectedRowsOutput_1.AffectedRowsOutput, { nullable: false }),
     tslib_1.__param(0, TypeGraphQL.Ctx()),
     tslib_1.__param(1, TypeGraphQL.Info()),
-    tslib_1.__param(2, TypeGraphQL.Args()),
+    tslib_1.__param(2, TypeGraphQL.Args(_type => UpdateManyUserArgs_1.UpdateManyUserArgs)),
     tslib_1.__metadata(\\"design:type\\", Function),
     tslib_1.__metadata(\\"design:paramtypes\\", [Object, Object, UpdateManyUserArgs_1.UpdateManyUserArgs]),
     tslib_1.__metadata(\\"design:returntype\\", Promise)
@@ -3089,7 +3089,7 @@ tslib_1.__decorate([
     TypeGraphQL.Mutation(_returns => User_1.User, { nullable: true }),
     tslib_1.__param(0, TypeGraphQL.Ctx()),
     tslib_1.__param(1, TypeGraphQL.Info()),
-    tslib_1.__param(2, TypeGraphQL.Args()),
+    tslib_1.__param(2, TypeGraphQL.Args(_type => UpdateOneUserArgs_1.UpdateOneUserArgs)),
     tslib_1.__metadata(\\"design:type\\", Function),
     tslib_1.__metadata(\\"design:paramtypes\\", [Object, Object, UpdateOneUserArgs_1.UpdateOneUserArgs]),
     tslib_1.__metadata(\\"design:returntype\\", Promise)
@@ -3098,7 +3098,7 @@ tslib_1.__decorate([
     TypeGraphQL.Mutation(_returns => User_1.User, { nullable: false }),
     tslib_1.__param(0, TypeGraphQL.Ctx()),
     tslib_1.__param(1, TypeGraphQL.Info()),
-    tslib_1.__param(2, TypeGraphQL.Args()),
+    tslib_1.__param(2, TypeGraphQL.Args(_type => UpsertOneUserArgs_1.UpsertOneUserArgs)),
     tslib_1.__metadata(\\"design:type\\", Function),
     tslib_1.__metadata(\\"design:paramtypes\\", [Object, Object, UpsertOneUserArgs_1.UpsertOneUserArgs]),
     tslib_1.__metadata(\\"design:returntype\\", Promise)
@@ -3249,7 +3249,7 @@ tslib_1.__decorate([
     TypeGraphQL.Query(_returns => AggregateUser_1.AggregateUser, { nullable: false }),
     tslib_1.__param(0, TypeGraphQL.Ctx()),
     tslib_1.__param(1, TypeGraphQL.Info()),
-    tslib_1.__param(2, TypeGraphQL.Args()),
+    tslib_1.__param(2, TypeGraphQL.Args(_type => AggregateUserArgs_1.AggregateUserArgs)),
     tslib_1.__metadata(\\"design:type\\", Function),
     tslib_1.__metadata(\\"design:paramtypes\\", [Object, Object, AggregateUserArgs_1.AggregateUserArgs]),
     tslib_1.__metadata(\\"design:returntype\\", Promise)
@@ -3258,7 +3258,7 @@ tslib_1.__decorate([
     TypeGraphQL.Mutation(_returns => AffectedRowsOutput_1.AffectedRowsOutput, { nullable: false }),
     tslib_1.__param(0, TypeGraphQL.Ctx()),
     tslib_1.__param(1, TypeGraphQL.Info()),
-    tslib_1.__param(2, TypeGraphQL.Args()),
+    tslib_1.__param(2, TypeGraphQL.Args(_type => CreateManyUserArgs_1.CreateManyUserArgs)),
     tslib_1.__metadata(\\"design:type\\", Function),
     tslib_1.__metadata(\\"design:paramtypes\\", [Object, Object, CreateManyUserArgs_1.CreateManyUserArgs]),
     tslib_1.__metadata(\\"design:returntype\\", Promise)
@@ -3267,7 +3267,7 @@ tslib_1.__decorate([
     TypeGraphQL.Mutation(_returns => [CreateManyAndReturnUser_1.CreateManyAndReturnUser], { nullable: false }),
     tslib_1.__param(0, TypeGraphQL.Ctx()),
     tslib_1.__param(1, TypeGraphQL.Info()),
-    tslib_1.__param(2, TypeGraphQL.Args()),
+    tslib_1.__param(2, TypeGraphQL.Args(_type => CreateManyAndReturnUserArgs_1.CreateManyAndReturnUserArgs)),
     tslib_1.__metadata(\\"design:type\\", Function),
     tslib_1.__metadata(\\"design:paramtypes\\", [Object, Object, CreateManyAndReturnUserArgs_1.CreateManyAndReturnUserArgs]),
     tslib_1.__metadata(\\"design:returntype\\", Promise)
@@ -3276,7 +3276,7 @@ tslib_1.__decorate([
     TypeGraphQL.Mutation(_returns => User_1.User, { nullable: false }),
     tslib_1.__param(0, TypeGraphQL.Ctx()),
     tslib_1.__param(1, TypeGraphQL.Info()),
-    tslib_1.__param(2, TypeGraphQL.Args()),
+    tslib_1.__param(2, TypeGraphQL.Args(_type => CreateOneUserArgs_1.CreateOneUserArgs)),
     tslib_1.__metadata(\\"design:type\\", Function),
     tslib_1.__metadata(\\"design:paramtypes\\", [Object, Object, CreateOneUserArgs_1.CreateOneUserArgs]),
     tslib_1.__metadata(\\"design:returntype\\", Promise)
@@ -3285,7 +3285,7 @@ tslib_1.__decorate([
     TypeGraphQL.Mutation(_returns => AffectedRowsOutput_1.AffectedRowsOutput, { nullable: false }),
     tslib_1.__param(0, TypeGraphQL.Ctx()),
     tslib_1.__param(1, TypeGraphQL.Info()),
-    tslib_1.__param(2, TypeGraphQL.Args()),
+    tslib_1.__param(2, TypeGraphQL.Args(_type => DeleteManyUserArgs_1.DeleteManyUserArgs)),
     tslib_1.__metadata(\\"design:type\\", Function),
     tslib_1.__metadata(\\"design:paramtypes\\", [Object, Object, DeleteManyUserArgs_1.DeleteManyUserArgs]),
     tslib_1.__metadata(\\"design:returntype\\", Promise)
@@ -3294,7 +3294,7 @@ tslib_1.__decorate([
     TypeGraphQL.Mutation(_returns => User_1.User, { nullable: true }),
     tslib_1.__param(0, TypeGraphQL.Ctx()),
     tslib_1.__param(1, TypeGraphQL.Info()),
-    tslib_1.__param(2, TypeGraphQL.Args()),
+    tslib_1.__param(2, TypeGraphQL.Args(_type => DeleteOneUserArgs_1.DeleteOneUserArgs)),
     tslib_1.__metadata(\\"design:type\\", Function),
     tslib_1.__metadata(\\"design:paramtypes\\", [Object, Object, DeleteOneUserArgs_1.DeleteOneUserArgs]),
     tslib_1.__metadata(\\"design:returntype\\", Promise)
@@ -3303,7 +3303,7 @@ tslib_1.__decorate([
     TypeGraphQL.Query(_returns => User_1.User, { nullable: true }),
     tslib_1.__param(0, TypeGraphQL.Ctx()),
     tslib_1.__param(1, TypeGraphQL.Info()),
-    tslib_1.__param(2, TypeGraphQL.Args()),
+    tslib_1.__param(2, TypeGraphQL.Args(_type => FindFirstUserArgs_1.FindFirstUserArgs)),
     tslib_1.__metadata(\\"design:type\\", Function),
     tslib_1.__metadata(\\"design:paramtypes\\", [Object, Object, FindFirstUserArgs_1.FindFirstUserArgs]),
     tslib_1.__metadata(\\"design:returntype\\", Promise)
@@ -3312,7 +3312,7 @@ tslib_1.__decorate([
     TypeGraphQL.Query(_returns => User_1.User, { nullable: true }),
     tslib_1.__param(0, TypeGraphQL.Ctx()),
     tslib_1.__param(1, TypeGraphQL.Info()),
-    tslib_1.__param(2, TypeGraphQL.Args()),
+    tslib_1.__param(2, TypeGraphQL.Args(_type => FindFirstUserOrThrowArgs_1.FindFirstUserOrThrowArgs)),
     tslib_1.__metadata(\\"design:type\\", Function),
     tslib_1.__metadata(\\"design:paramtypes\\", [Object, Object, FindFirstUserOrThrowArgs_1.FindFirstUserOrThrowArgs]),
     tslib_1.__metadata(\\"design:returntype\\", Promise)
@@ -3321,7 +3321,7 @@ tslib_1.__decorate([
     TypeGraphQL.Query(_returns => [User_1.User], { nullable: false }),
     tslib_1.__param(0, TypeGraphQL.Ctx()),
     tslib_1.__param(1, TypeGraphQL.Info()),
-    tslib_1.__param(2, TypeGraphQL.Args()),
+    tslib_1.__param(2, TypeGraphQL.Args(_type => FindManyUserArgs_1.FindManyUserArgs)),
     tslib_1.__metadata(\\"design:type\\", Function),
     tslib_1.__metadata(\\"design:paramtypes\\", [Object, Object, FindManyUserArgs_1.FindManyUserArgs]),
     tslib_1.__metadata(\\"design:returntype\\", Promise)
@@ -3330,7 +3330,7 @@ tslib_1.__decorate([
     TypeGraphQL.Query(_returns => User_1.User, { nullable: true }),
     tslib_1.__param(0, TypeGraphQL.Ctx()),
     tslib_1.__param(1, TypeGraphQL.Info()),
-    tslib_1.__param(2, TypeGraphQL.Args()),
+    tslib_1.__param(2, TypeGraphQL.Args(_type => FindUniqueUserArgs_1.FindUniqueUserArgs)),
     tslib_1.__metadata(\\"design:type\\", Function),
     tslib_1.__metadata(\\"design:paramtypes\\", [Object, Object, FindUniqueUserArgs_1.FindUniqueUserArgs]),
     tslib_1.__metadata(\\"design:returntype\\", Promise)
@@ -3339,7 +3339,7 @@ tslib_1.__decorate([
     TypeGraphQL.Query(_returns => User_1.User, { nullable: true }),
     tslib_1.__param(0, TypeGraphQL.Ctx()),
     tslib_1.__param(1, TypeGraphQL.Info()),
-    tslib_1.__param(2, TypeGraphQL.Args()),
+    tslib_1.__param(2, TypeGraphQL.Args(_type => FindUniqueUserOrThrowArgs_1.FindUniqueUserOrThrowArgs)),
     tslib_1.__metadata(\\"design:type\\", Function),
     tslib_1.__metadata(\\"design:paramtypes\\", [Object, Object, FindUniqueUserOrThrowArgs_1.FindUniqueUserOrThrowArgs]),
     tslib_1.__metadata(\\"design:returntype\\", Promise)
@@ -3348,7 +3348,7 @@ tslib_1.__decorate([
     TypeGraphQL.Query(_returns => [UserGroupBy_1.UserGroupBy], { nullable: false }),
     tslib_1.__param(0, TypeGraphQL.Ctx()),
     tslib_1.__param(1, TypeGraphQL.Info()),
-    tslib_1.__param(2, TypeGraphQL.Args()),
+    tslib_1.__param(2, TypeGraphQL.Args(_type => GroupByUserArgs_1.GroupByUserArgs)),
     tslib_1.__metadata(\\"design:type\\", Function),
     tslib_1.__metadata(\\"design:paramtypes\\", [Object, Object, GroupByUserArgs_1.GroupByUserArgs]),
     tslib_1.__metadata(\\"design:returntype\\", Promise)
@@ -3357,7 +3357,7 @@ tslib_1.__decorate([
     TypeGraphQL.Mutation(_returns => AffectedRowsOutput_1.AffectedRowsOutput, { nullable: false }),
     tslib_1.__param(0, TypeGraphQL.Ctx()),
     tslib_1.__param(1, TypeGraphQL.Info()),
-    tslib_1.__param(2, TypeGraphQL.Args()),
+    tslib_1.__param(2, TypeGraphQL.Args(_type => UpdateManyUserArgs_1.UpdateManyUserArgs)),
     tslib_1.__metadata(\\"design:type\\", Function),
     tslib_1.__metadata(\\"design:paramtypes\\", [Object, Object, UpdateManyUserArgs_1.UpdateManyUserArgs]),
     tslib_1.__metadata(\\"design:returntype\\", Promise)
@@ -3366,7 +3366,7 @@ tslib_1.__decorate([
     TypeGraphQL.Mutation(_returns => User_1.User, { nullable: true }),
     tslib_1.__param(0, TypeGraphQL.Ctx()),
     tslib_1.__param(1, TypeGraphQL.Info()),
-    tslib_1.__param(2, TypeGraphQL.Args()),
+    tslib_1.__param(2, TypeGraphQL.Args(_type => UpdateOneUserArgs_1.UpdateOneUserArgs)),
     tslib_1.__metadata(\\"design:type\\", Function),
     tslib_1.__metadata(\\"design:paramtypes\\", [Object, Object, UpdateOneUserArgs_1.UpdateOneUserArgs]),
     tslib_1.__metadata(\\"design:returntype\\", Promise)
@@ -3375,7 +3375,7 @@ tslib_1.__decorate([
     TypeGraphQL.Mutation(_returns => User_1.User, { nullable: false }),
     tslib_1.__param(0, TypeGraphQL.Ctx()),
     tslib_1.__param(1, TypeGraphQL.Info()),
-    tslib_1.__param(2, TypeGraphQL.Args()),
+    tslib_1.__param(2, TypeGraphQL.Args(_type => UpsertOneUserArgs_1.UpsertOneUserArgs)),
     tslib_1.__metadata(\\"design:type\\", Function),
     tslib_1.__metadata(\\"design:paramtypes\\", [Object, Object, UpsertOneUserArgs_1.UpsertOneUserArgs]),
     tslib_1.__metadata(\\"design:returntype\\", Promise)
@@ -3526,7 +3526,7 @@ tslib_1.__decorate([
     TypeGraphQL.Query(_returns => AggregateUser_1.AggregateUser, { nullable: false }),
     tslib_1.__param(0, TypeGraphQL.Ctx()),
     tslib_1.__param(1, TypeGraphQL.Info()),
-    tslib_1.__param(2, TypeGraphQL.Args()),
+    tslib_1.__param(2, TypeGraphQL.Args(_type => AggregateUserArgs_1.AggregateUserArgs)),
     tslib_1.__metadata(\\"design:type\\", Function),
     tslib_1.__metadata(\\"design:paramtypes\\", [Object, Object, AggregateUserArgs_1.AggregateUserArgs]),
     tslib_1.__metadata(\\"design:returntype\\", Promise)
@@ -3535,7 +3535,7 @@ tslib_1.__decorate([
     TypeGraphQL.Mutation(_returns => AffectedRowsOutput_1.AffectedRowsOutput, { nullable: false }),
     tslib_1.__param(0, TypeGraphQL.Ctx()),
     tslib_1.__param(1, TypeGraphQL.Info()),
-    tslib_1.__param(2, TypeGraphQL.Args()),
+    tslib_1.__param(2, TypeGraphQL.Args(_type => CreateManyUserArgs_1.CreateManyUserArgs)),
     tslib_1.__metadata(\\"design:type\\", Function),
     tslib_1.__metadata(\\"design:paramtypes\\", [Object, Object, CreateManyUserArgs_1.CreateManyUserArgs]),
     tslib_1.__metadata(\\"design:returntype\\", Promise)
@@ -3544,7 +3544,7 @@ tslib_1.__decorate([
     TypeGraphQL.Mutation(_returns => [CreateManyAndReturnUser_1.CreateManyAndReturnUser], { nullable: false }),
     tslib_1.__param(0, TypeGraphQL.Ctx()),
     tslib_1.__param(1, TypeGraphQL.Info()),
-    tslib_1.__param(2, TypeGraphQL.Args()),
+    tslib_1.__param(2, TypeGraphQL.Args(_type => CreateManyAndReturnUserArgs_1.CreateManyAndReturnUserArgs)),
     tslib_1.__metadata(\\"design:type\\", Function),
     tslib_1.__metadata(\\"design:paramtypes\\", [Object, Object, CreateManyAndReturnUserArgs_1.CreateManyAndReturnUserArgs]),
     tslib_1.__metadata(\\"design:returntype\\", Promise)
@@ -3553,7 +3553,7 @@ tslib_1.__decorate([
     TypeGraphQL.Mutation(_returns => User_1.User, { nullable: false }),
     tslib_1.__param(0, TypeGraphQL.Ctx()),
     tslib_1.__param(1, TypeGraphQL.Info()),
-    tslib_1.__param(2, TypeGraphQL.Args()),
+    tslib_1.__param(2, TypeGraphQL.Args(_type => CreateOneUserArgs_1.CreateOneUserArgs)),
     tslib_1.__metadata(\\"design:type\\", Function),
     tslib_1.__metadata(\\"design:paramtypes\\", [Object, Object, CreateOneUserArgs_1.CreateOneUserArgs]),
     tslib_1.__metadata(\\"design:returntype\\", Promise)
@@ -3562,7 +3562,7 @@ tslib_1.__decorate([
     TypeGraphQL.Mutation(_returns => AffectedRowsOutput_1.AffectedRowsOutput, { nullable: false }),
     tslib_1.__param(0, TypeGraphQL.Ctx()),
     tslib_1.__param(1, TypeGraphQL.Info()),
-    tslib_1.__param(2, TypeGraphQL.Args()),
+    tslib_1.__param(2, TypeGraphQL.Args(_type => DeleteManyUserArgs_1.DeleteManyUserArgs)),
     tslib_1.__metadata(\\"design:type\\", Function),
     tslib_1.__metadata(\\"design:paramtypes\\", [Object, Object, DeleteManyUserArgs_1.DeleteManyUserArgs]),
     tslib_1.__metadata(\\"design:returntype\\", Promise)
@@ -3571,7 +3571,7 @@ tslib_1.__decorate([
     TypeGraphQL.Mutation(_returns => User_1.User, { nullable: true }),
     tslib_1.__param(0, TypeGraphQL.Ctx()),
     tslib_1.__param(1, TypeGraphQL.Info()),
-    tslib_1.__param(2, TypeGraphQL.Args()),
+    tslib_1.__param(2, TypeGraphQL.Args(_type => DeleteOneUserArgs_1.DeleteOneUserArgs)),
     tslib_1.__metadata(\\"design:type\\", Function),
     tslib_1.__metadata(\\"design:paramtypes\\", [Object, Object, DeleteOneUserArgs_1.DeleteOneUserArgs]),
     tslib_1.__metadata(\\"design:returntype\\", Promise)
@@ -3580,7 +3580,7 @@ tslib_1.__decorate([
     TypeGraphQL.Query(_returns => User_1.User, { nullable: true }),
     tslib_1.__param(0, TypeGraphQL.Ctx()),
     tslib_1.__param(1, TypeGraphQL.Info()),
-    tslib_1.__param(2, TypeGraphQL.Args()),
+    tslib_1.__param(2, TypeGraphQL.Args(_type => FindFirstUserArgs_1.FindFirstUserArgs)),
     tslib_1.__metadata(\\"design:type\\", Function),
     tslib_1.__metadata(\\"design:paramtypes\\", [Object, Object, FindFirstUserArgs_1.FindFirstUserArgs]),
     tslib_1.__metadata(\\"design:returntype\\", Promise)
@@ -3589,7 +3589,7 @@ tslib_1.__decorate([
     TypeGraphQL.Query(_returns => User_1.User, { nullable: true }),
     tslib_1.__param(0, TypeGraphQL.Ctx()),
     tslib_1.__param(1, TypeGraphQL.Info()),
-    tslib_1.__param(2, TypeGraphQL.Args()),
+    tslib_1.__param(2, TypeGraphQL.Args(_type => FindFirstUserOrThrowArgs_1.FindFirstUserOrThrowArgs)),
     tslib_1.__metadata(\\"design:type\\", Function),
     tslib_1.__metadata(\\"design:paramtypes\\", [Object, Object, FindFirstUserOrThrowArgs_1.FindFirstUserOrThrowArgs]),
     tslib_1.__metadata(\\"design:returntype\\", Promise)
@@ -3598,7 +3598,7 @@ tslib_1.__decorate([
     TypeGraphQL.Query(_returns => [User_1.User], { nullable: false }),
     tslib_1.__param(0, TypeGraphQL.Ctx()),
     tslib_1.__param(1, TypeGraphQL.Info()),
-    tslib_1.__param(2, TypeGraphQL.Args()),
+    tslib_1.__param(2, TypeGraphQL.Args(_type => FindManyUserArgs_1.FindManyUserArgs)),
     tslib_1.__metadata(\\"design:type\\", Function),
     tslib_1.__metadata(\\"design:paramtypes\\", [Object, Object, FindManyUserArgs_1.FindManyUserArgs]),
     tslib_1.__metadata(\\"design:returntype\\", Promise)
@@ -3607,7 +3607,7 @@ tslib_1.__decorate([
     TypeGraphQL.Query(_returns => User_1.User, { nullable: true }),
     tslib_1.__param(0, TypeGraphQL.Ctx()),
     tslib_1.__param(1, TypeGraphQL.Info()),
-    tslib_1.__param(2, TypeGraphQL.Args()),
+    tslib_1.__param(2, TypeGraphQL.Args(_type => FindUniqueUserArgs_1.FindUniqueUserArgs)),
     tslib_1.__metadata(\\"design:type\\", Function),
     tslib_1.__metadata(\\"design:paramtypes\\", [Object, Object, FindUniqueUserArgs_1.FindUniqueUserArgs]),
     tslib_1.__metadata(\\"design:returntype\\", Promise)
@@ -3616,7 +3616,7 @@ tslib_1.__decorate([
     TypeGraphQL.Query(_returns => User_1.User, { nullable: true }),
     tslib_1.__param(0, TypeGraphQL.Ctx()),
     tslib_1.__param(1, TypeGraphQL.Info()),
-    tslib_1.__param(2, TypeGraphQL.Args()),
+    tslib_1.__param(2, TypeGraphQL.Args(_type => FindUniqueUserOrThrowArgs_1.FindUniqueUserOrThrowArgs)),
     tslib_1.__metadata(\\"design:type\\", Function),
     tslib_1.__metadata(\\"design:paramtypes\\", [Object, Object, FindUniqueUserOrThrowArgs_1.FindUniqueUserOrThrowArgs]),
     tslib_1.__metadata(\\"design:returntype\\", Promise)
@@ -3625,7 +3625,7 @@ tslib_1.__decorate([
     TypeGraphQL.Query(_returns => [UserGroupBy_1.UserGroupBy], { nullable: false }),
     tslib_1.__param(0, TypeGraphQL.Ctx()),
     tslib_1.__param(1, TypeGraphQL.Info()),
-    tslib_1.__param(2, TypeGraphQL.Args()),
+    tslib_1.__param(2, TypeGraphQL.Args(_type => GroupByUserArgs_1.GroupByUserArgs)),
     tslib_1.__metadata(\\"design:type\\", Function),
     tslib_1.__metadata(\\"design:paramtypes\\", [Object, Object, GroupByUserArgs_1.GroupByUserArgs]),
     tslib_1.__metadata(\\"design:returntype\\", Promise)
@@ -3634,7 +3634,7 @@ tslib_1.__decorate([
     TypeGraphQL.Mutation(_returns => AffectedRowsOutput_1.AffectedRowsOutput, { nullable: false }),
     tslib_1.__param(0, TypeGraphQL.Ctx()),
     tslib_1.__param(1, TypeGraphQL.Info()),
-    tslib_1.__param(2, TypeGraphQL.Args()),
+    tslib_1.__param(2, TypeGraphQL.Args(_type => UpdateManyUserArgs_1.UpdateManyUserArgs)),
     tslib_1.__metadata(\\"design:type\\", Function),
     tslib_1.__metadata(\\"design:paramtypes\\", [Object, Object, UpdateManyUserArgs_1.UpdateManyUserArgs]),
     tslib_1.__metadata(\\"design:returntype\\", Promise)
@@ -3643,7 +3643,7 @@ tslib_1.__decorate([
     TypeGraphQL.Mutation(_returns => User_1.User, { nullable: true }),
     tslib_1.__param(0, TypeGraphQL.Ctx()),
     tslib_1.__param(1, TypeGraphQL.Info()),
-    tslib_1.__param(2, TypeGraphQL.Args()),
+    tslib_1.__param(2, TypeGraphQL.Args(_type => UpdateOneUserArgs_1.UpdateOneUserArgs)),
     tslib_1.__metadata(\\"design:type\\", Function),
     tslib_1.__metadata(\\"design:paramtypes\\", [Object, Object, UpdateOneUserArgs_1.UpdateOneUserArgs]),
     tslib_1.__metadata(\\"design:returntype\\", Promise)
@@ -3652,7 +3652,7 @@ tslib_1.__decorate([
     TypeGraphQL.Mutation(_returns => User_1.User, { nullable: false }),
     tslib_1.__param(0, TypeGraphQL.Ctx()),
     tslib_1.__param(1, TypeGraphQL.Info()),
-    tslib_1.__param(2, TypeGraphQL.Args()),
+    tslib_1.__param(2, TypeGraphQL.Args(_type => UpsertOneUserArgs_1.UpsertOneUserArgs)),
     tslib_1.__metadata(\\"design:type\\", Function),
     tslib_1.__metadata(\\"design:paramtypes\\", [Object, Object, UpsertOneUserArgs_1.UpsertOneUserArgs]),
     tslib_1.__metadata(\\"design:returntype\\", Promise)
@@ -3686,7 +3686,7 @@ tslib_1.__decorate([
     TypeGraphQL.Query(_returns => AggregateClient_1.AggregateClient, { nullable: false }),
     tslib_1.__param(0, TypeGraphQL.Ctx()),
     tslib_1.__param(1, TypeGraphQL.Info()),
-    tslib_1.__param(2, TypeGraphQL.Args()),
+    tslib_1.__param(2, TypeGraphQL.Args(_type => AggregateClientArgs_1.AggregateClientArgs)),
     tslib_1.__metadata(\\"design:type\\", Function),
     tslib_1.__metadata(\\"design:paramtypes\\", [Object, Object, AggregateClientArgs_1.AggregateClientArgs]),
     tslib_1.__metadata(\\"design:returntype\\", Promise)
@@ -3721,7 +3721,7 @@ tslib_1.__decorate([
     TypeGraphQL.Mutation(_returns => [CreateManyAndReturnClient_1.CreateManyAndReturnClient], { nullable: false }),
     tslib_1.__param(0, TypeGraphQL.Ctx()),
     tslib_1.__param(1, TypeGraphQL.Info()),
-    tslib_1.__param(2, TypeGraphQL.Args()),
+    tslib_1.__param(2, TypeGraphQL.Args(_type => CreateManyAndReturnClientArgs_1.CreateManyAndReturnClientArgs)),
     tslib_1.__metadata(\\"design:type\\", Function),
     tslib_1.__metadata(\\"design:paramtypes\\", [Object, Object, CreateManyAndReturnClientArgs_1.CreateManyAndReturnClientArgs]),
     tslib_1.__metadata(\\"design:returntype\\", Promise)
@@ -3756,7 +3756,7 @@ tslib_1.__decorate([
     TypeGraphQL.Mutation(_returns => AffectedRowsOutput_1.AffectedRowsOutput, { nullable: false }),
     tslib_1.__param(0, TypeGraphQL.Ctx()),
     tslib_1.__param(1, TypeGraphQL.Info()),
-    tslib_1.__param(2, TypeGraphQL.Args()),
+    tslib_1.__param(2, TypeGraphQL.Args(_type => CreateManyClientArgs_1.CreateManyClientArgs)),
     tslib_1.__metadata(\\"design:type\\", Function),
     tslib_1.__metadata(\\"design:paramtypes\\", [Object, Object, CreateManyClientArgs_1.CreateManyClientArgs]),
     tslib_1.__metadata(\\"design:returntype\\", Promise)
@@ -3790,7 +3790,7 @@ tslib_1.__decorate([
     TypeGraphQL.Mutation(_returns => Client_1.Client, { nullable: false }),
     tslib_1.__param(0, TypeGraphQL.Ctx()),
     tslib_1.__param(1, TypeGraphQL.Info()),
-    tslib_1.__param(2, TypeGraphQL.Args()),
+    tslib_1.__param(2, TypeGraphQL.Args(_type => CreateOneClientArgs_1.CreateOneClientArgs)),
     tslib_1.__metadata(\\"design:type\\", Function),
     tslib_1.__metadata(\\"design:paramtypes\\", [Object, Object, CreateOneClientArgs_1.CreateOneClientArgs]),
     tslib_1.__metadata(\\"design:returntype\\", Promise)
@@ -3825,7 +3825,7 @@ tslib_1.__decorate([
     TypeGraphQL.Mutation(_returns => AffectedRowsOutput_1.AffectedRowsOutput, { nullable: false }),
     tslib_1.__param(0, TypeGraphQL.Ctx()),
     tslib_1.__param(1, TypeGraphQL.Info()),
-    tslib_1.__param(2, TypeGraphQL.Args()),
+    tslib_1.__param(2, TypeGraphQL.Args(_type => DeleteManyClientArgs_1.DeleteManyClientArgs)),
     tslib_1.__metadata(\\"design:type\\", Function),
     tslib_1.__metadata(\\"design:paramtypes\\", [Object, Object, DeleteManyClientArgs_1.DeleteManyClientArgs]),
     tslib_1.__metadata(\\"design:returntype\\", Promise)
@@ -3859,7 +3859,7 @@ tslib_1.__decorate([
     TypeGraphQL.Mutation(_returns => Client_1.Client, { nullable: true }),
     tslib_1.__param(0, TypeGraphQL.Ctx()),
     tslib_1.__param(1, TypeGraphQL.Info()),
-    tslib_1.__param(2, TypeGraphQL.Args()),
+    tslib_1.__param(2, TypeGraphQL.Args(_type => DeleteOneClientArgs_1.DeleteOneClientArgs)),
     tslib_1.__metadata(\\"design:type\\", Function),
     tslib_1.__metadata(\\"design:paramtypes\\", [Object, Object, DeleteOneClientArgs_1.DeleteOneClientArgs]),
     tslib_1.__metadata(\\"design:returntype\\", Promise)
@@ -3893,7 +3893,7 @@ tslib_1.__decorate([
     TypeGraphQL.Query(_returns => Client_1.Client, { nullable: true }),
     tslib_1.__param(0, TypeGraphQL.Ctx()),
     tslib_1.__param(1, TypeGraphQL.Info()),
-    tslib_1.__param(2, TypeGraphQL.Args()),
+    tslib_1.__param(2, TypeGraphQL.Args(_type => FindFirstClientArgs_1.FindFirstClientArgs)),
     tslib_1.__metadata(\\"design:type\\", Function),
     tslib_1.__metadata(\\"design:paramtypes\\", [Object, Object, FindFirstClientArgs_1.FindFirstClientArgs]),
     tslib_1.__metadata(\\"design:returntype\\", Promise)
@@ -3927,7 +3927,7 @@ tslib_1.__decorate([
     TypeGraphQL.Query(_returns => [Client_1.Client], { nullable: false }),
     tslib_1.__param(0, TypeGraphQL.Ctx()),
     tslib_1.__param(1, TypeGraphQL.Info()),
-    tslib_1.__param(2, TypeGraphQL.Args()),
+    tslib_1.__param(2, TypeGraphQL.Args(_type => FindManyClientArgs_1.FindManyClientArgs)),
     tslib_1.__metadata(\\"design:type\\", Function),
     tslib_1.__metadata(\\"design:paramtypes\\", [Object, Object, FindManyClientArgs_1.FindManyClientArgs]),
     tslib_1.__metadata(\\"design:returntype\\", Promise)
@@ -3961,7 +3961,7 @@ tslib_1.__decorate([
     TypeGraphQL.Query(_returns => Client_1.Client, { nullable: true }),
     tslib_1.__param(0, TypeGraphQL.Ctx()),
     tslib_1.__param(1, TypeGraphQL.Info()),
-    tslib_1.__param(2, TypeGraphQL.Args()),
+    tslib_1.__param(2, TypeGraphQL.Args(_type => FindUniqueClientArgs_1.FindUniqueClientArgs)),
     tslib_1.__metadata(\\"design:type\\", Function),
     tslib_1.__metadata(\\"design:paramtypes\\", [Object, Object, FindUniqueClientArgs_1.FindUniqueClientArgs]),
     tslib_1.__metadata(\\"design:returntype\\", Promise)
@@ -3998,7 +3998,7 @@ tslib_1.__decorate([
     TypeGraphQL.Query(_returns => [ClientGroupBy_1.ClientGroupBy], { nullable: false }),
     tslib_1.__param(0, TypeGraphQL.Ctx()),
     tslib_1.__param(1, TypeGraphQL.Info()),
-    tslib_1.__param(2, TypeGraphQL.Args()),
+    tslib_1.__param(2, TypeGraphQL.Args(_type => GroupByClientArgs_1.GroupByClientArgs)),
     tslib_1.__metadata(\\"design:type\\", Function),
     tslib_1.__metadata(\\"design:paramtypes\\", [Object, Object, GroupByClientArgs_1.GroupByClientArgs]),
     tslib_1.__metadata(\\"design:returntype\\", Promise)
@@ -4033,7 +4033,7 @@ tslib_1.__decorate([
     TypeGraphQL.Mutation(_returns => AffectedRowsOutput_1.AffectedRowsOutput, { nullable: false }),
     tslib_1.__param(0, TypeGraphQL.Ctx()),
     tslib_1.__param(1, TypeGraphQL.Info()),
-    tslib_1.__param(2, TypeGraphQL.Args()),
+    tslib_1.__param(2, TypeGraphQL.Args(_type => UpdateManyClientArgs_1.UpdateManyClientArgs)),
     tslib_1.__metadata(\\"design:type\\", Function),
     tslib_1.__metadata(\\"design:paramtypes\\", [Object, Object, UpdateManyClientArgs_1.UpdateManyClientArgs]),
     tslib_1.__metadata(\\"design:returntype\\", Promise)
@@ -4067,7 +4067,7 @@ tslib_1.__decorate([
     TypeGraphQL.Mutation(_returns => Client_1.Client, { nullable: true }),
     tslib_1.__param(0, TypeGraphQL.Ctx()),
     tslib_1.__param(1, TypeGraphQL.Info()),
-    tslib_1.__param(2, TypeGraphQL.Args()),
+    tslib_1.__param(2, TypeGraphQL.Args(_type => UpdateOneClientArgs_1.UpdateOneClientArgs)),
     tslib_1.__metadata(\\"design:type\\", Function),
     tslib_1.__metadata(\\"design:paramtypes\\", [Object, Object, UpdateOneClientArgs_1.UpdateOneClientArgs]),
     tslib_1.__metadata(\\"design:returntype\\", Promise)
@@ -4101,7 +4101,7 @@ tslib_1.__decorate([
     TypeGraphQL.Mutation(_returns => Client_1.Client, { nullable: false }),
     tslib_1.__param(0, TypeGraphQL.Ctx()),
     tslib_1.__param(1, TypeGraphQL.Info()),
-    tslib_1.__param(2, TypeGraphQL.Args()),
+    tslib_1.__param(2, TypeGraphQL.Args(_type => UpsertOneClientArgs_1.UpsertOneClientArgs)),
     tslib_1.__metadata(\\"design:type\\", Function),
     tslib_1.__metadata(\\"design:paramtypes\\", [Object, Object, UpsertOneClientArgs_1.UpsertOneClientArgs]),
     tslib_1.__metadata(\\"design:returntype\\", Promise)
@@ -4527,7 +4527,7 @@ tslib_1.__decorate([
     TypeGraphQL.Query(_returns => AggregateMainUser_1.AggregateMainUser, { nullable: false }),
     tslib_1.__param(0, TypeGraphQL.Ctx()),
     tslib_1.__param(1, TypeGraphQL.Info()),
-    tslib_1.__param(2, TypeGraphQL.Args()),
+    tslib_1.__param(2, TypeGraphQL.Args(_type => AggregateMainUserArgs_1.AggregateMainUserArgs)),
     tslib_1.__metadata(\\"design:type\\", Function),
     tslib_1.__metadata(\\"design:paramtypes\\", [Object, Object, AggregateMainUserArgs_1.AggregateMainUserArgs]),
     tslib_1.__metadata(\\"design:returntype\\", Promise)
@@ -4678,7 +4678,7 @@ tslib_1.__decorate([
     TypeGraphQL.Query(_returns => AggregateClient_1.AggregateClient, { nullable: false }),
     tslib_1.__param(0, TypeGraphQL.Ctx()),
     tslib_1.__param(1, TypeGraphQL.Info()),
-    tslib_1.__param(2, TypeGraphQL.Args()),
+    tslib_1.__param(2, TypeGraphQL.Args(_type => AggregateClientArgs_1.AggregateClientArgs)),
     tslib_1.__metadata(\\"design:type\\", Function),
     tslib_1.__metadata(\\"design:paramtypes\\", [Object, Object, AggregateClientArgs_1.AggregateClientArgs]),
     tslib_1.__metadata(\\"design:returntype\\", Promise)
@@ -4687,7 +4687,7 @@ tslib_1.__decorate([
     TypeGraphQL.Mutation(_returns => AffectedRowsOutput_1.AffectedRowsOutput, { nullable: false }),
     tslib_1.__param(0, TypeGraphQL.Ctx()),
     tslib_1.__param(1, TypeGraphQL.Info()),
-    tslib_1.__param(2, TypeGraphQL.Args()),
+    tslib_1.__param(2, TypeGraphQL.Args(_type => CreateManyClientArgs_1.CreateManyClientArgs)),
     tslib_1.__metadata(\\"design:type\\", Function),
     tslib_1.__metadata(\\"design:paramtypes\\", [Object, Object, CreateManyClientArgs_1.CreateManyClientArgs]),
     tslib_1.__metadata(\\"design:returntype\\", Promise)
@@ -4696,7 +4696,7 @@ tslib_1.__decorate([
     TypeGraphQL.Mutation(_returns => [CreateManyAndReturnClient_1.CreateManyAndReturnClient], { nullable: false }),
     tslib_1.__param(0, TypeGraphQL.Ctx()),
     tslib_1.__param(1, TypeGraphQL.Info()),
-    tslib_1.__param(2, TypeGraphQL.Args()),
+    tslib_1.__param(2, TypeGraphQL.Args(_type => CreateManyAndReturnClientArgs_1.CreateManyAndReturnClientArgs)),
     tslib_1.__metadata(\\"design:type\\", Function),
     tslib_1.__metadata(\\"design:paramtypes\\", [Object, Object, CreateManyAndReturnClientArgs_1.CreateManyAndReturnClientArgs]),
     tslib_1.__metadata(\\"design:returntype\\", Promise)
@@ -4705,7 +4705,7 @@ tslib_1.__decorate([
     TypeGraphQL.Mutation(_returns => Client_1.Client, { nullable: false }),
     tslib_1.__param(0, TypeGraphQL.Ctx()),
     tslib_1.__param(1, TypeGraphQL.Info()),
-    tslib_1.__param(2, TypeGraphQL.Args()),
+    tslib_1.__param(2, TypeGraphQL.Args(_type => CreateOneClientArgs_1.CreateOneClientArgs)),
     tslib_1.__metadata(\\"design:type\\", Function),
     tslib_1.__metadata(\\"design:paramtypes\\", [Object, Object, CreateOneClientArgs_1.CreateOneClientArgs]),
     tslib_1.__metadata(\\"design:returntype\\", Promise)
@@ -4714,7 +4714,7 @@ tslib_1.__decorate([
     TypeGraphQL.Mutation(_returns => AffectedRowsOutput_1.AffectedRowsOutput, { nullable: false }),
     tslib_1.__param(0, TypeGraphQL.Ctx()),
     tslib_1.__param(1, TypeGraphQL.Info()),
-    tslib_1.__param(2, TypeGraphQL.Args()),
+    tslib_1.__param(2, TypeGraphQL.Args(_type => DeleteManyClientArgs_1.DeleteManyClientArgs)),
     tslib_1.__metadata(\\"design:type\\", Function),
     tslib_1.__metadata(\\"design:paramtypes\\", [Object, Object, DeleteManyClientArgs_1.DeleteManyClientArgs]),
     tslib_1.__metadata(\\"design:returntype\\", Promise)
@@ -4723,7 +4723,7 @@ tslib_1.__decorate([
     TypeGraphQL.Mutation(_returns => Client_1.Client, { nullable: true }),
     tslib_1.__param(0, TypeGraphQL.Ctx()),
     tslib_1.__param(1, TypeGraphQL.Info()),
-    tslib_1.__param(2, TypeGraphQL.Args()),
+    tslib_1.__param(2, TypeGraphQL.Args(_type => DeleteOneClientArgs_1.DeleteOneClientArgs)),
     tslib_1.__metadata(\\"design:type\\", Function),
     tslib_1.__metadata(\\"design:paramtypes\\", [Object, Object, DeleteOneClientArgs_1.DeleteOneClientArgs]),
     tslib_1.__metadata(\\"design:returntype\\", Promise)
@@ -4732,7 +4732,7 @@ tslib_1.__decorate([
     TypeGraphQL.Query(_returns => Client_1.Client, { nullable: true }),
     tslib_1.__param(0, TypeGraphQL.Ctx()),
     tslib_1.__param(1, TypeGraphQL.Info()),
-    tslib_1.__param(2, TypeGraphQL.Args()),
+    tslib_1.__param(2, TypeGraphQL.Args(_type => FindFirstClientArgs_1.FindFirstClientArgs)),
     tslib_1.__metadata(\\"design:type\\", Function),
     tslib_1.__metadata(\\"design:paramtypes\\", [Object, Object, FindFirstClientArgs_1.FindFirstClientArgs]),
     tslib_1.__metadata(\\"design:returntype\\", Promise)
@@ -4741,7 +4741,7 @@ tslib_1.__decorate([
     TypeGraphQL.Query(_returns => Client_1.Client, { nullable: true }),
     tslib_1.__param(0, TypeGraphQL.Ctx()),
     tslib_1.__param(1, TypeGraphQL.Info()),
-    tslib_1.__param(2, TypeGraphQL.Args()),
+    tslib_1.__param(2, TypeGraphQL.Args(_type => FindFirstClientOrThrowArgs_1.FindFirstClientOrThrowArgs)),
     tslib_1.__metadata(\\"design:type\\", Function),
     tslib_1.__metadata(\\"design:paramtypes\\", [Object, Object, FindFirstClientOrThrowArgs_1.FindFirstClientOrThrowArgs]),
     tslib_1.__metadata(\\"design:returntype\\", Promise)
@@ -4750,7 +4750,7 @@ tslib_1.__decorate([
     TypeGraphQL.Query(_returns => [Client_1.Client], { nullable: false }),
     tslib_1.__param(0, TypeGraphQL.Ctx()),
     tslib_1.__param(1, TypeGraphQL.Info()),
-    tslib_1.__param(2, TypeGraphQL.Args()),
+    tslib_1.__param(2, TypeGraphQL.Args(_type => FindManyClientArgs_1.FindManyClientArgs)),
     tslib_1.__metadata(\\"design:type\\", Function),
     tslib_1.__metadata(\\"design:paramtypes\\", [Object, Object, FindManyClientArgs_1.FindManyClientArgs]),
     tslib_1.__metadata(\\"design:returntype\\", Promise)
@@ -4759,7 +4759,7 @@ tslib_1.__decorate([
     TypeGraphQL.Query(_returns => Client_1.Client, { nullable: true }),
     tslib_1.__param(0, TypeGraphQL.Ctx()),
     tslib_1.__param(1, TypeGraphQL.Info()),
-    tslib_1.__param(2, TypeGraphQL.Args()),
+    tslib_1.__param(2, TypeGraphQL.Args(_type => FindUniqueClientArgs_1.FindUniqueClientArgs)),
     tslib_1.__metadata(\\"design:type\\", Function),
     tslib_1.__metadata(\\"design:paramtypes\\", [Object, Object, FindUniqueClientArgs_1.FindUniqueClientArgs]),
     tslib_1.__metadata(\\"design:returntype\\", Promise)
@@ -4768,7 +4768,7 @@ tslib_1.__decorate([
     TypeGraphQL.Query(_returns => Client_1.Client, { nullable: true }),
     tslib_1.__param(0, TypeGraphQL.Ctx()),
     tslib_1.__param(1, TypeGraphQL.Info()),
-    tslib_1.__param(2, TypeGraphQL.Args()),
+    tslib_1.__param(2, TypeGraphQL.Args(_type => FindUniqueClientOrThrowArgs_1.FindUniqueClientOrThrowArgs)),
     tslib_1.__metadata(\\"design:type\\", Function),
     tslib_1.__metadata(\\"design:paramtypes\\", [Object, Object, FindUniqueClientOrThrowArgs_1.FindUniqueClientOrThrowArgs]),
     tslib_1.__metadata(\\"design:returntype\\", Promise)
@@ -4777,7 +4777,7 @@ tslib_1.__decorate([
     TypeGraphQL.Query(_returns => [ClientGroupBy_1.ClientGroupBy], { nullable: false }),
     tslib_1.__param(0, TypeGraphQL.Ctx()),
     tslib_1.__param(1, TypeGraphQL.Info()),
-    tslib_1.__param(2, TypeGraphQL.Args()),
+    tslib_1.__param(2, TypeGraphQL.Args(_type => GroupByClientArgs_1.GroupByClientArgs)),
     tslib_1.__metadata(\\"design:type\\", Function),
     tslib_1.__metadata(\\"design:paramtypes\\", [Object, Object, GroupByClientArgs_1.GroupByClientArgs]),
     tslib_1.__metadata(\\"design:returntype\\", Promise)
@@ -4786,7 +4786,7 @@ tslib_1.__decorate([
     TypeGraphQL.Mutation(_returns => AffectedRowsOutput_1.AffectedRowsOutput, { nullable: false }),
     tslib_1.__param(0, TypeGraphQL.Ctx()),
     tslib_1.__param(1, TypeGraphQL.Info()),
-    tslib_1.__param(2, TypeGraphQL.Args()),
+    tslib_1.__param(2, TypeGraphQL.Args(_type => UpdateManyClientArgs_1.UpdateManyClientArgs)),
     tslib_1.__metadata(\\"design:type\\", Function),
     tslib_1.__metadata(\\"design:paramtypes\\", [Object, Object, UpdateManyClientArgs_1.UpdateManyClientArgs]),
     tslib_1.__metadata(\\"design:returntype\\", Promise)
@@ -4795,7 +4795,7 @@ tslib_1.__decorate([
     TypeGraphQL.Mutation(_returns => Client_1.Client, { nullable: true }),
     tslib_1.__param(0, TypeGraphQL.Ctx()),
     tslib_1.__param(1, TypeGraphQL.Info()),
-    tslib_1.__param(2, TypeGraphQL.Args()),
+    tslib_1.__param(2, TypeGraphQL.Args(_type => UpdateOneClientArgs_1.UpdateOneClientArgs)),
     tslib_1.__metadata(\\"design:type\\", Function),
     tslib_1.__metadata(\\"design:paramtypes\\", [Object, Object, UpdateOneClientArgs_1.UpdateOneClientArgs]),
     tslib_1.__metadata(\\"design:returntype\\", Promise)
@@ -4804,7 +4804,7 @@ tslib_1.__decorate([
     TypeGraphQL.Mutation(_returns => Client_1.Client, { nullable: false }),
     tslib_1.__param(0, TypeGraphQL.Ctx()),
     tslib_1.__param(1, TypeGraphQL.Info()),
-    tslib_1.__param(2, TypeGraphQL.Args()),
+    tslib_1.__param(2, TypeGraphQL.Args(_type => UpsertOneClientArgs_1.UpsertOneClientArgs)),
     tslib_1.__metadata(\\"design:type\\", Function),
     tslib_1.__metadata(\\"design:paramtypes\\", [Object, Object, UpsertOneClientArgs_1.UpsertOneClientArgs]),
     tslib_1.__metadata(\\"design:returntype\\", Promise)
@@ -4841,7 +4841,7 @@ tslib_1.__decorate([
     TypeGraphQL.Query(_returns => [MainUserGroupBy_1.MainUserGroupBy], { nullable: false }),
     tslib_1.__param(0, TypeGraphQL.Ctx()),
     tslib_1.__param(1, TypeGraphQL.Info()),
-    tslib_1.__param(2, TypeGraphQL.Args()),
+    tslib_1.__param(2, TypeGraphQL.Args(_type => GroupByMainUserArgs_1.GroupByMainUserArgs)),
     tslib_1.__metadata(\\"design:type\\", Function),
     tslib_1.__metadata(\\"design:paramtypes\\", [Object, Object, GroupByMainUserArgs_1.GroupByMainUserArgs]),
     tslib_1.__metadata(\\"design:returntype\\", Promise)
@@ -4992,7 +4992,7 @@ tslib_1.__decorate([
     TypeGraphQL.Query(_returns => AggregateMainUser_1.AggregateMainUser, { nullable: false }),
     tslib_1.__param(0, TypeGraphQL.Ctx()),
     tslib_1.__param(1, TypeGraphQL.Info()),
-    tslib_1.__param(2, TypeGraphQL.Args()),
+    tslib_1.__param(2, TypeGraphQL.Args(_type => AggregateMainUserArgs_1.AggregateMainUserArgs)),
     tslib_1.__metadata(\\"design:type\\", Function),
     tslib_1.__metadata(\\"design:paramtypes\\", [Object, Object, AggregateMainUserArgs_1.AggregateMainUserArgs]),
     tslib_1.__metadata(\\"design:returntype\\", Promise)
@@ -5001,7 +5001,7 @@ tslib_1.__decorate([
     TypeGraphQL.Mutation(_returns => AffectedRowsOutput_1.AffectedRowsOutput, { nullable: false }),
     tslib_1.__param(0, TypeGraphQL.Ctx()),
     tslib_1.__param(1, TypeGraphQL.Info()),
-    tslib_1.__param(2, TypeGraphQL.Args()),
+    tslib_1.__param(2, TypeGraphQL.Args(_type => CreateManyMainUserArgs_1.CreateManyMainUserArgs)),
     tslib_1.__metadata(\\"design:type\\", Function),
     tslib_1.__metadata(\\"design:paramtypes\\", [Object, Object, CreateManyMainUserArgs_1.CreateManyMainUserArgs]),
     tslib_1.__metadata(\\"design:returntype\\", Promise)
@@ -5010,7 +5010,7 @@ tslib_1.__decorate([
     TypeGraphQL.Mutation(_returns => [CreateManyAndReturnMainUser_1.CreateManyAndReturnMainUser], { nullable: false }),
     tslib_1.__param(0, TypeGraphQL.Ctx()),
     tslib_1.__param(1, TypeGraphQL.Info()),
-    tslib_1.__param(2, TypeGraphQL.Args()),
+    tslib_1.__param(2, TypeGraphQL.Args(_type => CreateManyAndReturnMainUserArgs_1.CreateManyAndReturnMainUserArgs)),
     tslib_1.__metadata(\\"design:type\\", Function),
     tslib_1.__metadata(\\"design:paramtypes\\", [Object, Object, CreateManyAndReturnMainUserArgs_1.CreateManyAndReturnMainUserArgs]),
     tslib_1.__metadata(\\"design:returntype\\", Promise)
@@ -5019,7 +5019,7 @@ tslib_1.__decorate([
     TypeGraphQL.Mutation(_returns => MainUser_1.MainUser, { nullable: false }),
     tslib_1.__param(0, TypeGraphQL.Ctx()),
     tslib_1.__param(1, TypeGraphQL.Info()),
-    tslib_1.__param(2, TypeGraphQL.Args()),
+    tslib_1.__param(2, TypeGraphQL.Args(_type => CreateOneMainUserArgs_1.CreateOneMainUserArgs)),
     tslib_1.__metadata(\\"design:type\\", Function),
     tslib_1.__metadata(\\"design:paramtypes\\", [Object, Object, CreateOneMainUserArgs_1.CreateOneMainUserArgs]),
     tslib_1.__metadata(\\"design:returntype\\", Promise)
@@ -5028,7 +5028,7 @@ tslib_1.__decorate([
     TypeGraphQL.Mutation(_returns => AffectedRowsOutput_1.AffectedRowsOutput, { nullable: false }),
     tslib_1.__param(0, TypeGraphQL.Ctx()),
     tslib_1.__param(1, TypeGraphQL.Info()),
-    tslib_1.__param(2, TypeGraphQL.Args()),
+    tslib_1.__param(2, TypeGraphQL.Args(_type => DeleteManyMainUserArgs_1.DeleteManyMainUserArgs)),
     tslib_1.__metadata(\\"design:type\\", Function),
     tslib_1.__metadata(\\"design:paramtypes\\", [Object, Object, DeleteManyMainUserArgs_1.DeleteManyMainUserArgs]),
     tslib_1.__metadata(\\"design:returntype\\", Promise)
@@ -5037,7 +5037,7 @@ tslib_1.__decorate([
     TypeGraphQL.Mutation(_returns => MainUser_1.MainUser, { nullable: true }),
     tslib_1.__param(0, TypeGraphQL.Ctx()),
     tslib_1.__param(1, TypeGraphQL.Info()),
-    tslib_1.__param(2, TypeGraphQL.Args()),
+    tslib_1.__param(2, TypeGraphQL.Args(_type => DeleteOneMainUserArgs_1.DeleteOneMainUserArgs)),
     tslib_1.__metadata(\\"design:type\\", Function),
     tslib_1.__metadata(\\"design:paramtypes\\", [Object, Object, DeleteOneMainUserArgs_1.DeleteOneMainUserArgs]),
     tslib_1.__metadata(\\"design:returntype\\", Promise)
@@ -5046,7 +5046,7 @@ tslib_1.__decorate([
     TypeGraphQL.Query(_returns => MainUser_1.MainUser, { nullable: true }),
     tslib_1.__param(0, TypeGraphQL.Ctx()),
     tslib_1.__param(1, TypeGraphQL.Info()),
-    tslib_1.__param(2, TypeGraphQL.Args()),
+    tslib_1.__param(2, TypeGraphQL.Args(_type => FindFirstMainUserArgs_1.FindFirstMainUserArgs)),
     tslib_1.__metadata(\\"design:type\\", Function),
     tslib_1.__metadata(\\"design:paramtypes\\", [Object, Object, FindFirstMainUserArgs_1.FindFirstMainUserArgs]),
     tslib_1.__metadata(\\"design:returntype\\", Promise)
@@ -5055,7 +5055,7 @@ tslib_1.__decorate([
     TypeGraphQL.Query(_returns => MainUser_1.MainUser, { nullable: true }),
     tslib_1.__param(0, TypeGraphQL.Ctx()),
     tslib_1.__param(1, TypeGraphQL.Info()),
-    tslib_1.__param(2, TypeGraphQL.Args()),
+    tslib_1.__param(2, TypeGraphQL.Args(_type => FindFirstMainUserOrThrowArgs_1.FindFirstMainUserOrThrowArgs)),
     tslib_1.__metadata(\\"design:type\\", Function),
     tslib_1.__metadata(\\"design:paramtypes\\", [Object, Object, FindFirstMainUserOrThrowArgs_1.FindFirstMainUserOrThrowArgs]),
     tslib_1.__metadata(\\"design:returntype\\", Promise)
@@ -5064,7 +5064,7 @@ tslib_1.__decorate([
     TypeGraphQL.Query(_returns => [MainUser_1.MainUser], { nullable: false }),
     tslib_1.__param(0, TypeGraphQL.Ctx()),
     tslib_1.__param(1, TypeGraphQL.Info()),
-    tslib_1.__param(2, TypeGraphQL.Args()),
+    tslib_1.__param(2, TypeGraphQL.Args(_type => FindManyMainUserArgs_1.FindManyMainUserArgs)),
     tslib_1.__metadata(\\"design:type\\", Function),
     tslib_1.__metadata(\\"design:paramtypes\\", [Object, Object, FindManyMainUserArgs_1.FindManyMainUserArgs]),
     tslib_1.__metadata(\\"design:returntype\\", Promise)
@@ -5073,7 +5073,7 @@ tslib_1.__decorate([
     TypeGraphQL.Query(_returns => MainUser_1.MainUser, { nullable: true }),
     tslib_1.__param(0, TypeGraphQL.Ctx()),
     tslib_1.__param(1, TypeGraphQL.Info()),
-    tslib_1.__param(2, TypeGraphQL.Args()),
+    tslib_1.__param(2, TypeGraphQL.Args(_type => FindUniqueMainUserArgs_1.FindUniqueMainUserArgs)),
     tslib_1.__metadata(\\"design:type\\", Function),
     tslib_1.__metadata(\\"design:paramtypes\\", [Object, Object, FindUniqueMainUserArgs_1.FindUniqueMainUserArgs]),
     tslib_1.__metadata(\\"design:returntype\\", Promise)
@@ -5082,7 +5082,7 @@ tslib_1.__decorate([
     TypeGraphQL.Query(_returns => MainUser_1.MainUser, { nullable: true }),
     tslib_1.__param(0, TypeGraphQL.Ctx()),
     tslib_1.__param(1, TypeGraphQL.Info()),
-    tslib_1.__param(2, TypeGraphQL.Args()),
+    tslib_1.__param(2, TypeGraphQL.Args(_type => FindUniqueMainUserOrThrowArgs_1.FindUniqueMainUserOrThrowArgs)),
     tslib_1.__metadata(\\"design:type\\", Function),
     tslib_1.__metadata(\\"design:paramtypes\\", [Object, Object, FindUniqueMainUserOrThrowArgs_1.FindUniqueMainUserOrThrowArgs]),
     tslib_1.__metadata(\\"design:returntype\\", Promise)
@@ -5091,7 +5091,7 @@ tslib_1.__decorate([
     TypeGraphQL.Query(_returns => [MainUserGroupBy_1.MainUserGroupBy], { nullable: false }),
     tslib_1.__param(0, TypeGraphQL.Ctx()),
     tslib_1.__param(1, TypeGraphQL.Info()),
-    tslib_1.__param(2, TypeGraphQL.Args()),
+    tslib_1.__param(2, TypeGraphQL.Args(_type => GroupByMainUserArgs_1.GroupByMainUserArgs)),
     tslib_1.__metadata(\\"design:type\\", Function),
     tslib_1.__metadata(\\"design:paramtypes\\", [Object, Object, GroupByMainUserArgs_1.GroupByMainUserArgs]),
     tslib_1.__metadata(\\"design:returntype\\", Promise)
@@ -5100,7 +5100,7 @@ tslib_1.__decorate([
     TypeGraphQL.Mutation(_returns => AffectedRowsOutput_1.AffectedRowsOutput, { nullable: false }),
     tslib_1.__param(0, TypeGraphQL.Ctx()),
     tslib_1.__param(1, TypeGraphQL.Info()),
-    tslib_1.__param(2, TypeGraphQL.Args()),
+    tslib_1.__param(2, TypeGraphQL.Args(_type => UpdateManyMainUserArgs_1.UpdateManyMainUserArgs)),
     tslib_1.__metadata(\\"design:type\\", Function),
     tslib_1.__metadata(\\"design:paramtypes\\", [Object, Object, UpdateManyMainUserArgs_1.UpdateManyMainUserArgs]),
     tslib_1.__metadata(\\"design:returntype\\", Promise)
@@ -5109,7 +5109,7 @@ tslib_1.__decorate([
     TypeGraphQL.Mutation(_returns => MainUser_1.MainUser, { nullable: true }),
     tslib_1.__param(0, TypeGraphQL.Ctx()),
     tslib_1.__param(1, TypeGraphQL.Info()),
-    tslib_1.__param(2, TypeGraphQL.Args()),
+    tslib_1.__param(2, TypeGraphQL.Args(_type => UpdateOneMainUserArgs_1.UpdateOneMainUserArgs)),
     tslib_1.__metadata(\\"design:type\\", Function),
     tslib_1.__metadata(\\"design:paramtypes\\", [Object, Object, UpdateOneMainUserArgs_1.UpdateOneMainUserArgs]),
     tslib_1.__metadata(\\"design:returntype\\", Promise)
@@ -5118,7 +5118,7 @@ tslib_1.__decorate([
     TypeGraphQL.Mutation(_returns => MainUser_1.MainUser, { nullable: false }),
     tslib_1.__param(0, TypeGraphQL.Ctx()),
     tslib_1.__param(1, TypeGraphQL.Info()),
-    tslib_1.__param(2, TypeGraphQL.Args()),
+    tslib_1.__param(2, TypeGraphQL.Args(_type => UpsertOneMainUserArgs_1.UpsertOneMainUserArgs)),
     tslib_1.__metadata(\\"design:type\\", Function),
     tslib_1.__metadata(\\"design:paramtypes\\", [Object, Object, UpsertOneMainUserArgs_1.UpsertOneMainUserArgs]),
     tslib_1.__metadata(\\"design:returntype\\", Promise)

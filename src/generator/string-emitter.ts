@@ -671,7 +671,10 @@ export function emitOutputTypeModule(
         decorator: `TypeGraphQL.Field(_type => ${toRuntimeTypeGraphQLReference(field.typeGraphQLType, runtimeRefs)}, { name: ${JSON.stringify(
           field.name,
         )}, nullable: ${String(!field.isRequired)} })`,
-        paramDecorators: ["TypeGraphQL.Root()", "TypeGraphQL.Args()"],
+        paramDecorators: [
+          "TypeGraphQL.Root()",
+          `TypeGraphQL.Args(_type => ${runtimeRefs.get(field.argsTypeName!) ?? field.argsTypeName!})`,
+        ],
         paramTypes: [type.typeName, field.argsTypeName!].map(
           typeName => runtimeRefs.get(typeName) ?? typeName,
         ),
@@ -796,9 +799,7 @@ export function buildCrudResolverMethod(args: {
     ...(!args.action.argsTypeName
       ? []
       : [
-          args.generatorOptions.emitRedundantTypesInfo
-            ? `TypeGraphQL.Args(_type => ${args.runtimeRefs.get(args.action.argsTypeName) ?? args.action.argsTypeName})`
-            : "TypeGraphQL.Args()",
+          `TypeGraphQL.Args(_type => ${args.runtimeRefs.get(args.action.argsTypeName) ?? args.action.argsTypeName})`,
         ]),
   ];
   const paramTypes = [
@@ -875,9 +876,7 @@ export function buildRelationResolverMethod(args: {
       ...(!args.field.argsTypeName
         ? []
         : [
-            args.generatorOptions.emitRedundantTypesInfo
-              ? `TypeGraphQL.Args(_type => ${args.runtimeRefs.get(args.field.argsTypeName) ?? args.field.argsTypeName})`
-              : "TypeGraphQL.Args()",
+            `TypeGraphQL.Args(_type => ${args.runtimeRefs.get(args.field.argsTypeName) ?? args.field.argsTypeName})`,
           ]),
     ],
     paramTypes: [

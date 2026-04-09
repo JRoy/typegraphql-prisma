@@ -510,7 +510,7 @@ exports.FirstModelCount = FirstModelCount;
 tslib_1.__decorate([
     TypeGraphQL.Field(_type => TypeGraphQL.Int, { name: \\"secondModelsField\\", nullable: false }),
     tslib_1.__param(0, TypeGraphQL.Root()),
-    tslib_1.__param(1, TypeGraphQL.Args()),
+    tslib_1.__param(1, TypeGraphQL.Args(_type => FirstModelCountSecondModelsFieldArgs_1.FirstModelCountSecondModelsFieldArgs)),
     tslib_1.__metadata(\\"design:type\\", Function),
     tslib_1.__metadata(\\"design:paramtypes\\", [FirstModelCount, FirstModelCountSecondModelsFieldArgs_1.FirstModelCountSecondModelsFieldArgs]),
     tslib_1.__metadata(\\"design:returntype\\", Number)
@@ -565,7 +565,7 @@ exports.FirstModelCount = FirstModelCount;
 tslib_1.__decorate([
     TypeGraphQL.Field(_type => TypeGraphQL.Int, { name: \\"secondModelsField\\", nullable: false }),
     tslib_1.__param(0, TypeGraphQL.Root()),
-    tslib_1.__param(1, TypeGraphQL.Args()),
+    tslib_1.__param(1, TypeGraphQL.Args(_type => FirstModelCountSecondModelsFieldArgs_1.FirstModelCountSecondModelsFieldArgs)),
     tslib_1.__metadata(\\"design:type\\", Function),
     tslib_1.__metadata(\\"design:paramtypes\\", [FirstModelCount, FirstModelCountSecondModelsFieldArgs_1.FirstModelCountSecondModelsFieldArgs]),
     tslib_1.__metadata(\\"design:returntype\\", Number)
@@ -966,7 +966,7 @@ exports.FirstModelCount = FirstModelCount;
 tslib_1.__decorate([
     TypeGraphQL.Field(_type => TypeGraphQL.Int, { name: \\"secondModelsField\\", nullable: false }),
     tslib_1.__param(0, TypeGraphQL.Root()),
-    tslib_1.__param(1, TypeGraphQL.Args()),
+    tslib_1.__param(1, TypeGraphQL.Args(_type => FirstModelCountSecondModelsFieldArgs_1.FirstModelCountSecondModelsFieldArgs)),
     tslib_1.__metadata(\\"design:type\\", Function),
     tslib_1.__metadata(\\"design:paramtypes\\", [FirstModelCount, FirstModelCountSecondModelsFieldArgs_1.FirstModelCountSecondModelsFieldArgs]),
     tslib_1.__metadata(\\"design:returntype\\", Number)

@@ -29,7 +29,7 @@ tslib_1.__decorate([
     tslib_1.__param(0, TypeGraphQL.Root()),
     tslib_1.__param(1, TypeGraphQL.Ctx()),
     tslib_1.__param(2, TypeGraphQL.Info()),
-    tslib_1.__param(3, TypeGraphQL.Args()),
+    tslib_1.__param(3, TypeGraphQL.Args(_type => UserPointsArgs_1.UserPointsArgs)),
     tslib_1.__metadata(\\"design:type\\", Function),
     tslib_1.__metadata(\\"design:paramtypes\\", [User_1.User, Object, Object, UserPointsArgs_1.UserPointsArgs]),
     tslib_1.__metadata(\\"design:returntype\\", Promise)
@@ -447,7 +447,7 @@ tslib_1.__decorate([
     tslib_1.__param(0, TypeGraphQL.Root()),
     tslib_1.__param(1, TypeGraphQL.Ctx()),
     tslib_1.__param(2, TypeGraphQL.Info()),
-    tslib_1.__param(3, TypeGraphQL.Args()),
+    tslib_1.__param(3, TypeGraphQL.Args(_type => DirectorMoviesArgs_1.DirectorMoviesArgs)),
     tslib_1.__metadata(\\"design:type\\", Function),
     tslib_1.__metadata(\\"design:paramtypes\\", [Director_1.Director, Object, Object, DirectorMoviesArgs_1.DirectorMoviesArgs]),
     tslib_1.__metadata(\\"design:returntype\\", Promise)
@@ -487,7 +487,7 @@ tslib_1.__decorate([
     tslib_1.__param(0, TypeGraphQL.Root()),
     tslib_1.__param(1, TypeGraphQL.Ctx()),
     tslib_1.__param(2, TypeGraphQL.Info()),
-    tslib_1.__param(3, TypeGraphQL.Args()),
+    tslib_1.__param(3, TypeGraphQL.Args(_type => PostAuthorArgs_1.PostAuthorArgs)),
     tslib_1.__metadata(\\"design:type\\", Function),
     tslib_1.__metadata(\\"design:paramtypes\\", [Post_1.Post, Object, Object, PostAuthorArgs_1.PostAuthorArgs]),
     tslib_1.__metadata(\\"design:returntype\\", Promise)
@@ -527,7 +527,7 @@ tslib_1.__decorate([
     tslib_1.__param(0, TypeGraphQL.Root()),
     tslib_1.__param(1, TypeGraphQL.Ctx()),
     tslib_1.__param(2, TypeGraphQL.Info()),
-    tslib_1.__param(3, TypeGraphQL.Args()),
+    tslib_1.__param(3, TypeGraphQL.Args(_type => UserPostsArgs_1.UserPostsArgs)),
     tslib_1.__metadata(\\"design:type\\", Function),
     tslib_1.__metadata(\\"design:paramtypes\\", [User_1.User, Object, Object, UserPostsArgs_1.UserPostsArgs]),
     tslib_1.__metadata(\\"design:returntype\\", Promise)
@@ -567,7 +567,7 @@ tslib_1.__decorate([
     tslib_1.__param(0, TypeGraphQL.Root()),
     tslib_1.__param(1, TypeGraphQL.Ctx()),
     tslib_1.__param(2, TypeGraphQL.Info()),
-    tslib_1.__param(3, TypeGraphQL.Args()),
+    tslib_1.__param(3, TypeGraphQL.Args(_type => PostAuthorArgs_1.PostAuthorArgs)),
     tslib_1.__metadata(\\"design:type\\", Function),
     tslib_1.__metadata(\\"design:paramtypes\\", [Post_1.Post, Object, Object, PostAuthorArgs_1.PostAuthorArgs]),
     tslib_1.__metadata(\\"design:returntype\\", Promise)
@@ -607,7 +607,7 @@ tslib_1.__decorate([
     tslib_1.__param(0, TypeGraphQL.Root()),
     tslib_1.__param(1, TypeGraphQL.Ctx()),
     tslib_1.__param(2, TypeGraphQL.Info()),
-    tslib_1.__param(3, TypeGraphQL.Args()),
+    tslib_1.__param(3, TypeGraphQL.Args(_type => UserPostsArgs_1.UserPostsArgs)),
     tslib_1.__metadata(\\"design:type\\", Function),
     tslib_1.__metadata(\\"design:paramtypes\\", [User_1.User, Object, Object, UserPostsArgs_1.UserPostsArgs]),
     tslib_1.__metadata(\\"design:returntype\\", Promise)
@@ -689,7 +689,7 @@ tslib_1.__decorate([
     tslib_1.__param(0, TypeGraphQL.Root()),
     tslib_1.__param(1, TypeGraphQL.Ctx()),
     tslib_1.__param(2, TypeGraphQL.Info()),
-    tslib_1.__param(3, TypeGraphQL.Args()),
+    tslib_1.__param(3, TypeGraphQL.Args(_type => UserPostsArgs_1.UserPostsArgs)),
     tslib_1.__metadata(\\"design:type\\", Function),
     tslib_1.__metadata(\\"design:paramtypes\\", [User_1.User, Object, Object, UserPostsArgs_1.UserPostsArgs]),
     tslib_1.__metadata(\\"design:returntype\\", Promise)
@@ -729,7 +729,7 @@ tslib_1.__decorate([
     tslib_1.__param(0, TypeGraphQL.Root()),
     tslib_1.__param(1, TypeGraphQL.Ctx()),
     tslib_1.__param(2, TypeGraphQL.Info()),
-    tslib_1.__param(3, TypeGraphQL.Args()),
+    tslib_1.__param(3, TypeGraphQL.Args(_type => UserAddressArgs_1.UserAddressArgs)),
     tslib_1.__metadata(\\"design:type\\", Function),
     tslib_1.__metadata(\\"design:paramtypes\\", [User_1.User, Object, Object, UserAddressArgs_1.UserAddressArgs]),
     tslib_1.__metadata(\\"design:returntype\\", Promise)
@@ -769,7 +769,7 @@ tslib_1.__decorate([
     tslib_1.__param(0, TypeGraphQL.Root()),
     tslib_1.__param(1, TypeGraphQL.Ctx()),
     tslib_1.__param(2, TypeGraphQL.Info()),
-    tslib_1.__param(3, TypeGraphQL.Args()),
+    tslib_1.__param(3, TypeGraphQL.Args(_type => PostAuthorArgs_1.PostAuthorArgs)),
     tslib_1.__metadata(\\"design:type\\", Function),
     tslib_1.__metadata(\\"design:paramtypes\\", [Post_1.Post, Object, Object, PostAuthorArgs_1.PostAuthorArgs]),
     tslib_1.__metadata(\\"design:returntype\\", Promise)
@@ -809,7 +809,7 @@ tslib_1.__decorate([
     tslib_1.__param(0, TypeGraphQL.Root()),
     tslib_1.__param(1, TypeGraphQL.Ctx()),
     tslib_1.__param(2, TypeGraphQL.Info()),
-    tslib_1.__param(3, TypeGraphQL.Args()),
+    tslib_1.__param(3, TypeGraphQL.Args(_type => UserPostsArgs_1.UserPostsArgs)),
     tslib_1.__metadata(\\"design:type\\", Function),
     tslib_1.__metadata(\\"design:paramtypes\\", [User_1.User, Object, Object, UserPostsArgs_1.UserPostsArgs]),
     tslib_1.__metadata(\\"design:returntype\\", Promise)
