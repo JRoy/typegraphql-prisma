@@ -233,16 +233,17 @@ exports.ExampleSumAggregate = ExampleSumAggregate = tslib_1.__decorate([
 exports[`outputs should properly generate aggregate classes for model with lowercase name: outputs index 1`] = `
 "\\"use strict\\";
 Object.defineProperty(exports, \\"__esModule\\", { value: true });
-Object.defineProperty(exports, \\"AffectedRowsOutput\\", { enumerable: true, get: function () { return require(\\"./AffectedRowsOutput\\")[\\"AffectedRowsOutput\\"]; } });
-Object.defineProperty(exports, \\"AggregateExample\\", { enumerable: true, get: function () { return require(\\"./AggregateExample\\")[\\"AggregateExample\\"]; } });
-Object.defineProperty(exports, \\"CreateManyAndReturnExample\\", { enumerable: true, get: function () { return require(\\"./CreateManyAndReturnExample\\")[\\"CreateManyAndReturnExample\\"]; } });
-Object.defineProperty(exports, \\"ExampleAvgAggregate\\", { enumerable: true, get: function () { return require(\\"./ExampleAvgAggregate\\")[\\"ExampleAvgAggregate\\"]; } });
-Object.defineProperty(exports, \\"ExampleCountAggregate\\", { enumerable: true, get: function () { return require(\\"./ExampleCountAggregate\\")[\\"ExampleCountAggregate\\"]; } });
-Object.defineProperty(exports, \\"ExampleGroupBy\\", { enumerable: true, get: function () { return require(\\"./ExampleGroupBy\\")[\\"ExampleGroupBy\\"]; } });
-Object.defineProperty(exports, \\"ExampleMaxAggregate\\", { enumerable: true, get: function () { return require(\\"./ExampleMaxAggregate\\")[\\"ExampleMaxAggregate\\"]; } });
-Object.defineProperty(exports, \\"ExampleMinAggregate\\", { enumerable: true, get: function () { return require(\\"./ExampleMinAggregate\\")[\\"ExampleMinAggregate\\"]; } });
-Object.defineProperty(exports, \\"ExampleSumAggregate\\", { enumerable: true, get: function () { return require(\\"./ExampleSumAggregate\\")[\\"ExampleSumAggregate\\"]; } });
-Object.defineProperty(exports, \\"UpdateManyexampleAndReturnOutputType\\", { enumerable: true, get: function () { return require(\\"./UpdateManyexampleAndReturnOutputType\\")[\\"UpdateManyexampleAndReturnOutputType\\"]; } });
+const tslib_1 = require(\\"tslib\\");
+tslib_1.__exportStar(require(\\"./AffectedRowsOutput\\"), exports);
+tslib_1.__exportStar(require(\\"./AggregateExample\\"), exports);
+tslib_1.__exportStar(require(\\"./CreateManyAndReturnExample\\"), exports);
+tslib_1.__exportStar(require(\\"./ExampleAvgAggregate\\"), exports);
+tslib_1.__exportStar(require(\\"./ExampleCountAggregate\\"), exports);
+tslib_1.__exportStar(require(\\"./ExampleGroupBy\\"), exports);
+tslib_1.__exportStar(require(\\"./ExampleMaxAggregate\\"), exports);
+tslib_1.__exportStar(require(\\"./ExampleMinAggregate\\"), exports);
+tslib_1.__exportStar(require(\\"./ExampleSumAggregate\\"), exports);
+tslib_1.__exportStar(require(\\"./UpdateManyexampleAndReturnOutputType\\"), exports);
 "
 `;
 
@@ -479,16 +480,17 @@ exports.ExampleSumAggregate = ExampleSumAggregate = tslib_1.__decorate([
 exports[`outputs should properly generate aggregate classes for renamed model: outputs index 1`] = `
 "\\"use strict\\";
 Object.defineProperty(exports, \\"__esModule\\", { value: true });
-Object.defineProperty(exports, \\"AffectedRowsOutput\\", { enumerable: true, get: function () { return require(\\"./AffectedRowsOutput\\")[\\"AffectedRowsOutput\\"]; } });
-Object.defineProperty(exports, \\"AggregateExample\\", { enumerable: true, get: function () { return require(\\"./AggregateExample\\")[\\"AggregateExample\\"]; } });
-Object.defineProperty(exports, \\"CreateManyAndReturnExample\\", { enumerable: true, get: function () { return require(\\"./CreateManyAndReturnExample\\")[\\"CreateManyAndReturnExample\\"]; } });
-Object.defineProperty(exports, \\"ExampleAvgAggregate\\", { enumerable: true, get: function () { return require(\\"./ExampleAvgAggregate\\")[\\"ExampleAvgAggregate\\"]; } });
-Object.defineProperty(exports, \\"ExampleCountAggregate\\", { enumerable: true, get: function () { return require(\\"./ExampleCountAggregate\\")[\\"ExampleCountAggregate\\"]; } });
-Object.defineProperty(exports, \\"ExampleGroupBy\\", { enumerable: true, get: function () { return require(\\"./ExampleGroupBy\\")[\\"ExampleGroupBy\\"]; } });
-Object.defineProperty(exports, \\"ExampleMaxAggregate\\", { enumerable: true, get: function () { return require(\\"./ExampleMaxAggregate\\")[\\"ExampleMaxAggregate\\"]; } });
-Object.defineProperty(exports, \\"ExampleMinAggregate\\", { enumerable: true, get: function () { return require(\\"./ExampleMinAggregate\\")[\\"ExampleMinAggregate\\"]; } });
-Object.defineProperty(exports, \\"ExampleSumAggregate\\", { enumerable: true, get: function () { return require(\\"./ExampleSumAggregate\\")[\\"ExampleSumAggregate\\"]; } });
-Object.defineProperty(exports, \\"UpdateManySampleAndReturnOutputType\\", { enumerable: true, get: function () { return require(\\"./UpdateManySampleAndReturnOutputType\\")[\\"UpdateManySampleAndReturnOutputType\\"]; } });
+const tslib_1 = require(\\"tslib\\");
+tslib_1.__exportStar(require(\\"./AffectedRowsOutput\\"), exports);
+tslib_1.__exportStar(require(\\"./AggregateExample\\"), exports);
+tslib_1.__exportStar(require(\\"./CreateManyAndReturnExample\\"), exports);
+tslib_1.__exportStar(require(\\"./ExampleAvgAggregate\\"), exports);
+tslib_1.__exportStar(require(\\"./ExampleCountAggregate\\"), exports);
+tslib_1.__exportStar(require(\\"./ExampleGroupBy\\"), exports);
+tslib_1.__exportStar(require(\\"./ExampleMaxAggregate\\"), exports);
+tslib_1.__exportStar(require(\\"./ExampleMinAggregate\\"), exports);
+tslib_1.__exportStar(require(\\"./ExampleSumAggregate\\"), exports);
+tslib_1.__exportStar(require(\\"./UpdateManySampleAndReturnOutputType\\"), exports);
 "
 `;
 
@@ -522,27 +524,27 @@ exports.FirstModelCount = FirstModelCount = tslib_1.__decorate([
 exports[`outputs should properly generate count classes for relation fields with args: outputs index 1`] = `
 "\\"use strict\\";
 Object.defineProperty(exports, \\"__esModule\\", { value: true });
-Object.defineProperty(exports, \\"AffectedRowsOutput\\", { enumerable: true, get: function () { return require(\\"./AffectedRowsOutput\\")[\\"AffectedRowsOutput\\"]; } });
-Object.defineProperty(exports, \\"AggregateFirstModel\\", { enumerable: true, get: function () { return require(\\"./AggregateFirstModel\\")[\\"AggregateFirstModel\\"]; } });
-Object.defineProperty(exports, \\"AggregateSecondModel\\", { enumerable: true, get: function () { return require(\\"./AggregateSecondModel\\")[\\"AggregateSecondModel\\"]; } });
-Object.defineProperty(exports, \\"CreateManyAndReturnFirstModel\\", { enumerable: true, get: function () { return require(\\"./CreateManyAndReturnFirstModel\\")[\\"CreateManyAndReturnFirstModel\\"]; } });
-Object.defineProperty(exports, \\"CreateManyAndReturnSecondModel\\", { enumerable: true, get: function () { return require(\\"./CreateManyAndReturnSecondModel\\")[\\"CreateManyAndReturnSecondModel\\"]; } });
-Object.defineProperty(exports, \\"FirstModelAvgAggregate\\", { enumerable: true, get: function () { return require(\\"./FirstModelAvgAggregate\\")[\\"FirstModelAvgAggregate\\"]; } });
-Object.defineProperty(exports, \\"FirstModelCount\\", { enumerable: true, get: function () { return require(\\"./FirstModelCount\\")[\\"FirstModelCount\\"]; } });
-Object.defineProperty(exports, \\"FirstModelCountAggregate\\", { enumerable: true, get: function () { return require(\\"./FirstModelCountAggregate\\")[\\"FirstModelCountAggregate\\"]; } });
-Object.defineProperty(exports, \\"FirstModelGroupBy\\", { enumerable: true, get: function () { return require(\\"./FirstModelGroupBy\\")[\\"FirstModelGroupBy\\"]; } });
-Object.defineProperty(exports, \\"FirstModelMaxAggregate\\", { enumerable: true, get: function () { return require(\\"./FirstModelMaxAggregate\\")[\\"FirstModelMaxAggregate\\"]; } });
-Object.defineProperty(exports, \\"FirstModelMinAggregate\\", { enumerable: true, get: function () { return require(\\"./FirstModelMinAggregate\\")[\\"FirstModelMinAggregate\\"]; } });
-Object.defineProperty(exports, \\"FirstModelSumAggregate\\", { enumerable: true, get: function () { return require(\\"./FirstModelSumAggregate\\")[\\"FirstModelSumAggregate\\"]; } });
-Object.defineProperty(exports, \\"SecondModelAvgAggregate\\", { enumerable: true, get: function () { return require(\\"./SecondModelAvgAggregate\\")[\\"SecondModelAvgAggregate\\"]; } });
-Object.defineProperty(exports, \\"SecondModelCountAggregate\\", { enumerable: true, get: function () { return require(\\"./SecondModelCountAggregate\\")[\\"SecondModelCountAggregate\\"]; } });
-Object.defineProperty(exports, \\"SecondModelGroupBy\\", { enumerable: true, get: function () { return require(\\"./SecondModelGroupBy\\")[\\"SecondModelGroupBy\\"]; } });
-Object.defineProperty(exports, \\"SecondModelMaxAggregate\\", { enumerable: true, get: function () { return require(\\"./SecondModelMaxAggregate\\")[\\"SecondModelMaxAggregate\\"]; } });
-Object.defineProperty(exports, \\"SecondModelMinAggregate\\", { enumerable: true, get: function () { return require(\\"./SecondModelMinAggregate\\")[\\"SecondModelMinAggregate\\"]; } });
-Object.defineProperty(exports, \\"SecondModelSumAggregate\\", { enumerable: true, get: function () { return require(\\"./SecondModelSumAggregate\\")[\\"SecondModelSumAggregate\\"]; } });
-Object.defineProperty(exports, \\"UpdateManyFirstModelAndReturnOutputType\\", { enumerable: true, get: function () { return require(\\"./UpdateManyFirstModelAndReturnOutputType\\")[\\"UpdateManyFirstModelAndReturnOutputType\\"]; } });
-Object.defineProperty(exports, \\"UpdateManySecondModelAndReturnOutputType\\", { enumerable: true, get: function () { return require(\\"./UpdateManySecondModelAndReturnOutputType\\")[\\"UpdateManySecondModelAndReturnOutputType\\"]; } });
 const tslib_1 = require(\\"tslib\\");
+tslib_1.__exportStar(require(\\"./AffectedRowsOutput\\"), exports);
+tslib_1.__exportStar(require(\\"./AggregateFirstModel\\"), exports);
+tslib_1.__exportStar(require(\\"./AggregateSecondModel\\"), exports);
+tslib_1.__exportStar(require(\\"./CreateManyAndReturnFirstModel\\"), exports);
+tslib_1.__exportStar(require(\\"./CreateManyAndReturnSecondModel\\"), exports);
+tslib_1.__exportStar(require(\\"./FirstModelAvgAggregate\\"), exports);
+tslib_1.__exportStar(require(\\"./FirstModelCount\\"), exports);
+tslib_1.__exportStar(require(\\"./FirstModelCountAggregate\\"), exports);
+tslib_1.__exportStar(require(\\"./FirstModelGroupBy\\"), exports);
+tslib_1.__exportStar(require(\\"./FirstModelMaxAggregate\\"), exports);
+tslib_1.__exportStar(require(\\"./FirstModelMinAggregate\\"), exports);
+tslib_1.__exportStar(require(\\"./FirstModelSumAggregate\\"), exports);
+tslib_1.__exportStar(require(\\"./SecondModelAvgAggregate\\"), exports);
+tslib_1.__exportStar(require(\\"./SecondModelCountAggregate\\"), exports);
+tslib_1.__exportStar(require(\\"./SecondModelGroupBy\\"), exports);
+tslib_1.__exportStar(require(\\"./SecondModelMaxAggregate\\"), exports);
+tslib_1.__exportStar(require(\\"./SecondModelMinAggregate\\"), exports);
+tslib_1.__exportStar(require(\\"./SecondModelSumAggregate\\"), exports);
+tslib_1.__exportStar(require(\\"./UpdateManyFirstModelAndReturnOutputType\\"), exports);
+tslib_1.__exportStar(require(\\"./UpdateManySecondModelAndReturnOutputType\\"), exports);
 tslib_1.__exportStar(require(\\"./args\\"), exports);
 "
 `;
@@ -577,27 +579,27 @@ exports.FirstModelCount = FirstModelCount = tslib_1.__decorate([
 exports[`outputs should properly generate count classes for relation fields: outputs index 1`] = `
 "\\"use strict\\";
 Object.defineProperty(exports, \\"__esModule\\", { value: true });
-Object.defineProperty(exports, \\"AffectedRowsOutput\\", { enumerable: true, get: function () { return require(\\"./AffectedRowsOutput\\")[\\"AffectedRowsOutput\\"]; } });
-Object.defineProperty(exports, \\"AggregateFirstModel\\", { enumerable: true, get: function () { return require(\\"./AggregateFirstModel\\")[\\"AggregateFirstModel\\"]; } });
-Object.defineProperty(exports, \\"AggregateSecondModel\\", { enumerable: true, get: function () { return require(\\"./AggregateSecondModel\\")[\\"AggregateSecondModel\\"]; } });
-Object.defineProperty(exports, \\"CreateManyAndReturnFirstModel\\", { enumerable: true, get: function () { return require(\\"./CreateManyAndReturnFirstModel\\")[\\"CreateManyAndReturnFirstModel\\"]; } });
-Object.defineProperty(exports, \\"CreateManyAndReturnSecondModel\\", { enumerable: true, get: function () { return require(\\"./CreateManyAndReturnSecondModel\\")[\\"CreateManyAndReturnSecondModel\\"]; } });
-Object.defineProperty(exports, \\"FirstModelAvgAggregate\\", { enumerable: true, get: function () { return require(\\"./FirstModelAvgAggregate\\")[\\"FirstModelAvgAggregate\\"]; } });
-Object.defineProperty(exports, \\"FirstModelCount\\", { enumerable: true, get: function () { return require(\\"./FirstModelCount\\")[\\"FirstModelCount\\"]; } });
-Object.defineProperty(exports, \\"FirstModelCountAggregate\\", { enumerable: true, get: function () { return require(\\"./FirstModelCountAggregate\\")[\\"FirstModelCountAggregate\\"]; } });
-Object.defineProperty(exports, \\"FirstModelGroupBy\\", { enumerable: true, get: function () { return require(\\"./FirstModelGroupBy\\")[\\"FirstModelGroupBy\\"]; } });
-Object.defineProperty(exports, \\"FirstModelMaxAggregate\\", { enumerable: true, get: function () { return require(\\"./FirstModelMaxAggregate\\")[\\"FirstModelMaxAggregate\\"]; } });
-Object.defineProperty(exports, \\"FirstModelMinAggregate\\", { enumerable: true, get: function () { return require(\\"./FirstModelMinAggregate\\")[\\"FirstModelMinAggregate\\"]; } });
-Object.defineProperty(exports, \\"FirstModelSumAggregate\\", { enumerable: true, get: function () { return require(\\"./FirstModelSumAggregate\\")[\\"FirstModelSumAggregate\\"]; } });
-Object.defineProperty(exports, \\"SecondModelAvgAggregate\\", { enumerable: true, get: function () { return require(\\"./SecondModelAvgAggregate\\")[\\"SecondModelAvgAggregate\\"]; } });
-Object.defineProperty(exports, \\"SecondModelCountAggregate\\", { enumerable: true, get: function () { return require(\\"./SecondModelCountAggregate\\")[\\"SecondModelCountAggregate\\"]; } });
-Object.defineProperty(exports, \\"SecondModelGroupBy\\", { enumerable: true, get: function () { return require(\\"./SecondModelGroupBy\\")[\\"SecondModelGroupBy\\"]; } });
-Object.defineProperty(exports, \\"SecondModelMaxAggregate\\", { enumerable: true, get: function () { return require(\\"./SecondModelMaxAggregate\\")[\\"SecondModelMaxAggregate\\"]; } });
-Object.defineProperty(exports, \\"SecondModelMinAggregate\\", { enumerable: true, get: function () { return require(\\"./SecondModelMinAggregate\\")[\\"SecondModelMinAggregate\\"]; } });
-Object.defineProperty(exports, \\"SecondModelSumAggregate\\", { enumerable: true, get: function () { return require(\\"./SecondModelSumAggregate\\")[\\"SecondModelSumAggregate\\"]; } });
-Object.defineProperty(exports, \\"UpdateManyFirstModelAndReturnOutputType\\", { enumerable: true, get: function () { return require(\\"./UpdateManyFirstModelAndReturnOutputType\\")[\\"UpdateManyFirstModelAndReturnOutputType\\"]; } });
-Object.defineProperty(exports, \\"UpdateManySecondModelAndReturnOutputType\\", { enumerable: true, get: function () { return require(\\"./UpdateManySecondModelAndReturnOutputType\\")[\\"UpdateManySecondModelAndReturnOutputType\\"]; } });
 const tslib_1 = require(\\"tslib\\");
+tslib_1.__exportStar(require(\\"./AffectedRowsOutput\\"), exports);
+tslib_1.__exportStar(require(\\"./AggregateFirstModel\\"), exports);
+tslib_1.__exportStar(require(\\"./AggregateSecondModel\\"), exports);
+tslib_1.__exportStar(require(\\"./CreateManyAndReturnFirstModel\\"), exports);
+tslib_1.__exportStar(require(\\"./CreateManyAndReturnSecondModel\\"), exports);
+tslib_1.__exportStar(require(\\"./FirstModelAvgAggregate\\"), exports);
+tslib_1.__exportStar(require(\\"./FirstModelCount\\"), exports);
+tslib_1.__exportStar(require(\\"./FirstModelCountAggregate\\"), exports);
+tslib_1.__exportStar(require(\\"./FirstModelGroupBy\\"), exports);
+tslib_1.__exportStar(require(\\"./FirstModelMaxAggregate\\"), exports);
+tslib_1.__exportStar(require(\\"./FirstModelMinAggregate\\"), exports);
+tslib_1.__exportStar(require(\\"./FirstModelSumAggregate\\"), exports);
+tslib_1.__exportStar(require(\\"./SecondModelAvgAggregate\\"), exports);
+tslib_1.__exportStar(require(\\"./SecondModelCountAggregate\\"), exports);
+tslib_1.__exportStar(require(\\"./SecondModelGroupBy\\"), exports);
+tslib_1.__exportStar(require(\\"./SecondModelMaxAggregate\\"), exports);
+tslib_1.__exportStar(require(\\"./SecondModelMinAggregate\\"), exports);
+tslib_1.__exportStar(require(\\"./SecondModelSumAggregate\\"), exports);
+tslib_1.__exportStar(require(\\"./UpdateManyFirstModelAndReturnOutputType\\"), exports);
+tslib_1.__exportStar(require(\\"./UpdateManySecondModelAndReturnOutputType\\"), exports);
 tslib_1.__exportStar(require(\\"./args\\"), exports);
 "
 `;
@@ -934,16 +936,17 @@ exports.SampleSumAggregate = SampleSumAggregate = tslib_1.__decorate([
 exports[`outputs should properly generate output type classes: outputs index 1`] = `
 "\\"use strict\\";
 Object.defineProperty(exports, \\"__esModule\\", { value: true });
-Object.defineProperty(exports, \\"AffectedRowsOutput\\", { enumerable: true, get: function () { return require(\\"./AffectedRowsOutput\\")[\\"AffectedRowsOutput\\"]; } });
-Object.defineProperty(exports, \\"AggregateSample\\", { enumerable: true, get: function () { return require(\\"./AggregateSample\\")[\\"AggregateSample\\"]; } });
-Object.defineProperty(exports, \\"CreateManyAndReturnSample\\", { enumerable: true, get: function () { return require(\\"./CreateManyAndReturnSample\\")[\\"CreateManyAndReturnSample\\"]; } });
-Object.defineProperty(exports, \\"SampleAvgAggregate\\", { enumerable: true, get: function () { return require(\\"./SampleAvgAggregate\\")[\\"SampleAvgAggregate\\"]; } });
-Object.defineProperty(exports, \\"SampleCountAggregate\\", { enumerable: true, get: function () { return require(\\"./SampleCountAggregate\\")[\\"SampleCountAggregate\\"]; } });
-Object.defineProperty(exports, \\"SampleGroupBy\\", { enumerable: true, get: function () { return require(\\"./SampleGroupBy\\")[\\"SampleGroupBy\\"]; } });
-Object.defineProperty(exports, \\"SampleMaxAggregate\\", { enumerable: true, get: function () { return require(\\"./SampleMaxAggregate\\")[\\"SampleMaxAggregate\\"]; } });
-Object.defineProperty(exports, \\"SampleMinAggregate\\", { enumerable: true, get: function () { return require(\\"./SampleMinAggregate\\")[\\"SampleMinAggregate\\"]; } });
-Object.defineProperty(exports, \\"SampleSumAggregate\\", { enumerable: true, get: function () { return require(\\"./SampleSumAggregate\\")[\\"SampleSumAggregate\\"]; } });
-Object.defineProperty(exports, \\"UpdateManySampleAndReturnOutputType\\", { enumerable: true, get: function () { return require(\\"./UpdateManySampleAndReturnOutputType\\")[\\"UpdateManySampleAndReturnOutputType\\"]; } });
+const tslib_1 = require(\\"tslib\\");
+tslib_1.__exportStar(require(\\"./AffectedRowsOutput\\"), exports);
+tslib_1.__exportStar(require(\\"./AggregateSample\\"), exports);
+tslib_1.__exportStar(require(\\"./CreateManyAndReturnSample\\"), exports);
+tslib_1.__exportStar(require(\\"./SampleAvgAggregate\\"), exports);
+tslib_1.__exportStar(require(\\"./SampleCountAggregate\\"), exports);
+tslib_1.__exportStar(require(\\"./SampleGroupBy\\"), exports);
+tslib_1.__exportStar(require(\\"./SampleMaxAggregate\\"), exports);
+tslib_1.__exportStar(require(\\"./SampleMinAggregate\\"), exports);
+tslib_1.__exportStar(require(\\"./SampleSumAggregate\\"), exports);
+tslib_1.__exportStar(require(\\"./UpdateManySampleAndReturnOutputType\\"), exports);
 "
 `;
 

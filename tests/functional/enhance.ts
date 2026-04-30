@@ -9,14 +9,6 @@ import { generateCodeFromSchema } from "../helpers/generate-code";
 describe("custom resolvers execution", () => {
   let outputDirPath: string;
 
-  function requireGeneratedEnhance() {
-    return require(`${outputDirPath}/enhance`);
-  }
-
-  function requireGeneratedRoot() {
-    return require(outputDirPath);
-  }
-
   beforeEach(async () => {
     outputDirPath = generateArtifactsDirPath("functional-enhance");
     await fs.mkdir(outputDirPath, { recursive: true });
@@ -37,8 +29,9 @@ describe("custom resolvers execution", () => {
   });
 
   it("should properly apply decorators in enhance map", async () => {
-    const { applyResolversEnhanceMap } = requireGeneratedEnhance();
-    const { PostCrudResolver } = requireGeneratedRoot();
+    const { applyResolversEnhanceMap, PostCrudResolver } = require(
+      outputDirPath,
+    );
 
     applyResolversEnhanceMap({
       Post: {
@@ -82,8 +75,9 @@ describe("custom resolvers execution", () => {
   }, 10000);
 
   it("should properly apply decorators for all methods when `_all` is used", async () => {
-    const { applyResolversEnhanceMap } = requireGeneratedEnhance();
-    const { PostCrudResolver } = requireGeneratedRoot();
+    const { applyResolversEnhanceMap, PostCrudResolver } = require(
+      outputDirPath,
+    );
 
     applyResolversEnhanceMap({
       Post: {
@@ -127,8 +121,9 @@ describe("custom resolvers execution", () => {
   }, 10000);
 
   it("should properly apply decorators for selected crud methods when `_query` is used", async () => {
-    const { applyResolversEnhanceMap } = requireGeneratedEnhance();
-    const { PostCrudResolver } = requireGeneratedRoot();
+    const { applyResolversEnhanceMap, PostCrudResolver } = require(
+      outputDirPath,
+    );
 
     applyResolversEnhanceMap({
       Post: {
@@ -159,8 +154,9 @@ describe("custom resolvers execution", () => {
   }, 10000);
 
   it("should properly apply decorators for selected crud methods when `_mutation` is used", async () => {
-    const { applyResolversEnhanceMap } = requireGeneratedEnhance();
-    const { PostCrudResolver } = requireGeneratedRoot();
+    const { applyResolversEnhanceMap, PostCrudResolver } = require(
+      outputDirPath,
+    );
 
     applyResolversEnhanceMap({
       Post: {
@@ -191,8 +187,9 @@ describe("custom resolvers execution", () => {
   }, 10000);
 
   it("should allow overwrite decorators when `_all` is used", async () => {
-    const { applyResolversEnhanceMap } = requireGeneratedEnhance();
-    const { PostCrudResolver } = requireGeneratedRoot();
+    const { applyResolversEnhanceMap, PostCrudResolver } = require(
+      outputDirPath,
+    );
 
     applyResolversEnhanceMap({
       Post: {
@@ -242,8 +239,9 @@ describe("custom resolvers execution", () => {
   }, 10000);
 
   it("should inject decorators to decorator fn when `_all` is used", async () => {
-    const { applyResolversEnhanceMap } = requireGeneratedEnhance();
-    const { PostCrudResolver } = requireGeneratedRoot();
+    const { applyResolversEnhanceMap, PostCrudResolver } = require(
+      outputDirPath,
+    );
 
     let injectedDecorators: Function[] | undefined;
     applyResolversEnhanceMap({
@@ -267,8 +265,9 @@ describe("custom resolvers execution", () => {
   }, 10000);
 
   it("should concat decorators when `_all` and method specific are used together", async () => {
-    const { applyResolversEnhanceMap } = requireGeneratedEnhance();
-    const { PostCrudResolver } = requireGeneratedRoot();
+    const { applyResolversEnhanceMap, PostCrudResolver } = require(
+      outputDirPath,
+    );
 
     applyResolversEnhanceMap({
       Post: {
@@ -293,8 +292,9 @@ describe("custom resolvers execution", () => {
 
   it("should properly apply descriptor decorators in enhance map", async () => {
     let descriptorCalledFlag = false;
-    const { applyResolversEnhanceMap } = requireGeneratedEnhance();
-    const { PostCrudResolver } = requireGeneratedRoot();
+    const { applyResolversEnhanceMap, PostCrudResolver } = require(
+      outputDirPath,
+    );
 
     applyResolversEnhanceMap({
       Post: {

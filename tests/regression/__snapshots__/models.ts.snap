@@ -133,6 +133,7 @@ Object.defineProperty(exports, \\"__esModule\\", { value: true });
 exports.User = void 0;
 const tslib_1 = require(\\"tslib\\");
 const TypeGraphQL = tslib_1.__importStar(require(\\"type-graphql\\"));
+const Post_1 = require(\\"../models/Post\\");
 const UserCount_1 = require(\\"../resolvers/outputs/UserCount\\");
 class User {
 }
@@ -342,6 +343,7 @@ Object.defineProperty(exports, \\"__esModule\\", { value: true });
 exports.User = void 0;
 const tslib_1 = require(\\"tslib\\");
 const TypeGraphQL = tslib_1.__importStar(require(\\"type-graphql\\"));
+const Post_1 = require(\\"../models/Post\\");
 const UserCount_1 = require(\\"../resolvers/outputs/UserCount\\");
 class User {
   get firstName() {
@@ -417,6 +419,7 @@ Object.defineProperty(exports, \\"__esModule\\", { value: true });
 exports.Article = void 0;
 const tslib_1 = require(\\"tslib\\");
 const TypeGraphQL = tslib_1.__importStar(require(\\"type-graphql\\"));
+const Client_1 = require(\\"../models/Client\\");
 class Article {
 }
 exports.Article = Article;
@@ -440,6 +443,7 @@ Object.defineProperty(exports, \\"__esModule\\", { value: true });
 exports.Client = void 0;
 const tslib_1 = require(\\"tslib\\");
 const TypeGraphQL = tslib_1.__importStar(require(\\"type-graphql\\"));
+const Article_1 = require(\\"../models/Article\\");
 const ClientCount_1 = require(\\"../resolvers/outputs/ClientCount\\");
 class Client {
 }
@@ -464,6 +468,7 @@ Object.defineProperty(exports, \\"__esModule\\", { value: true });
 exports.Post = void 0;
 const tslib_1 = require(\\"tslib\\");
 const TypeGraphQL = tslib_1.__importStar(require(\\"type-graphql\\"));
+const User_1 = require(\\"../models/User\\");
 class Post {
 }
 exports.Post = Post;
@@ -487,6 +492,7 @@ Object.defineProperty(exports, \\"__esModule\\", { value: true });
 exports.User = void 0;
 const tslib_1 = require(\\"tslib\\");
 const TypeGraphQL = tslib_1.__importStar(require(\\"type-graphql\\"));
+const Post_1 = require(\\"../models/Post\\");
 const UserCount_1 = require(\\"../resolvers/outputs/UserCount\\");
 class User {
 }
