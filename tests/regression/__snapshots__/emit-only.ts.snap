@@ -91,6 +91,14 @@ function applyInputTypesEnhanceMap(inputTypesEnhanceMap) {
 exports[`emitOnly generator option when both 'crudResolvers' and \`inputs\` is set should not fail and generate proper files, enhance and index: mainIndex 1`] = `
 "\\"use strict\\";
 Object.defineProperty(exports, \\"__esModule\\", { value: true });
+const tslib_1 = require(\\"tslib\\");
+tslib_1.__exportStar(require(\\"./enums\\"), exports);
+tslib_1.__exportStar(require(\\"./models\\"), exports);
+tslib_1.__exportStar(require(\\"./resolvers/crud\\"), exports);
+let crudResolversCache;
+Object.defineProperty(exports, \\"crudResolvers\\", { enumerable: true, get: function () { return crudResolversCache ?? (crudResolversCache = Object.values(tslib_1.__importStar(require(\\"./resolvers/crud/resolvers-crud.index\\")))); } });
+tslib_1.__exportStar(require(\\"./scalars\\"), exports);
+Object.defineProperty(exports, \\"resolvers\\", { enumerable: true, get: function () { return [...exports.crudResolvers,]; } });
 "
 `;
 
@@ -578,6 +586,14 @@ function applyInputTypesEnhanceMap(inputTypesEnhanceMap) {
 exports[`emitOnly generator option when only 'crudResolvers' is set should generate proper files, enhance and index: mainIndex 1`] = `
 "\\"use strict\\";
 Object.defineProperty(exports, \\"__esModule\\", { value: true });
+const tslib_1 = require(\\"tslib\\");
+tslib_1.__exportStar(require(\\"./enums\\"), exports);
+tslib_1.__exportStar(require(\\"./models\\"), exports);
+tslib_1.__exportStar(require(\\"./resolvers/crud\\"), exports);
+let crudResolversCache;
+Object.defineProperty(exports, \\"crudResolvers\\", { enumerable: true, get: function () { return crudResolversCache ?? (crudResolversCache = Object.values(tslib_1.__importStar(require(\\"./resolvers/crud/resolvers-crud.index\\")))); } });
+tslib_1.__exportStar(require(\\"./scalars\\"), exports);
+Object.defineProperty(exports, \\"resolvers\\", { enumerable: true, get: function () { return [...exports.crudResolvers,]; } });
 "
 `;
 
@@ -997,6 +1013,9 @@ function applyInputTypesEnhanceMap(_inputTypesEnhanceMap) {}
 exports[`emitOnly generator option when only 'enums' is set should generate proper files, enhance and index: mainIndex 1`] = `
 "\\"use strict\\";
 Object.defineProperty(exports, \\"__esModule\\", { value: true });
+const tslib_1 = require(\\"tslib\\");
+tslib_1.__exportStar(require(\\"./enums\\"), exports);
+tslib_1.__exportStar(require(\\"./scalars\\"), exports);
 "
 `;
 
@@ -1076,6 +1095,9 @@ function applyInputTypesEnhanceMap(inputTypesEnhanceMap) {
 exports[`emitOnly generator option when only 'inputs' is set should generate proper files, enhance and index: mainIndex 1`] = `
 "\\"use strict\\";
 Object.defineProperty(exports, \\"__esModule\\", { value: true });
+const tslib_1 = require(\\"tslib\\");
+tslib_1.__exportStar(require(\\"./enums\\"), exports);
+tslib_1.__exportStar(require(\\"./scalars\\"), exports);
 "
 `;
 
@@ -1342,6 +1364,10 @@ function applyInputTypesEnhanceMap(_inputTypesEnhanceMap) {}
 exports[`emitOnly generator option when only 'models' is set should generate model without _count, proper files, enhance and index: mainIndex 1`] = `
 "\\"use strict\\";
 Object.defineProperty(exports, \\"__esModule\\", { value: true });
+const tslib_1 = require(\\"tslib\\");
+tslib_1.__exportStar(require(\\"./enums\\"), exports);
+tslib_1.__exportStar(require(\\"./models\\"), exports);
+tslib_1.__exportStar(require(\\"./scalars\\"), exports);
 "
 `;
 
@@ -1428,6 +1454,9 @@ function applyInputTypesEnhanceMap(_inputTypesEnhanceMap) {}
 exports[`emitOnly generator option when only 'outputs' is set should generate proper files, enhance and index: mainIndex 1`] = `
 "\\"use strict\\";
 Object.defineProperty(exports, \\"__esModule\\", { value: true });
+const tslib_1 = require(\\"tslib\\");
+tslib_1.__exportStar(require(\\"./enums\\"), exports);
+tslib_1.__exportStar(require(\\"./scalars\\"), exports);
 "
 `;
 
@@ -1579,6 +1608,14 @@ function applyInputTypesEnhanceMap(inputTypesEnhanceMap) {
 exports[`emitOnly generator option when only 'relationResolvers' is set should generate proper files, enhance and index: mainIndex 1`] = `
 "\\"use strict\\";
 Object.defineProperty(exports, \\"__esModule\\", { value: true });
+const tslib_1 = require(\\"tslib\\");
+tslib_1.__exportStar(require(\\"./enums\\"), exports);
+tslib_1.__exportStar(require(\\"./models\\"), exports);
+tslib_1.__exportStar(require(\\"./resolvers/relations\\"), exports);
+let relationResolversCache;
+Object.defineProperty(exports, \\"relationResolvers\\", { enumerable: true, get: function () { return relationResolversCache ?? (relationResolversCache = Object.values(tslib_1.__importStar(require(\\"./resolvers/relations/resolvers.index\\")))); } });
+tslib_1.__exportStar(require(\\"./scalars\\"), exports);
+Object.defineProperty(exports, \\"resolvers\\", { enumerable: true, get: function () { return [...exports.relationResolvers,]; } });
 "
 `;
 

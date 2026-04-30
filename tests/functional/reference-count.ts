@@ -5,7 +5,6 @@ import { graphql, GraphQLSchema } from "graphql";
 
 import generateArtifactsDirPath from "../helpers/artifacts-dir";
 import { generateCodeFromSchema } from "../helpers/generate-code";
-import { requireGenerated } from "../helpers/require-generated";
 
 describe("relation counts querying", () => {
   let outputDirPath: string;
@@ -43,7 +42,7 @@ describe("relation counts querying", () => {
       PostRelationsResolver,
       UserCrudResolver,
       PostCrudResolver,
-    } = requireGenerated(outputDirPath);
+    } = require(outputDirPath);
 
     graphQLSchema = await buildSchema({
       resolvers: [

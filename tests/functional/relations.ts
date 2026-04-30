@@ -5,7 +5,6 @@ import { graphql, GraphQLSchema } from "graphql";
 
 import generateArtifactsDirPath from "../helpers/artifacts-dir";
 import { generateCodeFromSchema } from "../helpers/generate-code";
-import { requireGenerated } from "../helpers/require-generated";
 
 describe("relations resolvers execution", () => {
   describe("single primary key", () => {
@@ -37,8 +36,12 @@ describe("relations resolvers execution", () => {
         }
       `;
       await generateCodeFromSchema(prismaSchema, { outputDirPath });
-      const { UserRelationsResolver, PostRelationsResolver, User, Post } =
-        requireGenerated(outputDirPath);
+      const {
+        UserRelationsResolver,
+        PostRelationsResolver,
+        User,
+        Post,
+      } = require(outputDirPath);
       @Resolver()
       class CustomResolver {
         @Query(_returns => [User])
@@ -303,7 +306,7 @@ describe("relations resolvers execution", () => {
         }
       `;
       await generateCodeFromSchema(prismaSchema, { outputDirPath });
-      const { PostRelationsResolver, Post } = requireGenerated(outputDirPath);
+      const { PostRelationsResolver, Post } = require(outputDirPath);
       @Resolver()
       class CustomResolver {
         @Query(_returns => Post)
@@ -394,7 +397,7 @@ describe("relations resolvers execution", () => {
         }
       `;
       await generateCodeFromSchema(prismaSchema, { outputDirPath });
-      const { PostRelationsResolver, Post } = requireGenerated(outputDirPath);
+      const { PostRelationsResolver, Post } = require(outputDirPath);
       @Resolver()
       class CustomResolver {
         @Query(_returns => Post)
@@ -485,7 +488,7 @@ describe("relations resolvers execution", () => {
         }
       `;
       await generateCodeFromSchema(prismaSchema, { outputDirPath });
-      const { PostRelationsResolver, Post } = requireGenerated(outputDirPath);
+      const { PostRelationsResolver, Post } = require(outputDirPath);
       @Resolver()
       class CustomResolver {
         @Query(_returns => Post)

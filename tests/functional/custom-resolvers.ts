@@ -5,7 +5,6 @@ import { graphql } from "graphql";
 
 import generateArtifactsDirPath from "../helpers/artifacts-dir";
 import { generateCodeFromSchema } from "../helpers/generate-code";
-import { requireGenerated } from "../helpers/require-generated";
 
 describe("custom resolvers execution", () => {
   let outputDirPath: string;
@@ -30,7 +29,7 @@ describe("custom resolvers execution", () => {
   });
 
   it("should be possible to use generated inputs, args and types to build own resolvers", async () => {
-    const { Post, FindManyPostArgs } = requireGenerated(outputDirPath);
+    const { Post, FindManyPostArgs } = require(outputDirPath);
     @Resolver()
     class CustomResolver {
       @Query(_returns => [Post])
