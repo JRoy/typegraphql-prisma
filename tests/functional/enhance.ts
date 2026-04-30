@@ -5,6 +5,7 @@ import { graphql } from "graphql";
 
 import generateArtifactsDirPath from "../helpers/artifacts-dir";
 import { generateCodeFromSchema } from "../helpers/generate-code";
+import { requireGenerated } from "../helpers/require-generated";
 
 describe("custom resolvers execution", () => {
   let outputDirPath: string;
@@ -14,7 +15,7 @@ describe("custom resolvers execution", () => {
   }
 
   function requireGeneratedRoot() {
-    return require(outputDirPath);
+    return requireGenerated(outputDirPath);
   }
 
   beforeEach(async () => {

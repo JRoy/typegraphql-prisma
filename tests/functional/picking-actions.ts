@@ -4,6 +4,7 @@ import { buildSchema } from "type-graphql";
 
 import generateArtifactsDirPath from "../helpers/artifacts-dir";
 import { generateCodeFromSchema } from "../helpers/generate-code";
+import { requireGenerated } from "../helpers/require-generated";
 
 describe("picking prisma actions", () => {
   let outputDirPath: string;
@@ -23,9 +24,8 @@ describe("picking prisma actions", () => {
   });
 
   it("should expose in GraphQL schema only actions chosen by single resolvers", async () => {
-    const { CreateOneUserResolver, FindManyUserResolver } = require(
-      outputDirPath + "/index",
-    );
+    const { CreateOneUserResolver, FindManyUserResolver } =
+      requireGenerated(outputDirPath);
     await buildSchema({
       resolvers: [CreateOneUserResolver, FindManyUserResolver],
       validate: false,
