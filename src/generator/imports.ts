@@ -48,10 +48,10 @@ export function generateEnumsBarrelFile(
 export function generateInputsBarrelFile(
   inputTypeNames: string[],
 ): GeneratedModule {
-  return {
-    js: '"use strict";\nObject.defineProperty(exports, "__esModule", { value: true });\n',
-    dts: "",
-  };
+  return createBarrelModule(
+    inputTypeNames.sort().map(inputTypeName => `./${inputTypeName}`),
+    { lazy: true },
+  );
 }
 
 export function generateOutputsBarrelFile(
