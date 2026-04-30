@@ -61,28 +61,29 @@ exports[`relations resolvers generation should not emit relation resolver when r
 "\\"use strict\\";
 Object.defineProperty(exports, \\"__esModule\\", { value: true });
 exports.resolvers = void 0;
-exports.crudResolvers = void 0;
-exports.relationResolvers = void 0;
 const tslib_1 = require(\\"tslib\\");
 tslib_1.__exportStar(require(\\"./enums\\"), exports);
 tslib_1.__exportStar(require(\\"./models\\"), exports);
 tslib_1.__exportStar(require(\\"./resolvers/crud\\"), exports);
-const crudResolversImport = tslib_1.__importStar(require(\\"./resolvers/crud/resolvers-crud.index\\"));
-exports.crudResolvers = Object.values(crudResolversImport);
+let crudResolversCache;
+Object.defineProperty(exports, \\"crudResolvers\\", { enumerable: true, get: function () { return crudResolversCache ?? (crudResolversCache = Object.values(tslib_1.__importStar(require(\\"./resolvers/crud/resolvers-crud.index\\")))); } });
 tslib_1.__exportStar(require(\\"./resolvers/relations\\"), exports);
-const relationResolversImport = tslib_1.__importStar(require(\\"./resolvers/relations/resolvers.index\\"));
-exports.relationResolvers = Object.values(relationResolversImport);
+let relationResolversCache;
+Object.defineProperty(exports, \\"relationResolvers\\", { enumerable: true, get: function () { return relationResolversCache ?? (relationResolversCache = Object.values(tslib_1.__importStar(require(\\"./resolvers/relations/resolvers.index\\")))); } });
 tslib_1.__exportStar(require(\\"./resolvers/outputs\\"), exports);
 tslib_1.__exportStar(require(\\"./scalars\\"), exports);
-exports.resolvers = [...exports.crudResolvers,...exports.relationResolvers,];
+Object.defineProperty(exports, \\"resolvers\\", { enumerable: true, get: function () { return [...exports.crudResolvers,...exports.relationResolvers,]; } });
 "
 `;
 
 exports[`relations resolvers generation should not emit relation resolver when relation field is ignored: resolversIndex 1`] = `
 "\\"use strict\\";
 Object.defineProperty(exports, \\"__esModule\\", { value: true });
-Object.defineProperty(exports, \\"PointRelationsResolver\\", { enumerable: true, get: function () { return require(\\"./Point/PointRelationsResolver\\")[\\"PointRelationsResolver\\"]; } });
-Object.defineProperty(exports, \\"UserRelationsResolver\\", { enumerable: true, get: function () { return require(\\"./User/UserRelationsResolver\\")[\\"UserRelationsResolver\\"]; } });
+function __lazyExport(name, moduleSpecifier) {
+    Object.defineProperty(exports, name, { enumerable: true, get: function () { return require(moduleSpecifier)[name]; } });
+}
+__lazyExport(\\"PointRelationsResolver\\", \\"./Point/PointRelationsResolver\\");
+__lazyExport(\\"UserRelationsResolver\\", \\"./User/UserRelationsResolver\\");
 "
 `;
 
@@ -131,7 +132,10 @@ exports.FirstModelSecondModelsFieldArgs = FirstModelSecondModelsFieldArgs = tsli
 exports[`relations resolvers generation should properly generate args classes for sorting by relation fields: index 1`] = `
 "\\"use strict\\";
 Object.defineProperty(exports, \\"__esModule\\", { value: true });
-Object.defineProperty(exports, \\"FirstModelSecondModelsFieldArgs\\", { enumerable: true, get: function () { return require(\\"./FirstModelSecondModelsFieldArgs\\")[\\"FirstModelSecondModelsFieldArgs\\"]; } });
+function __lazyExport(name, moduleSpecifier) {
+    Object.defineProperty(exports, name, { enumerable: true, get: function () { return require(moduleSpecifier)[name]; } });
+}
+__lazyExport(\\"FirstModelSecondModelsFieldArgs\\", \\"./FirstModelSecondModelsFieldArgs\\");
 "
 `;
 
@@ -211,28 +215,29 @@ exports[`relations resolvers generation should properly generate index files for
 "\\"use strict\\";
 Object.defineProperty(exports, \\"__esModule\\", { value: true });
 exports.resolvers = void 0;
-exports.crudResolvers = void 0;
-exports.relationResolvers = void 0;
 const tslib_1 = require(\\"tslib\\");
 tslib_1.__exportStar(require(\\"./enums\\"), exports);
 tslib_1.__exportStar(require(\\"./models\\"), exports);
 tslib_1.__exportStar(require(\\"./resolvers/crud\\"), exports);
-const crudResolversImport = tslib_1.__importStar(require(\\"./resolvers/crud/resolvers-crud.index\\"));
-exports.crudResolvers = Object.values(crudResolversImport);
+let crudResolversCache;
+Object.defineProperty(exports, \\"crudResolvers\\", { enumerable: true, get: function () { return crudResolversCache ?? (crudResolversCache = Object.values(tslib_1.__importStar(require(\\"./resolvers/crud/resolvers-crud.index\\")))); } });
 tslib_1.__exportStar(require(\\"./resolvers/relations\\"), exports);
-const relationResolversImport = tslib_1.__importStar(require(\\"./resolvers/relations/resolvers.index\\"));
-exports.relationResolvers = Object.values(relationResolversImport);
+let relationResolversCache;
+Object.defineProperty(exports, \\"relationResolvers\\", { enumerable: true, get: function () { return relationResolversCache ?? (relationResolversCache = Object.values(tslib_1.__importStar(require(\\"./resolvers/relations/resolvers.index\\")))); } });
 tslib_1.__exportStar(require(\\"./resolvers/outputs\\"), exports);
 tslib_1.__exportStar(require(\\"./scalars\\"), exports);
-exports.resolvers = [...exports.crudResolvers,...exports.relationResolvers,];
+Object.defineProperty(exports, \\"resolvers\\", { enumerable: true, get: function () { return [...exports.crudResolvers,...exports.relationResolvers,]; } });
 "
 `;
 
 exports[`relations resolvers generation should properly generate index files for 1-1 relation resolvers: resolversIndex 1`] = `
 "\\"use strict\\";
 Object.defineProperty(exports, \\"__esModule\\", { value: true });
-Object.defineProperty(exports, \\"AdminUserRelationsResolver\\", { enumerable: true, get: function () { return require(\\"./AdminUser/AdminUserRelationsResolver\\")[\\"AdminUserRelationsResolver\\"]; } });
-Object.defineProperty(exports, \\"UserRelationsResolver\\", { enumerable: true, get: function () { return require(\\"./User/UserRelationsResolver\\")[\\"UserRelationsResolver\\"]; } });
+function __lazyExport(name, moduleSpecifier) {
+    Object.defineProperty(exports, name, { enumerable: true, get: function () { return require(moduleSpecifier)[name]; } });
+}
+__lazyExport(\\"AdminUserRelationsResolver\\", \\"./AdminUser/AdminUserRelationsResolver\\");
+__lazyExport(\\"UserRelationsResolver\\", \\"./User/UserRelationsResolver\\");
 "
 `;
 
@@ -257,28 +262,29 @@ exports[`relations resolvers generation should properly generate index files for
 "\\"use strict\\";
 Object.defineProperty(exports, \\"__esModule\\", { value: true });
 exports.resolvers = void 0;
-exports.crudResolvers = void 0;
-exports.relationResolvers = void 0;
 const tslib_1 = require(\\"tslib\\");
 tslib_1.__exportStar(require(\\"./enums\\"), exports);
 tslib_1.__exportStar(require(\\"./models\\"), exports);
 tslib_1.__exportStar(require(\\"./resolvers/crud\\"), exports);
-const crudResolversImport = tslib_1.__importStar(require(\\"./resolvers/crud/resolvers-crud.index\\"));
-exports.crudResolvers = Object.values(crudResolversImport);
+let crudResolversCache;
+Object.defineProperty(exports, \\"crudResolvers\\", { enumerable: true, get: function () { return crudResolversCache ?? (crudResolversCache = Object.values(tslib_1.__importStar(require(\\"./resolvers/crud/resolvers-crud.index\\")))); } });
 tslib_1.__exportStar(require(\\"./resolvers/relations\\"), exports);
-const relationResolversImport = tslib_1.__importStar(require(\\"./resolvers/relations/resolvers.index\\"));
-exports.relationResolvers = Object.values(relationResolversImport);
+let relationResolversCache;
+Object.defineProperty(exports, \\"relationResolvers\\", { enumerable: true, get: function () { return relationResolversCache ?? (relationResolversCache = Object.values(tslib_1.__importStar(require(\\"./resolvers/relations/resolvers.index\\")))); } });
 tslib_1.__exportStar(require(\\"./resolvers/outputs\\"), exports);
 tslib_1.__exportStar(require(\\"./scalars\\"), exports);
-exports.resolvers = [...exports.crudResolvers,...exports.relationResolvers,];
+Object.defineProperty(exports, \\"resolvers\\", { enumerable: true, get: function () { return [...exports.crudResolvers,...exports.relationResolvers,]; } });
 "
 `;
 
 exports[`relations resolvers generation should properly generate index files for 1-many relation resolvers: resolversIndex 1`] = `
 "\\"use strict\\";
 Object.defineProperty(exports, \\"__esModule\\", { value: true });
-Object.defineProperty(exports, \\"AddressRelationsResolver\\", { enumerable: true, get: function () { return require(\\"./Address/AddressRelationsResolver\\")[\\"AddressRelationsResolver\\"]; } });
-Object.defineProperty(exports, \\"UserRelationsResolver\\", { enumerable: true, get: function () { return require(\\"./User/UserRelationsResolver\\")[\\"UserRelationsResolver\\"]; } });
+function __lazyExport(name, moduleSpecifier) {
+    Object.defineProperty(exports, name, { enumerable: true, get: function () { return require(moduleSpecifier)[name]; } });
+}
+__lazyExport(\\"AddressRelationsResolver\\", \\"./Address/AddressRelationsResolver\\");
+__lazyExport(\\"UserRelationsResolver\\", \\"./User/UserRelationsResolver\\");
 "
 `;
 
