@@ -233,6 +233,19 @@ exports.ExampleSumAggregate = ExampleSumAggregate = tslib_1.__decorate([
 exports[`outputs should properly generate aggregate classes for model with lowercase name: outputs index 1`] = `
 "\\"use strict\\";
 Object.defineProperty(exports, \\"__esModule\\", { value: true });
+function __lazyExport(name, moduleSpecifier) {
+    Object.defineProperty(exports, name, { enumerable: true, get: function () { return require(moduleSpecifier)[name]; } });
+}
+__lazyExport(\\"AffectedRowsOutput\\", \\"./AffectedRowsOutput\\");
+__lazyExport(\\"AggregateExample\\", \\"./AggregateExample\\");
+__lazyExport(\\"CreateManyAndReturnExample\\", \\"./CreateManyAndReturnExample\\");
+__lazyExport(\\"ExampleAvgAggregate\\", \\"./ExampleAvgAggregate\\");
+__lazyExport(\\"ExampleCountAggregate\\", \\"./ExampleCountAggregate\\");
+__lazyExport(\\"ExampleGroupBy\\", \\"./ExampleGroupBy\\");
+__lazyExport(\\"ExampleMaxAggregate\\", \\"./ExampleMaxAggregate\\");
+__lazyExport(\\"ExampleMinAggregate\\", \\"./ExampleMinAggregate\\");
+__lazyExport(\\"ExampleSumAggregate\\", \\"./ExampleSumAggregate\\");
+__lazyExport(\\"UpdateManyexampleAndReturnOutputType\\", \\"./UpdateManyexampleAndReturnOutputType\\");
 "
 `;
 
@@ -469,6 +482,19 @@ exports.ExampleSumAggregate = ExampleSumAggregate = tslib_1.__decorate([
 exports[`outputs should properly generate aggregate classes for renamed model: outputs index 1`] = `
 "\\"use strict\\";
 Object.defineProperty(exports, \\"__esModule\\", { value: true });
+function __lazyExport(name, moduleSpecifier) {
+    Object.defineProperty(exports, name, { enumerable: true, get: function () { return require(moduleSpecifier)[name]; } });
+}
+__lazyExport(\\"AffectedRowsOutput\\", \\"./AffectedRowsOutput\\");
+__lazyExport(\\"AggregateExample\\", \\"./AggregateExample\\");
+__lazyExport(\\"CreateManyAndReturnExample\\", \\"./CreateManyAndReturnExample\\");
+__lazyExport(\\"ExampleAvgAggregate\\", \\"./ExampleAvgAggregate\\");
+__lazyExport(\\"ExampleCountAggregate\\", \\"./ExampleCountAggregate\\");
+__lazyExport(\\"ExampleGroupBy\\", \\"./ExampleGroupBy\\");
+__lazyExport(\\"ExampleMaxAggregate\\", \\"./ExampleMaxAggregate\\");
+__lazyExport(\\"ExampleMinAggregate\\", \\"./ExampleMinAggregate\\");
+__lazyExport(\\"ExampleSumAggregate\\", \\"./ExampleSumAggregate\\");
+__lazyExport(\\"UpdateManySampleAndReturnOutputType\\", \\"./UpdateManySampleAndReturnOutputType\\");
 "
 `;
 
@@ -502,6 +528,31 @@ exports.FirstModelCount = FirstModelCount = tslib_1.__decorate([
 exports[`outputs should properly generate count classes for relation fields with args: outputs index 1`] = `
 "\\"use strict\\";
 Object.defineProperty(exports, \\"__esModule\\", { value: true });
+function __lazyExport(name, moduleSpecifier) {
+    Object.defineProperty(exports, name, { enumerable: true, get: function () { return require(moduleSpecifier)[name]; } });
+}
+__lazyExport(\\"AffectedRowsOutput\\", \\"./AffectedRowsOutput\\");
+__lazyExport(\\"AggregateFirstModel\\", \\"./AggregateFirstModel\\");
+__lazyExport(\\"AggregateSecondModel\\", \\"./AggregateSecondModel\\");
+__lazyExport(\\"CreateManyAndReturnFirstModel\\", \\"./CreateManyAndReturnFirstModel\\");
+__lazyExport(\\"CreateManyAndReturnSecondModel\\", \\"./CreateManyAndReturnSecondModel\\");
+__lazyExport(\\"FirstModelAvgAggregate\\", \\"./FirstModelAvgAggregate\\");
+__lazyExport(\\"FirstModelCount\\", \\"./FirstModelCount\\");
+__lazyExport(\\"FirstModelCountAggregate\\", \\"./FirstModelCountAggregate\\");
+__lazyExport(\\"FirstModelGroupBy\\", \\"./FirstModelGroupBy\\");
+__lazyExport(\\"FirstModelMaxAggregate\\", \\"./FirstModelMaxAggregate\\");
+__lazyExport(\\"FirstModelMinAggregate\\", \\"./FirstModelMinAggregate\\");
+__lazyExport(\\"FirstModelSumAggregate\\", \\"./FirstModelSumAggregate\\");
+__lazyExport(\\"SecondModelAvgAggregate\\", \\"./SecondModelAvgAggregate\\");
+__lazyExport(\\"SecondModelCountAggregate\\", \\"./SecondModelCountAggregate\\");
+__lazyExport(\\"SecondModelGroupBy\\", \\"./SecondModelGroupBy\\");
+__lazyExport(\\"SecondModelMaxAggregate\\", \\"./SecondModelMaxAggregate\\");
+__lazyExport(\\"SecondModelMinAggregate\\", \\"./SecondModelMinAggregate\\");
+__lazyExport(\\"SecondModelSumAggregate\\", \\"./SecondModelSumAggregate\\");
+__lazyExport(\\"UpdateManyFirstModelAndReturnOutputType\\", \\"./UpdateManyFirstModelAndReturnOutputType\\");
+__lazyExport(\\"UpdateManySecondModelAndReturnOutputType\\", \\"./UpdateManySecondModelAndReturnOutputType\\");
+const tslib_1 = require(\\"tslib\\");
+tslib_1.__exportStar(require(\\"./args\\"), exports);
 "
 `;
 
@@ -535,6 +586,31 @@ exports.FirstModelCount = FirstModelCount = tslib_1.__decorate([
 exports[`outputs should properly generate count classes for relation fields: outputs index 1`] = `
 "\\"use strict\\";
 Object.defineProperty(exports, \\"__esModule\\", { value: true });
+function __lazyExport(name, moduleSpecifier) {
+    Object.defineProperty(exports, name, { enumerable: true, get: function () { return require(moduleSpecifier)[name]; } });
+}
+__lazyExport(\\"AffectedRowsOutput\\", \\"./AffectedRowsOutput\\");
+__lazyExport(\\"AggregateFirstModel\\", \\"./AggregateFirstModel\\");
+__lazyExport(\\"AggregateSecondModel\\", \\"./AggregateSecondModel\\");
+__lazyExport(\\"CreateManyAndReturnFirstModel\\", \\"./CreateManyAndReturnFirstModel\\");
+__lazyExport(\\"CreateManyAndReturnSecondModel\\", \\"./CreateManyAndReturnSecondModel\\");
+__lazyExport(\\"FirstModelAvgAggregate\\", \\"./FirstModelAvgAggregate\\");
+__lazyExport(\\"FirstModelCount\\", \\"./FirstModelCount\\");
+__lazyExport(\\"FirstModelCountAggregate\\", \\"./FirstModelCountAggregate\\");
+__lazyExport(\\"FirstModelGroupBy\\", \\"./FirstModelGroupBy\\");
+__lazyExport(\\"FirstModelMaxAggregate\\", \\"./FirstModelMaxAggregate\\");
+__lazyExport(\\"FirstModelMinAggregate\\", \\"./FirstModelMinAggregate\\");
+__lazyExport(\\"FirstModelSumAggregate\\", \\"./FirstModelSumAggregate\\");
+__lazyExport(\\"SecondModelAvgAggregate\\", \\"./SecondModelAvgAggregate\\");
+__lazyExport(\\"SecondModelCountAggregate\\", \\"./SecondModelCountAggregate\\");
+__lazyExport(\\"SecondModelGroupBy\\", \\"./SecondModelGroupBy\\");
+__lazyExport(\\"SecondModelMaxAggregate\\", \\"./SecondModelMaxAggregate\\");
+__lazyExport(\\"SecondModelMinAggregate\\", \\"./SecondModelMinAggregate\\");
+__lazyExport(\\"SecondModelSumAggregate\\", \\"./SecondModelSumAggregate\\");
+__lazyExport(\\"UpdateManyFirstModelAndReturnOutputType\\", \\"./UpdateManyFirstModelAndReturnOutputType\\");
+__lazyExport(\\"UpdateManySecondModelAndReturnOutputType\\", \\"./UpdateManySecondModelAndReturnOutputType\\");
+const tslib_1 = require(\\"tslib\\");
+tslib_1.__exportStar(require(\\"./args\\"), exports);
 "
 `;
 
@@ -870,6 +946,19 @@ exports.SampleSumAggregate = SampleSumAggregate = tslib_1.__decorate([
 exports[`outputs should properly generate output type classes: outputs index 1`] = `
 "\\"use strict\\";
 Object.defineProperty(exports, \\"__esModule\\", { value: true });
+function __lazyExport(name, moduleSpecifier) {
+    Object.defineProperty(exports, name, { enumerable: true, get: function () { return require(moduleSpecifier)[name]; } });
+}
+__lazyExport(\\"AffectedRowsOutput\\", \\"./AffectedRowsOutput\\");
+__lazyExport(\\"AggregateSample\\", \\"./AggregateSample\\");
+__lazyExport(\\"CreateManyAndReturnSample\\", \\"./CreateManyAndReturnSample\\");
+__lazyExport(\\"SampleAvgAggregate\\", \\"./SampleAvgAggregate\\");
+__lazyExport(\\"SampleCountAggregate\\", \\"./SampleCountAggregate\\");
+__lazyExport(\\"SampleGroupBy\\", \\"./SampleGroupBy\\");
+__lazyExport(\\"SampleMaxAggregate\\", \\"./SampleMaxAggregate\\");
+__lazyExport(\\"SampleMinAggregate\\", \\"./SampleMinAggregate\\");
+__lazyExport(\\"SampleSumAggregate\\", \\"./SampleSumAggregate\\");
+__lazyExport(\\"UpdateManySampleAndReturnOutputType\\", \\"./UpdateManySampleAndReturnOutputType\\");
 "
 `;
 

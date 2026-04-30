@@ -1,5 +1,10 @@
 import {
+  argsFolderName,
   crudResolversFolderName,
+  enumsFolderName,
+  inputsFolderName,
+  modelsFolderName,
+  outputsFolderName,
   relationsResolversFolderName,
   resolversFolderName,
 } from "./config";
@@ -50,12 +55,21 @@ export function generateInputsBarrelFile(
 }
 
 export function generateOutputsBarrelFile(
-  _outputTypeNames: string[],
-  _hasSomeArgs: boolean,
+  outputTypeNames: string[],
+  hasSomeArgs: boolean,
 ): GeneratedModule {
+  const outputTypeBarrel = createBarrelModule(
+    outputTypeNames.sort().map(outputTypeName => `./${outputTypeName}`),
+    { lazy: true },
+  );
+
+  if (!hasSomeArgs) {
+    return outputTypeBarrel;
+  }
+
   return {
-    js: '"use strict";\nObject.defineProperty(exports, "__esModule", { value: true });\n',
-    dts: "",
+    js: `${outputTypeBarrel.js}const tslib_1 = require("tslib");\ntslib_1.__exportStar(require("./${argsFolderName}"), exports);\n`,
+    dts: `${outputTypeBarrel.dts}export * from "./${argsFolderName}";\n`,
   };
 }
 
@@ -112,6 +126,9 @@ export function generateIndexFile(
   const jsLines = [
     '"use strict";',
     'Object.defineProperty(exports, "__esModule", { value: true });',
+    ...(shouldEmitCrudResolvers || shouldEmitRelationResolvers
+      ? ["exports.resolvers = void 0;"]
+      : []),
     'const tslib_1 = require("tslib");',
     ...(blocksToEmit.includes("enums")
       ? ['tslib_1.__exportStar(require("./enums"), exports);']
@@ -131,6 +148,14 @@ export function generateIndexFile(
           `tslib_1.__exportStar(require("./${resolversFolderName}/${relationsResolversFolderName}"), exports);`,
           "let relationResolversCache;",
           `Object.defineProperty(exports, "relationResolvers", { enumerable: true, get: function () { return relationResolversCache ?? (relationResolversCache = Object.values(tslib_1.__importStar(require("./${resolversFolderName}/${relationsResolversFolderName}/resolvers.index")))); } });`,
+        ]
+      : []),
+    // Avoid exporting generated input types from the root barrel. Large schemas
+    // can generate thousands of input files, and CommonJS __exportStar eagerly
+    // requires every one of them even when callers only import models/enums.
+    ...(blocksToEmit.includes("outputs")
+      ? [
+          `tslib_1.__exportStar(require("./${resolversFolderName}/${outputsFolderName}"), exports);`,
         ]
       : []),
     'tslib_1.__exportStar(require("./scalars"), exports);',
@@ -159,6 +184,9 @@ export function generateIndexFile(
             : ['import { NonEmptyArray } from "type-graphql";']),
           "export declare const relationResolvers: NonEmptyArray<Function>;",
         ]
+      : []),
+    ...(blocksToEmit.includes("outputs")
+      ? [`export * from "./${resolversFolderName}/${outputsFolderName}";`]
       : []),
     'export * from "./scalars";',
     ...(shouldEmitCrudResolvers || shouldEmitRelationResolvers

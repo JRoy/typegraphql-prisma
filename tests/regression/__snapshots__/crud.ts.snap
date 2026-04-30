@@ -1654,12 +1654,14 @@ __lazyExport(\\"UserCrudResolver\\", \\"./User/UserCrudResolver\\");
 exports[`crud should properly generate resolver class for single prisma model: mainIndex 1`] = `
 "\\"use strict\\";
 Object.defineProperty(exports, \\"__esModule\\", { value: true });
+exports.resolvers = void 0;
 const tslib_1 = require(\\"tslib\\");
 tslib_1.__exportStar(require(\\"./enums\\"), exports);
 tslib_1.__exportStar(require(\\"./models\\"), exports);
 tslib_1.__exportStar(require(\\"./resolvers/crud\\"), exports);
 let crudResolversCache;
 Object.defineProperty(exports, \\"crudResolvers\\", { enumerable: true, get: function () { return crudResolversCache ?? (crudResolversCache = Object.values(tslib_1.__importStar(require(\\"./resolvers/crud/resolvers-crud.index\\")))); } });
+tslib_1.__exportStar(require(\\"./resolvers/outputs\\"), exports);
 tslib_1.__exportStar(require(\\"./scalars\\"), exports);
 Object.defineProperty(exports, \\"resolvers\\", { enumerable: true, get: function () { return [...exports.crudResolvers,]; } });
 "
