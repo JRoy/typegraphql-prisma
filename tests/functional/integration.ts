@@ -9,6 +9,7 @@ import pg from "pg";
 import { PrismaPg } from "@prisma/adapter-pg";
 
 import generateArtifactsDirPath from "../helpers/artifacts-dir";
+import { requireGenerated } from "../helpers/require-generated";
 import { getDirectoryStructureString } from "../helpers/structure";
 
 const exec = util.promisify(childProcess.exec);
@@ -107,7 +108,7 @@ export default defineConfig({
       PostCrudResolver,
       UserRelationsResolver,
       PostRelationsResolver,
-    } = require(cwdDirPath + "/generated/type-graphql");
+    } = requireGenerated(cwdDirPath + "/generated/type-graphql");
     await buildSchema({
       resolvers: [
         UserCrudResolver,
@@ -216,7 +217,7 @@ export default defineConfig({
       PostCrudResolver,
       UserRelationsResolver,
       PostRelationsResolver,
-    } = require(cwdDirPath + "/generated/type-graphql");
+    } = requireGenerated(cwdDirPath + "/generated/type-graphql");
     const graphQLSchema = await buildSchema({
       resolvers: [
         UserCrudResolver,
