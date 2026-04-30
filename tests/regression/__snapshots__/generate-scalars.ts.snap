@@ -11,9 +11,7 @@ tslib_1.__exportStar(require(\\"./models\\"), exports);
 tslib_1.__exportStar(require(\\"./resolvers/crud\\"), exports);
 const crudResolversImport = tslib_1.__importStar(require(\\"./resolvers/crud/resolvers-crud.index\\"));
 exports.crudResolvers = Object.values(crudResolversImport);
-tslib_1.__exportStar(require(\\"./resolvers/inputs\\"), exports);
 tslib_1.__exportStar(require(\\"./resolvers/outputs\\"), exports);
-tslib_1.__exportStar(require(\\"./enhance\\"), exports);
 tslib_1.__exportStar(require(\\"./scalars\\"), exports);
 exports.resolvers = [...exports.crudResolvers,];
 "

@@ -496,22 +496,21 @@ exports.UpsertOneUserResolver = UpsertOneUserResolver = tslib_1.__decorate([
 exports[`crud should properly generate actions resolver classes for prisma model: actionsIndex 1`] = `
 "\\"use strict\\";
 Object.defineProperty(exports, \\"__esModule\\", { value: true });
-const tslib_1 = require(\\"tslib\\");
-tslib_1.__exportStar(require(\\"./User/AggregateUserResolver\\"), exports);
-tslib_1.__exportStar(require(\\"./User/CreateManyAndReturnUserResolver\\"), exports);
-tslib_1.__exportStar(require(\\"./User/CreateManyUserResolver\\"), exports);
-tslib_1.__exportStar(require(\\"./User/CreateOneUserResolver\\"), exports);
-tslib_1.__exportStar(require(\\"./User/DeleteManyUserResolver\\"), exports);
-tslib_1.__exportStar(require(\\"./User/DeleteOneUserResolver\\"), exports);
-tslib_1.__exportStar(require(\\"./User/FindFirstUserOrThrowResolver\\"), exports);
-tslib_1.__exportStar(require(\\"./User/FindFirstUserResolver\\"), exports);
-tslib_1.__exportStar(require(\\"./User/FindManyUserResolver\\"), exports);
-tslib_1.__exportStar(require(\\"./User/FindUniqueUserOrThrowResolver\\"), exports);
-tslib_1.__exportStar(require(\\"./User/FindUniqueUserResolver\\"), exports);
-tslib_1.__exportStar(require(\\"./User/GroupByUserResolver\\"), exports);
-tslib_1.__exportStar(require(\\"./User/UpdateManyUserResolver\\"), exports);
-tslib_1.__exportStar(require(\\"./User/UpdateOneUserResolver\\"), exports);
-tslib_1.__exportStar(require(\\"./User/UpsertOneUserResolver\\"), exports);
+Object.defineProperty(exports, \\"AggregateUserResolver\\", { enumerable: true, get: function () { return require(\\"./User/AggregateUserResolver\\")[\\"AggregateUserResolver\\"]; } });
+Object.defineProperty(exports, \\"CreateManyAndReturnUserResolver\\", { enumerable: true, get: function () { return require(\\"./User/CreateManyAndReturnUserResolver\\")[\\"CreateManyAndReturnUserResolver\\"]; } });
+Object.defineProperty(exports, \\"CreateManyUserResolver\\", { enumerable: true, get: function () { return require(\\"./User/CreateManyUserResolver\\")[\\"CreateManyUserResolver\\"]; } });
+Object.defineProperty(exports, \\"CreateOneUserResolver\\", { enumerable: true, get: function () { return require(\\"./User/CreateOneUserResolver\\")[\\"CreateOneUserResolver\\"]; } });
+Object.defineProperty(exports, \\"DeleteManyUserResolver\\", { enumerable: true, get: function () { return require(\\"./User/DeleteManyUserResolver\\")[\\"DeleteManyUserResolver\\"]; } });
+Object.defineProperty(exports, \\"DeleteOneUserResolver\\", { enumerable: true, get: function () { return require(\\"./User/DeleteOneUserResolver\\")[\\"DeleteOneUserResolver\\"]; } });
+Object.defineProperty(exports, \\"FindFirstUserOrThrowResolver\\", { enumerable: true, get: function () { return require(\\"./User/FindFirstUserOrThrowResolver\\")[\\"FindFirstUserOrThrowResolver\\"]; } });
+Object.defineProperty(exports, \\"FindFirstUserResolver\\", { enumerable: true, get: function () { return require(\\"./User/FindFirstUserResolver\\")[\\"FindFirstUserResolver\\"]; } });
+Object.defineProperty(exports, \\"FindManyUserResolver\\", { enumerable: true, get: function () { return require(\\"./User/FindManyUserResolver\\")[\\"FindManyUserResolver\\"]; } });
+Object.defineProperty(exports, \\"FindUniqueUserOrThrowResolver\\", { enumerable: true, get: function () { return require(\\"./User/FindUniqueUserOrThrowResolver\\")[\\"FindUniqueUserOrThrowResolver\\"]; } });
+Object.defineProperty(exports, \\"FindUniqueUserResolver\\", { enumerable: true, get: function () { return require(\\"./User/FindUniqueUserResolver\\")[\\"FindUniqueUserResolver\\"]; } });
+Object.defineProperty(exports, \\"GroupByUserResolver\\", { enumerable: true, get: function () { return require(\\"./User/GroupByUserResolver\\")[\\"GroupByUserResolver\\"]; } });
+Object.defineProperty(exports, \\"UpdateManyUserResolver\\", { enumerable: true, get: function () { return require(\\"./User/UpdateManyUserResolver\\")[\\"UpdateManyUserResolver\\"]; } });
+Object.defineProperty(exports, \\"UpdateOneUserResolver\\", { enumerable: true, get: function () { return require(\\"./User/UpdateOneUserResolver\\")[\\"UpdateOneUserResolver\\"]; } });
+Object.defineProperty(exports, \\"UpsertOneUserResolver\\", { enumerable: true, get: function () { return require(\\"./User/UpsertOneUserResolver\\")[\\"UpsertOneUserResolver\\"]; } });
 "
 `;
 
@@ -526,8 +525,7 @@ tslib_1.__exportStar(require(\\"./User/args\\"), exports);
 exports[`crud should properly generate actions resolver classes for prisma model: crudIndex 1`] = `
 "\\"use strict\\";
 Object.defineProperty(exports, \\"__esModule\\", { value: true });
-const tslib_1 = require(\\"tslib\\");
-tslib_1.__exportStar(require(\\"./User/UserCrudResolver\\"), exports);
+Object.defineProperty(exports, \\"UserCrudResolver\\", { enumerable: true, get: function () { return require(\\"./User/UserCrudResolver\\")[\\"UserCrudResolver\\"]; } });
 "
 `;
 
@@ -884,22 +882,21 @@ exports.GroupByUserArgs = GroupByUserArgs = tslib_1.__decorate([
 exports[`crud should properly generate args classes for every method of crud resolver: Index 1`] = `
 "\\"use strict\\";
 Object.defineProperty(exports, \\"__esModule\\", { value: true });
-const tslib_1 = require(\\"tslib\\");
-tslib_1.__exportStar(require(\\"./AggregateUserArgs\\"), exports);
-tslib_1.__exportStar(require(\\"./CreateManyAndReturnUserArgs\\"), exports);
-tslib_1.__exportStar(require(\\"./CreateManyUserArgs\\"), exports);
-tslib_1.__exportStar(require(\\"./CreateOneUserArgs\\"), exports);
-tslib_1.__exportStar(require(\\"./DeleteManyUserArgs\\"), exports);
-tslib_1.__exportStar(require(\\"./DeleteOneUserArgs\\"), exports);
-tslib_1.__exportStar(require(\\"./FindFirstUserArgs\\"), exports);
-tslib_1.__exportStar(require(\\"./FindFirstUserOrThrowArgs\\"), exports);
-tslib_1.__exportStar(require(\\"./FindManyUserArgs\\"), exports);
-tslib_1.__exportStar(require(\\"./FindUniqueUserArgs\\"), exports);
-tslib_1.__exportStar(require(\\"./FindUniqueUserOrThrowArgs\\"), exports);
-tslib_1.__exportStar(require(\\"./GroupByUserArgs\\"), exports);
-tslib_1.__exportStar(require(\\"./UpdateManyUserArgs\\"), exports);
-tslib_1.__exportStar(require(\\"./UpdateOneUserArgs\\"), exports);
-tslib_1.__exportStar(require(\\"./UpsertOneUserArgs\\"), exports);
+Object.defineProperty(exports, \\"AggregateUserArgs\\", { enumerable: true, get: function () { return require(\\"./AggregateUserArgs\\")[\\"AggregateUserArgs\\"]; } });
+Object.defineProperty(exports, \\"CreateManyAndReturnUserArgs\\", { enumerable: true, get: function () { return require(\\"./CreateManyAndReturnUserArgs\\")[\\"CreateManyAndReturnUserArgs\\"]; } });
+Object.defineProperty(exports, \\"CreateManyUserArgs\\", { enumerable: true, get: function () { return require(\\"./CreateManyUserArgs\\")[\\"CreateManyUserArgs\\"]; } });
+Object.defineProperty(exports, \\"CreateOneUserArgs\\", { enumerable: true, get: function () { return require(\\"./CreateOneUserArgs\\")[\\"CreateOneUserArgs\\"]; } });
+Object.defineProperty(exports, \\"DeleteManyUserArgs\\", { enumerable: true, get: function () { return require(\\"./DeleteManyUserArgs\\")[\\"DeleteManyUserArgs\\"]; } });
+Object.defineProperty(exports, \\"DeleteOneUserArgs\\", { enumerable: true, get: function () { return require(\\"./DeleteOneUserArgs\\")[\\"DeleteOneUserArgs\\"]; } });
+Object.defineProperty(exports, \\"FindFirstUserArgs\\", { enumerable: true, get: function () { return require(\\"./FindFirstUserArgs\\")[\\"FindFirstUserArgs\\"]; } });
+Object.defineProperty(exports, \\"FindFirstUserOrThrowArgs\\", { enumerable: true, get: function () { return require(\\"./FindFirstUserOrThrowArgs\\")[\\"FindFirstUserOrThrowArgs\\"]; } });
+Object.defineProperty(exports, \\"FindManyUserArgs\\", { enumerable: true, get: function () { return require(\\"./FindManyUserArgs\\")[\\"FindManyUserArgs\\"]; } });
+Object.defineProperty(exports, \\"FindUniqueUserArgs\\", { enumerable: true, get: function () { return require(\\"./FindUniqueUserArgs\\")[\\"FindUniqueUserArgs\\"]; } });
+Object.defineProperty(exports, \\"FindUniqueUserOrThrowArgs\\", { enumerable: true, get: function () { return require(\\"./FindUniqueUserOrThrowArgs\\")[\\"FindUniqueUserOrThrowArgs\\"]; } });
+Object.defineProperty(exports, \\"GroupByUserArgs\\", { enumerable: true, get: function () { return require(\\"./GroupByUserArgs\\")[\\"GroupByUserArgs\\"]; } });
+Object.defineProperty(exports, \\"UpdateManyUserArgs\\", { enumerable: true, get: function () { return require(\\"./UpdateManyUserArgs\\")[\\"UpdateManyUserArgs\\"]; } });
+Object.defineProperty(exports, \\"UpdateOneUserArgs\\", { enumerable: true, get: function () { return require(\\"./UpdateOneUserArgs\\")[\\"UpdateOneUserArgs\\"]; } });
+Object.defineProperty(exports, \\"UpsertOneUserArgs\\", { enumerable: true, get: function () { return require(\\"./UpsertOneUserArgs\\")[\\"UpsertOneUserArgs\\"]; } });
 "
 `;
 
@@ -1150,22 +1147,21 @@ exports.FindManyFirstModelArgs = FindManyFirstModelArgs = tslib_1.__decorate([
 exports[`crud should properly generate args classes for sorting by many-to-many relation fields: index 1`] = `
 "\\"use strict\\";
 Object.defineProperty(exports, \\"__esModule\\", { value: true });
-const tslib_1 = require(\\"tslib\\");
-tslib_1.__exportStar(require(\\"./AggregateFirstModelArgs\\"), exports);
-tslib_1.__exportStar(require(\\"./CreateManyAndReturnFirstModelArgs\\"), exports);
-tslib_1.__exportStar(require(\\"./CreateManyFirstModelArgs\\"), exports);
-tslib_1.__exportStar(require(\\"./CreateOneFirstModelArgs\\"), exports);
-tslib_1.__exportStar(require(\\"./DeleteManyFirstModelArgs\\"), exports);
-tslib_1.__exportStar(require(\\"./DeleteOneFirstModelArgs\\"), exports);
-tslib_1.__exportStar(require(\\"./FindFirstFirstModelArgs\\"), exports);
-tslib_1.__exportStar(require(\\"./FindFirstFirstModelOrThrowArgs\\"), exports);
-tslib_1.__exportStar(require(\\"./FindManyFirstModelArgs\\"), exports);
-tslib_1.__exportStar(require(\\"./FindUniqueFirstModelArgs\\"), exports);
-tslib_1.__exportStar(require(\\"./FindUniqueFirstModelOrThrowArgs\\"), exports);
-tslib_1.__exportStar(require(\\"./GroupByFirstModelArgs\\"), exports);
-tslib_1.__exportStar(require(\\"./UpdateManyFirstModelArgs\\"), exports);
-tslib_1.__exportStar(require(\\"./UpdateOneFirstModelArgs\\"), exports);
-tslib_1.__exportStar(require(\\"./UpsertOneFirstModelArgs\\"), exports);
+Object.defineProperty(exports, \\"AggregateFirstModelArgs\\", { enumerable: true, get: function () { return require(\\"./AggregateFirstModelArgs\\")[\\"AggregateFirstModelArgs\\"]; } });
+Object.defineProperty(exports, \\"CreateManyAndReturnFirstModelArgs\\", { enumerable: true, get: function () { return require(\\"./CreateManyAndReturnFirstModelArgs\\")[\\"CreateManyAndReturnFirstModelArgs\\"]; } });
+Object.defineProperty(exports, \\"CreateManyFirstModelArgs\\", { enumerable: true, get: function () { return require(\\"./CreateManyFirstModelArgs\\")[\\"CreateManyFirstModelArgs\\"]; } });
+Object.defineProperty(exports, \\"CreateOneFirstModelArgs\\", { enumerable: true, get: function () { return require(\\"./CreateOneFirstModelArgs\\")[\\"CreateOneFirstModelArgs\\"]; } });
+Object.defineProperty(exports, \\"DeleteManyFirstModelArgs\\", { enumerable: true, get: function () { return require(\\"./DeleteManyFirstModelArgs\\")[\\"DeleteManyFirstModelArgs\\"]; } });
+Object.defineProperty(exports, \\"DeleteOneFirstModelArgs\\", { enumerable: true, get: function () { return require(\\"./DeleteOneFirstModelArgs\\")[\\"DeleteOneFirstModelArgs\\"]; } });
+Object.defineProperty(exports, \\"FindFirstFirstModelArgs\\", { enumerable: true, get: function () { return require(\\"./FindFirstFirstModelArgs\\")[\\"FindFirstFirstModelArgs\\"]; } });
+Object.defineProperty(exports, \\"FindFirstFirstModelOrThrowArgs\\", { enumerable: true, get: function () { return require(\\"./FindFirstFirstModelOrThrowArgs\\")[\\"FindFirstFirstModelOrThrowArgs\\"]; } });
+Object.defineProperty(exports, \\"FindManyFirstModelArgs\\", { enumerable: true, get: function () { return require(\\"./FindManyFirstModelArgs\\")[\\"FindManyFirstModelArgs\\"]; } });
+Object.defineProperty(exports, \\"FindUniqueFirstModelArgs\\", { enumerable: true, get: function () { return require(\\"./FindUniqueFirstModelArgs\\")[\\"FindUniqueFirstModelArgs\\"]; } });
+Object.defineProperty(exports, \\"FindUniqueFirstModelOrThrowArgs\\", { enumerable: true, get: function () { return require(\\"./FindUniqueFirstModelOrThrowArgs\\")[\\"FindUniqueFirstModelOrThrowArgs\\"]; } });
+Object.defineProperty(exports, \\"GroupByFirstModelArgs\\", { enumerable: true, get: function () { return require(\\"./GroupByFirstModelArgs\\")[\\"GroupByFirstModelArgs\\"]; } });
+Object.defineProperty(exports, \\"UpdateManyFirstModelArgs\\", { enumerable: true, get: function () { return require(\\"./UpdateManyFirstModelArgs\\")[\\"UpdateManyFirstModelArgs\\"]; } });
+Object.defineProperty(exports, \\"UpdateOneFirstModelArgs\\", { enumerable: true, get: function () { return require(\\"./UpdateOneFirstModelArgs\\")[\\"UpdateOneFirstModelArgs\\"]; } });
+Object.defineProperty(exports, \\"UpsertOneFirstModelArgs\\", { enumerable: true, get: function () { return require(\\"./UpsertOneFirstModelArgs\\")[\\"UpsertOneFirstModelArgs\\"]; } });
 "
 `;
 
@@ -1293,22 +1289,21 @@ exports.FindManySecondModelArgs = FindManySecondModelArgs = tslib_1.__decorate([
 exports[`crud should properly generate args classes for sorting by one-to-many relation fields: index 1`] = `
 "\\"use strict\\";
 Object.defineProperty(exports, \\"__esModule\\", { value: true });
-const tslib_1 = require(\\"tslib\\");
-tslib_1.__exportStar(require(\\"./AggregateSecondModelArgs\\"), exports);
-tslib_1.__exportStar(require(\\"./CreateManyAndReturnSecondModelArgs\\"), exports);
-tslib_1.__exportStar(require(\\"./CreateManySecondModelArgs\\"), exports);
-tslib_1.__exportStar(require(\\"./CreateOneSecondModelArgs\\"), exports);
-tslib_1.__exportStar(require(\\"./DeleteManySecondModelArgs\\"), exports);
-tslib_1.__exportStar(require(\\"./DeleteOneSecondModelArgs\\"), exports);
-tslib_1.__exportStar(require(\\"./FindFirstSecondModelArgs\\"), exports);
-tslib_1.__exportStar(require(\\"./FindFirstSecondModelOrThrowArgs\\"), exports);
-tslib_1.__exportStar(require(\\"./FindManySecondModelArgs\\"), exports);
-tslib_1.__exportStar(require(\\"./FindUniqueSecondModelArgs\\"), exports);
-tslib_1.__exportStar(require(\\"./FindUniqueSecondModelOrThrowArgs\\"), exports);
-tslib_1.__exportStar(require(\\"./GroupBySecondModelArgs\\"), exports);
-tslib_1.__exportStar(require(\\"./UpdateManySecondModelArgs\\"), exports);
-tslib_1.__exportStar(require(\\"./UpdateOneSecondModelArgs\\"), exports);
-tslib_1.__exportStar(require(\\"./UpsertOneSecondModelArgs\\"), exports);
+Object.defineProperty(exports, \\"AggregateSecondModelArgs\\", { enumerable: true, get: function () { return require(\\"./AggregateSecondModelArgs\\")[\\"AggregateSecondModelArgs\\"]; } });
+Object.defineProperty(exports, \\"CreateManyAndReturnSecondModelArgs\\", { enumerable: true, get: function () { return require(\\"./CreateManyAndReturnSecondModelArgs\\")[\\"CreateManyAndReturnSecondModelArgs\\"]; } });
+Object.defineProperty(exports, \\"CreateManySecondModelArgs\\", { enumerable: true, get: function () { return require(\\"./CreateManySecondModelArgs\\")[\\"CreateManySecondModelArgs\\"]; } });
+Object.defineProperty(exports, \\"CreateOneSecondModelArgs\\", { enumerable: true, get: function () { return require(\\"./CreateOneSecondModelArgs\\")[\\"CreateOneSecondModelArgs\\"]; } });
+Object.defineProperty(exports, \\"DeleteManySecondModelArgs\\", { enumerable: true, get: function () { return require(\\"./DeleteManySecondModelArgs\\")[\\"DeleteManySecondModelArgs\\"]; } });
+Object.defineProperty(exports, \\"DeleteOneSecondModelArgs\\", { enumerable: true, get: function () { return require(\\"./DeleteOneSecondModelArgs\\")[\\"DeleteOneSecondModelArgs\\"]; } });
+Object.defineProperty(exports, \\"FindFirstSecondModelArgs\\", { enumerable: true, get: function () { return require(\\"./FindFirstSecondModelArgs\\")[\\"FindFirstSecondModelArgs\\"]; } });
+Object.defineProperty(exports, \\"FindFirstSecondModelOrThrowArgs\\", { enumerable: true, get: function () { return require(\\"./FindFirstSecondModelOrThrowArgs\\")[\\"FindFirstSecondModelOrThrowArgs\\"]; } });
+Object.defineProperty(exports, \\"FindManySecondModelArgs\\", { enumerable: true, get: function () { return require(\\"./FindManySecondModelArgs\\")[\\"FindManySecondModelArgs\\"]; } });
+Object.defineProperty(exports, \\"FindUniqueSecondModelArgs\\", { enumerable: true, get: function () { return require(\\"./FindUniqueSecondModelArgs\\")[\\"FindUniqueSecondModelArgs\\"]; } });
+Object.defineProperty(exports, \\"FindUniqueSecondModelOrThrowArgs\\", { enumerable: true, get: function () { return require(\\"./FindUniqueSecondModelOrThrowArgs\\")[\\"FindUniqueSecondModelOrThrowArgs\\"]; } });
+Object.defineProperty(exports, \\"GroupBySecondModelArgs\\", { enumerable: true, get: function () { return require(\\"./GroupBySecondModelArgs\\")[\\"GroupBySecondModelArgs\\"]; } });
+Object.defineProperty(exports, \\"UpdateManySecondModelArgs\\", { enumerable: true, get: function () { return require(\\"./UpdateManySecondModelArgs\\")[\\"UpdateManySecondModelArgs\\"]; } });
+Object.defineProperty(exports, \\"UpdateOneSecondModelArgs\\", { enumerable: true, get: function () { return require(\\"./UpdateOneSecondModelArgs\\")[\\"UpdateOneSecondModelArgs\\"]; } });
+Object.defineProperty(exports, \\"UpsertOneSecondModelArgs\\", { enumerable: true, get: function () { return require(\\"./UpsertOneSecondModelArgs\\")[\\"UpsertOneSecondModelArgs\\"]; } });
 "
 `;
 
@@ -1602,22 +1597,21 @@ exports.UserCrudResolver = UserCrudResolver = tslib_1.__decorate([
 exports[`crud should properly generate resolver class for single prisma model: actionsIndex 1`] = `
 "\\"use strict\\";
 Object.defineProperty(exports, \\"__esModule\\", { value: true });
-const tslib_1 = require(\\"tslib\\");
-tslib_1.__exportStar(require(\\"./User/AggregateUserResolver\\"), exports);
-tslib_1.__exportStar(require(\\"./User/CreateManyAndReturnUserResolver\\"), exports);
-tslib_1.__exportStar(require(\\"./User/CreateManyUserResolver\\"), exports);
-tslib_1.__exportStar(require(\\"./User/CreateOneUserResolver\\"), exports);
-tslib_1.__exportStar(require(\\"./User/DeleteManyUserResolver\\"), exports);
-tslib_1.__exportStar(require(\\"./User/DeleteOneUserResolver\\"), exports);
-tslib_1.__exportStar(require(\\"./User/FindFirstUserOrThrowResolver\\"), exports);
-tslib_1.__exportStar(require(\\"./User/FindFirstUserResolver\\"), exports);
-tslib_1.__exportStar(require(\\"./User/FindManyUserResolver\\"), exports);
-tslib_1.__exportStar(require(\\"./User/FindUniqueUserOrThrowResolver\\"), exports);
-tslib_1.__exportStar(require(\\"./User/FindUniqueUserResolver\\"), exports);
-tslib_1.__exportStar(require(\\"./User/GroupByUserResolver\\"), exports);
-tslib_1.__exportStar(require(\\"./User/UpdateManyUserResolver\\"), exports);
-tslib_1.__exportStar(require(\\"./User/UpdateOneUserResolver\\"), exports);
-tslib_1.__exportStar(require(\\"./User/UpsertOneUserResolver\\"), exports);
+Object.defineProperty(exports, \\"AggregateUserResolver\\", { enumerable: true, get: function () { return require(\\"./User/AggregateUserResolver\\")[\\"AggregateUserResolver\\"]; } });
+Object.defineProperty(exports, \\"CreateManyAndReturnUserResolver\\", { enumerable: true, get: function () { return require(\\"./User/CreateManyAndReturnUserResolver\\")[\\"CreateManyAndReturnUserResolver\\"]; } });
+Object.defineProperty(exports, \\"CreateManyUserResolver\\", { enumerable: true, get: function () { return require(\\"./User/CreateManyUserResolver\\")[\\"CreateManyUserResolver\\"]; } });
+Object.defineProperty(exports, \\"CreateOneUserResolver\\", { enumerable: true, get: function () { return require(\\"./User/CreateOneUserResolver\\")[\\"CreateOneUserResolver\\"]; } });
+Object.defineProperty(exports, \\"DeleteManyUserResolver\\", { enumerable: true, get: function () { return require(\\"./User/DeleteManyUserResolver\\")[\\"DeleteManyUserResolver\\"]; } });
+Object.defineProperty(exports, \\"DeleteOneUserResolver\\", { enumerable: true, get: function () { return require(\\"./User/DeleteOneUserResolver\\")[\\"DeleteOneUserResolver\\"]; } });
+Object.defineProperty(exports, \\"FindFirstUserOrThrowResolver\\", { enumerable: true, get: function () { return require(\\"./User/FindFirstUserOrThrowResolver\\")[\\"FindFirstUserOrThrowResolver\\"]; } });
+Object.defineProperty(exports, \\"FindFirstUserResolver\\", { enumerable: true, get: function () { return require(\\"./User/FindFirstUserResolver\\")[\\"FindFirstUserResolver\\"]; } });
+Object.defineProperty(exports, \\"FindManyUserResolver\\", { enumerable: true, get: function () { return require(\\"./User/FindManyUserResolver\\")[\\"FindManyUserResolver\\"]; } });
+Object.defineProperty(exports, \\"FindUniqueUserOrThrowResolver\\", { enumerable: true, get: function () { return require(\\"./User/FindUniqueUserOrThrowResolver\\")[\\"FindUniqueUserOrThrowResolver\\"]; } });
+Object.defineProperty(exports, \\"FindUniqueUserResolver\\", { enumerable: true, get: function () { return require(\\"./User/FindUniqueUserResolver\\")[\\"FindUniqueUserResolver\\"]; } });
+Object.defineProperty(exports, \\"GroupByUserResolver\\", { enumerable: true, get: function () { return require(\\"./User/GroupByUserResolver\\")[\\"GroupByUserResolver\\"]; } });
+Object.defineProperty(exports, \\"UpdateManyUserResolver\\", { enumerable: true, get: function () { return require(\\"./User/UpdateManyUserResolver\\")[\\"UpdateManyUserResolver\\"]; } });
+Object.defineProperty(exports, \\"UpdateOneUserResolver\\", { enumerable: true, get: function () { return require(\\"./User/UpdateOneUserResolver\\")[\\"UpdateOneUserResolver\\"]; } });
+Object.defineProperty(exports, \\"UpsertOneUserResolver\\", { enumerable: true, get: function () { return require(\\"./User/UpsertOneUserResolver\\")[\\"UpsertOneUserResolver\\"]; } });
 "
 `;
 
@@ -1632,8 +1626,7 @@ tslib_1.__exportStar(require(\\"./User/args\\"), exports);
 exports[`crud should properly generate resolver class for single prisma model: crudIndex 1`] = `
 "\\"use strict\\";
 Object.defineProperty(exports, \\"__esModule\\", { value: true });
-const tslib_1 = require(\\"tslib\\");
-tslib_1.__exportStar(require(\\"./User/UserCrudResolver\\"), exports);
+Object.defineProperty(exports, \\"UserCrudResolver\\", { enumerable: true, get: function () { return require(\\"./User/UserCrudResolver\\")[\\"UserCrudResolver\\"]; } });
 "
 `;
 
@@ -1648,9 +1641,7 @@ tslib_1.__exportStar(require(\\"./models\\"), exports);
 tslib_1.__exportStar(require(\\"./resolvers/crud\\"), exports);
 const crudResolversImport = tslib_1.__importStar(require(\\"./resolvers/crud/resolvers-crud.index\\"));
 exports.crudResolvers = Object.values(crudResolversImport);
-tslib_1.__exportStar(require(\\"./resolvers/inputs\\"), exports);
 tslib_1.__exportStar(require(\\"./resolvers/outputs\\"), exports);
-tslib_1.__exportStar(require(\\"./enhance\\"), exports);
 tslib_1.__exportStar(require(\\"./scalars\\"), exports);
 exports.resolvers = [...exports.crudResolvers,];
 "
@@ -4404,22 +4395,21 @@ exports.GroupByClientArgs = GroupByClientArgs = tslib_1.__decorate([
 exports[`crud when model is renamed should properly generate args classes for every method of crud resolver: Index 1`] = `
 "\\"use strict\\";
 Object.defineProperty(exports, \\"__esModule\\", { value: true });
-const tslib_1 = require(\\"tslib\\");
-tslib_1.__exportStar(require(\\"./AggregateClientArgs\\"), exports);
-tslib_1.__exportStar(require(\\"./CreateManyAndReturnClientArgs\\"), exports);
-tslib_1.__exportStar(require(\\"./CreateManyClientArgs\\"), exports);
-tslib_1.__exportStar(require(\\"./CreateOneClientArgs\\"), exports);
-tslib_1.__exportStar(require(\\"./DeleteManyClientArgs\\"), exports);
-tslib_1.__exportStar(require(\\"./DeleteOneClientArgs\\"), exports);
-tslib_1.__exportStar(require(\\"./FindFirstClientArgs\\"), exports);
-tslib_1.__exportStar(require(\\"./FindFirstClientOrThrowArgs\\"), exports);
-tslib_1.__exportStar(require(\\"./FindManyClientArgs\\"), exports);
-tslib_1.__exportStar(require(\\"./FindUniqueClientArgs\\"), exports);
-tslib_1.__exportStar(require(\\"./FindUniqueClientOrThrowArgs\\"), exports);
-tslib_1.__exportStar(require(\\"./GroupByClientArgs\\"), exports);
-tslib_1.__exportStar(require(\\"./UpdateManyClientArgs\\"), exports);
-tslib_1.__exportStar(require(\\"./UpdateOneClientArgs\\"), exports);
-tslib_1.__exportStar(require(\\"./UpsertOneClientArgs\\"), exports);
+Object.defineProperty(exports, \\"AggregateClientArgs\\", { enumerable: true, get: function () { return require(\\"./AggregateClientArgs\\")[\\"AggregateClientArgs\\"]; } });
+Object.defineProperty(exports, \\"CreateManyAndReturnClientArgs\\", { enumerable: true, get: function () { return require(\\"./CreateManyAndReturnClientArgs\\")[\\"CreateManyAndReturnClientArgs\\"]; } });
+Object.defineProperty(exports, \\"CreateManyClientArgs\\", { enumerable: true, get: function () { return require(\\"./CreateManyClientArgs\\")[\\"CreateManyClientArgs\\"]; } });
+Object.defineProperty(exports, \\"CreateOneClientArgs\\", { enumerable: true, get: function () { return require(\\"./CreateOneClientArgs\\")[\\"CreateOneClientArgs\\"]; } });
+Object.defineProperty(exports, \\"DeleteManyClientArgs\\", { enumerable: true, get: function () { return require(\\"./DeleteManyClientArgs\\")[\\"DeleteManyClientArgs\\"]; } });
+Object.defineProperty(exports, \\"DeleteOneClientArgs\\", { enumerable: true, get: function () { return require(\\"./DeleteOneClientArgs\\")[\\"DeleteOneClientArgs\\"]; } });
+Object.defineProperty(exports, \\"FindFirstClientArgs\\", { enumerable: true, get: function () { return require(\\"./FindFirstClientArgs\\")[\\"FindFirstClientArgs\\"]; } });
+Object.defineProperty(exports, \\"FindFirstClientOrThrowArgs\\", { enumerable: true, get: function () { return require(\\"./FindFirstClientOrThrowArgs\\")[\\"FindFirstClientOrThrowArgs\\"]; } });
+Object.defineProperty(exports, \\"FindManyClientArgs\\", { enumerable: true, get: function () { return require(\\"./FindManyClientArgs\\")[\\"FindManyClientArgs\\"]; } });
+Object.defineProperty(exports, \\"FindUniqueClientArgs\\", { enumerable: true, get: function () { return require(\\"./FindUniqueClientArgs\\")[\\"FindUniqueClientArgs\\"]; } });
+Object.defineProperty(exports, \\"FindUniqueClientOrThrowArgs\\", { enumerable: true, get: function () { return require(\\"./FindUniqueClientOrThrowArgs\\")[\\"FindUniqueClientOrThrowArgs\\"]; } });
+Object.defineProperty(exports, \\"GroupByClientArgs\\", { enumerable: true, get: function () { return require(\\"./GroupByClientArgs\\")[\\"GroupByClientArgs\\"]; } });
+Object.defineProperty(exports, \\"UpdateManyClientArgs\\", { enumerable: true, get: function () { return require(\\"./UpdateManyClientArgs\\")[\\"UpdateManyClientArgs\\"]; } });
+Object.defineProperty(exports, \\"UpdateOneClientArgs\\", { enumerable: true, get: function () { return require(\\"./UpdateOneClientArgs\\")[\\"UpdateOneClientArgs\\"]; } });
+Object.defineProperty(exports, \\"UpsertOneClientArgs\\", { enumerable: true, get: function () { return require(\\"./UpsertOneClientArgs\\")[\\"UpsertOneClientArgs\\"]; } });
 "
 `;
 
