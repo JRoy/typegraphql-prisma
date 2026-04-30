@@ -118,7 +118,8 @@ export function generateEnhanceMap(
         ]),
     ...(emitRelationResolvers
       ? [
-          `const relationResolversInfo = ${renderJsObject(
+          "function applyRelationResolversEnhanceMap(relationResolversEnhanceMap) {",
+          `    const relationResolversInfo = ${renderJsObject(
             Object.fromEntries(
               relationModels.map(relationModel => [
                 relationModel.model.typeName,
@@ -126,7 +127,6 @@ export function generateEnhanceMap(
               ]),
             ),
           )};`,
-          "function applyRelationResolversEnhanceMap(relationResolversEnhanceMap) {",
           `    const relationResolvers = tslib_1.__importStar(require("./${resolversFolderName}/${relationsResolversFolderName}/resolvers.index"));`,
           `    const relationResolversMap = ${renderJsObject(
             Object.fromEntries(
@@ -198,8 +198,9 @@ export function generateEnhanceMap(
       : ["function applyModelsEnhanceMap(_modelsEnhanceMap) {}"]),
     ...(emitOutputs
       ? [
-          `const outputTypes = tslib_1.__importStar(require("./${resolversFolderName}/${outputsFolderName}"));`,
-          `const outputsInfo = ${renderJsObject(
+          "function applyOutputTypesEnhanceMap(outputTypesEnhanceMap) {",
+          `    const outputTypes = tslib_1.__importStar(require("./${resolversFolderName}/${outputsFolderName}"));`,
+          `    const outputsInfo = ${renderJsObject(
             Object.fromEntries(
               outputs.map(output => [
                 output.typeName,
@@ -207,7 +208,6 @@ export function generateEnhanceMap(
               ]),
             ),
           )};`,
-          "function applyOutputTypesEnhanceMap(outputTypesEnhanceMap) {",
           "    for (const outputTypeName of Object.keys(outputTypesEnhanceMap)) {",
           "        const typeConfig = outputTypesEnhanceMap[outputTypeName];",
           "        const typeClass = outputTypes[outputTypeName];",
@@ -218,7 +218,8 @@ export function generateEnhanceMap(
       : ["function applyOutputTypesEnhanceMap(_outputTypesEnhanceMap) {}"]),
     ...(emitInputs
       ? [
-          `const inputsInfo = ${renderJsObject(
+          "function applyInputTypesEnhanceMap(inputTypesEnhanceMap) {",
+          `    const inputsInfo = ${renderJsObject(
             Object.fromEntries(
               inputs.map(input => [
                 input.typeName,
@@ -226,7 +227,6 @@ export function generateEnhanceMap(
               ]),
             ),
           )};`,
-          "function applyInputTypesEnhanceMap(inputTypesEnhanceMap) {",
           `    const inputTypes = tslib_1.__importStar(require("./${resolversFolderName}/${inputsFolderName}"));`,
           "    for (const inputTypeName of Object.keys(inputTypesEnhanceMap)) {",
           "        const typeConfig = inputTypesEnhanceMap[inputTypeName];",
