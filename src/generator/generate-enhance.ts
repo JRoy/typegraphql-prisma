@@ -118,6 +118,15 @@ export function generateEnhanceMap(
         ]),
     ...(emitRelationResolvers
       ? [
+          `const relationResolvers = tslib_1.__importStar(require("./${resolversFolderName}/${relationsResolversFolderName}/resolvers.index"));`,
+          `const relationResolversMap = ${renderJsObject(
+            Object.fromEntries(
+              relationModels.map(relationModel => [
+                relationModel.model.typeName,
+                `relationResolvers.${relationModel.resolverName}`,
+              ]),
+            ),
+          )};`,
           `const relationResolversInfo = ${renderJsObject(
             Object.fromEntries(
               relationModels.map(relationModel => [
@@ -127,15 +136,6 @@ export function generateEnhanceMap(
             ),
           )};`,
           "function applyRelationResolversEnhanceMap(relationResolversEnhanceMap) {",
-          `    const relationResolvers = tslib_1.__importStar(require("./${resolversFolderName}/${relationsResolversFolderName}/resolvers.index"));`,
-          `    const relationResolversMap = ${renderJsObject(
-            Object.fromEntries(
-              relationModels.map(relationModel => [
-                relationModel.model.typeName,
-                `relationResolvers.${relationModel.resolverName}`,
-              ]),
-            ),
-          )};`,
           "    for (const modelName of Object.keys(relationResolversEnhanceMap)) {",
           "        const relationResolverTarget = relationResolversMap[modelName].prototype;",
           "        const relationResolverActionsConfig = relationResolversEnhanceMap[modelName];",

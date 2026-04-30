@@ -129,6 +129,10 @@ export function generateIndexFile(
     ...(shouldEmitCrudResolvers || shouldEmitRelationResolvers
       ? ["exports.resolvers = void 0;"]
       : []),
+    ...(shouldEmitCrudResolvers ? ["exports.crudResolvers = void 0;"] : []),
+    ...(shouldEmitRelationResolvers
+      ? ["exports.relationResolvers = void 0;"]
+      : []),
     'const tslib_1 = require("tslib");',
     ...(blocksToEmit.includes("enums")
       ? ['tslib_1.__exportStar(require("./enums"), exports);']
@@ -139,15 +143,15 @@ export function generateIndexFile(
     ...(shouldEmitCrudResolvers
       ? [
           `tslib_1.__exportStar(require("./${resolversFolderName}/${crudResolversFolderName}"), exports);`,
-          "let crudResolversCache;",
-          `Object.defineProperty(exports, "crudResolvers", { enumerable: true, get: function () { return crudResolversCache ?? (crudResolversCache = Object.values(tslib_1.__importStar(require("./${resolversFolderName}/${crudResolversFolderName}/resolvers-crud.index")))); } });`,
+          `const crudResolversImport = tslib_1.__importStar(require("./${resolversFolderName}/${crudResolversFolderName}/resolvers-crud.index"));`,
+          "exports.crudResolvers = Object.values(crudResolversImport);",
         ]
       : []),
     ...(shouldEmitRelationResolvers
       ? [
           `tslib_1.__exportStar(require("./${resolversFolderName}/${relationsResolversFolderName}"), exports);`,
-          "let relationResolversCache;",
-          `Object.defineProperty(exports, "relationResolvers", { enumerable: true, get: function () { return relationResolversCache ?? (relationResolversCache = Object.values(tslib_1.__importStar(require("./${resolversFolderName}/${relationsResolversFolderName}/resolvers.index")))); } });`,
+          `const relationResolversImport = tslib_1.__importStar(require("./${resolversFolderName}/${relationsResolversFolderName}/resolvers.index"));`,
+          "exports.relationResolvers = Object.values(relationResolversImport);",
         ]
       : []),
     // Avoid exporting generated input types from the root barrel. Large schemas
@@ -161,7 +165,7 @@ export function generateIndexFile(
     'tslib_1.__exportStar(require("./scalars"), exports);',
     ...(shouldEmitCrudResolvers || shouldEmitRelationResolvers
       ? [
-          `Object.defineProperty(exports, "resolvers", { enumerable: true, get: function () { return [${shouldEmitCrudResolvers ? "...exports.crudResolvers," : ""}${shouldEmitRelationResolvers ? "...exports.relationResolvers," : ""}]; } });`,
+          `exports.resolvers = [${shouldEmitCrudResolvers ? "...exports.crudResolvers," : ""}${shouldEmitRelationResolvers ? "...exports.relationResolvers," : ""}];`,
         ]
       : []),
   ];

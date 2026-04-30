@@ -78,12 +78,9 @@ export function createBarrelModule(
   if (options.lazy) {
     const jsLines = [
       renderJsHeader(),
-      "function __lazyExport(name, moduleSpecifier) {",
-      "    Object.defineProperty(exports, name, { enumerable: true, get: function () { return require(moduleSpecifier)[name]; } });",
-      "}",
       ...sortedSpecifiers.map(moduleSpecifier => {
         const exportName = path.posix.basename(moduleSpecifier);
-        return `__lazyExport(${JSON.stringify(exportName)}, ${JSON.stringify(moduleSpecifier)});`;
+        return `Object.defineProperty(exports, ${JSON.stringify(exportName)}, { enumerable: true, get: function () { return require(${JSON.stringify(moduleSpecifier)})[${JSON.stringify(exportName)}]; } });`;
       }),
     ];
 
