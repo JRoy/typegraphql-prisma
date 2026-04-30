@@ -17,7 +17,6 @@ export function generateArgsBarrelFile(
 ): GeneratedModule {
   return createBarrelModule(
     argsTypeNames.sort().map(argTypeName => `./${argTypeName}`),
-    { lazy: true },
   );
 }
 
@@ -32,7 +31,6 @@ export function generateModelsBarrelFile(
 ): GeneratedModule {
   return createBarrelModule(
     modelNames.sort().map(modelName => `./${modelName}`),
-    { lazy: true },
   );
 }
 
@@ -41,7 +39,6 @@ export function generateEnumsBarrelFile(
 ): GeneratedModule {
   return createBarrelModule(
     enumTypeNames.sort().map(enumTypeName => `./${enumTypeName}`),
-    { lazy: true },
   );
 }
 
@@ -50,7 +47,6 @@ export function generateInputsBarrelFile(
 ): GeneratedModule {
   return createBarrelModule(
     inputTypeNames.sort().map(inputTypeName => `./${inputTypeName}`),
-    { lazy: true },
   );
 }
 
@@ -58,19 +54,10 @@ export function generateOutputsBarrelFile(
   outputTypeNames: string[],
   hasSomeArgs: boolean,
 ): GeneratedModule {
-  const outputTypeBarrel = createBarrelModule(
-    outputTypeNames.sort().map(outputTypeName => `./${outputTypeName}`),
-    { lazy: true },
-  );
-
-  if (!hasSomeArgs) {
-    return outputTypeBarrel;
-  }
-
-  return {
-    js: `${outputTypeBarrel.js}const tslib_1 = require("tslib");\ntslib_1.__exportStar(require("./${argsFolderName}"), exports);\n`,
-    dts: `${outputTypeBarrel.dts}export * from "./${argsFolderName}";\n`,
-  };
+  return createBarrelModule([
+    ...outputTypeNames.sort().map(outputTypeName => `./${outputTypeName}`),
+    ...(hasSomeArgs ? [`./${argsFolderName}`] : []),
+  ]);
 }
 
 export function generateResolversBarrelFile(
@@ -82,7 +69,6 @@ export function generateResolversBarrelFile(
         a.modelName > b.modelName ? 1 : a.modelName < b.modelName ? -1 : 0,
       )
       .map(({ modelName, resolverName }) => `./${modelName}/${resolverName}`),
-    { lazy: true },
   );
 }
 
@@ -99,7 +85,6 @@ export function generateResolversActionsBarrelFile(
           actionResolverName => `./${modelName}/${actionResolverName}`,
         ),
       ),
-    { lazy: true },
   );
 }
 
@@ -154,14 +139,17 @@ export function generateIndexFile(
           "exports.relationResolvers = Object.values(relationResolversImport);",
         ]
       : []),
-    // Avoid exporting generated input types from the root barrel. Large schemas
-    // can generate thousands of input files, and CommonJS __exportStar eagerly
-    // requires every one of them even when callers only import models/enums.
+    ...(blocksToEmit.includes("inputs")
+      ? [
+          `tslib_1.__exportStar(require("./${resolversFolderName}/${inputsFolderName}"), exports);`,
+        ]
+      : []),
     ...(blocksToEmit.includes("outputs")
       ? [
           `tslib_1.__exportStar(require("./${resolversFolderName}/${outputsFolderName}"), exports);`,
         ]
       : []),
+    'tslib_1.__exportStar(require("./enhance"), exports);',
     'tslib_1.__exportStar(require("./scalars"), exports);',
     ...(shouldEmitCrudResolvers || shouldEmitRelationResolvers
       ? [
@@ -189,9 +177,13 @@ export function generateIndexFile(
           "export declare const relationResolvers: NonEmptyArray<Function>;",
         ]
       : []),
+    ...(blocksToEmit.includes("inputs")
+      ? [`export * from "./${resolversFolderName}/${inputsFolderName}";`]
+      : []),
     ...(blocksToEmit.includes("outputs")
       ? [`export * from "./${resolversFolderName}/${outputsFolderName}";`]
       : []),
+    'export * from "./enhance";',
     'export * from "./scalars";',
     ...(shouldEmitCrudResolvers || shouldEmitRelationResolvers
       ? ["export declare const resolvers: NonEmptyArray<Function>;"]

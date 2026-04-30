@@ -218,6 +218,7 @@ export function generateEnhanceMap(
       : ["function applyOutputTypesEnhanceMap(_outputTypesEnhanceMap) {}"]),
     ...(emitInputs
       ? [
+          `const inputTypes = tslib_1.__importStar(require("./${resolversFolderName}/${inputsFolderName}"));`,
           `const inputsInfo = ${renderJsObject(
             Object.fromEntries(
               inputs.map(input => [
@@ -227,7 +228,6 @@ export function generateEnhanceMap(
             ),
           )};`,
           "function applyInputTypesEnhanceMap(inputTypesEnhanceMap) {",
-          `    const inputTypes = tslib_1.__importStar(require("./${resolversFolderName}/${inputsFolderName}"));`,
           "    for (const inputTypeName of Object.keys(inputTypesEnhanceMap)) {",
           "        const typeConfig = inputTypesEnhanceMap[inputTypeName];",
           "        const typeClass = inputTypes[inputTypeName];",

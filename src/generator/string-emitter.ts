@@ -72,28 +72,8 @@ export function createGeneratedFiles(
 
 export function createBarrelModule(
   moduleSpecifiers: string[],
-  options: { lazy?: boolean } = {},
 ): GeneratedModule {
   const sortedSpecifiers = [...moduleSpecifiers].sort();
-  if (options.lazy) {
-    const jsLines = [
-      renderJsHeader(),
-      ...sortedSpecifiers.map(moduleSpecifier => {
-        const exportName = path.posix.basename(moduleSpecifier);
-        return `Object.defineProperty(exports, ${JSON.stringify(exportName)}, { enumerable: true, get: function () { return require(${JSON.stringify(moduleSpecifier)})[${JSON.stringify(exportName)}]; } });`;
-      }),
-    ];
-
-    const dtsLines = sortedSpecifiers.map(
-      moduleSpecifier => `export * from ${JSON.stringify(moduleSpecifier)};`,
-    );
-
-    return {
-      js: withTrailingNewline(jsLines.join("\n")),
-      dts: withTrailingNewline(dtsLines.join("\n")),
-    };
-  }
-
   const jsLines = [
     renderJsHeader(),
     'const tslib_1 = require("tslib");',
@@ -421,29 +401,18 @@ export function emitModelModule(
     model.fields.map(field => field.typeGraphQLType),
     1,
   );
-  const outputObjectTypeName = (field: DMMF.ModelField) =>
-    dmmfDocument.isModelName(field.type)
-      ? (dmmfDocument.getModelTypeName(field.type) ?? field.type)
-      : field.type;
-  const outputObjectFields = model.fields
-    .filter(field => field.location === "outputObjectTypes")
-    .filter(field => field.type !== model.name);
-
   addNamedTypeImports(
     jsImports,
     dtsImports,
     runtimeRefs,
-    outputObjectFields
-      .filter(field => !field.relationName)
-      .filter(field => !field.isOmitted.output)
-      .map(outputObjectTypeName),
-    typeName => createImportModuleSpecifier(modelsFolderName, typeName),
-  );
-  addDtsOnlyTypeImports(
-    dtsImports,
-    outputObjectFields
-      .filter(field => field.relationName || field.isOmitted.output)
-      .map(outputObjectTypeName),
+    model.fields
+      .filter(field => field.location === "outputObjectTypes")
+      .filter(field => field.type !== model.name)
+      .map(field =>
+        dmmfDocument.isModelName(field.type)
+          ? (dmmfDocument.getModelTypeName(field.type) ?? field.type)
+          : field.type,
+      ),
     typeName => createImportModuleSpecifier(modelsFolderName, typeName),
   );
   addNamedTypeImports(
@@ -1104,20 +1073,6 @@ function addCustomScalarsImportIfNeeded(
   });
   for (const name of scalarNames) {
     runtimeRefs.set(name, `scalars_1.${name}`);
-  }
-}
-
-function addDtsOnlyTypeImports(
-  dtsImports: DtsImport[],
-  typeNames: string[],
-  moduleSpecifierFactory: (typeName: string) => string,
-): void {
-  for (const typeName of unique(typeNames).sort()) {
-    dtsImports.push({
-      moduleSpecifier: moduleSpecifierFactory(typeName),
-      named: [typeName],
-      isTypeOnly: true,
-    });
   }
 }
 
