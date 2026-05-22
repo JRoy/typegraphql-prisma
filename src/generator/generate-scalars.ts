@@ -7,6 +7,7 @@ export function generateCustomScalars(
   const hasBytes = dmmfDocument.scalarTypeNames.includes("Bytes");
   const prismaModuleSpecifier =
     dmmfDocument.options.absolutePrismaOutputPath ??
+    dmmfDocument.options.customPrismaImportPath ??
     `./${dmmfDocument.options.relativePrismaOutputPath}/client`;
 
   const jsLines = [
