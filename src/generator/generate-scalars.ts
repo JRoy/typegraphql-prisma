@@ -5,22 +5,17 @@ export function generateCustomScalars(
   dmmfDocument: DmmfDocument,
 ): GeneratedModule {
   const hasBytes = dmmfDocument.scalarTypeNames.includes("Bytes");
-  const prismaModuleSpecifier =
-    dmmfDocument.options.absolutePrismaOutputPath ??
-    dmmfDocument.options.customPrismaImportPath ??
-    `./${dmmfDocument.options.relativePrismaOutputPath}/client`;
-
   const jsLines = [
     '"use strict";',
     'Object.defineProperty(exports, "__esModule", { value: true });',
     `exports.DecimalJSScalar${hasBytes ? " = exports.BytesScalar" : ""} = void 0;`,
     'const graphql_1 = require("graphql");',
-    `const client_1 = require(${JSON.stringify(prismaModuleSpecifier)});`,
+    'const client_1 = require("@prisma/client/runtime/client");',
     "exports.DecimalJSScalar = new graphql_1.GraphQLScalarType({",
     '    name: "Decimal",',
     '    description: "GraphQL Scalar representing the Prisma.Decimal type, based on Decimal.js library.",',
     "    serialize: value => {",
-    "        if (!(client_1.Prisma.Decimal.isDecimal(value))) {",
+    "        if (!(client_1.Decimal.isDecimal(value))) {",
     "            throw new Error(`[DecimalError] Invalid argument: ${Object.prototype.toString.call(value)}. Expected Prisma.Decimal.`);",
     "        }",
     "        return value.toString();",
@@ -29,7 +24,7 @@ export function generateCustomScalars(
     '        if (!(typeof value === "string")) {',
     "            throw new Error(`[DecimalError] Invalid argument: ${typeof value}. Expected string.`);",
     "        }",
-    "        return new client_1.Prisma.Decimal(value);",
+    "        return new client_1.Decimal(value);",
     "    },",
     "});",
     ...(hasBytes

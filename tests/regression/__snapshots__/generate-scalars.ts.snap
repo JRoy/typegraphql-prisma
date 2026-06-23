@@ -24,12 +24,12 @@ exports[`custom scalars should properly emit custom scalars file: scalars 1`] = 
 Object.defineProperty(exports, \\"__esModule\\", { value: true });
 exports.DecimalJSScalar = exports.BytesScalar = void 0;
 const graphql_1 = require(\\"graphql\\");
-const client_1 = require(\\"./../../helpers/prisma-client-mock/client\\");
+const client_1 = require(\\"@prisma/client/runtime/client\\");
 exports.DecimalJSScalar = new graphql_1.GraphQLScalarType({
     name: \\"Decimal\\",
     description: \\"GraphQL Scalar representing the Prisma.Decimal type, based on Decimal.js library.\\",
     serialize: value => {
-        if (!(client_1.Prisma.Decimal.isDecimal(value))) {
+        if (!(client_1.Decimal.isDecimal(value))) {
             throw new Error(\`[DecimalError] Invalid argument: \${Object.prototype.toString.call(value)}. Expected Prisma.Decimal.\`);
         }
         return value.toString();
@@ -38,7 +38,7 @@ exports.DecimalJSScalar = new graphql_1.GraphQLScalarType({
         if (!(typeof value === \\"string\\")) {
             throw new Error(\`[DecimalError] Invalid argument: \${typeof value}. Expected string.\`);
         }
-        return new client_1.Prisma.Decimal(value);
+        return new client_1.Decimal(value);
     },
 });
 function uint8ArrayToBase64(uint8Array) {
