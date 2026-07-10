@@ -123,6 +123,7 @@ class CodeGenerator {
         generateIndexFile(
           dmmfDocument.relationModels.length > 0,
           dmmfDocument.options.blocksToEmit,
+          dmmfDocument.options.omitInputsBarrel,
         ),
       ),
     );

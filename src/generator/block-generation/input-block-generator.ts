@@ -39,17 +39,19 @@ export class InputBlockGenerator extends BaseBlockGenerator {
       );
     });
 
-    files.push(
-      ...createGeneratedFiles(
-        path.resolve(
-          this.baseDirPath,
-          resolversFolderName,
-          inputsFolderName,
-          "index",
+    if (!this.dmmfDocument.options.omitInputsBarrel) {
+      files.push(
+        ...createGeneratedFiles(
+          path.resolve(
+            this.baseDirPath,
+            resolversFolderName,
+            inputsFolderName,
+            "index",
+          ),
+          generateInputsBarrelFile(allInputTypes),
         ),
-        generateInputsBarrelFile(allInputTypes),
-      ),
-    );
+      );
+    }
 
     return {
       files,

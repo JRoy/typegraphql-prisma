@@ -10,7 +10,11 @@ import {
 } from "./config";
 import { type EmitBlockKind } from "./emit-block";
 import type { GenerateMappingData } from "./types";
-import { createBarrelModule, type GeneratedModule } from "./string-emitter";
+import {
+  createBarrelModule,
+  createLazyBarrelModule,
+  type GeneratedModule,
+} from "./string-emitter";
 
 export function generateArgsBarrelFile(
   argsTypeNames: string[],
@@ -45,9 +49,7 @@ export function generateEnumsBarrelFile(
 export function generateInputsBarrelFile(
   inputTypeNames: string[],
 ): GeneratedModule {
-  return createBarrelModule(
-    inputTypeNames.sort().map(inputTypeName => `./${inputTypeName}`),
-  );
+  return createLazyBarrelModule(inputTypeNames);
 }
 
 export function generateOutputsBarrelFile(
@@ -103,7 +105,9 @@ export function generateResolversIndexFile(
 export function generateIndexFile(
   hasSomeRelations: boolean,
   blocksToEmit: EmitBlockKind[],
+  omitInputsBarrel = false,
 ): GeneratedModule {
+  const shouldEmitInputs = blocksToEmit.includes("inputs") && !omitInputsBarrel;
   const shouldEmitCrudResolvers = blocksToEmit.includes("crudResolvers");
   const shouldEmitRelationResolvers =
     hasSomeRelations && blocksToEmit.includes("relationResolvers");
@@ -139,7 +143,7 @@ export function generateIndexFile(
           "exports.relationResolvers = Object.values(relationResolversImport);",
         ]
       : []),
-    ...(blocksToEmit.includes("inputs")
+    ...(shouldEmitInputs
       ? [
           `tslib_1.__exportStar(require("./${resolversFolderName}/${inputsFolderName}"), exports);`,
         ]
@@ -177,7 +181,7 @@ export function generateIndexFile(
           "export declare const relationResolvers: NonEmptyArray<Function>;",
         ]
       : []),
-    ...(blocksToEmit.includes("inputs")
+    ...(shouldEmitInputs
       ? [`export * from "./${resolversFolderName}/${inputsFolderName}";`]
       : []),
     ...(blocksToEmit.includes("outputs")

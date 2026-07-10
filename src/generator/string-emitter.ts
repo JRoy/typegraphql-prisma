@@ -93,6 +93,43 @@ export function createBarrelModule(
   };
 }
 
+/**
+ * Emits a barrel that exports each module's single same-named export through a
+ * lazy getter, so requiring the barrel does not evaluate any of the underlying
+ * modules. Each module is only evaluated on first access of its export, which
+ * for named imports happens at the importing module's evaluation time — so
+ * nothing is deferred past startup, but exports nobody imports are never
+ * evaluated at all.
+ *
+ * Note that this only stays lazy for CJS `require` consumers: ESM `import` of
+ * the barrel snapshots the namespace, which invokes every getter (that is why
+ * `omitInputsBarrel` exists — it skips the inputs barrel entirely so consumers
+ * deep-import only the input classes they use).
+ */
+export function createLazyBarrelModule(exportNames: string[]): GeneratedModule {
+  const sortedNames = [...exportNames].sort();
+  const jsLines = [
+    renderJsHeader(),
+    `const exportNames = ${JSON.stringify(sortedNames)};`,
+    "for (const exportName of exportNames) {",
+    "    Object.defineProperty(exports, exportName, {",
+    "        enumerable: true,",
+    "        configurable: true,",
+    '        get: () => require("./" + exportName)[exportName],',
+    "    });",
+    "}",
+  ];
+
+  const dtsLines = sortedNames.map(
+    exportName => `export * from ${JSON.stringify(`./${exportName}`)};`,
+  );
+
+  return {
+    js: withTrailingNewline(jsLines.join("\n")),
+    dts: withTrailingNewline(dtsLines.join("\n")),
+  };
+}
+
 export function createImportModuleSpecifier(
   directoryName: string,
   elementName: string,

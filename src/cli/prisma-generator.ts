@@ -153,6 +153,7 @@ export async function generate(options: GeneratorOptions) {
     emitRedundantTypesInfo: parseStringBoolean(
       generatorConfig.emitRedundantTypesInfo,
     ),
+    omitInputsBarrel: parseStringBoolean(generatorConfig.omitInputsBarrel),
     customPrismaImportPath: parseString(
       generatorConfig.customPrismaImportPath,
       "customPrismaImportPath",

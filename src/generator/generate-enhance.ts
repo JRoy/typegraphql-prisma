@@ -218,7 +218,9 @@ export function generateEnhanceMap(
       : ["function applyOutputTypesEnhanceMap(_outputTypesEnhanceMap) {}"]),
     ...(emitInputs
       ? [
-          `const inputTypes = tslib_1.__importStar(require("./${resolversFolderName}/${inputsFolderName}"));`,
+          dmmfDocument.options.omitInputsBarrel
+            ? `const inputTypes = new Proxy({}, { get: (_target, inputTypeName) => require("./${resolversFolderName}/${inputsFolderName}/" + inputTypeName)[inputTypeName] });`
+            : `const inputTypes = tslib_1.__importStar(require("./${resolversFolderName}/${inputsFolderName}"));`,
           `const inputsInfo = ${renderJsObject(
             Object.fromEntries(
               inputs.map(input => [
