@@ -18,6 +18,7 @@ export interface ExternalGeneratorOptions {
   emitIsAbstract?: boolean;
   verboseLogging?: boolean;
   omitInputsBarrel?: boolean;
+  bundleIndex?: boolean;
 }
 
 export interface InternalGeneratorOptions {

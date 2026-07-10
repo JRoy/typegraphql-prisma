@@ -22,6 +22,7 @@ import { generateCustomScalars } from "./generate-scalars";
 import { generateIndexFile } from "./imports";
 import type { MetricsListener } from "./metrics";
 import { createGeneratedFiles } from "./string-emitter";
+import { bundlePackageIndex } from "./bundle-index";
 
 import { ensureInstalledCorrectPrismaPackage } from "../utils/prisma-version";
 
@@ -201,6 +202,16 @@ class CodeGenerator {
     }
 
     this.metrics?.emitMetric("code-emission", performance.now() - emitStart);
+
+    if (options.bundleIndex) {
+      log("Bundling package index");
+      const bundleStart = performance.now();
+      await bundlePackageIndex(baseDirPath, log);
+      this.metrics?.emitMetric(
+        "index-bundling",
+        performance.now() - bundleStart,
+      );
+    }
     this.metrics?.emitMetric("total-generation", performance.now() - startTime);
     this.metrics?.onComplete?.();
   }
