@@ -53,6 +53,7 @@ export default function generateCrudResolverClassFromMapping(
         "transformInfoIntoPrismaArgs",
         "getPrismaFromContext",
         "transformCountFieldIntoSelectRelationsCount",
+        "extractCountFieldFromInfo",
       ],
     },
   ];

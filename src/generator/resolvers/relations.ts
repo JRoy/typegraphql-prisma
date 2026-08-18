@@ -83,6 +83,7 @@ export default function generateRelationsResolverClassesFromModel(
         "transformInfoIntoPrismaArgs",
         "getPrismaFromContext",
         "transformCountFieldIntoSelectRelationsCount",
+        "extractCountFieldFromInfo",
       ],
     },
   ];

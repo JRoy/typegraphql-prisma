@@ -12,7 +12,7 @@ const User_1 = require(\\"../../../models/User\\");
 const CreateManyAndReturnUser_1 = require(\\"../../outputs/CreateManyAndReturnUser\\");
 let CreateManyAndReturnUserResolver = class CreateManyAndReturnUserResolver {
   createManyAndReturnUser(ctx, info, args) {
-    const { _count } = helpers_1.transformInfoIntoPrismaArgs(info);
+    const _count = helpers_1.extractCountFieldFromInfo(info);
     return helpers_1.getPrismaFromContext(ctx).user.createManyAndReturn({
       ...args,
       ...(_count && helpers_1.transformCountFieldIntoSelectRelationsCount(_count)),
@@ -47,7 +47,7 @@ const User_1 = require(\\"../../../models/User\\");
 const AffectedRowsOutput_1 = require(\\"../../outputs/AffectedRowsOutput\\");
 let CreateManyUserResolver = class CreateManyUserResolver {
   createManyUser(ctx, info, args) {
-    const { _count } = helpers_1.transformInfoIntoPrismaArgs(info);
+    const _count = helpers_1.extractCountFieldFromInfo(info);
     return helpers_1.getPrismaFromContext(ctx).user.createMany({
       ...args,
       ...(_count && helpers_1.transformCountFieldIntoSelectRelationsCount(_count)),
@@ -81,7 +81,7 @@ const CreateOneUserArgs_1 = require(\\"./args/CreateOneUserArgs\\");
 const User_1 = require(\\"../../../models/User\\");
 let CreateOneUserResolver = class CreateOneUserResolver {
   createOneUser(ctx, info, args) {
-    const { _count } = helpers_1.transformInfoIntoPrismaArgs(info);
+    const _count = helpers_1.extractCountFieldFromInfo(info);
     return helpers_1.getPrismaFromContext(ctx).user.create({
       ...args,
       ...(_count && helpers_1.transformCountFieldIntoSelectRelationsCount(_count)),
@@ -116,7 +116,7 @@ const User_1 = require(\\"../../../models/User\\");
 const AffectedRowsOutput_1 = require(\\"../../outputs/AffectedRowsOutput\\");
 let DeleteManyUserResolver = class DeleteManyUserResolver {
   deleteManyUser(ctx, info, args) {
-    const { _count } = helpers_1.transformInfoIntoPrismaArgs(info);
+    const _count = helpers_1.extractCountFieldFromInfo(info);
     return helpers_1.getPrismaFromContext(ctx).user.deleteMany({
       ...args,
       ...(_count && helpers_1.transformCountFieldIntoSelectRelationsCount(_count)),
@@ -150,7 +150,7 @@ const DeleteOneUserArgs_1 = require(\\"./args/DeleteOneUserArgs\\");
 const User_1 = require(\\"../../../models/User\\");
 let DeleteOneUserResolver = class DeleteOneUserResolver {
   deleteOneUser(ctx, info, args) {
-    const { _count } = helpers_1.transformInfoIntoPrismaArgs(info);
+    const _count = helpers_1.extractCountFieldFromInfo(info);
     return helpers_1.getPrismaFromContext(ctx).user.delete({
       ...args,
       ...(_count && helpers_1.transformCountFieldIntoSelectRelationsCount(_count)),
@@ -184,7 +184,7 @@ const FindFirstUserOrThrowArgs_1 = require(\\"./args/FindFirstUserOrThrowArgs\\"
 const User_1 = require(\\"../../../models/User\\");
 let FindFirstUserOrThrowResolver = class FindFirstUserOrThrowResolver {
   findFirstUserOrThrow(ctx, info, args) {
-    const { _count } = helpers_1.transformInfoIntoPrismaArgs(info);
+    const _count = helpers_1.extractCountFieldFromInfo(info);
     return helpers_1.getPrismaFromContext(ctx).user.findFirstOrThrow({
       ...args,
       ...(_count && helpers_1.transformCountFieldIntoSelectRelationsCount(_count)),
@@ -218,7 +218,7 @@ const FindFirstUserArgs_1 = require(\\"./args/FindFirstUserArgs\\");
 const User_1 = require(\\"../../../models/User\\");
 let FindFirstUserResolver = class FindFirstUserResolver {
   findFirstUser(ctx, info, args) {
-    const { _count } = helpers_1.transformInfoIntoPrismaArgs(info);
+    const _count = helpers_1.extractCountFieldFromInfo(info);
     return helpers_1.getPrismaFromContext(ctx).user.findFirst({
       ...args,
       ...(_count && helpers_1.transformCountFieldIntoSelectRelationsCount(_count)),
@@ -252,7 +252,7 @@ const FindManyUserArgs_1 = require(\\"./args/FindManyUserArgs\\");
 const User_1 = require(\\"../../../models/User\\");
 let FindManyUserResolver = class FindManyUserResolver {
   users(ctx, info, args) {
-    const { _count } = helpers_1.transformInfoIntoPrismaArgs(info);
+    const _count = helpers_1.extractCountFieldFromInfo(info);
     return helpers_1.getPrismaFromContext(ctx).user.findMany({
       ...args,
       ...(_count && helpers_1.transformCountFieldIntoSelectRelationsCount(_count)),
@@ -286,7 +286,7 @@ const FindUniqueUserOrThrowArgs_1 = require(\\"./args/FindUniqueUserOrThrowArgs\
 const User_1 = require(\\"../../../models/User\\");
 let FindUniqueUserOrThrowResolver = class FindUniqueUserOrThrowResolver {
   getUser(ctx, info, args) {
-    const { _count } = helpers_1.transformInfoIntoPrismaArgs(info);
+    const _count = helpers_1.extractCountFieldFromInfo(info);
     return helpers_1.getPrismaFromContext(ctx).user.findUniqueOrThrow({
       ...args,
       ...(_count && helpers_1.transformCountFieldIntoSelectRelationsCount(_count)),
@@ -320,7 +320,7 @@ const FindUniqueUserArgs_1 = require(\\"./args/FindUniqueUserArgs\\");
 const User_1 = require(\\"../../../models/User\\");
 let FindUniqueUserResolver = class FindUniqueUserResolver {
   user(ctx, info, args) {
-    const { _count } = helpers_1.transformInfoIntoPrismaArgs(info);
+    const _count = helpers_1.extractCountFieldFromInfo(info);
     return helpers_1.getPrismaFromContext(ctx).user.findUnique({
       ...args,
       ...(_count && helpers_1.transformCountFieldIntoSelectRelationsCount(_count)),
@@ -402,7 +402,7 @@ const User_1 = require(\\"../../../models/User\\");
 const AffectedRowsOutput_1 = require(\\"../../outputs/AffectedRowsOutput\\");
 let UpdateManyUserResolver = class UpdateManyUserResolver {
   updateManyUser(ctx, info, args) {
-    const { _count } = helpers_1.transformInfoIntoPrismaArgs(info);
+    const _count = helpers_1.extractCountFieldFromInfo(info);
     return helpers_1.getPrismaFromContext(ctx).user.updateMany({
       ...args,
       ...(_count && helpers_1.transformCountFieldIntoSelectRelationsCount(_count)),
@@ -436,7 +436,7 @@ const UpdateOneUserArgs_1 = require(\\"./args/UpdateOneUserArgs\\");
 const User_1 = require(\\"../../../models/User\\");
 let UpdateOneUserResolver = class UpdateOneUserResolver {
   updateOneUser(ctx, info, args) {
-    const { _count } = helpers_1.transformInfoIntoPrismaArgs(info);
+    const _count = helpers_1.extractCountFieldFromInfo(info);
     return helpers_1.getPrismaFromContext(ctx).user.update({
       ...args,
       ...(_count && helpers_1.transformCountFieldIntoSelectRelationsCount(_count)),
@@ -470,7 +470,7 @@ const UpsertOneUserArgs_1 = require(\\"./args/UpsertOneUserArgs\\");
 const User_1 = require(\\"../../../models/User\\");
 let UpsertOneUserResolver = class UpsertOneUserResolver {
   upsertOneUser(ctx, info, args) {
-    const { _count } = helpers_1.transformInfoIntoPrismaArgs(info);
+    const _count = helpers_1.extractCountFieldFromInfo(info);
     return helpers_1.getPrismaFromContext(ctx).user.upsert({
       ...args,
       ...(_count && helpers_1.transformCountFieldIntoSelectRelationsCount(_count)),
@@ -1357,70 +1357,70 @@ let UserCrudResolver = class UserCrudResolver {
     });
   }
   createManyUser(ctx, info, args) {
-    const { _count } = helpers_1.transformInfoIntoPrismaArgs(info);
+    const _count = helpers_1.extractCountFieldFromInfo(info);
     return helpers_1.getPrismaFromContext(ctx).user.createMany({
       ...args,
       ...(_count && helpers_1.transformCountFieldIntoSelectRelationsCount(_count)),
     });
   }
   createManyAndReturnUser(ctx, info, args) {
-    const { _count } = helpers_1.transformInfoIntoPrismaArgs(info);
+    const _count = helpers_1.extractCountFieldFromInfo(info);
     return helpers_1.getPrismaFromContext(ctx).user.createManyAndReturn({
       ...args,
       ...(_count && helpers_1.transformCountFieldIntoSelectRelationsCount(_count)),
     });
   }
   createOneUser(ctx, info, args) {
-    const { _count } = helpers_1.transformInfoIntoPrismaArgs(info);
+    const _count = helpers_1.extractCountFieldFromInfo(info);
     return helpers_1.getPrismaFromContext(ctx).user.create({
       ...args,
       ...(_count && helpers_1.transformCountFieldIntoSelectRelationsCount(_count)),
     });
   }
   deleteManyUser(ctx, info, args) {
-    const { _count } = helpers_1.transformInfoIntoPrismaArgs(info);
+    const _count = helpers_1.extractCountFieldFromInfo(info);
     return helpers_1.getPrismaFromContext(ctx).user.deleteMany({
       ...args,
       ...(_count && helpers_1.transformCountFieldIntoSelectRelationsCount(_count)),
     });
   }
   deleteOneUser(ctx, info, args) {
-    const { _count } = helpers_1.transformInfoIntoPrismaArgs(info);
+    const _count = helpers_1.extractCountFieldFromInfo(info);
     return helpers_1.getPrismaFromContext(ctx).user.delete({
       ...args,
       ...(_count && helpers_1.transformCountFieldIntoSelectRelationsCount(_count)),
     });
   }
   findFirstUser(ctx, info, args) {
-    const { _count } = helpers_1.transformInfoIntoPrismaArgs(info);
+    const _count = helpers_1.extractCountFieldFromInfo(info);
     return helpers_1.getPrismaFromContext(ctx).user.findFirst({
       ...args,
       ...(_count && helpers_1.transformCountFieldIntoSelectRelationsCount(_count)),
     });
   }
   findFirstUserOrThrow(ctx, info, args) {
-    const { _count } = helpers_1.transformInfoIntoPrismaArgs(info);
+    const _count = helpers_1.extractCountFieldFromInfo(info);
     return helpers_1.getPrismaFromContext(ctx).user.findFirstOrThrow({
       ...args,
       ...(_count && helpers_1.transformCountFieldIntoSelectRelationsCount(_count)),
     });
   }
   users(ctx, info, args) {
-    const { _count } = helpers_1.transformInfoIntoPrismaArgs(info);
+    const _count = helpers_1.extractCountFieldFromInfo(info);
     return helpers_1.getPrismaFromContext(ctx).user.findMany({
       ...args,
       ...(_count && helpers_1.transformCountFieldIntoSelectRelationsCount(_count)),
     });
   }
   user(ctx, info, args) {
-    const { _count } = helpers_1.transformInfoIntoPrismaArgs(info);
+    const _count = helpers_1.extractCountFieldFromInfo(info);
     return helpers_1.getPrismaFromContext(ctx).user.findUnique({
       ...args,
       ...(_count && helpers_1.transformCountFieldIntoSelectRelationsCount(_count)),
     });
   }
   getUser(ctx, info, args) {
-    const { _count } = helpers_1.transformInfoIntoPrismaArgs(info);
+    const _count = helpers_1.extractCountFieldFromInfo(info);
     return helpers_1.getPrismaFromContext(ctx).user.findUniqueOrThrow({
       ...args,
       ...(_count && helpers_1.transformCountFieldIntoSelectRelationsCount(_count)),
@@ -1436,21 +1436,21 @@ let UserCrudResolver = class UserCrudResolver {
     });
   }
   updateManyUser(ctx, info, args) {
-    const { _count } = helpers_1.transformInfoIntoPrismaArgs(info);
+    const _count = helpers_1.extractCountFieldFromInfo(info);
     return helpers_1.getPrismaFromContext(ctx).user.updateMany({
       ...args,
       ...(_count && helpers_1.transformCountFieldIntoSelectRelationsCount(_count)),
     });
   }
   updateOneUser(ctx, info, args) {
-    const { _count } = helpers_1.transformInfoIntoPrismaArgs(info);
+    const _count = helpers_1.extractCountFieldFromInfo(info);
     return helpers_1.getPrismaFromContext(ctx).user.update({
       ...args,
       ...(_count && helpers_1.transformCountFieldIntoSelectRelationsCount(_count)),
     });
   }
   upsertOneUser(ctx, info, args) {
-    const { _count } = helpers_1.transformInfoIntoPrismaArgs(info);
+    const _count = helpers_1.extractCountFieldFromInfo(info);
     return helpers_1.getPrismaFromContext(ctx).user.upsert({
       ...args,
       ...(_count && helpers_1.transformCountFieldIntoSelectRelationsCount(_count)),
@@ -1691,70 +1691,70 @@ let StaffCrudResolver = class StaffCrudResolver {
     });
   }
   createManyStaff(ctx, info, args) {
-    const { _count } = helpers_1.transformInfoIntoPrismaArgs(info);
+    const _count = helpers_1.extractCountFieldFromInfo(info);
     return helpers_1.getPrismaFromContext(ctx).staff.createMany({
       ...args,
       ...(_count && helpers_1.transformCountFieldIntoSelectRelationsCount(_count)),
     });
   }
   createManyAndReturnStaff(ctx, info, args) {
-    const { _count } = helpers_1.transformInfoIntoPrismaArgs(info);
+    const _count = helpers_1.extractCountFieldFromInfo(info);
     return helpers_1.getPrismaFromContext(ctx).staff.createManyAndReturn({
       ...args,
       ...(_count && helpers_1.transformCountFieldIntoSelectRelationsCount(_count)),
     });
   }
   createOneStaff(ctx, info, args) {
-    const { _count } = helpers_1.transformInfoIntoPrismaArgs(info);
+    const _count = helpers_1.extractCountFieldFromInfo(info);
     return helpers_1.getPrismaFromContext(ctx).staff.create({
       ...args,
       ...(_count && helpers_1.transformCountFieldIntoSelectRelationsCount(_count)),
     });
   }
   deleteManyStaff(ctx, info, args) {
-    const { _count } = helpers_1.transformInfoIntoPrismaArgs(info);
+    const _count = helpers_1.extractCountFieldFromInfo(info);
     return helpers_1.getPrismaFromContext(ctx).staff.deleteMany({
       ...args,
       ...(_count && helpers_1.transformCountFieldIntoSelectRelationsCount(_count)),
     });
   }
   deleteOneStaff(ctx, info, args) {
-    const { _count } = helpers_1.transformInfoIntoPrismaArgs(info);
+    const _count = helpers_1.extractCountFieldFromInfo(info);
     return helpers_1.getPrismaFromContext(ctx).staff.delete({
       ...args,
       ...(_count && helpers_1.transformCountFieldIntoSelectRelationsCount(_count)),
     });
   }
   findFirstStaff(ctx, info, args) {
-    const { _count } = helpers_1.transformInfoIntoPrismaArgs(info);
+    const _count = helpers_1.extractCountFieldFromInfo(info);
     return helpers_1.getPrismaFromContext(ctx).staff.findFirst({
       ...args,
       ...(_count && helpers_1.transformCountFieldIntoSelectRelationsCount(_count)),
     });
   }
   findFirstStaffOrThrow(ctx, info, args) {
-    const { _count } = helpers_1.transformInfoIntoPrismaArgs(info);
+    const _count = helpers_1.extractCountFieldFromInfo(info);
     return helpers_1.getPrismaFromContext(ctx).staff.findFirstOrThrow({
       ...args,
       ...(_count && helpers_1.transformCountFieldIntoSelectRelationsCount(_count)),
     });
   }
   staffMembers(ctx, info, args) {
-    const { _count } = helpers_1.transformInfoIntoPrismaArgs(info);
+    const _count = helpers_1.extractCountFieldFromInfo(info);
     return helpers_1.getPrismaFromContext(ctx).staff.findMany({
       ...args,
       ...(_count && helpers_1.transformCountFieldIntoSelectRelationsCount(_count)),
     });
   }
   staff(ctx, info, args) {
-    const { _count } = helpers_1.transformInfoIntoPrismaArgs(info);
+    const _count = helpers_1.extractCountFieldFromInfo(info);
     return helpers_1.getPrismaFromContext(ctx).staff.findUnique({
       ...args,
       ...(_count && helpers_1.transformCountFieldIntoSelectRelationsCount(_count)),
     });
   }
   getStaff(ctx, info, args) {
-    const { _count } = helpers_1.transformInfoIntoPrismaArgs(info);
+    const _count = helpers_1.extractCountFieldFromInfo(info);
     return helpers_1.getPrismaFromContext(ctx).staff.findUniqueOrThrow({
       ...args,
       ...(_count && helpers_1.transformCountFieldIntoSelectRelationsCount(_count)),
@@ -1770,21 +1770,21 @@ let StaffCrudResolver = class StaffCrudResolver {
     });
   }
   updateManyStaff(ctx, info, args) {
-    const { _count } = helpers_1.transformInfoIntoPrismaArgs(info);
+    const _count = helpers_1.extractCountFieldFromInfo(info);
     return helpers_1.getPrismaFromContext(ctx).staff.updateMany({
       ...args,
       ...(_count && helpers_1.transformCountFieldIntoSelectRelationsCount(_count)),
     });
   }
   updateOneStaff(ctx, info, args) {
-    const { _count } = helpers_1.transformInfoIntoPrismaArgs(info);
+    const _count = helpers_1.extractCountFieldFromInfo(info);
     return helpers_1.getPrismaFromContext(ctx).staff.update({
       ...args,
       ...(_count && helpers_1.transformCountFieldIntoSelectRelationsCount(_count)),
     });
   }
   upsertOneStaff(ctx, info, args) {
-    const { _count } = helpers_1.transformInfoIntoPrismaArgs(info);
+    const _count = helpers_1.extractCountFieldFromInfo(info);
     return helpers_1.getPrismaFromContext(ctx).staff.upsert({
       ...args,
       ...(_count && helpers_1.transformCountFieldIntoSelectRelationsCount(_count)),
@@ -1968,70 +1968,70 @@ let StaffCrudResolver = class StaffCrudResolver {
     });
   }
   createManyStaff(ctx, info, args) {
-    const { _count } = helpers_1.transformInfoIntoPrismaArgs(info);
+    const _count = helpers_1.extractCountFieldFromInfo(info);
     return helpers_1.getPrismaFromContext(ctx).staff.createMany({
       ...args,
       ...(_count && helpers_1.transformCountFieldIntoSelectRelationsCount(_count)),
     });
   }
   createManyAndReturnStaff(ctx, info, args) {
-    const { _count } = helpers_1.transformInfoIntoPrismaArgs(info);
+    const _count = helpers_1.extractCountFieldFromInfo(info);
     return helpers_1.getPrismaFromContext(ctx).staff.createManyAndReturn({
       ...args,
       ...(_count && helpers_1.transformCountFieldIntoSelectRelationsCount(_count)),
     });
   }
   createOneStaff(ctx, info, args) {
-    const { _count } = helpers_1.transformInfoIntoPrismaArgs(info);
+    const _count = helpers_1.extractCountFieldFromInfo(info);
     return helpers_1.getPrismaFromContext(ctx).staff.create({
       ...args,
       ...(_count && helpers_1.transformCountFieldIntoSelectRelationsCount(_count)),
     });
   }
   deleteManyStaff(ctx, info, args) {
-    const { _count } = helpers_1.transformInfoIntoPrismaArgs(info);
+    const _count = helpers_1.extractCountFieldFromInfo(info);
     return helpers_1.getPrismaFromContext(ctx).staff.deleteMany({
       ...args,
       ...(_count && helpers_1.transformCountFieldIntoSelectRelationsCount(_count)),
     });
   }
   deleteOneStaff(ctx, info, args) {
-    const { _count } = helpers_1.transformInfoIntoPrismaArgs(info);
+    const _count = helpers_1.extractCountFieldFromInfo(info);
     return helpers_1.getPrismaFromContext(ctx).staff.delete({
       ...args,
       ...(_count && helpers_1.transformCountFieldIntoSelectRelationsCount(_count)),
     });
   }
   findFirstStaff(ctx, info, args) {
-    const { _count } = helpers_1.transformInfoIntoPrismaArgs(info);
+    const _count = helpers_1.extractCountFieldFromInfo(info);
     return helpers_1.getPrismaFromContext(ctx).staff.findFirst({
       ...args,
       ...(_count && helpers_1.transformCountFieldIntoSelectRelationsCount(_count)),
     });
   }
   findFirstStaffOrThrow(ctx, info, args) {
-    const { _count } = helpers_1.transformInfoIntoPrismaArgs(info);
+    const _count = helpers_1.extractCountFieldFromInfo(info);
     return helpers_1.getPrismaFromContext(ctx).staff.findFirstOrThrow({
       ...args,
       ...(_count && helpers_1.transformCountFieldIntoSelectRelationsCount(_count)),
     });
   }
   findManyStaff(ctx, info, args) {
-    const { _count } = helpers_1.transformInfoIntoPrismaArgs(info);
+    const _count = helpers_1.extractCountFieldFromInfo(info);
     return helpers_1.getPrismaFromContext(ctx).staff.findMany({
       ...args,
       ...(_count && helpers_1.transformCountFieldIntoSelectRelationsCount(_count)),
     });
   }
   findUniqueStaff(ctx, info, args) {
-    const { _count } = helpers_1.transformInfoIntoPrismaArgs(info);
+    const _count = helpers_1.extractCountFieldFromInfo(info);
     return helpers_1.getPrismaFromContext(ctx).staff.findUnique({
       ...args,
       ...(_count && helpers_1.transformCountFieldIntoSelectRelationsCount(_count)),
     });
   }
   findUniqueStaffOrThrow(ctx, info, args) {
-    const { _count } = helpers_1.transformInfoIntoPrismaArgs(info);
+    const _count = helpers_1.extractCountFieldFromInfo(info);
     return helpers_1.getPrismaFromContext(ctx).staff.findUniqueOrThrow({
       ...args,
       ...(_count && helpers_1.transformCountFieldIntoSelectRelationsCount(_count)),
@@ -2047,21 +2047,21 @@ let StaffCrudResolver = class StaffCrudResolver {
     });
   }
   updateManyStaff(ctx, info, args) {
-    const { _count } = helpers_1.transformInfoIntoPrismaArgs(info);
+    const _count = helpers_1.extractCountFieldFromInfo(info);
     return helpers_1.getPrismaFromContext(ctx).staff.updateMany({
       ...args,
       ...(_count && helpers_1.transformCountFieldIntoSelectRelationsCount(_count)),
     });
   }
   updateOneStaff(ctx, info, args) {
-    const { _count } = helpers_1.transformInfoIntoPrismaArgs(info);
+    const _count = helpers_1.extractCountFieldFromInfo(info);
     return helpers_1.getPrismaFromContext(ctx).staff.update({
       ...args,
       ...(_count && helpers_1.transformCountFieldIntoSelectRelationsCount(_count)),
     });
   }
   upsertOneStaff(ctx, info, args) {
-    const { _count } = helpers_1.transformInfoIntoPrismaArgs(info);
+    const _count = helpers_1.extractCountFieldFromInfo(info);
     return helpers_1.getPrismaFromContext(ctx).staff.upsert({
       ...args,
       ...(_count && helpers_1.transformCountFieldIntoSelectRelationsCount(_count)),
@@ -2221,7 +2221,7 @@ const FindUniqueUserOrThrowArgs_1 = require(\\"./args/FindUniqueUserOrThrowArgs\
 const User_1 = require(\\"../../../models/User\\");
 let FindUniqueUserOrThrowResolver = class FindUniqueUserOrThrowResolver {
   findUniqueUserOrThrow(ctx, info, args) {
-    const { _count } = helpers_1.transformInfoIntoPrismaArgs(info);
+    const _count = helpers_1.extractCountFieldFromInfo(info);
     return helpers_1.getPrismaFromContext(ctx).user.findUniqueOrThrow({
       ...args,
       ...(_count && helpers_1.transformCountFieldIntoSelectRelationsCount(_count)),
@@ -2255,7 +2255,7 @@ const FindUniqueUserArgs_1 = require(\\"./args/FindUniqueUserArgs\\");
 const User_1 = require(\\"../../../models/User\\");
 let FindUniqueUserResolver = class FindUniqueUserResolver {
   findUniqueUser(ctx, info, args) {
-    const { _count } = helpers_1.transformInfoIntoPrismaArgs(info);
+    const _count = helpers_1.extractCountFieldFromInfo(info);
     return helpers_1.getPrismaFromContext(ctx).user.findUnique({
       ...args,
       ...(_count && helpers_1.transformCountFieldIntoSelectRelationsCount(_count)),
@@ -2313,70 +2313,70 @@ let UserCrudResolver = class UserCrudResolver {
     });
   }
   createManyUser(ctx, info, args) {
-    const { _count } = helpers_1.transformInfoIntoPrismaArgs(info);
+    const _count = helpers_1.extractCountFieldFromInfo(info);
     return helpers_1.getPrismaFromContext(ctx).user.createMany({
       ...args,
       ...(_count && helpers_1.transformCountFieldIntoSelectRelationsCount(_count)),
     });
   }
   createManyAndReturnUser(ctx, info, args) {
-    const { _count } = helpers_1.transformInfoIntoPrismaArgs(info);
+    const _count = helpers_1.extractCountFieldFromInfo(info);
     return helpers_1.getPrismaFromContext(ctx).user.createManyAndReturn({
       ...args,
       ...(_count && helpers_1.transformCountFieldIntoSelectRelationsCount(_count)),
     });
   }
   createOneUser(ctx, info, args) {
-    const { _count } = helpers_1.transformInfoIntoPrismaArgs(info);
+    const _count = helpers_1.extractCountFieldFromInfo(info);
     return helpers_1.getPrismaFromContext(ctx).user.create({
       ...args,
       ...(_count && helpers_1.transformCountFieldIntoSelectRelationsCount(_count)),
     });
   }
   deleteManyUser(ctx, info, args) {
-    const { _count } = helpers_1.transformInfoIntoPrismaArgs(info);
+    const _count = helpers_1.extractCountFieldFromInfo(info);
     return helpers_1.getPrismaFromContext(ctx).user.deleteMany({
       ...args,
       ...(_count && helpers_1.transformCountFieldIntoSelectRelationsCount(_count)),
     });
   }
   deleteOneUser(ctx, info, args) {
-    const { _count } = helpers_1.transformInfoIntoPrismaArgs(info);
+    const _count = helpers_1.extractCountFieldFromInfo(info);
     return helpers_1.getPrismaFromContext(ctx).user.delete({
       ...args,
       ...(_count && helpers_1.transformCountFieldIntoSelectRelationsCount(_count)),
     });
   }
   findFirstUser(ctx, info, args) {
-    const { _count } = helpers_1.transformInfoIntoPrismaArgs(info);
+    const _count = helpers_1.extractCountFieldFromInfo(info);
     return helpers_1.getPrismaFromContext(ctx).user.findFirst({
       ...args,
       ...(_count && helpers_1.transformCountFieldIntoSelectRelationsCount(_count)),
     });
   }
   findFirstUserOrThrow(ctx, info, args) {
-    const { _count } = helpers_1.transformInfoIntoPrismaArgs(info);
+    const _count = helpers_1.extractCountFieldFromInfo(info);
     return helpers_1.getPrismaFromContext(ctx).user.findFirstOrThrow({
       ...args,
       ...(_count && helpers_1.transformCountFieldIntoSelectRelationsCount(_count)),
     });
   }
   findManyUser(ctx, info, args) {
-    const { _count } = helpers_1.transformInfoIntoPrismaArgs(info);
+    const _count = helpers_1.extractCountFieldFromInfo(info);
     return helpers_1.getPrismaFromContext(ctx).user.findMany({
       ...args,
       ...(_count && helpers_1.transformCountFieldIntoSelectRelationsCount(_count)),
     });
   }
   findUniqueUser(ctx, info, args) {
-    const { _count } = helpers_1.transformInfoIntoPrismaArgs(info);
+    const _count = helpers_1.extractCountFieldFromInfo(info);
     return helpers_1.getPrismaFromContext(ctx).user.findUnique({
       ...args,
       ...(_count && helpers_1.transformCountFieldIntoSelectRelationsCount(_count)),
     });
   }
   findUniqueUserOrThrow(ctx, info, args) {
-    const { _count } = helpers_1.transformInfoIntoPrismaArgs(info);
+    const _count = helpers_1.extractCountFieldFromInfo(info);
     return helpers_1.getPrismaFromContext(ctx).user.findUniqueOrThrow({
       ...args,
       ...(_count && helpers_1.transformCountFieldIntoSelectRelationsCount(_count)),
@@ -2392,21 +2392,21 @@ let UserCrudResolver = class UserCrudResolver {
     });
   }
   updateManyUser(ctx, info, args) {
-    const { _count } = helpers_1.transformInfoIntoPrismaArgs(info);
+    const _count = helpers_1.extractCountFieldFromInfo(info);
     return helpers_1.getPrismaFromContext(ctx).user.updateMany({
       ...args,
       ...(_count && helpers_1.transformCountFieldIntoSelectRelationsCount(_count)),
     });
   }
   updateOneUser(ctx, info, args) {
-    const { _count } = helpers_1.transformInfoIntoPrismaArgs(info);
+    const _count = helpers_1.extractCountFieldFromInfo(info);
     return helpers_1.getPrismaFromContext(ctx).user.update({
       ...args,
       ...(_count && helpers_1.transformCountFieldIntoSelectRelationsCount(_count)),
     });
   }
   upsertOneUser(ctx, info, args) {
-    const { _count } = helpers_1.transformInfoIntoPrismaArgs(info);
+    const _count = helpers_1.extractCountFieldFromInfo(info);
     return helpers_1.getPrismaFromContext(ctx).user.upsert({
       ...args,
       ...(_count && helpers_1.transformCountFieldIntoSelectRelationsCount(_count)),
@@ -2590,70 +2590,70 @@ let UserCrudResolver = class UserCrudResolver {
     });
   }
   createManyUser(ctx, info, args) {
-    const { _count } = helpers_1.transformInfoIntoPrismaArgs(info);
+    const _count = helpers_1.extractCountFieldFromInfo(info);
     return helpers_1.getPrismaFromContext(ctx).user.createMany({
       ...args,
       ...(_count && helpers_1.transformCountFieldIntoSelectRelationsCount(_count)),
     });
   }
   createManyAndReturnUser(ctx, info, args) {
-    const { _count } = helpers_1.transformInfoIntoPrismaArgs(info);
+    const _count = helpers_1.extractCountFieldFromInfo(info);
     return helpers_1.getPrismaFromContext(ctx).user.createManyAndReturn({
       ...args,
       ...(_count && helpers_1.transformCountFieldIntoSelectRelationsCount(_count)),
     });
   }
   createOneUser(ctx, info, args) {
-    const { _count } = helpers_1.transformInfoIntoPrismaArgs(info);
+    const _count = helpers_1.extractCountFieldFromInfo(info);
     return helpers_1.getPrismaFromContext(ctx).user.create({
       ...args,
       ...(_count && helpers_1.transformCountFieldIntoSelectRelationsCount(_count)),
     });
   }
   deleteManyUser(ctx, info, args) {
-    const { _count } = helpers_1.transformInfoIntoPrismaArgs(info);
+    const _count = helpers_1.extractCountFieldFromInfo(info);
     return helpers_1.getPrismaFromContext(ctx).user.deleteMany({
       ...args,
       ...(_count && helpers_1.transformCountFieldIntoSelectRelationsCount(_count)),
     });
   }
   deleteOneUser(ctx, info, args) {
-    const { _count } = helpers_1.transformInfoIntoPrismaArgs(info);
+    const _count = helpers_1.extractCountFieldFromInfo(info);
     return helpers_1.getPrismaFromContext(ctx).user.delete({
       ...args,
       ...(_count && helpers_1.transformCountFieldIntoSelectRelationsCount(_count)),
     });
   }
   findFirstUser(ctx, info, args) {
-    const { _count } = helpers_1.transformInfoIntoPrismaArgs(info);
+    const _count = helpers_1.extractCountFieldFromInfo(info);
     return helpers_1.getPrismaFromContext(ctx).user.findFirst({
       ...args,
       ...(_count && helpers_1.transformCountFieldIntoSelectRelationsCount(_count)),
     });
   }
   findFirstUserOrThrow(ctx, info, args) {
-    const { _count } = helpers_1.transformInfoIntoPrismaArgs(info);
+    const _count = helpers_1.extractCountFieldFromInfo(info);
     return helpers_1.getPrismaFromContext(ctx).user.findFirstOrThrow({
       ...args,
       ...(_count && helpers_1.transformCountFieldIntoSelectRelationsCount(_count)),
     });
   }
   users(ctx, info, args) {
-    const { _count } = helpers_1.transformInfoIntoPrismaArgs(info);
+    const _count = helpers_1.extractCountFieldFromInfo(info);
     return helpers_1.getPrismaFromContext(ctx).user.findMany({
       ...args,
       ...(_count && helpers_1.transformCountFieldIntoSelectRelationsCount(_count)),
     });
   }
   user(ctx, info, args) {
-    const { _count } = helpers_1.transformInfoIntoPrismaArgs(info);
+    const _count = helpers_1.extractCountFieldFromInfo(info);
     return helpers_1.getPrismaFromContext(ctx).user.findUnique({
       ...args,
       ...(_count && helpers_1.transformCountFieldIntoSelectRelationsCount(_count)),
     });
   }
   getUser(ctx, info, args) {
-    const { _count } = helpers_1.transformInfoIntoPrismaArgs(info);
+    const _count = helpers_1.extractCountFieldFromInfo(info);
     return helpers_1.getPrismaFromContext(ctx).user.findUniqueOrThrow({
       ...args,
       ...(_count && helpers_1.transformCountFieldIntoSelectRelationsCount(_count)),
@@ -2669,21 +2669,21 @@ let UserCrudResolver = class UserCrudResolver {
     });
   }
   updateManyUser(ctx, info, args) {
-    const { _count } = helpers_1.transformInfoIntoPrismaArgs(info);
+    const _count = helpers_1.extractCountFieldFromInfo(info);
     return helpers_1.getPrismaFromContext(ctx).user.updateMany({
       ...args,
       ...(_count && helpers_1.transformCountFieldIntoSelectRelationsCount(_count)),
     });
   }
   updateOneUser(ctx, info, args) {
-    const { _count } = helpers_1.transformInfoIntoPrismaArgs(info);
+    const _count = helpers_1.extractCountFieldFromInfo(info);
     return helpers_1.getPrismaFromContext(ctx).user.update({
       ...args,
       ...(_count && helpers_1.transformCountFieldIntoSelectRelationsCount(_count)),
     });
   }
   upsertOneUser(ctx, info, args) {
-    const { _count } = helpers_1.transformInfoIntoPrismaArgs(info);
+    const _count = helpers_1.extractCountFieldFromInfo(info);
     return helpers_1.getPrismaFromContext(ctx).user.upsert({
       ...args,
       ...(_count && helpers_1.transformCountFieldIntoSelectRelationsCount(_count)),
@@ -2867,70 +2867,70 @@ let UserCrudResolver = class UserCrudResolver {
     });
   }
   createManyUser(ctx, info, args) {
-    const { _count } = helpers_1.transformInfoIntoPrismaArgs(info);
+    const _count = helpers_1.extractCountFieldFromInfo(info);
     return helpers_1.getPrismaFromContext(ctx).user.createMany({
       ...args,
       ...(_count && helpers_1.transformCountFieldIntoSelectRelationsCount(_count)),
     });
   }
   createManyAndReturnUser(ctx, info, args) {
-    const { _count } = helpers_1.transformInfoIntoPrismaArgs(info);
+    const _count = helpers_1.extractCountFieldFromInfo(info);
     return helpers_1.getPrismaFromContext(ctx).user.createManyAndReturn({
       ...args,
       ...(_count && helpers_1.transformCountFieldIntoSelectRelationsCount(_count)),
     });
   }
   createOneUser(ctx, info, args) {
-    const { _count } = helpers_1.transformInfoIntoPrismaArgs(info);
+    const _count = helpers_1.extractCountFieldFromInfo(info);
     return helpers_1.getPrismaFromContext(ctx).user.create({
       ...args,
       ...(_count && helpers_1.transformCountFieldIntoSelectRelationsCount(_count)),
     });
   }
   deleteManyUser(ctx, info, args) {
-    const { _count } = helpers_1.transformInfoIntoPrismaArgs(info);
+    const _count = helpers_1.extractCountFieldFromInfo(info);
     return helpers_1.getPrismaFromContext(ctx).user.deleteMany({
       ...args,
       ...(_count && helpers_1.transformCountFieldIntoSelectRelationsCount(_count)),
     });
   }
   deleteOneUser(ctx, info, args) {
-    const { _count } = helpers_1.transformInfoIntoPrismaArgs(info);
+    const _count = helpers_1.extractCountFieldFromInfo(info);
     return helpers_1.getPrismaFromContext(ctx).user.delete({
       ...args,
       ...(_count && helpers_1.transformCountFieldIntoSelectRelationsCount(_count)),
     });
   }
   findFirstUser(ctx, info, args) {
-    const { _count } = helpers_1.transformInfoIntoPrismaArgs(info);
+    const _count = helpers_1.extractCountFieldFromInfo(info);
     return helpers_1.getPrismaFromContext(ctx).user.findFirst({
       ...args,
       ...(_count && helpers_1.transformCountFieldIntoSelectRelationsCount(_count)),
     });
   }
   findFirstUserOrThrow(ctx, info, args) {
-    const { _count } = helpers_1.transformInfoIntoPrismaArgs(info);
+    const _count = helpers_1.extractCountFieldFromInfo(info);
     return helpers_1.getPrismaFromContext(ctx).user.findFirstOrThrow({
       ...args,
       ...(_count && helpers_1.transformCountFieldIntoSelectRelationsCount(_count)),
     });
   }
   users(ctx, info, args) {
-    const { _count } = helpers_1.transformInfoIntoPrismaArgs(info);
+    const _count = helpers_1.extractCountFieldFromInfo(info);
     return helpers_1.getPrismaFromContext(ctx).user.findMany({
       ...args,
       ...(_count && helpers_1.transformCountFieldIntoSelectRelationsCount(_count)),
     });
   }
   user(ctx, info, args) {
-    const { _count } = helpers_1.transformInfoIntoPrismaArgs(info);
+    const _count = helpers_1.extractCountFieldFromInfo(info);
     return helpers_1.getPrismaFromContext(ctx).user.findUnique({
       ...args,
       ...(_count && helpers_1.transformCountFieldIntoSelectRelationsCount(_count)),
     });
   }
   getUser(ctx, info, args) {
-    const { _count } = helpers_1.transformInfoIntoPrismaArgs(info);
+    const _count = helpers_1.extractCountFieldFromInfo(info);
     return helpers_1.getPrismaFromContext(ctx).user.findUniqueOrThrow({
       ...args,
       ...(_count && helpers_1.transformCountFieldIntoSelectRelationsCount(_count)),
@@ -2946,21 +2946,21 @@ let UserCrudResolver = class UserCrudResolver {
     });
   }
   updateManyUser(ctx, info, args) {
-    const { _count } = helpers_1.transformInfoIntoPrismaArgs(info);
+    const _count = helpers_1.extractCountFieldFromInfo(info);
     return helpers_1.getPrismaFromContext(ctx).user.updateMany({
       ...args,
       ...(_count && helpers_1.transformCountFieldIntoSelectRelationsCount(_count)),
     });
   }
   updateOneUser(ctx, info, args) {
-    const { _count } = helpers_1.transformInfoIntoPrismaArgs(info);
+    const _count = helpers_1.extractCountFieldFromInfo(info);
     return helpers_1.getPrismaFromContext(ctx).user.update({
       ...args,
       ...(_count && helpers_1.transformCountFieldIntoSelectRelationsCount(_count)),
     });
   }
   upsertOneUser(ctx, info, args) {
-    const { _count } = helpers_1.transformInfoIntoPrismaArgs(info);
+    const _count = helpers_1.extractCountFieldFromInfo(info);
     return helpers_1.getPrismaFromContext(ctx).user.upsert({
       ...args,
       ...(_count && helpers_1.transformCountFieldIntoSelectRelationsCount(_count)),
@@ -3144,70 +3144,70 @@ let UserCrudResolver = class UserCrudResolver {
     });
   }
   createManyUser(ctx, info, args) {
-    const { _count } = helpers_1.transformInfoIntoPrismaArgs(info);
+    const _count = helpers_1.extractCountFieldFromInfo(info);
     return helpers_1.getPrismaFromContext(ctx).user.createMany({
       ...args,
       ...(_count && helpers_1.transformCountFieldIntoSelectRelationsCount(_count)),
     });
   }
   createManyAndReturnUser(ctx, info, args) {
-    const { _count } = helpers_1.transformInfoIntoPrismaArgs(info);
+    const _count = helpers_1.extractCountFieldFromInfo(info);
     return helpers_1.getPrismaFromContext(ctx).user.createManyAndReturn({
       ...args,
       ...(_count && helpers_1.transformCountFieldIntoSelectRelationsCount(_count)),
     });
   }
   createOneUser(ctx, info, args) {
-    const { _count } = helpers_1.transformInfoIntoPrismaArgs(info);
+    const _count = helpers_1.extractCountFieldFromInfo(info);
     return helpers_1.getPrismaFromContext(ctx).user.create({
       ...args,
       ...(_count && helpers_1.transformCountFieldIntoSelectRelationsCount(_count)),
     });
   }
   deleteManyUser(ctx, info, args) {
-    const { _count } = helpers_1.transformInfoIntoPrismaArgs(info);
+    const _count = helpers_1.extractCountFieldFromInfo(info);
     return helpers_1.getPrismaFromContext(ctx).user.deleteMany({
       ...args,
       ...(_count && helpers_1.transformCountFieldIntoSelectRelationsCount(_count)),
     });
   }
   deleteOneUser(ctx, info, args) {
-    const { _count } = helpers_1.transformInfoIntoPrismaArgs(info);
+    const _count = helpers_1.extractCountFieldFromInfo(info);
     return helpers_1.getPrismaFromContext(ctx).user.delete({
       ...args,
       ...(_count && helpers_1.transformCountFieldIntoSelectRelationsCount(_count)),
     });
   }
   findFirstUser(ctx, info, args) {
-    const { _count } = helpers_1.transformInfoIntoPrismaArgs(info);
+    const _count = helpers_1.extractCountFieldFromInfo(info);
     return helpers_1.getPrismaFromContext(ctx).user.findFirst({
       ...args,
       ...(_count && helpers_1.transformCountFieldIntoSelectRelationsCount(_count)),
     });
   }
   findFirstUserOrThrow(ctx, info, args) {
-    const { _count } = helpers_1.transformInfoIntoPrismaArgs(info);
+    const _count = helpers_1.extractCountFieldFromInfo(info);
     return helpers_1.getPrismaFromContext(ctx).user.findFirstOrThrow({
       ...args,
       ...(_count && helpers_1.transformCountFieldIntoSelectRelationsCount(_count)),
     });
   }
   users(ctx, info, args) {
-    const { _count } = helpers_1.transformInfoIntoPrismaArgs(info);
+    const _count = helpers_1.extractCountFieldFromInfo(info);
     return helpers_1.getPrismaFromContext(ctx).user.findMany({
       ...args,
       ...(_count && helpers_1.transformCountFieldIntoSelectRelationsCount(_count)),
     });
   }
   user(ctx, info, args) {
-    const { _count } = helpers_1.transformInfoIntoPrismaArgs(info);
+    const _count = helpers_1.extractCountFieldFromInfo(info);
     return helpers_1.getPrismaFromContext(ctx).user.findUnique({
       ...args,
       ...(_count && helpers_1.transformCountFieldIntoSelectRelationsCount(_count)),
     });
   }
   getUser(ctx, info, args) {
-    const { _count } = helpers_1.transformInfoIntoPrismaArgs(info);
+    const _count = helpers_1.extractCountFieldFromInfo(info);
     return helpers_1.getPrismaFromContext(ctx).user.findUniqueOrThrow({
       ...args,
       ...(_count && helpers_1.transformCountFieldIntoSelectRelationsCount(_count)),
@@ -3223,21 +3223,21 @@ let UserCrudResolver = class UserCrudResolver {
     });
   }
   updateManyUser(ctx, info, args) {
-    const { _count } = helpers_1.transformInfoIntoPrismaArgs(info);
+    const _count = helpers_1.extractCountFieldFromInfo(info);
     return helpers_1.getPrismaFromContext(ctx).user.updateMany({
       ...args,
       ...(_count && helpers_1.transformCountFieldIntoSelectRelationsCount(_count)),
     });
   }
   updateOneUser(ctx, info, args) {
-    const { _count } = helpers_1.transformInfoIntoPrismaArgs(info);
+    const _count = helpers_1.extractCountFieldFromInfo(info);
     return helpers_1.getPrismaFromContext(ctx).user.update({
       ...args,
       ...(_count && helpers_1.transformCountFieldIntoSelectRelationsCount(_count)),
     });
   }
   upsertOneUser(ctx, info, args) {
-    const { _count } = helpers_1.transformInfoIntoPrismaArgs(info);
+    const _count = helpers_1.extractCountFieldFromInfo(info);
     return helpers_1.getPrismaFromContext(ctx).user.upsert({
       ...args,
       ...(_count && helpers_1.transformCountFieldIntoSelectRelationsCount(_count)),
@@ -3421,70 +3421,70 @@ let UserCrudResolver = class UserCrudResolver {
     });
   }
   createManyUser(ctx, info, args) {
-    const { _count } = helpers_1.transformInfoIntoPrismaArgs(info);
+    const _count = helpers_1.extractCountFieldFromInfo(info);
     return helpers_1.getPrismaFromContext(ctx).user.createMany({
       ...args,
       ...(_count && helpers_1.transformCountFieldIntoSelectRelationsCount(_count)),
     });
   }
   createManyAndReturnUser(ctx, info, args) {
-    const { _count } = helpers_1.transformInfoIntoPrismaArgs(info);
+    const _count = helpers_1.extractCountFieldFromInfo(info);
     return helpers_1.getPrismaFromContext(ctx).user.createManyAndReturn({
       ...args,
       ...(_count && helpers_1.transformCountFieldIntoSelectRelationsCount(_count)),
     });
   }
   createOneUser(ctx, info, args) {
-    const { _count } = helpers_1.transformInfoIntoPrismaArgs(info);
+    const _count = helpers_1.extractCountFieldFromInfo(info);
     return helpers_1.getPrismaFromContext(ctx).user.create({
       ...args,
       ...(_count && helpers_1.transformCountFieldIntoSelectRelationsCount(_count)),
     });
   }
   deleteManyUser(ctx, info, args) {
-    const { _count } = helpers_1.transformInfoIntoPrismaArgs(info);
+    const _count = helpers_1.extractCountFieldFromInfo(info);
     return helpers_1.getPrismaFromContext(ctx).user.deleteMany({
       ...args,
       ...(_count && helpers_1.transformCountFieldIntoSelectRelationsCount(_count)),
     });
   }
   deleteOneUser(ctx, info, args) {
-    const { _count } = helpers_1.transformInfoIntoPrismaArgs(info);
+    const _count = helpers_1.extractCountFieldFromInfo(info);
     return helpers_1.getPrismaFromContext(ctx).user.delete({
       ...args,
       ...(_count && helpers_1.transformCountFieldIntoSelectRelationsCount(_count)),
     });
   }
   findFirstUser(ctx, info, args) {
-    const { _count } = helpers_1.transformInfoIntoPrismaArgs(info);
+    const _count = helpers_1.extractCountFieldFromInfo(info);
     return helpers_1.getPrismaFromContext(ctx).user.findFirst({
       ...args,
       ...(_count && helpers_1.transformCountFieldIntoSelectRelationsCount(_count)),
     });
   }
   findFirstUserOrThrow(ctx, info, args) {
-    const { _count } = helpers_1.transformInfoIntoPrismaArgs(info);
+    const _count = helpers_1.extractCountFieldFromInfo(info);
     return helpers_1.getPrismaFromContext(ctx).user.findFirstOrThrow({
       ...args,
       ...(_count && helpers_1.transformCountFieldIntoSelectRelationsCount(_count)),
     });
   }
   users(ctx, info, args) {
-    const { _count } = helpers_1.transformInfoIntoPrismaArgs(info);
+    const _count = helpers_1.extractCountFieldFromInfo(info);
     return helpers_1.getPrismaFromContext(ctx).user.findMany({
       ...args,
       ...(_count && helpers_1.transformCountFieldIntoSelectRelationsCount(_count)),
     });
   }
   user(ctx, info, args) {
-    const { _count } = helpers_1.transformInfoIntoPrismaArgs(info);
+    const _count = helpers_1.extractCountFieldFromInfo(info);
     return helpers_1.getPrismaFromContext(ctx).user.findUnique({
       ...args,
       ...(_count && helpers_1.transformCountFieldIntoSelectRelationsCount(_count)),
     });
   }
   getUser(ctx, info, args) {
-    const { _count } = helpers_1.transformInfoIntoPrismaArgs(info);
+    const _count = helpers_1.extractCountFieldFromInfo(info);
     return helpers_1.getPrismaFromContext(ctx).user.findUniqueOrThrow({
       ...args,
       ...(_count && helpers_1.transformCountFieldIntoSelectRelationsCount(_count)),
@@ -3500,21 +3500,21 @@ let UserCrudResolver = class UserCrudResolver {
     });
   }
   updateManyUser(ctx, info, args) {
-    const { _count } = helpers_1.transformInfoIntoPrismaArgs(info);
+    const _count = helpers_1.extractCountFieldFromInfo(info);
     return helpers_1.getPrismaFromContext(ctx).user.updateMany({
       ...args,
       ...(_count && helpers_1.transformCountFieldIntoSelectRelationsCount(_count)),
     });
   }
   updateOneUser(ctx, info, args) {
-    const { _count } = helpers_1.transformInfoIntoPrismaArgs(info);
+    const _count = helpers_1.extractCountFieldFromInfo(info);
     return helpers_1.getPrismaFromContext(ctx).user.update({
       ...args,
       ...(_count && helpers_1.transformCountFieldIntoSelectRelationsCount(_count)),
     });
   }
   upsertOneUser(ctx, info, args) {
-    const { _count } = helpers_1.transformInfoIntoPrismaArgs(info);
+    const _count = helpers_1.extractCountFieldFromInfo(info);
     return helpers_1.getPrismaFromContext(ctx).user.upsert({
       ...args,
       ...(_count && helpers_1.transformCountFieldIntoSelectRelationsCount(_count)),
@@ -3709,7 +3709,7 @@ const Client_1 = require(\\"../../../models/Client\\");
 const CreateManyAndReturnClient_1 = require(\\"../../outputs/CreateManyAndReturnClient\\");
 let CreateManyAndReturnClientResolver = class CreateManyAndReturnClientResolver {
   createManyAndReturnClient(ctx, info, args) {
-    const { _count } = helpers_1.transformInfoIntoPrismaArgs(info);
+    const _count = helpers_1.extractCountFieldFromInfo(info);
     return helpers_1.getPrismaFromContext(ctx).user.createManyAndReturn({
       ...args,
       ...(_count && helpers_1.transformCountFieldIntoSelectRelationsCount(_count)),
@@ -3744,7 +3744,7 @@ const Client_1 = require(\\"../../../models/Client\\");
 const AffectedRowsOutput_1 = require(\\"../../outputs/AffectedRowsOutput\\");
 let CreateManyClientResolver = class CreateManyClientResolver {
   createManyClient(ctx, info, args) {
-    const { _count } = helpers_1.transformInfoIntoPrismaArgs(info);
+    const _count = helpers_1.extractCountFieldFromInfo(info);
     return helpers_1.getPrismaFromContext(ctx).user.createMany({
       ...args,
       ...(_count && helpers_1.transformCountFieldIntoSelectRelationsCount(_count)),
@@ -3778,7 +3778,7 @@ const CreateOneClientArgs_1 = require(\\"./args/CreateOneClientArgs\\");
 const Client_1 = require(\\"../../../models/Client\\");
 let CreateOneClientResolver = class CreateOneClientResolver {
   createOneClient(ctx, info, args) {
-    const { _count } = helpers_1.transformInfoIntoPrismaArgs(info);
+    const _count = helpers_1.extractCountFieldFromInfo(info);
     return helpers_1.getPrismaFromContext(ctx).user.create({
       ...args,
       ...(_count && helpers_1.transformCountFieldIntoSelectRelationsCount(_count)),
@@ -3813,7 +3813,7 @@ const Client_1 = require(\\"../../../models/Client\\");
 const AffectedRowsOutput_1 = require(\\"../../outputs/AffectedRowsOutput\\");
 let DeleteManyClientResolver = class DeleteManyClientResolver {
   deleteManyClient(ctx, info, args) {
-    const { _count } = helpers_1.transformInfoIntoPrismaArgs(info);
+    const _count = helpers_1.extractCountFieldFromInfo(info);
     return helpers_1.getPrismaFromContext(ctx).user.deleteMany({
       ...args,
       ...(_count && helpers_1.transformCountFieldIntoSelectRelationsCount(_count)),
@@ -3847,7 +3847,7 @@ const DeleteOneClientArgs_1 = require(\\"./args/DeleteOneClientArgs\\");
 const Client_1 = require(\\"../../../models/Client\\");
 let DeleteOneClientResolver = class DeleteOneClientResolver {
   deleteOneClient(ctx, info, args) {
-    const { _count } = helpers_1.transformInfoIntoPrismaArgs(info);
+    const _count = helpers_1.extractCountFieldFromInfo(info);
     return helpers_1.getPrismaFromContext(ctx).user.delete({
       ...args,
       ...(_count && helpers_1.transformCountFieldIntoSelectRelationsCount(_count)),
@@ -3881,7 +3881,7 @@ const FindFirstClientArgs_1 = require(\\"./args/FindFirstClientArgs\\");
 const Client_1 = require(\\"../../../models/Client\\");
 let FindFirstClientResolver = class FindFirstClientResolver {
   findFirstClient(ctx, info, args) {
-    const { _count } = helpers_1.transformInfoIntoPrismaArgs(info);
+    const _count = helpers_1.extractCountFieldFromInfo(info);
     return helpers_1.getPrismaFromContext(ctx).user.findFirst({
       ...args,
       ...(_count && helpers_1.transformCountFieldIntoSelectRelationsCount(_count)),
@@ -3915,7 +3915,7 @@ const FindManyClientArgs_1 = require(\\"./args/FindManyClientArgs\\");
 const Client_1 = require(\\"../../../models/Client\\");
 let FindManyClientResolver = class FindManyClientResolver {
   clients(ctx, info, args) {
-    const { _count } = helpers_1.transformInfoIntoPrismaArgs(info);
+    const _count = helpers_1.extractCountFieldFromInfo(info);
     return helpers_1.getPrismaFromContext(ctx).user.findMany({
       ...args,
       ...(_count && helpers_1.transformCountFieldIntoSelectRelationsCount(_count)),
@@ -3949,7 +3949,7 @@ const FindUniqueClientArgs_1 = require(\\"./args/FindUniqueClientArgs\\");
 const Client_1 = require(\\"../../../models/Client\\");
 let FindUniqueClientResolver = class FindUniqueClientResolver {
   client(ctx, info, args) {
-    const { _count } = helpers_1.transformInfoIntoPrismaArgs(info);
+    const _count = helpers_1.extractCountFieldFromInfo(info);
     return helpers_1.getPrismaFromContext(ctx).user.findUnique({
       ...args,
       ...(_count && helpers_1.transformCountFieldIntoSelectRelationsCount(_count)),
@@ -4021,7 +4021,7 @@ const Client_1 = require(\\"../../../models/Client\\");
 const AffectedRowsOutput_1 = require(\\"../../outputs/AffectedRowsOutput\\");
 let UpdateManyClientResolver = class UpdateManyClientResolver {
   updateManyClient(ctx, info, args) {
-    const { _count } = helpers_1.transformInfoIntoPrismaArgs(info);
+    const _count = helpers_1.extractCountFieldFromInfo(info);
     return helpers_1.getPrismaFromContext(ctx).user.updateMany({
       ...args,
       ...(_count && helpers_1.transformCountFieldIntoSelectRelationsCount(_count)),
@@ -4055,7 +4055,7 @@ const UpdateOneClientArgs_1 = require(\\"./args/UpdateOneClientArgs\\");
 const Client_1 = require(\\"../../../models/Client\\");
 let UpdateOneClientResolver = class UpdateOneClientResolver {
   updateOneClient(ctx, info, args) {
-    const { _count } = helpers_1.transformInfoIntoPrismaArgs(info);
+    const _count = helpers_1.extractCountFieldFromInfo(info);
     return helpers_1.getPrismaFromContext(ctx).user.update({
       ...args,
       ...(_count && helpers_1.transformCountFieldIntoSelectRelationsCount(_count)),
@@ -4089,7 +4089,7 @@ const UpsertOneClientArgs_1 = require(\\"./args/UpsertOneClientArgs\\");
 const Client_1 = require(\\"../../../models/Client\\");
 let UpsertOneClientResolver = class UpsertOneClientResolver {
   upsertOneClient(ctx, info, args) {
-    const { _count } = helpers_1.transformInfoIntoPrismaArgs(info);
+    const _count = helpers_1.extractCountFieldFromInfo(info);
     return helpers_1.getPrismaFromContext(ctx).user.upsert({
       ...args,
       ...(_count && helpers_1.transformCountFieldIntoSelectRelationsCount(_count)),
@@ -4573,70 +4573,70 @@ let ClientCrudResolver = class ClientCrudResolver {
     });
   }
   createManyClient(ctx, info, args) {
-    const { _count } = helpers_1.transformInfoIntoPrismaArgs(info);
+    const _count = helpers_1.extractCountFieldFromInfo(info);
     return helpers_1.getPrismaFromContext(ctx).user.createMany({
       ...args,
       ...(_count && helpers_1.transformCountFieldIntoSelectRelationsCount(_count)),
     });
   }
   createManyAndReturnClient(ctx, info, args) {
-    const { _count } = helpers_1.transformInfoIntoPrismaArgs(info);
+    const _count = helpers_1.extractCountFieldFromInfo(info);
     return helpers_1.getPrismaFromContext(ctx).user.createManyAndReturn({
       ...args,
       ...(_count && helpers_1.transformCountFieldIntoSelectRelationsCount(_count)),
     });
   }
   createOneClient(ctx, info, args) {
-    const { _count } = helpers_1.transformInfoIntoPrismaArgs(info);
+    const _count = helpers_1.extractCountFieldFromInfo(info);
     return helpers_1.getPrismaFromContext(ctx).user.create({
       ...args,
       ...(_count && helpers_1.transformCountFieldIntoSelectRelationsCount(_count)),
     });
   }
   deleteManyClient(ctx, info, args) {
-    const { _count } = helpers_1.transformInfoIntoPrismaArgs(info);
+    const _count = helpers_1.extractCountFieldFromInfo(info);
     return helpers_1.getPrismaFromContext(ctx).user.deleteMany({
       ...args,
       ...(_count && helpers_1.transformCountFieldIntoSelectRelationsCount(_count)),
     });
   }
   deleteOneClient(ctx, info, args) {
-    const { _count } = helpers_1.transformInfoIntoPrismaArgs(info);
+    const _count = helpers_1.extractCountFieldFromInfo(info);
     return helpers_1.getPrismaFromContext(ctx).user.delete({
       ...args,
       ...(_count && helpers_1.transformCountFieldIntoSelectRelationsCount(_count)),
     });
   }
   findFirstClient(ctx, info, args) {
-    const { _count } = helpers_1.transformInfoIntoPrismaArgs(info);
+    const _count = helpers_1.extractCountFieldFromInfo(info);
     return helpers_1.getPrismaFromContext(ctx).user.findFirst({
       ...args,
       ...(_count && helpers_1.transformCountFieldIntoSelectRelationsCount(_count)),
     });
   }
   findFirstClientOrThrow(ctx, info, args) {
-    const { _count } = helpers_1.transformInfoIntoPrismaArgs(info);
+    const _count = helpers_1.extractCountFieldFromInfo(info);
     return helpers_1.getPrismaFromContext(ctx).user.findFirstOrThrow({
       ...args,
       ...(_count && helpers_1.transformCountFieldIntoSelectRelationsCount(_count)),
     });
   }
   findManyClient(ctx, info, args) {
-    const { _count } = helpers_1.transformInfoIntoPrismaArgs(info);
+    const _count = helpers_1.extractCountFieldFromInfo(info);
     return helpers_1.getPrismaFromContext(ctx).user.findMany({
       ...args,
       ...(_count && helpers_1.transformCountFieldIntoSelectRelationsCount(_count)),
     });
   }
   findUniqueClient(ctx, info, args) {
-    const { _count } = helpers_1.transformInfoIntoPrismaArgs(info);
+    const _count = helpers_1.extractCountFieldFromInfo(info);
     return helpers_1.getPrismaFromContext(ctx).user.findUnique({
       ...args,
       ...(_count && helpers_1.transformCountFieldIntoSelectRelationsCount(_count)),
     });
   }
   findUniqueClientOrThrow(ctx, info, args) {
-    const { _count } = helpers_1.transformInfoIntoPrismaArgs(info);
+    const _count = helpers_1.extractCountFieldFromInfo(info);
     return helpers_1.getPrismaFromContext(ctx).user.findUniqueOrThrow({
       ...args,
       ...(_count && helpers_1.transformCountFieldIntoSelectRelationsCount(_count)),
@@ -4652,21 +4652,21 @@ let ClientCrudResolver = class ClientCrudResolver {
     });
   }
   updateManyClient(ctx, info, args) {
-    const { _count } = helpers_1.transformInfoIntoPrismaArgs(info);
+    const _count = helpers_1.extractCountFieldFromInfo(info);
     return helpers_1.getPrismaFromContext(ctx).user.updateMany({
       ...args,
       ...(_count && helpers_1.transformCountFieldIntoSelectRelationsCount(_count)),
     });
   }
   updateOneClient(ctx, info, args) {
-    const { _count } = helpers_1.transformInfoIntoPrismaArgs(info);
+    const _count = helpers_1.extractCountFieldFromInfo(info);
     return helpers_1.getPrismaFromContext(ctx).user.update({
       ...args,
       ...(_count && helpers_1.transformCountFieldIntoSelectRelationsCount(_count)),
     });
   }
   upsertOneClient(ctx, info, args) {
-    const { _count } = helpers_1.transformInfoIntoPrismaArgs(info);
+    const _count = helpers_1.extractCountFieldFromInfo(info);
     return helpers_1.getPrismaFromContext(ctx).user.upsert({
       ...args,
       ...(_count && helpers_1.transformCountFieldIntoSelectRelationsCount(_count)),
@@ -4887,70 +4887,70 @@ let MainUserCrudResolver = class MainUserCrudResolver {
     });
   }
   createManyMainUser(ctx, info, args) {
-    const { _count } = helpers_1.transformInfoIntoPrismaArgs(info);
+    const _count = helpers_1.extractCountFieldFromInfo(info);
     return helpers_1.getPrismaFromContext(ctx).user.createMany({
       ...args,
       ...(_count && helpers_1.transformCountFieldIntoSelectRelationsCount(_count)),
     });
   }
   createManyAndReturnMainUser(ctx, info, args) {
-    const { _count } = helpers_1.transformInfoIntoPrismaArgs(info);
+    const _count = helpers_1.extractCountFieldFromInfo(info);
     return helpers_1.getPrismaFromContext(ctx).user.createManyAndReturn({
       ...args,
       ...(_count && helpers_1.transformCountFieldIntoSelectRelationsCount(_count)),
     });
   }
   createOneMainUser(ctx, info, args) {
-    const { _count } = helpers_1.transformInfoIntoPrismaArgs(info);
+    const _count = helpers_1.extractCountFieldFromInfo(info);
     return helpers_1.getPrismaFromContext(ctx).user.create({
       ...args,
       ...(_count && helpers_1.transformCountFieldIntoSelectRelationsCount(_count)),
     });
   }
   deleteManyMainUser(ctx, info, args) {
-    const { _count } = helpers_1.transformInfoIntoPrismaArgs(info);
+    const _count = helpers_1.extractCountFieldFromInfo(info);
     return helpers_1.getPrismaFromContext(ctx).user.deleteMany({
       ...args,
       ...(_count && helpers_1.transformCountFieldIntoSelectRelationsCount(_count)),
     });
   }
   deleteOneMainUser(ctx, info, args) {
-    const { _count } = helpers_1.transformInfoIntoPrismaArgs(info);
+    const _count = helpers_1.extractCountFieldFromInfo(info);
     return helpers_1.getPrismaFromContext(ctx).user.delete({
       ...args,
       ...(_count && helpers_1.transformCountFieldIntoSelectRelationsCount(_count)),
     });
   }
   findFirstMainUser(ctx, info, args) {
-    const { _count } = helpers_1.transformInfoIntoPrismaArgs(info);
+    const _count = helpers_1.extractCountFieldFromInfo(info);
     return helpers_1.getPrismaFromContext(ctx).user.findFirst({
       ...args,
       ...(_count && helpers_1.transformCountFieldIntoSelectRelationsCount(_count)),
     });
   }
   findFirstMainUserOrThrow(ctx, info, args) {
-    const { _count } = helpers_1.transformInfoIntoPrismaArgs(info);
+    const _count = helpers_1.extractCountFieldFromInfo(info);
     return helpers_1.getPrismaFromContext(ctx).user.findFirstOrThrow({
       ...args,
       ...(_count && helpers_1.transformCountFieldIntoSelectRelationsCount(_count)),
     });
   }
   mainUsers(ctx, info, args) {
-    const { _count } = helpers_1.transformInfoIntoPrismaArgs(info);
+    const _count = helpers_1.extractCountFieldFromInfo(info);
     return helpers_1.getPrismaFromContext(ctx).user.findMany({
       ...args,
       ...(_count && helpers_1.transformCountFieldIntoSelectRelationsCount(_count)),
     });
   }
   mainUser(ctx, info, args) {
-    const { _count } = helpers_1.transformInfoIntoPrismaArgs(info);
+    const _count = helpers_1.extractCountFieldFromInfo(info);
     return helpers_1.getPrismaFromContext(ctx).user.findUnique({
       ...args,
       ...(_count && helpers_1.transformCountFieldIntoSelectRelationsCount(_count)),
     });
   }
   getMainUser(ctx, info, args) {
-    const { _count } = helpers_1.transformInfoIntoPrismaArgs(info);
+    const _count = helpers_1.extractCountFieldFromInfo(info);
     return helpers_1.getPrismaFromContext(ctx).user.findUniqueOrThrow({
       ...args,
       ...(_count && helpers_1.transformCountFieldIntoSelectRelationsCount(_count)),
@@ -4966,21 +4966,21 @@ let MainUserCrudResolver = class MainUserCrudResolver {
     });
   }
   updateManyMainUser(ctx, info, args) {
-    const { _count } = helpers_1.transformInfoIntoPrismaArgs(info);
+    const _count = helpers_1.extractCountFieldFromInfo(info);
     return helpers_1.getPrismaFromContext(ctx).user.updateMany({
       ...args,
       ...(_count && helpers_1.transformCountFieldIntoSelectRelationsCount(_count)),
     });
   }
   updateOneMainUser(ctx, info, args) {
-    const { _count } = helpers_1.transformInfoIntoPrismaArgs(info);
+    const _count = helpers_1.extractCountFieldFromInfo(info);
     return helpers_1.getPrismaFromContext(ctx).user.update({
       ...args,
       ...(_count && helpers_1.transformCountFieldIntoSelectRelationsCount(_count)),
     });
   }
   upsertOneMainUser(ctx, info, args) {
-    const { _count } = helpers_1.transformInfoIntoPrismaArgs(info);
+    const _count = helpers_1.extractCountFieldFromInfo(info);
     return helpers_1.getPrismaFromContext(ctx).user.upsert({
       ...args,
       ...(_count && helpers_1.transformCountFieldIntoSelectRelationsCount(_count)),

@@ -12,7 +12,7 @@ const User_1 = require(\\"../../../models/User\\");
 const UserPointsArgs_1 = require(\\"./args/UserPointsArgs\\");
 let UserRelationsResolver = class UserRelationsResolver {
   points(user, ctx, info, args) {
-    const { _count } = helpers_1.transformInfoIntoPrismaArgs(info);
+    const _count = helpers_1.extractCountFieldFromInfo(info);
     return helpers_1.getPrismaFromContext(ctx).user.findUniqueOrThrow({
       where: {
         id: user.id,
@@ -151,7 +151,7 @@ const User_1 = require(\\"../../../models/User\\");
 const UsersOnProjects_1 = require(\\"../../../models/UsersOnProjects\\");
 let UsersOnProjectsRelationsResolver = class UsersOnProjectsRelationsResolver {
   project(usersOnProjects, ctx, info) {
-    const { _count } = helpers_1.transformInfoIntoPrismaArgs(info);
+    const _count = helpers_1.extractCountFieldFromInfo(info);
     return helpers_1.getPrismaFromContext(ctx).usersOnProjects.findUniqueOrThrow({
       where: {
         userId_projectId: {
@@ -164,7 +164,7 @@ let UsersOnProjectsRelationsResolver = class UsersOnProjectsRelationsResolver {
     });
   }
   user(usersOnProjects, ctx, info) {
-    const { _count } = helpers_1.transformInfoIntoPrismaArgs(info);
+    const _count = helpers_1.extractCountFieldFromInfo(info);
     return helpers_1.getPrismaFromContext(ctx).usersOnProjects.findUniqueOrThrow({
       where: {
         userId_projectId: {
@@ -303,7 +303,7 @@ const Director_1 = require(\\"../../../models/Director\\");
 const Movie_1 = require(\\"../../../models/Movie\\");
 let MovieRelationsResolver = class MovieRelationsResolver {
   director(movie, ctx, info) {
-    const { _count } = helpers_1.transformInfoIntoPrismaArgs(info);
+    const _count = helpers_1.extractCountFieldFromInfo(info);
     return helpers_1.getPrismaFromContext(ctx).movie.findUniqueOrThrow({
       where: {
         directorFirstName_directorLastName_title: {
@@ -344,7 +344,7 @@ const Director_1 = require(\\"../../../models/Director\\");
 const Movie_1 = require(\\"../../../models/Movie\\");
 let MovieRelationsResolver = class MovieRelationsResolver {
   director(movie, ctx, info) {
-    const { _count } = helpers_1.transformInfoIntoPrismaArgs(info);
+    const _count = helpers_1.extractCountFieldFromInfo(info);
     return helpers_1.getPrismaFromContext(ctx).movie.findUniqueOrThrow({
       where: {
         movieIdCompoundName: {
@@ -385,7 +385,7 @@ const Director_1 = require(\\"../../../models/Director\\");
 const Movie_1 = require(\\"../../../models/Movie\\");
 let MovieRelationsResolver = class MovieRelationsResolver {
   director(movie, ctx, info) {
-    const { _count } = helpers_1.transformInfoIntoPrismaArgs(info);
+    const _count = helpers_1.extractCountFieldFromInfo(info);
     return helpers_1.getPrismaFromContext(ctx).movie.findUniqueOrThrow({
       where: {
         movieUniqueCompoundName: {
@@ -427,7 +427,7 @@ const Director_1 = require(\\"../../../models/Director\\");
 const DirectorMoviesArgs_1 = require(\\"./args/DirectorMoviesArgs\\");
 let DirectorRelationsResolver = class DirectorRelationsResolver {
   movies(director, ctx, info, args) {
-    const { _count } = helpers_1.transformInfoIntoPrismaArgs(info);
+    const _count = helpers_1.extractCountFieldFromInfo(info);
     return helpers_1.getPrismaFromContext(ctx).director.findUniqueOrThrow({
       where: {
         firstName_lastName: {
@@ -470,7 +470,7 @@ const Post_1 = require(\\"../../../models/Post\\");
 const PostAuthorArgs_1 = require(\\"./args/PostAuthorArgs\\");
 let PostRelationsResolver = class PostRelationsResolver {
   author(post, ctx, info, args) {
-    const { _count } = helpers_1.transformInfoIntoPrismaArgs(info);
+    const _count = helpers_1.extractCountFieldFromInfo(info);
     return helpers_1.getPrismaFromContext(ctx).post.findUniqueOrThrow({
       where: {
         uuid: post.uuid,
@@ -510,7 +510,7 @@ const User_1 = require(\\"../../../models/User\\");
 const UserPostsArgs_1 = require(\\"./args/UserPostsArgs\\");
 let UserRelationsResolver = class UserRelationsResolver {
   posts(user, ctx, info, args) {
-    const { _count } = helpers_1.transformInfoIntoPrismaArgs(info);
+    const _count = helpers_1.extractCountFieldFromInfo(info);
     return helpers_1.getPrismaFromContext(ctx).user.findUniqueOrThrow({
       where: {
         id: user.id,
@@ -550,7 +550,7 @@ const Post_1 = require(\\"../../../models/Post\\");
 const PostAuthorArgs_1 = require(\\"./args/PostAuthorArgs\\");
 let PostRelationsResolver = class PostRelationsResolver {
   postAuthor(post, ctx, info, args) {
-    const { _count } = helpers_1.transformInfoIntoPrismaArgs(info);
+    const _count = helpers_1.extractCountFieldFromInfo(info);
     return helpers_1.getPrismaFromContext(ctx).post.findUniqueOrThrow({
       where: {
         uuid: post.uuid,
@@ -590,7 +590,7 @@ const User_1 = require(\\"../../../models/User\\");
 const UserPostsArgs_1 = require(\\"./args/UserPostsArgs\\");
 let UserRelationsResolver = class UserRelationsResolver {
   userPosts(user, ctx, info, args) {
-    const { _count } = helpers_1.transformInfoIntoPrismaArgs(info);
+    const _count = helpers_1.extractCountFieldFromInfo(info);
     return helpers_1.getPrismaFromContext(ctx).user.findUniqueOrThrow({
       where: {
         id: user.id,
@@ -672,7 +672,7 @@ const User_1 = require(\\"../../../models/User\\");
 const UserPostsArgs_1 = require(\\"./args/UserPostsArgs\\");
 let UserRelationsResolver = class UserRelationsResolver {
   posts(user, ctx, info, args) {
-    const { _count } = helpers_1.transformInfoIntoPrismaArgs(info);
+    const _count = helpers_1.extractCountFieldFromInfo(info);
     return helpers_1.getPrismaFromContext(ctx).user.findUniqueOrThrow({
       where: {
         id: user.id,
@@ -712,7 +712,7 @@ const User_1 = require(\\"../../../models/User\\");
 const UserAddressArgs_1 = require(\\"./args/UserAddressArgs\\");
 let UserRelationsResolver = class UserRelationsResolver {
   address(user, ctx, info, args) {
-    const { _count } = helpers_1.transformInfoIntoPrismaArgs(info);
+    const _count = helpers_1.extractCountFieldFromInfo(info);
     return helpers_1.getPrismaFromContext(ctx).user.findUniqueOrThrow({
       where: {
         id: user.id,
@@ -752,7 +752,7 @@ const Post_1 = require(\\"../../../models/Post\\");
 const PostAuthorArgs_1 = require(\\"./args/PostAuthorArgs\\");
 let PostRelationsResolver = class PostRelationsResolver {
   author(post, ctx, info, args) {
-    const { _count } = helpers_1.transformInfoIntoPrismaArgs(info);
+    const _count = helpers_1.extractCountFieldFromInfo(info);
     return helpers_1.getPrismaFromContext(ctx).post.findUniqueOrThrow({
       where: {
         uuid: post.uuid,
@@ -792,7 +792,7 @@ const User_1 = require(\\"../../../models/User\\");
 const UserPostsArgs_1 = require(\\"./args/UserPostsArgs\\");
 let UserRelationsResolver = class UserRelationsResolver {
   posts(user, ctx, info, args) {
-    const { _count } = helpers_1.transformInfoIntoPrismaArgs(info);
+    const _count = helpers_1.extractCountFieldFromInfo(info);
     return helpers_1.getPrismaFromContext(ctx).user.findUniqueOrThrow({
       where: {
         id: user.id,
@@ -874,7 +874,7 @@ const User_1 = require(\\"../../../models/User\\");
 const UserPostsArgs_1 = require(\\"./args/UserPostsArgs\\");
 let UserRelationsResolver = class UserRelationsResolver {
   posts(user, ctx, info, args) {
-    const { _count } = helpers_1.transformInfoIntoPrismaArgs(info);
+    const _count = helpers_1.extractCountFieldFromInfo(info);
     return helpers_1.getPrismaFromContext(ctx).user.findUniqueOrThrow({
       where: {
         id: user.id,

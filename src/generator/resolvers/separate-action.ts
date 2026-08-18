@@ -44,6 +44,7 @@ export default function generateActionResolverClass(
         "transformInfoIntoPrismaArgs",
         "getPrismaFromContext",
         "transformCountFieldIntoSelectRelationsCount",
+        "extractCountFieldFromInfo",
       ],
     },
   ];

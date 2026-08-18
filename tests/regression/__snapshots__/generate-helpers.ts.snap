@@ -6,6 +6,7 @@ Object.defineProperty(exports, \\"__esModule\\", { value: true });
 exports.transformInfoIntoPrismaArgs = transformInfoIntoPrismaArgs;
 exports.getPrismaFromContext = getPrismaFromContext;
 exports.transformCountFieldIntoSelectRelationsCount = transformCountFieldIntoSelectRelationsCount;
+exports.extractCountFieldFromInfo = extractCountFieldFromInfo;
 const tslib_1 = require(\\"tslib\\");
 const graphql_fields_1 = tslib_1.__importDefault(require(\\"graphql-fields\\"));
 function transformInfoIntoPrismaArgs(info) {
@@ -32,6 +33,41 @@ function transformFields(fields) {
             return [key, transformFields(value)];
         }),
     );
+}
+function selectionsMayIncludeCount(selections, fragments, depth) {
+    for (const selection of selections) {
+        if (selection.kind === \\"Field\\") {
+            if (selection.name.value === \\"_count\\") {
+                return true;
+            }
+        }
+        else if (selection.kind === \\"InlineFragment\\") {
+            if (depth >= 4 || selectionsMayIncludeCount(selection.selectionSet.selections, fragments, depth + 1)) {
+                return true;
+            }
+        }
+        else {
+            const fragment = fragments[selection.name.value];
+            if (!fragment || depth >= 4 || selectionsMayIncludeCount(fragment.selectionSet.selections, fragments, depth + 1)) {
+                return true;
+            }
+        }
+    }
+    return false;
+}
+function extractCountFieldFromInfo(info) {
+    let mayIncludeCount = false;
+    for (const fieldNode of info.fieldNodes) {
+        if (fieldNode.selectionSet &&
+            selectionsMayIncludeCount(fieldNode.selectionSet.selections, info.fragments, 0)) {
+            mayIncludeCount = true;
+            break;
+        }
+    }
+    if (!mayIncludeCount) {
+        return undefined;
+    }
+    return transformInfoIntoPrismaArgs(info)._count;
 }
 function getPrismaFromContext(context) {
     const prismaClient = context[\\"prisma\\"];
@@ -60,6 +96,7 @@ Object.defineProperty(exports, \\"__esModule\\", { value: true });
 exports.transformInfoIntoPrismaArgs = transformInfoIntoPrismaArgs;
 exports.getPrismaFromContext = getPrismaFromContext;
 exports.transformCountFieldIntoSelectRelationsCount = transformCountFieldIntoSelectRelationsCount;
+exports.extractCountFieldFromInfo = extractCountFieldFromInfo;
 const tslib_1 = require(\\"tslib\\");
 const graphql_fields_1 = tslib_1.__importDefault(require(\\"graphql-fields\\"));
 function transformInfoIntoPrismaArgs(info) {
@@ -86,6 +123,41 @@ function transformFields(fields) {
             return [key, transformFields(value)];
         }),
     );
+}
+function selectionsMayIncludeCount(selections, fragments, depth) {
+    for (const selection of selections) {
+        if (selection.kind === \\"Field\\") {
+            if (selection.name.value === \\"_count\\") {
+                return true;
+            }
+        }
+        else if (selection.kind === \\"InlineFragment\\") {
+            if (depth >= 4 || selectionsMayIncludeCount(selection.selectionSet.selections, fragments, depth + 1)) {
+                return true;
+            }
+        }
+        else {
+            const fragment = fragments[selection.name.value];
+            if (!fragment || depth >= 4 || selectionsMayIncludeCount(fragment.selectionSet.selections, fragments, depth + 1)) {
+                return true;
+            }
+        }
+    }
+    return false;
+}
+function extractCountFieldFromInfo(info) {
+    let mayIncludeCount = false;
+    for (const fieldNode of info.fieldNodes) {
+        if (fieldNode.selectionSet &&
+            selectionsMayIncludeCount(fieldNode.selectionSet.selections, info.fragments, 0)) {
+            mayIncludeCount = true;
+            break;
+        }
+    }
+    if (!mayIncludeCount) {
+        return undefined;
+    }
+    return transformInfoIntoPrismaArgs(info)._count;
 }
 function getPrismaFromContext(context) {
     const prismaClient = context[\\"samplePrisma\\"];

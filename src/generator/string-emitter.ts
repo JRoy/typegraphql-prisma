@@ -941,7 +941,7 @@ export function buildRelationResolverMethod(args: {
       })
       .join(", ")}): Promise<${args.field.fieldTSType}>;`,
     jsBody: [
-      "const { _count } = helpers_1.transformInfoIntoPrismaArgs(info);",
+      "const _count = helpers_1.extractCountFieldFromInfo(info);",
       `return helpers_1.getPrismaFromContext(ctx).${uncapitalize(args.modelTypeName)}.findUniqueOrThrow({`,
       "  where: {",
       ...indentLines(args.whereCondition.trim().split("\n"), 2),
@@ -990,7 +990,7 @@ function renderCrudMethodBody(
   }
 
   return [
-    "const { _count } = helpers_1.transformInfoIntoPrismaArgs(info);",
+    "const _count = helpers_1.extractCountFieldFromInfo(info);",
     `return helpers_1.getPrismaFromContext(ctx).${mapping.collectionName}.${action.prismaMethod}({`,
     "  ...args,",
     "  ...(_count && helpers_1.transformCountFieldIntoSelectRelationsCount(_count)),",
