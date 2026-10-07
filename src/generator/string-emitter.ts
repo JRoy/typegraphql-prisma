@@ -873,6 +873,13 @@ export function buildCrudResolverMethod(args: {
   };
 }
 
+export interface RelationBatchPlan {
+  delegateName: string;
+  rootField: string;
+  targetField: string;
+  isList: boolean;
+}
+
 export function buildRelationResolverMethod(args: {
   field: DMMF.RelationField;
   modelTypeName: string;
@@ -880,6 +887,7 @@ export function buildRelationResolverMethod(args: {
   whereCondition: string;
   generatorOptions: GeneratorOptions;
   runtimeRefs: Map<string, string>;
+  batchPlan?: RelationBatchPlan;
 }): {
   name: string;
   parameterNames: string[];
@@ -942,6 +950,13 @@ export function buildRelationResolverMethod(args: {
       .join(", ")}): Promise<${args.field.fieldTSType}>;`,
     jsBody: [
       "const _count = helpers_1.extractCountFieldFromInfo(info);",
+      ...(args.batchPlan
+        ? renderBatchedRelationLookup(
+            args.batchPlan,
+            args.rootArgName,
+            args.field.argsTypeName !== undefined,
+          )
+        : []),
       `return helpers_1.getPrismaFromContext(ctx).${uncapitalize(args.modelTypeName)}.findUniqueOrThrow({`,
       "  where: {",
       ...indentLines(args.whereCondition.trim().split("\n"), 2),
@@ -951,6 +966,42 @@ export function buildRelationResolverMethod(args: {
       "});",
     ],
   };
+}
+
+/**
+ * Looks the relation up by key through `helpers.batchedFindMany`. Falls
+ * through to the fluent call when the root doesn't carry the key (a narrowed
+ * select) or when list pagination args are passed, since `take`/`skip`/
+ * `cursor`/`distinct` don't compose with a batched `IN` query.
+ */
+function renderBatchedRelationLookup(
+  plan: RelationBatchPlan,
+  rootArgName: string,
+  hasArgs: boolean,
+): string[] {
+  const conditions = [
+    "relationKey !== undefined",
+    ...(plan.isList && hasArgs
+      ? [
+          "args.take === undefined",
+          "args.skip === undefined",
+          "args.cursor === undefined",
+          "args.distinct === undefined",
+        ]
+      : []),
+  ];
+  return [
+    `const relationKey = ${rootArgName}[${JSON.stringify(plan.rootField)}];`,
+    "if (relationKey === null) {",
+    `  return ${plan.isList ? "[]" : "null"};`,
+    "}",
+    `if (${conditions.join(" && ")}) {`,
+    `  return helpers_1.batchedFindMany(ctx, ${JSON.stringify(plan.delegateName)}, ${JSON.stringify(plan.targetField)}, relationKey, {`,
+    ...(hasArgs ? ["    ...args,"] : []),
+    "    ...(_count && helpers_1.transformCountFieldIntoSelectRelationsCount(_count)),",
+    `  }, ${String(plan.isList)});`,
+    "}",
+  ];
 }
 
 export function renderNamedImportModule(

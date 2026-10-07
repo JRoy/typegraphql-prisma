@@ -155,6 +155,9 @@ export async function generate(options: GeneratorOptions) {
     ),
     omitInputsBarrel: parseStringBoolean(generatorConfig.omitInputsBarrel),
     bundleIndex: parseStringBoolean(generatorConfig.bundleIndex),
+    batchRelationResolvers: parseStringBoolean(
+      generatorConfig.batchRelationResolvers,
+    ),
     customPrismaImportPath: parseString(
       generatorConfig.customPrismaImportPath,
       "customPrismaImportPath",

@@ -12,11 +12,64 @@ import {
   renderResolverModule,
   type GeneratedFile,
   type DtsImport,
+  type RelationBatchPlan,
 } from "../string-emitter";
+
+/**
+ * How a relation field can be resolved with a batched key lookup on the
+ * related model: `relatedModel.findMany({ where: { [targetField]: { in } } })`,
+ * keyed by `root[rootField]`. Only single-column keys qualify; composite keys
+ * and implicit many-to-many relations keep the fluent API.
+ */
+function getRelationBatchPlan(
+  dmmfDocument: DmmfDocument,
+  model: DMMF.Model,
+  field: DMMF.RelationField,
+): RelationBatchPlan | undefined {
+  const relatedModel = dmmfDocument.datamodel.models.find(
+    it => it.typeName === field.type,
+  );
+  if (!relatedModel) {
+    return undefined;
+  }
+  const delegateName = camelCase(relatedModel.name);
+
+  if (
+    !field.isList &&
+    field.relationFromFields?.length === 1 &&
+    field.relationToFields?.length === 1
+  ) {
+    return {
+      delegateName,
+      rootField: field.relationFromFields[0],
+      targetField: field.relationToFields[0],
+      isList: false,
+    };
+  }
+
+  const oppositeField = relatedModel.fields.find(
+    it =>
+      it.relationName === field.relationName &&
+      !(relatedModel.name === model.name && it.name === field.name),
+  );
+  if (
+    oppositeField?.relationFromFields?.length === 1 &&
+    oppositeField.relationToFields?.length === 1
+  ) {
+    return {
+      delegateName,
+      rootField: oppositeField.relationToFields[0],
+      targetField: oppositeField.relationFromFields[0],
+      isList: field.isList,
+    };
+  }
+
+  return undefined;
+}
 
 export default function generateRelationsResolverClassesFromModel(
   baseDirPath: string,
-  _dmmfDocument: DmmfDocument,
+  dmmfDocument: DmmfDocument,
   { model, relationFields, resolverName }: DMMF.RelationModel,
   generatorOptions: GeneratorOptions,
 ): GeneratedFile[] {
@@ -84,6 +137,7 @@ export default function generateRelationsResolverClassesFromModel(
         "getPrismaFromContext",
         "transformCountFieldIntoSelectRelationsCount",
         "extractCountFieldFromInfo",
+        ...(generatorOptions.batchRelationResolvers ? ["batchedFindMany"] : []),
       ],
     },
   ];
@@ -165,6 +219,9 @@ export default function generateRelationsResolverClassesFromModel(
         whereCondition: whereConditionString,
         generatorOptions,
         runtimeRefs,
+        batchPlan: generatorOptions.batchRelationResolvers
+          ? getRelationBatchPlan(dmmfDocument, model, field)
+          : undefined,
       });
     }),
   });

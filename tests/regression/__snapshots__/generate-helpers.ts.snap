@@ -90,6 +90,174 @@ function transformCountFieldIntoSelectRelationsCount(_count) {
 "
 `;
 
+exports[`helpers when batchRelationResolvers generator option is set should emit \`batchedFindMany\`: helpers 1`] = `
+"\\"use strict\\";
+Object.defineProperty(exports, \\"__esModule\\", { value: true });
+exports.transformInfoIntoPrismaArgs = transformInfoIntoPrismaArgs;
+exports.getPrismaFromContext = getPrismaFromContext;
+exports.transformCountFieldIntoSelectRelationsCount = transformCountFieldIntoSelectRelationsCount;
+exports.extractCountFieldFromInfo = extractCountFieldFromInfo;
+exports.batchedFindMany = batchedFindMany;
+const tslib_1 = require(\\"tslib\\");
+const graphql_fields_1 = tslib_1.__importDefault(require(\\"graphql-fields\\"));
+function transformInfoIntoPrismaArgs(info) {
+    const fields = (0, graphql_fields_1.default)(info, {}, {
+        excludedFields: [\\"__typename\\"],
+        processArguments: true,
+    });
+    return transformFields(fields);
+}
+function transformFields(fields) {
+    return Object.fromEntries(
+        Object.entries(fields).map(([key, value]) => {
+            if (Object.keys(value).length === 0) {
+                return [key, true];
+            }
+            if (\\"__arguments\\" in value) {
+                return [key, Object.fromEntries(
+                    value.__arguments.map(argument => {
+                        const [[argumentKey, { value: argumentValue }]] = Object.entries(argument);
+                        return [argumentKey, argumentValue];
+                    }),
+                )];
+            }
+            return [key, transformFields(value)];
+        }),
+    );
+}
+function selectionsMayIncludeCount(selections, fragments, depth) {
+    for (const selection of selections) {
+        if (selection.kind === \\"Field\\") {
+            if (selection.name.value === \\"_count\\") {
+                return true;
+            }
+        }
+        else if (selection.kind === \\"InlineFragment\\") {
+            if (depth >= 4 || selectionsMayIncludeCount(selection.selectionSet.selections, fragments, depth + 1)) {
+                return true;
+            }
+        }
+        else {
+            const fragment = fragments[selection.name.value];
+            if (!fragment || depth >= 4 || selectionsMayIncludeCount(fragment.selectionSet.selections, fragments, depth + 1)) {
+                return true;
+            }
+        }
+    }
+    return false;
+}
+function extractCountFieldFromInfo(info) {
+    let mayIncludeCount = false;
+    for (const fieldNode of info.fieldNodes) {
+        if (fieldNode.selectionSet &&
+            selectionsMayIncludeCount(fieldNode.selectionSet.selections, info.fragments, 0)) {
+            mayIncludeCount = true;
+            break;
+        }
+    }
+    if (!mayIncludeCount) {
+        return undefined;
+    }
+    return transformInfoIntoPrismaArgs(info)._count;
+}
+function getPrismaFromContext(context) {
+    const prismaClient = context[\\"prisma\\"];
+    if (!prismaClient) {
+        throw new Error(\\"Unable to find Prisma Client in GraphQL context. Please provide it under the \`context[\\\\\\\\\\\\\\"prisma\\\\\\\\\\\\\\"]\` key.\\");
+    }
+    return prismaClient;
+}
+function transformCountFieldIntoSelectRelationsCount(_count) {
+    return {
+        include: {
+            _count: {
+                select: {
+                    ...Object.fromEntries(Object.entries(_count).filter(([_, value]) => value != null)),
+                },
+            },
+        },
+    };
+}
+const relationBatchesByContext = new WeakMap();
+const resolvedPromise = Promise.resolve();
+function scheduleRelationBatch(dispatch) {
+    resolvedPromise.then(() => {
+        if (typeof process !== \\"undefined\\" && typeof process.nextTick === \\"function\\") {
+            process.nextTick(dispatch);
+        }
+        else {
+            setTimeout(dispatch, 0);
+        }
+    });
+}
+function stringifyRelationArgs(args) {
+    return JSON.stringify(args, (_key, value) => typeof value === \\"bigint\\" ? \`\${value}n\` : value);
+}
+function batchedFindMany(context, delegateName, field, value, args, isList) {
+    const prisma = getPrismaFromContext(context);
+    let batches = relationBatchesByContext.get(context);
+    if (!batches) {
+        batches = new Map();
+        relationBatchesByContext.set(context, batches);
+    }
+    const batchKey = \`\${delegateName}\\\\u0000\${field}\\\\u0000\${isList}\\\\u0000\${stringifyRelationArgs(args)}\`;
+    let batch = batches.get(batchKey);
+    if (!batch) {
+        const newBatch = new Map();
+        batch = newBatch;
+        batches.set(batchKey, newBatch);
+        scheduleRelationBatch(() => {
+            batches.delete(batchKey);
+            dispatchRelationBatch(prisma, delegateName, field, args, isList, newBatch);
+        });
+    }
+    const valueKey = String(value);
+    let entry = batch.get(valueKey);
+    if (!entry) {
+        let resolve;
+        let reject;
+        const promise = new Promise((res, rej) => {
+            resolve = res;
+            reject = rej;
+        });
+        entry = { value, promise, resolve, reject };
+        batch.set(valueKey, entry);
+    }
+    return entry.promise;
+}
+async function dispatchRelationBatch(prisma, delegateName, field, args, isList, batch) {
+    const entries = [...batch.values()];
+    try {
+        const keyFilter = { [field]: { in: entries.map(entry => entry.value) } };
+        const rows = await prisma[delegateName].findMany({
+            ...args,
+            where: args.where ? { AND: [args.where, keyFilter] } : keyFilter,
+        });
+        const rowsByKey = new Map();
+        for (const row of rows) {
+            const rowKey = String(row[field]);
+            const group = rowsByKey.get(rowKey);
+            if (group) {
+                group.push(row);
+            }
+            else {
+                rowsByKey.set(rowKey, [row]);
+            }
+        }
+        for (const entry of entries) {
+            const group = rowsByKey.get(String(entry.value)) ?? [];
+            entry.resolve(isList ? group : (group[0] ?? null));
+        }
+    }
+    catch (error) {
+        for (const entry of entries) {
+            entry.reject(error);
+        }
+    }
+}
+"
+`;
+
 exports[`helpers when contextPrismaKey generator option is set should properly generate \`getPrismaFromContext\`: helpers 1`] = `
 "\\"use strict\\";
 Object.defineProperty(exports, \\"__esModule\\", { value: true });

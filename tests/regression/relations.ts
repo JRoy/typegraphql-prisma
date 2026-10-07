@@ -314,6 +314,77 @@ describe("relations resolvers generation", () => {
     );
   });
 
+  describe("when batchRelationResolvers generator option is set", () => {
+    it("should batch single-key relations and keep the fluent API for the rest", async () => {
+      const schema = /* prisma */ `
+        model User {
+          id          String      @id @default(cuid())
+          name        String
+          profile     Profile?
+          posts       Post[]
+          tags        Tag[]
+          memberships Membership[]
+        }
+
+        model Profile {
+          id      String  @id @default(cuid())
+          user    User    @relation(fields: [userId], references: [id])
+          userId  String  @unique
+        }
+
+        model Post {
+          id        String   @id @default(cuid())
+          author    User?    @relation(fields: [authorId], references: [id])
+          authorId  String?
+        }
+
+        model Tag {
+          id     String @id @default(cuid())
+          users  User[]
+        }
+
+        model Team {
+          orgId        String
+          slug         String
+          memberships  Membership[]
+
+          @@id([orgId, slug])
+        }
+
+        model Membership {
+          id        String  @id @default(cuid())
+          user      User    @relation(fields: [userId], references: [id])
+          userId    String
+          team      Team    @relation(fields: [teamOrgId, teamSlug], references: [orgId, slug])
+          teamOrgId String
+          teamSlug  String
+        }
+      `;
+
+      await generateCodeFromSchema(schema, {
+        outputDirPath,
+        batchRelationResolvers: true,
+      });
+      const userResolverTSFile = await readGeneratedFile(
+        "/resolvers/relations/User/UserRelationsResolver.ts",
+      );
+      const postResolverTSFile = await readGeneratedFile(
+        "/resolvers/relations/Post/PostRelationsResolver.ts",
+      );
+      const membershipResolverTSFile = await readGeneratedFile(
+        "/resolvers/relations/Membership/MembershipRelationsResolver.ts",
+      );
+
+      // profile (1-1 back-relation) and posts/memberships (lists) batch;
+      // tags (implicit many-to-many) keeps the fluent API.
+      expect(userResolverTSFile).toMatchSnapshot("User");
+      // Optional foreign key on the root, with a `where` arg.
+      expect(postResolverTSFile).toMatchSnapshot("Post");
+      // user batches; team (composite foreign key) keeps the fluent API.
+      expect(membershipResolverTSFile).toMatchSnapshot("Membership");
+    });
+  });
+
   it("should properly generate args classes for sorting by relation fields", async () => {
     const schema = /* prisma */ `
         model FirstModel {

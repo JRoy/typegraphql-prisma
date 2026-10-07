@@ -29,6 +29,25 @@ describe("helpers", () => {
     expect(helpersTSFile).toMatchSnapshot("helpers");
   });
 
+  describe("when batchRelationResolvers generator option is set", () => {
+    it("should emit `batchedFindMany`", async () => {
+      const schema = /* prisma */ `
+        model Sample {
+          id    Int     @id @default(autoincrement())
+          text  String
+        }
+      `;
+
+      await generateCodeFromSchema(schema, {
+        outputDirPath,
+        batchRelationResolvers: true,
+      });
+      const helpersTSFile = await readGeneratedFile("/helpers.ts");
+
+      expect(helpersTSFile).toMatchSnapshot("helpers");
+    });
+  });
+
   describe("when contextPrismaKey generator option is set", () => {
     it("should properly generate `getPrismaFromContext`", async () => {
       const schema = /* prisma */ `

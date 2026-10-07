@@ -862,6 +862,261 @@ exports.FirstModelSecondModelsFieldArgs = FirstModelSecondModelsFieldArgs = tsli
 "
 `;
 
+exports[`relations resolvers generation when batchRelationResolvers generator option is set should batch single-key relations and keep the fluent API for the rest: Membership 1`] = `
+"\\"use strict\\";
+Object.defineProperty(exports, \\"__esModule\\", { value: true });
+exports.MembershipRelationsResolver = void 0;
+const tslib_1 = require(\\"tslib\\");
+const TypeGraphQL = tslib_1.__importStar(require(\\"type-graphql\\"));
+const helpers_1 = require(\\"../../../helpers\\");
+const User_1 = require(\\"../../../models/User\\");
+const Team_1 = require(\\"../../../models/Team\\");
+const Membership_1 = require(\\"../../../models/Membership\\");
+let MembershipRelationsResolver = class MembershipRelationsResolver {
+  user(membership, ctx, info) {
+    const _count = helpers_1.extractCountFieldFromInfo(info);
+    const relationKey = membership[\\"userId\\"];
+    if (relationKey === null) {
+      return null;
+    }
+    if (relationKey !== undefined) {
+      return helpers_1.batchedFindMany(ctx, \\"user\\", \\"id\\", relationKey, {
+        ...(_count && helpers_1.transformCountFieldIntoSelectRelationsCount(_count)),
+      }, false);
+    }
+    return helpers_1.getPrismaFromContext(ctx).membership.findUniqueOrThrow({
+      where: {
+        id: membership.id,
+      },
+    }).user({
+      ...(_count && helpers_1.transformCountFieldIntoSelectRelationsCount(_count)),
+    });
+  }
+  team(membership, ctx, info) {
+    const _count = helpers_1.extractCountFieldFromInfo(info);
+    return helpers_1.getPrismaFromContext(ctx).membership.findUniqueOrThrow({
+      where: {
+        id: membership.id,
+      },
+    }).team({
+      ...(_count && helpers_1.transformCountFieldIntoSelectRelationsCount(_count)),
+    });
+  }
+};
+exports.MembershipRelationsResolver = MembershipRelationsResolver;
+tslib_1.__decorate([
+    TypeGraphQL.FieldResolver(_type => User_1.User, { nullable: false }),
+    tslib_1.__param(0, TypeGraphQL.Root()),
+    tslib_1.__param(1, TypeGraphQL.Ctx()),
+    tslib_1.__param(2, TypeGraphQL.Info()),
+    tslib_1.__metadata(\\"design:type\\", Function),
+    tslib_1.__metadata(\\"design:paramtypes\\", [Membership_1.Membership, Object, Object]),
+    tslib_1.__metadata(\\"design:returntype\\", Promise)
+], MembershipRelationsResolver.prototype, \\"user\\", null);
+tslib_1.__decorate([
+    TypeGraphQL.FieldResolver(_type => Team_1.Team, { nullable: false }),
+    tslib_1.__param(0, TypeGraphQL.Root()),
+    tslib_1.__param(1, TypeGraphQL.Ctx()),
+    tslib_1.__param(2, TypeGraphQL.Info()),
+    tslib_1.__metadata(\\"design:type\\", Function),
+    tslib_1.__metadata(\\"design:paramtypes\\", [Membership_1.Membership, Object, Object]),
+    tslib_1.__metadata(\\"design:returntype\\", Promise)
+], MembershipRelationsResolver.prototype, \\"team\\", null);
+exports.MembershipRelationsResolver = MembershipRelationsResolver = tslib_1.__decorate([
+    TypeGraphQL.Resolver(_of => Membership_1.Membership)
+], MembershipRelationsResolver);
+"
+`;
+
+exports[`relations resolvers generation when batchRelationResolvers generator option is set should batch single-key relations and keep the fluent API for the rest: Post 1`] = `
+"\\"use strict\\";
+Object.defineProperty(exports, \\"__esModule\\", { value: true });
+exports.PostRelationsResolver = void 0;
+const tslib_1 = require(\\"tslib\\");
+const TypeGraphQL = tslib_1.__importStar(require(\\"type-graphql\\"));
+const helpers_1 = require(\\"../../../helpers\\");
+const User_1 = require(\\"../../../models/User\\");
+const Post_1 = require(\\"../../../models/Post\\");
+const PostAuthorArgs_1 = require(\\"./args/PostAuthorArgs\\");
+let PostRelationsResolver = class PostRelationsResolver {
+  author(post, ctx, info, args) {
+    const _count = helpers_1.extractCountFieldFromInfo(info);
+    const relationKey = post[\\"authorId\\"];
+    if (relationKey === null) {
+      return null;
+    }
+    if (relationKey !== undefined) {
+      return helpers_1.batchedFindMany(ctx, \\"user\\", \\"id\\", relationKey, {
+        ...args,
+        ...(_count && helpers_1.transformCountFieldIntoSelectRelationsCount(_count)),
+      }, false);
+    }
+    return helpers_1.getPrismaFromContext(ctx).post.findUniqueOrThrow({
+      where: {
+        id: post.id,
+      },
+    }).author({
+  ...args,
+      ...(_count && helpers_1.transformCountFieldIntoSelectRelationsCount(_count)),
+    });
+  }
+};
+exports.PostRelationsResolver = PostRelationsResolver;
+tslib_1.__decorate([
+    TypeGraphQL.FieldResolver(_type => User_1.User, { nullable: true }),
+    tslib_1.__param(0, TypeGraphQL.Root()),
+    tslib_1.__param(1, TypeGraphQL.Ctx()),
+    tslib_1.__param(2, TypeGraphQL.Info()),
+    tslib_1.__param(3, TypeGraphQL.Args(_type => PostAuthorArgs_1.PostAuthorArgs)),
+    tslib_1.__metadata(\\"design:type\\", Function),
+    tslib_1.__metadata(\\"design:paramtypes\\", [Post_1.Post, Object, Object, PostAuthorArgs_1.PostAuthorArgs]),
+    tslib_1.__metadata(\\"design:returntype\\", Promise)
+], PostRelationsResolver.prototype, \\"author\\", null);
+exports.PostRelationsResolver = PostRelationsResolver = tslib_1.__decorate([
+    TypeGraphQL.Resolver(_of => Post_1.Post)
+], PostRelationsResolver);
+"
+`;
+
+exports[`relations resolvers generation when batchRelationResolvers generator option is set should batch single-key relations and keep the fluent API for the rest: User 1`] = `
+"\\"use strict\\";
+Object.defineProperty(exports, \\"__esModule\\", { value: true });
+exports.UserRelationsResolver = void 0;
+const tslib_1 = require(\\"tslib\\");
+const TypeGraphQL = tslib_1.__importStar(require(\\"type-graphql\\"));
+const helpers_1 = require(\\"../../../helpers\\");
+const Profile_1 = require(\\"../../../models/Profile\\");
+const Post_1 = require(\\"../../../models/Post\\");
+const Tag_1 = require(\\"../../../models/Tag\\");
+const Membership_1 = require(\\"../../../models/Membership\\");
+const User_1 = require(\\"../../../models/User\\");
+const UserProfileArgs_1 = require(\\"./args/UserProfileArgs\\");
+const UserPostsArgs_1 = require(\\"./args/UserPostsArgs\\");
+const UserTagsArgs_1 = require(\\"./args/UserTagsArgs\\");
+const UserMembershipsArgs_1 = require(\\"./args/UserMembershipsArgs\\");
+let UserRelationsResolver = class UserRelationsResolver {
+  profile(user, ctx, info, args) {
+    const _count = helpers_1.extractCountFieldFromInfo(info);
+    const relationKey = user[\\"id\\"];
+    if (relationKey === null) {
+      return null;
+    }
+    if (relationKey !== undefined) {
+      return helpers_1.batchedFindMany(ctx, \\"profile\\", \\"userId\\", relationKey, {
+        ...args,
+        ...(_count && helpers_1.transformCountFieldIntoSelectRelationsCount(_count)),
+      }, false);
+    }
+    return helpers_1.getPrismaFromContext(ctx).user.findUniqueOrThrow({
+      where: {
+        id: user.id,
+      },
+    }).profile({
+  ...args,
+      ...(_count && helpers_1.transformCountFieldIntoSelectRelationsCount(_count)),
+    });
+  }
+  posts(user, ctx, info, args) {
+    const _count = helpers_1.extractCountFieldFromInfo(info);
+    const relationKey = user[\\"id\\"];
+    if (relationKey === null) {
+      return [];
+    }
+    if (relationKey !== undefined && args.take === undefined && args.skip === undefined && args.cursor === undefined && args.distinct === undefined) {
+      return helpers_1.batchedFindMany(ctx, \\"post\\", \\"authorId\\", relationKey, {
+        ...args,
+        ...(_count && helpers_1.transformCountFieldIntoSelectRelationsCount(_count)),
+      }, true);
+    }
+    return helpers_1.getPrismaFromContext(ctx).user.findUniqueOrThrow({
+      where: {
+        id: user.id,
+      },
+    }).posts({
+  ...args,
+      ...(_count && helpers_1.transformCountFieldIntoSelectRelationsCount(_count)),
+    });
+  }
+  tags(user, ctx, info, args) {
+    const _count = helpers_1.extractCountFieldFromInfo(info);
+    return helpers_1.getPrismaFromContext(ctx).user.findUniqueOrThrow({
+      where: {
+        id: user.id,
+      },
+    }).tags({
+  ...args,
+      ...(_count && helpers_1.transformCountFieldIntoSelectRelationsCount(_count)),
+    });
+  }
+  memberships(user, ctx, info, args) {
+    const _count = helpers_1.extractCountFieldFromInfo(info);
+    const relationKey = user[\\"id\\"];
+    if (relationKey === null) {
+      return [];
+    }
+    if (relationKey !== undefined && args.take === undefined && args.skip === undefined && args.cursor === undefined && args.distinct === undefined) {
+      return helpers_1.batchedFindMany(ctx, \\"membership\\", \\"userId\\", relationKey, {
+        ...args,
+        ...(_count && helpers_1.transformCountFieldIntoSelectRelationsCount(_count)),
+      }, true);
+    }
+    return helpers_1.getPrismaFromContext(ctx).user.findUniqueOrThrow({
+      where: {
+        id: user.id,
+      },
+    }).memberships({
+  ...args,
+      ...(_count && helpers_1.transformCountFieldIntoSelectRelationsCount(_count)),
+    });
+  }
+};
+exports.UserRelationsResolver = UserRelationsResolver;
+tslib_1.__decorate([
+    TypeGraphQL.FieldResolver(_type => Profile_1.Profile, { nullable: true }),
+    tslib_1.__param(0, TypeGraphQL.Root()),
+    tslib_1.__param(1, TypeGraphQL.Ctx()),
+    tslib_1.__param(2, TypeGraphQL.Info()),
+    tslib_1.__param(3, TypeGraphQL.Args(_type => UserProfileArgs_1.UserProfileArgs)),
+    tslib_1.__metadata(\\"design:type\\", Function),
+    tslib_1.__metadata(\\"design:paramtypes\\", [User_1.User, Object, Object, UserProfileArgs_1.UserProfileArgs]),
+    tslib_1.__metadata(\\"design:returntype\\", Promise)
+], UserRelationsResolver.prototype, \\"profile\\", null);
+tslib_1.__decorate([
+    TypeGraphQL.FieldResolver(_type => [Post_1.Post], { nullable: false }),
+    tslib_1.__param(0, TypeGraphQL.Root()),
+    tslib_1.__param(1, TypeGraphQL.Ctx()),
+    tslib_1.__param(2, TypeGraphQL.Info()),
+    tslib_1.__param(3, TypeGraphQL.Args(_type => UserPostsArgs_1.UserPostsArgs)),
+    tslib_1.__metadata(\\"design:type\\", Function),
+    tslib_1.__metadata(\\"design:paramtypes\\", [User_1.User, Object, Object, UserPostsArgs_1.UserPostsArgs]),
+    tslib_1.__metadata(\\"design:returntype\\", Promise)
+], UserRelationsResolver.prototype, \\"posts\\", null);
+tslib_1.__decorate([
+    TypeGraphQL.FieldResolver(_type => [Tag_1.Tag], { nullable: false }),
+    tslib_1.__param(0, TypeGraphQL.Root()),
+    tslib_1.__param(1, TypeGraphQL.Ctx()),
+    tslib_1.__param(2, TypeGraphQL.Info()),
+    tslib_1.__param(3, TypeGraphQL.Args(_type => UserTagsArgs_1.UserTagsArgs)),
+    tslib_1.__metadata(\\"design:type\\", Function),
+    tslib_1.__metadata(\\"design:paramtypes\\", [User_1.User, Object, Object, UserTagsArgs_1.UserTagsArgs]),
+    tslib_1.__metadata(\\"design:returntype\\", Promise)
+], UserRelationsResolver.prototype, \\"tags\\", null);
+tslib_1.__decorate([
+    TypeGraphQL.FieldResolver(_type => [Membership_1.Membership], { nullable: false }),
+    tslib_1.__param(0, TypeGraphQL.Root()),
+    tslib_1.__param(1, TypeGraphQL.Ctx()),
+    tslib_1.__param(2, TypeGraphQL.Info()),
+    tslib_1.__param(3, TypeGraphQL.Args(_type => UserMembershipsArgs_1.UserMembershipsArgs)),
+    tslib_1.__metadata(\\"design:type\\", Function),
+    tslib_1.__metadata(\\"design:paramtypes\\", [User_1.User, Object, Object, UserMembershipsArgs_1.UserMembershipsArgs]),
+    tslib_1.__metadata(\\"design:returntype\\", Promise)
+], UserRelationsResolver.prototype, \\"memberships\\", null);
+exports.UserRelationsResolver = UserRelationsResolver = tslib_1.__decorate([
+    TypeGraphQL.Resolver(_of => User_1.User)
+], UserRelationsResolver);
+"
+`;
+
 exports[`relations resolvers generation when emitRedundantTypesInfo is set to true should properly generate type info for @Args decorator: UserRelationsResolver 1`] = `
 "\\"use strict\\";
 Object.defineProperty(exports, \\"__esModule\\", { value: true });

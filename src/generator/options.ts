@@ -19,6 +19,12 @@ export interface ExternalGeneratorOptions {
   verboseLogging?: boolean;
   omitInputsBarrel?: boolean;
   bundleIndex?: boolean;
+  /**
+   * Resolve relation fields by looking up the related rows by key, batched per
+   * GraphQL context into one `findMany` per relation per tick, instead of
+   * re-reading the parent row through Prisma's fluent API.
+   */
+  batchRelationResolvers?: boolean;
 }
 
 export interface InternalGeneratorOptions {

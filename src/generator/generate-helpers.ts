@@ -11,6 +11,9 @@ export function generateHelpersFile(
     "exports.getPrismaFromContext = getPrismaFromContext;",
     "exports.transformCountFieldIntoSelectRelationsCount = transformCountFieldIntoSelectRelationsCount;",
     "exports.extractCountFieldFromInfo = extractCountFieldFromInfo;",
+    ...(options.batchRelationResolvers
+      ? ["exports.batchedFindMany = batchedFindMany;"]
+      : []),
     'const tslib_1 = require("tslib");',
     'const graphql_fields_1 = tslib_1.__importDefault(require("graphql-fields"));',
     "function transformInfoIntoPrismaArgs(info) {",
@@ -91,6 +94,7 @@ export function generateHelpersFile(
     "        },",
     "    };",
     "}",
+    ...(options.batchRelationResolvers ? batchedFindManyJsLines : []),
   ];
 
   const dtsLines = [
@@ -105,6 +109,11 @@ export function generateHelpersFile(
     "        };",
     "    };",
     "};",
+    ...(options.batchRelationResolvers
+      ? [
+          "export declare function batchedFindMany(context: any, delegateName: string, field: string, value: unknown, args: Record<string, any>, isList: boolean): Promise<any>;",
+        ]
+      : []),
   ];
 
   return {
@@ -112,3 +121,87 @@ export function generateHelpersFile(
     dts: `${dtsLines.join("\n")}\n`,
   };
 }
+
+// Batches relation lookups made against the same GraphQL context into one
+// `findMany` per (model, key field, args) per tick, the same scheduling
+// DataLoader uses. Batches are dropped once dispatched, so nothing is cached
+// across ticks: long-lived contexts (subscriptions) never serve stale rows.
+const batchedFindManyJsLines = [
+  "const relationBatchesByContext = new WeakMap();",
+  "const resolvedPromise = Promise.resolve();",
+  "function scheduleRelationBatch(dispatch) {",
+  "    resolvedPromise.then(() => {",
+  '        if (typeof process !== "undefined" && typeof process.nextTick === "function") {',
+  "            process.nextTick(dispatch);",
+  "        }",
+  "        else {",
+  "            setTimeout(dispatch, 0);",
+  "        }",
+  "    });",
+  "}",
+  "function stringifyRelationArgs(args) {",
+  '    return JSON.stringify(args, (_key, value) => typeof value === "bigint" ? `${value}n` : value);',
+  "}",
+  "function batchedFindMany(context, delegateName, field, value, args, isList) {",
+  "    const prisma = getPrismaFromContext(context);",
+  "    let batches = relationBatchesByContext.get(context);",
+  "    if (!batches) {",
+  "        batches = new Map();",
+  "        relationBatchesByContext.set(context, batches);",
+  "    }",
+  "    const batchKey = `${delegateName}\\u0000${field}\\u0000${isList}\\u0000${stringifyRelationArgs(args)}`;",
+  "    let batch = batches.get(batchKey);",
+  "    if (!batch) {",
+  "        const newBatch = new Map();",
+  "        batch = newBatch;",
+  "        batches.set(batchKey, newBatch);",
+  "        scheduleRelationBatch(() => {",
+  "            batches.delete(batchKey);",
+  "            dispatchRelationBatch(prisma, delegateName, field, args, isList, newBatch);",
+  "        });",
+  "    }",
+  "    const valueKey = String(value);",
+  "    let entry = batch.get(valueKey);",
+  "    if (!entry) {",
+  "        let resolve;",
+  "        let reject;",
+  "        const promise = new Promise((res, rej) => {",
+  "            resolve = res;",
+  "            reject = rej;",
+  "        });",
+  "        entry = { value, promise, resolve, reject };",
+  "        batch.set(valueKey, entry);",
+  "    }",
+  "    return entry.promise;",
+  "}",
+  "async function dispatchRelationBatch(prisma, delegateName, field, args, isList, batch) {",
+  "    const entries = [...batch.values()];",
+  "    try {",
+  "        const keyFilter = { [field]: { in: entries.map(entry => entry.value) } };",
+  "        const rows = await prisma[delegateName].findMany({",
+  "            ...args,",
+  "            where: args.where ? { AND: [args.where, keyFilter] } : keyFilter,",
+  "        });",
+  "        const rowsByKey = new Map();",
+  "        for (const row of rows) {",
+  "            const rowKey = String(row[field]);",
+  "            const group = rowsByKey.get(rowKey);",
+  "            if (group) {",
+  "                group.push(row);",
+  "            }",
+  "            else {",
+  "                rowsByKey.set(rowKey, [row]);",
+  "            }",
+  "        }",
+  "        for (const entry of entries) {",
+  "            const group = rowsByKey.get(String(entry.value)) ?? [];",
+  "            entry.resolve(isList ? group : (group[0] ?? null));",
+  "        }",
+  "    }",
+  "    catch (error) {",
+  "        for (const entry of entries) {",
+  "            entry.reject(error);",
+  "        }",
+  "    }",
+  "}",
+];
