@@ -1,11 +1,16 @@
 import path from "node:path";
 
 import { camelCase } from "../helpers";
-import { relationsResolversFolderName, resolversFolderName } from "../config";
+import {
+  outputsFolderName,
+  relationsResolversFolderName,
+  resolversFolderName,
+} from "../config";
 import type { DmmfDocument } from "../dmmf/dmmf-document";
 import type { DMMF } from "../dmmf/types";
 import type { GeneratorOptions } from "../options";
 import {
+  buildCountResolverMethod,
   buildRelationResolverMethod,
   createGeneratedFiles,
   createImportModuleSpecifier,
@@ -184,46 +189,89 @@ export default function generateRelationsResolverClassesFromModel(
     runtimeRefs.set(argsTypeName, `${alias}.${argsTypeName}`);
   }
 
+  let whereConditionString = "";
+  if (singleFilterField) {
+    whereConditionString = `${singleFilterField.name}: ${rootArgName}.${singleFilterField.name},`;
+  } else if (compositeFilterFields.length > 0) {
+    const filterKeyName =
+      model.primaryKey?.name ??
+      model.uniqueIndexes[0]?.name ??
+      compositeFilterFields.map(it => it.name).join("_");
+    whereConditionString = [
+      `${filterKeyName}: {`,
+      ...compositeFilterFields.map(
+        idField => `  ${idField.name}: ${rootArgName}.${idField.name},`,
+      ),
+      "},",
+    ].join("\n");
+  } else {
+    throw new Error(
+      `Unexpected error happened on generating 'whereConditionString' for ${model.typeName} relation resolver`,
+    );
+  }
+
+  const countOutputType = dmmfDocument.shouldGenerateBlock("crudResolvers")
+    ? undefined
+    : dmmfDocument.getCountOutputType(model.name);
+  if (countOutputType) {
+    const alias = `${countOutputType.typeName}_1`;
+    jsImports.push({
+      alias,
+      moduleSpecifier: createImportModuleSpecifier(
+        outputsFolderName,
+        countOutputType.typeName,
+        2,
+      ),
+      kind: "named",
+      names: [countOutputType.typeName],
+    });
+    dtsImports.push({
+      moduleSpecifier: createImportModuleSpecifier(
+        outputsFolderName,
+        countOutputType.typeName,
+        2,
+      ),
+      named: [countOutputType.typeName],
+    });
+    runtimeRefs.set(
+      countOutputType.typeName,
+      `${alias}.${countOutputType.typeName}`,
+    );
+  }
+
   const module = renderResolverModule({
     className: resolverName,
     modelTypeName: model.typeName,
     modelRuntimeRef: runtimeRefs.get(model.typeName),
     jsImports,
     dtsImports,
-    methods: relationFields.map(field => {
-      let whereConditionString = "";
-      if (singleFilterField) {
-        whereConditionString = `${singleFilterField.name}: ${rootArgName}.${singleFilterField.name},`;
-      } else if (compositeFilterFields.length > 0) {
-        const filterKeyName =
-          model.primaryKey?.name ??
-          model.uniqueIndexes[0]?.name ??
-          compositeFilterFields.map(it => it.name).join("_");
-        whereConditionString = [
-          `${filterKeyName}: {`,
-          ...compositeFilterFields.map(
-            idField => `  ${idField.name}: ${rootArgName}.${idField.name},`,
-          ),
-          "},",
-        ].join("\n");
-      } else {
-        throw new Error(
-          `Unexpected error happened on generating 'whereConditionString' for ${model.typeName} relation resolver`,
-        );
-      }
-
-      return buildRelationResolverMethod({
-        field,
-        modelTypeName: model.typeName,
-        rootArgName,
-        whereCondition: whereConditionString,
-        generatorOptions,
-        runtimeRefs,
-        batchPlan: generatorOptions.batchRelationResolvers
-          ? getRelationBatchPlan(dmmfDocument, model, field)
-          : undefined,
-      });
-    }),
+    methods: [
+      ...relationFields.map(field =>
+        buildRelationResolverMethod({
+          field,
+          modelTypeName: model.typeName,
+          rootArgName,
+          whereCondition: whereConditionString,
+          generatorOptions,
+          runtimeRefs,
+          batchPlan: generatorOptions.batchRelationResolvers
+            ? getRelationBatchPlan(dmmfDocument, model, field)
+            : undefined,
+        }),
+      ),
+      ...(countOutputType
+        ? [
+            buildCountResolverMethod({
+              countOutputTypeName: countOutputType.typeName,
+              modelTypeName: model.typeName,
+              modelName: model.name,
+              rootArgName,
+              whereCondition: whereConditionString,
+              runtimeRefs,
+            }),
+          ]
+        : []),
+    ],
   });
 
   return createGeneratedFiles(filePath, module);

@@ -469,6 +469,9 @@ export function emitModelModule(
   const shouldEmitCountField =
     countField !== undefined &&
     dmmfDocument.shouldGenerateBlock("crudResolvers");
+  const shouldDeclareCountField =
+    countField !== undefined &&
+    (shouldEmitCountField || dmmfDocument.shouldEmitCountOutputTypes());
   if (countField && shouldEmitCountField) {
     addNamedTypeImports(
       jsImports,
@@ -481,6 +484,15 @@ export function emitModelModule(
           typeName,
         ),
     );
+  } else if (countField && shouldDeclareCountField) {
+    dtsImports.push({
+      moduleSpecifier: createImportModuleSpecifier(
+        `${resolversFolderName}/${outputsFolderName}`,
+        countField.typeGraphQLType,
+      ),
+      named: [countField.typeGraphQLType],
+      isTypeOnly: true,
+    });
   }
 
   const accessorFields = model.fields.filter(
@@ -587,7 +599,7 @@ export function emitModelModule(
       ({ field, isOptional }) =>
         `    ${field.name}${isOptional ? "?:" : ":"} ${field.fieldTSType};`,
     ),
-    ...(countField && shouldEmitCountField
+    ...(countField && shouldDeclareCountField
       ? [
           `    ${countField.name}${countField.isRequired ? ":" : "?:"} ${countField.fieldTSType};`,
         ]
@@ -964,6 +976,60 @@ export function buildRelationResolverMethod(args: {
       `}).${args.field.name}({${args.field.argsTypeName ? "\n  ...args," : ""}`,
       "  ...(_count && helpers_1.transformCountFieldIntoSelectRelationsCount(_count)),",
       "});",
+    ],
+  };
+}
+
+/**
+ * Resolves the model `_count` field when no CRUD resolver populated it on the
+ * root. Reuses a `_count` already present on the root when it covers every
+ * requested relation; otherwise selects it with `findUniqueOrThrow`, which
+ * Prisma batches per selection set into a single `IN` query.
+ */
+export function buildCountResolverMethod(args: {
+  countOutputTypeName: string;
+  modelTypeName: string;
+  modelName: string;
+  rootArgName: string;
+  whereCondition: string;
+  runtimeRefs: Map<string, string>;
+}): {
+  name: string;
+  parameterNames: string[];
+  jsBody: string[];
+  dtsSignature: string;
+  decorator: string;
+  paramDecorators: string[];
+  paramTypes: string[];
+} {
+  const parameterNames = [args.rootArgName, "ctx", "info"];
+  return {
+    name: "_count",
+    parameterNames,
+    decorator: `TypeGraphQL.FieldResolver(_type => ${toRuntimeTypeGraphQLReference(args.countOutputTypeName, args.runtimeRefs)}, { nullable: false })`,
+    paramDecorators: [
+      "TypeGraphQL.Root()",
+      "TypeGraphQL.Ctx()",
+      "TypeGraphQL.Info()",
+    ],
+    paramTypes: [
+      args.runtimeRefs.get(args.modelTypeName) ?? args.modelTypeName,
+      "Object",
+      "Object",
+    ],
+    dtsSignature: `_count(${args.rootArgName}: ${args.modelTypeName}, ctx: any, info: GraphQLResolveInfo): Promise<${args.countOutputTypeName}>;`,
+    jsBody: [
+      "const select = helpers_1.transformInfoIntoPrismaArgs(info);",
+      `const existingCount = ${args.rootArgName}._count;`,
+      "if (existingCount && Object.keys(select).every(key => key in existingCount)) {",
+      "  return existingCount;",
+      "}",
+      `return helpers_1.getPrismaFromContext(ctx).${uncapitalize(args.modelName)}.findUniqueOrThrow({`,
+      "  where: {",
+      ...indentLines(args.whereCondition.trim().split("\n"), 2),
+      "  },",
+      "  select: { _count: { select } },",
+      "}).then(result => result._count);",
     ],
   };
 }

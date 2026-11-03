@@ -111,6 +111,8 @@ export function generateIndexFile(
   const shouldEmitCrudResolvers = blocksToEmit.includes("crudResolvers");
   const shouldEmitRelationResolvers =
     hasSomeRelations && blocksToEmit.includes("relationResolvers");
+  const shouldEmitOutputs =
+    blocksToEmit.includes("outputs") || shouldEmitRelationResolvers;
 
   const jsLines = [
     '"use strict";',
@@ -148,7 +150,7 @@ export function generateIndexFile(
           `tslib_1.__exportStar(require("./${resolversFolderName}/${inputsFolderName}"), exports);`,
         ]
       : []),
-    ...(blocksToEmit.includes("outputs")
+    ...(shouldEmitOutputs
       ? [
           `tslib_1.__exportStar(require("./${resolversFolderName}/${outputsFolderName}"), exports);`,
         ]
@@ -184,7 +186,7 @@ export function generateIndexFile(
     ...(shouldEmitInputs
       ? [`export * from "./${resolversFolderName}/${inputsFolderName}";`]
       : []),
-    ...(blocksToEmit.includes("outputs")
+    ...(shouldEmitOutputs
       ? [`export * from "./${resolversFolderName}/${outputsFolderName}";`]
       : []),
     'export * from "./enhance";',

@@ -20,7 +20,10 @@ export class OutputBlockGenerator extends BaseBlockGenerator {
   private outputTypesToGenerate: DMMF.OutputType[] = [];
 
   protected shouldGenerate(): boolean {
-    return this.dmmfDocument.shouldGenerateBlock("outputs");
+    return (
+      this.dmmfDocument.shouldGenerateBlock("outputs") ||
+      this.dmmfDocument.shouldEmitCountOutputTypes()
+    );
   }
 
   public getBlockName(): string {
@@ -45,7 +48,11 @@ export class OutputBlockGenerator extends BaseBlockGenerator {
       model => model.name,
     );
     this.outputTypesToGenerate = this.dmmfDocument.schema.outputTypes.filter(
-      type => !modelNames.includes(type.name) && !rootTypes.includes(type),
+      type =>
+        !modelNames.includes(type.name) &&
+        !rootTypes.includes(type) &&
+        (this.dmmfDocument.shouldGenerateBlock("outputs") ||
+          this.dmmfDocument.isCountOutputTypeName(type.name)),
     );
 
     const outputTypesFieldsArgsToGenerate = this.outputTypesToGenerate

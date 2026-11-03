@@ -24,7 +24,8 @@ export function generateEnhanceMap(
   const emitRelationResolvers =
     hasRelations && dmmfDocument.shouldGenerateBlock("relationResolvers");
   const emitModels = dmmfDocument.shouldGenerateBlock("models");
-  const emitOutputs = dmmfDocument.shouldGenerateBlock("outputs");
+  const emitOutputs =
+    dmmfDocument.shouldGenerateBlock("outputs") || emitRelationResolvers;
   const emitInputs = dmmfDocument.shouldGenerateBlock("inputs");
 
   const jsLines = [

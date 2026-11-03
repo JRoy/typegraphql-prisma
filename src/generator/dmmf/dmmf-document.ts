@@ -227,6 +227,24 @@ export class DmmfDocument implements DMMF.Document {
     return this.options.blocksToEmit.includes(block);
   }
 
+  shouldEmitCountOutputTypes(): boolean {
+    return (
+      this.relationModels.length > 0 &&
+      this.shouldGenerateBlock("relationResolvers")
+    );
+  }
+
+  isCountOutputTypeName(outputTypeName: string): boolean {
+    return (
+      outputTypeName.endsWith("CountOutputType") &&
+      this.isModelName(outputTypeName.slice(0, -"CountOutputType".length))
+    );
+  }
+
+  getCountOutputType(modelName: string): DMMF.OutputType | undefined {
+    return this.outputTypeCache.get(`${modelName}CountOutputType`);
+  }
+
   getEnumByName(name: string): DMMF.Enum | undefined {
     return this.enumsCache.get(name);
   }
