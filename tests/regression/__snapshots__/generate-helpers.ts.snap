@@ -7,32 +7,60 @@ exports.transformInfoIntoPrismaArgs = transformInfoIntoPrismaArgs;
 exports.getPrismaFromContext = getPrismaFromContext;
 exports.transformCountFieldIntoSelectRelationsCount = transformCountFieldIntoSelectRelationsCount;
 exports.extractCountFieldFromInfo = extractCountFieldFromInfo;
-const tslib_1 = require(\\"tslib\\");
-const graphql_fields_1 = tslib_1.__importDefault(require(\\"graphql-fields\\"));
+const graphql_1 = require(\\"graphql\\");
 function transformInfoIntoPrismaArgs(info) {
-    const fields = (0, graphql_fields_1.default)(info, {}, {
-        excludedFields: [\\"__typename\\"],
-        processArguments: true,
-    });
-    return transformFields(fields);
+    const result = {};
+    for (const fieldNode of info.fieldNodes) {
+        if (fieldNode.selectionSet) {
+            collectSelections(fieldNode.selectionSet.selections, info, result);
+        }
+    }
+    return result;
 }
-function transformFields(fields) {
-    return Object.fromEntries(
-        Object.entries(fields).map(([key, value]) => {
-            if (Object.keys(value).length === 0) {
-                return [key, true];
+function isSelectionIncluded(selection, info) {
+    const skip = graphql_1.getDirectiveValues(graphql_1.GraphQLSkipDirective, selection, info.variableValues);
+    if (skip && skip.if === true) {
+        return false;
+    }
+    const include = graphql_1.getDirectiveValues(graphql_1.GraphQLIncludeDirective, selection, info.variableValues);
+    return !(include && include.if === false);
+}
+function collectSelections(selections, info, result) {
+    for (const selection of selections) {
+        if (!isSelectionIncluded(selection, info)) {
+            continue;
+        }
+        if (selection.kind === \\"FragmentSpread\\") {
+            const fragment = info.fragments[selection.name.value];
+            if (fragment) {
+                collectSelections(fragment.selectionSet.selections, info, result);
             }
-            if (\\"__arguments\\" in value) {
-                return [key, Object.fromEntries(
-                    value.__arguments.map(argument => {
-                        const [[argumentKey, { value: argumentValue }]] = Object.entries(argument);
-                        return [argumentKey, argumentValue];
-                    }),
-                )];
-            }
-            return [key, transformFields(value)];
-        }),
-    );
+            continue;
+        }
+        if (selection.kind === \\"InlineFragment\\") {
+            collectSelections(selection.selectionSet.selections, info, result);
+            continue;
+        }
+        const key = selection.name.value;
+        if (key === \\"__typename\\") {
+            continue;
+        }
+        if (selection.arguments && selection.arguments.length > 0) {
+            result[key] = Object.fromEntries(selection.arguments.map(argument => [
+                argument.name.value,
+                graphql_1.valueFromASTUntyped(argument.value, info.variableValues),
+            ]));
+        }
+        else if (selection.selectionSet) {
+            const nested = typeof result[key] === \\"object\\" ? result[key] : {};
+            collectSelections(selection.selectionSet.selections, info, nested);
+            result[key] = Object.keys(nested).length === 0 ? true : nested;
+        }
+        else if (!(key in result)) {
+            result[key] = true;
+        }
+    }
+    return result;
 }
 function selectionsMayIncludeCount(selections, fragments, depth) {
     for (const selection of selections) {
@@ -98,32 +126,60 @@ exports.getPrismaFromContext = getPrismaFromContext;
 exports.transformCountFieldIntoSelectRelationsCount = transformCountFieldIntoSelectRelationsCount;
 exports.extractCountFieldFromInfo = extractCountFieldFromInfo;
 exports.batchedFindMany = batchedFindMany;
-const tslib_1 = require(\\"tslib\\");
-const graphql_fields_1 = tslib_1.__importDefault(require(\\"graphql-fields\\"));
+const graphql_1 = require(\\"graphql\\");
 function transformInfoIntoPrismaArgs(info) {
-    const fields = (0, graphql_fields_1.default)(info, {}, {
-        excludedFields: [\\"__typename\\"],
-        processArguments: true,
-    });
-    return transformFields(fields);
+    const result = {};
+    for (const fieldNode of info.fieldNodes) {
+        if (fieldNode.selectionSet) {
+            collectSelections(fieldNode.selectionSet.selections, info, result);
+        }
+    }
+    return result;
 }
-function transformFields(fields) {
-    return Object.fromEntries(
-        Object.entries(fields).map(([key, value]) => {
-            if (Object.keys(value).length === 0) {
-                return [key, true];
+function isSelectionIncluded(selection, info) {
+    const skip = graphql_1.getDirectiveValues(graphql_1.GraphQLSkipDirective, selection, info.variableValues);
+    if (skip && skip.if === true) {
+        return false;
+    }
+    const include = graphql_1.getDirectiveValues(graphql_1.GraphQLIncludeDirective, selection, info.variableValues);
+    return !(include && include.if === false);
+}
+function collectSelections(selections, info, result) {
+    for (const selection of selections) {
+        if (!isSelectionIncluded(selection, info)) {
+            continue;
+        }
+        if (selection.kind === \\"FragmentSpread\\") {
+            const fragment = info.fragments[selection.name.value];
+            if (fragment) {
+                collectSelections(fragment.selectionSet.selections, info, result);
             }
-            if (\\"__arguments\\" in value) {
-                return [key, Object.fromEntries(
-                    value.__arguments.map(argument => {
-                        const [[argumentKey, { value: argumentValue }]] = Object.entries(argument);
-                        return [argumentKey, argumentValue];
-                    }),
-                )];
-            }
-            return [key, transformFields(value)];
-        }),
-    );
+            continue;
+        }
+        if (selection.kind === \\"InlineFragment\\") {
+            collectSelections(selection.selectionSet.selections, info, result);
+            continue;
+        }
+        const key = selection.name.value;
+        if (key === \\"__typename\\") {
+            continue;
+        }
+        if (selection.arguments && selection.arguments.length > 0) {
+            result[key] = Object.fromEntries(selection.arguments.map(argument => [
+                argument.name.value,
+                graphql_1.valueFromASTUntyped(argument.value, info.variableValues),
+            ]));
+        }
+        else if (selection.selectionSet) {
+            const nested = typeof result[key] === \\"object\\" ? result[key] : {};
+            collectSelections(selection.selectionSet.selections, info, nested);
+            result[key] = Object.keys(nested).length === 0 ? true : nested;
+        }
+        else if (!(key in result)) {
+            result[key] = true;
+        }
+    }
+    return result;
 }
 function selectionsMayIncludeCount(selections, fragments, depth) {
     for (const selection of selections) {
@@ -265,32 +321,60 @@ exports.transformInfoIntoPrismaArgs = transformInfoIntoPrismaArgs;
 exports.getPrismaFromContext = getPrismaFromContext;
 exports.transformCountFieldIntoSelectRelationsCount = transformCountFieldIntoSelectRelationsCount;
 exports.extractCountFieldFromInfo = extractCountFieldFromInfo;
-const tslib_1 = require(\\"tslib\\");
-const graphql_fields_1 = tslib_1.__importDefault(require(\\"graphql-fields\\"));
+const graphql_1 = require(\\"graphql\\");
 function transformInfoIntoPrismaArgs(info) {
-    const fields = (0, graphql_fields_1.default)(info, {}, {
-        excludedFields: [\\"__typename\\"],
-        processArguments: true,
-    });
-    return transformFields(fields);
+    const result = {};
+    for (const fieldNode of info.fieldNodes) {
+        if (fieldNode.selectionSet) {
+            collectSelections(fieldNode.selectionSet.selections, info, result);
+        }
+    }
+    return result;
 }
-function transformFields(fields) {
-    return Object.fromEntries(
-        Object.entries(fields).map(([key, value]) => {
-            if (Object.keys(value).length === 0) {
-                return [key, true];
+function isSelectionIncluded(selection, info) {
+    const skip = graphql_1.getDirectiveValues(graphql_1.GraphQLSkipDirective, selection, info.variableValues);
+    if (skip && skip.if === true) {
+        return false;
+    }
+    const include = graphql_1.getDirectiveValues(graphql_1.GraphQLIncludeDirective, selection, info.variableValues);
+    return !(include && include.if === false);
+}
+function collectSelections(selections, info, result) {
+    for (const selection of selections) {
+        if (!isSelectionIncluded(selection, info)) {
+            continue;
+        }
+        if (selection.kind === \\"FragmentSpread\\") {
+            const fragment = info.fragments[selection.name.value];
+            if (fragment) {
+                collectSelections(fragment.selectionSet.selections, info, result);
             }
-            if (\\"__arguments\\" in value) {
-                return [key, Object.fromEntries(
-                    value.__arguments.map(argument => {
-                        const [[argumentKey, { value: argumentValue }]] = Object.entries(argument);
-                        return [argumentKey, argumentValue];
-                    }),
-                )];
-            }
-            return [key, transformFields(value)];
-        }),
-    );
+            continue;
+        }
+        if (selection.kind === \\"InlineFragment\\") {
+            collectSelections(selection.selectionSet.selections, info, result);
+            continue;
+        }
+        const key = selection.name.value;
+        if (key === \\"__typename\\") {
+            continue;
+        }
+        if (selection.arguments && selection.arguments.length > 0) {
+            result[key] = Object.fromEntries(selection.arguments.map(argument => [
+                argument.name.value,
+                graphql_1.valueFromASTUntyped(argument.value, info.variableValues),
+            ]));
+        }
+        else if (selection.selectionSet) {
+            const nested = typeof result[key] === \\"object\\" ? result[key] : {};
+            collectSelections(selection.selectionSet.selections, info, nested);
+            result[key] = Object.keys(nested).length === 0 ? true : nested;
+        }
+        else if (!(key in result)) {
+            result[key] = true;
+        }
+    }
+    return result;
 }
 function selectionsMayIncludeCount(selections, fragments, depth) {
     for (const selection of selections) {
