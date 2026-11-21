@@ -154,6 +154,13 @@ export async function generate(options: GeneratorOptions) {
       generatorConfig.emitRedundantTypesInfo,
     ),
     omitInputsBarrel: parseStringBoolean(generatorConfig.omitInputsBarrel),
+    emitOnlyReachableInputs: parseStringBoolean(
+      generatorConfig.emitOnlyReachableInputs,
+    ),
+    additionalInputTypes: parseStringArray(
+      generatorConfig.additionalInputTypes,
+      "additionalInputTypes",
+    ),
     bundleIndex: parseStringBoolean(generatorConfig.bundleIndex),
     batchRelationResolvers: parseStringBoolean(
       generatorConfig.batchRelationResolvers,

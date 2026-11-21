@@ -25,6 +25,8 @@ export class DmmfDocument implements DMMF.Document {
   relationModels: DMMF.RelationModel[];
   scalarTypeNames: string[];
 
+  inputTypeRoots = new Set<string>();
+
   outputTypeCache: Map<string, DMMF.OutputType>;
   modelsCache: Map<string, DMMF.Model>;
   modelTypeNameCache: Set<string>;

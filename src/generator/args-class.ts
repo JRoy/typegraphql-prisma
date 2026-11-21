@@ -13,9 +13,16 @@ export default function generateArgsTypeClassFromArgs(
   generateDirPath: string,
   fields: readonly DMMF.SchemaArg[],
   argsTypeName: string,
-  _dmmfDocument: DmmfDocument,
+  dmmfDocument: DmmfDocument,
   inputImportsLevel = 3,
 ): GeneratedFile[] {
+  if (dmmfDocument.options.emitOnlyReachableInputs) {
+    for (const field of fields) {
+      if (field.selectedInputType.location === "inputObjectTypes") {
+        dmmfDocument.inputTypeRoots.add(field.selectedInputType.type);
+      }
+    }
+  }
   const dirPath = path.resolve(generateDirPath, argsFolderName);
   const filePath = path.resolve(dirPath, argsTypeName);
   return createGeneratedFiles(

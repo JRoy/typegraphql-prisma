@@ -2,6 +2,7 @@ import type { DmmfDocument } from "../dmmf/dmmf-document";
 import type { DMMF } from "../dmmf/types";
 import type { GeneratorOptions } from "../options";
 import type { GeneratedFile } from "../string-emitter";
+import { getReachableInputTypes } from "../reachable-inputs";
 import {
   type BaseBlockGenerator,
   CrudResolverBlockGenerator,
@@ -97,7 +98,18 @@ export class BlockGeneratorFactory {
       "crudResolvers",
     ];
 
+    if (this.options.emitOnlyReachableInputs) {
+      blockOrder.splice(blockOrder.indexOf("inputs"), 1);
+      blockOrder.push("inputs");
+    }
+
     for (const blockName of blockOrder) {
+      if (blockName === "inputs" && this.options.emitOnlyReachableInputs) {
+        this.dmmfDocument.schema = {
+          ...this.dmmfDocument.schema,
+          inputTypes: getReachableInputTypes(this.dmmfDocument),
+        };
+      }
       const generator = this.generators.get(blockName);
       if (!generator) {
         continue;
