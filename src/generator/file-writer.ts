@@ -1,4 +1,5 @@
 import fs from "node:fs/promises";
+import { writeFileSync } from "node:fs";
 import path from "node:path";
 
 import type { GeneratedFile } from "./string-emitter";
@@ -14,20 +15,24 @@ export async function writeGeneratedFiles(
   }
 
   const dedupedFiles = dedupeFiles(files);
+  const directories = [
+    ...new Set(dedupedFiles.map(file => path.dirname(file.filePath))),
+  ];
   let nextIndex = 0;
 
   await Promise.all(
     Array.from(
-      { length: Math.min(concurrency, dedupedFiles.length) },
+      { length: Math.min(concurrency, directories.length) },
       async () => {
-        while (nextIndex < dedupedFiles.length) {
-          const file = dedupedFiles[nextIndex++];
-          await fs.mkdir(path.dirname(file.filePath), { recursive: true });
-          await fs.writeFile(file.filePath, file.content, "utf8");
+        while (nextIndex < directories.length) {
+          await fs.mkdir(directories[nextIndex++], { recursive: true });
         }
       },
     ),
   );
+  for (const file of dedupedFiles) {
+    writeFileSync(file.filePath, file.content, "utf8");
+  }
 }
 
 function dedupeFiles(files: GeneratedFile[]): GeneratedFile[] {
